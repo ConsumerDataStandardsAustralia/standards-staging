@@ -24,12 +24,13 @@ This release pertains to the changes approved by the Data Standards Chair in <To
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Rejection Metrics | Fixed documentation error with the optionality of the high-level response objects for the Metrics API payload response. | [RejectionMetricsV2](../../#tocSrejectionmetricsv2)|
 
 ## Information Security Profile
 |Change|Description|Link|
 |------|-----------|----|
 | Modularised build script | Changed the security profile build process to modularise the Markdown file into separate imports. This has no change to the standards. | [Security Profile](../../#security-profile) |
+| Audience claim for Data Recipients calling Data Holders | Previously the documentation included pre-March 31st audience claim requirements. These have been removed and the post-March 2021 requirements retained. | [Client Authentication](../../#client-authentication)|
 
 ## Consumer Experience
 
