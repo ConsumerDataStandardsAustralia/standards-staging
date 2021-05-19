@@ -29,9 +29,8 @@ In addition, the following branch types will be used for specific purposes:
 * **Experimental branches:** `poc/<name>`<br/>
 Used for experiments or proof of concepts and allows for experimentation to be kept separate to the change management process. Experimental branches will never be directly merged and would need to become a change request or decision proposal branch.
 
-* **Operational branches:** operations/<name>`<br/>
+* **Operational branches:** `operations/<name>`<br/>
 Used to contain operational code such as publishing scripts and libraries.
-
 
 ## Rules of engagement for this repository
 
