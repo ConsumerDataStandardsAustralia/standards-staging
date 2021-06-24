@@ -4158,12 +4158,12 @@
       "properties": {
         "data": {
           "type": "object",
+          "x-conditional": [
+            
+            "organisation"
+          ],
           "required": [
             "customerUType"
-          ],
-          "x-conditional": [
-            "person",
-            "organisation"
           ],
           "properties": {
             "customerUType": {
@@ -4201,12 +4201,12 @@
       "properties": {
         "data": {
           "type": "object",
+          "x-conditional": [
+
+            "organisation"
+          ],
           "required": [
             "customerUType"
-          ],
-          "x-conditional": [
-            "person",
-            "organisation"
           ],
           "properties": {
             "customerUType": {
