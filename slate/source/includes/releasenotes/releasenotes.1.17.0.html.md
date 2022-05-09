@@ -19,6 +19,7 @@ This release addresses the following change requests raised on [Standards Mainte
 
 - [Standards Maintenance Issue 503: Fix documentation defect for CDR Arrangement JWT method](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/503)
 - [Standards Maintenance Issue 504: Correct Data Language for Contact Details (profile scope and individual claims)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/504)
+- [Standards Maintenance Issue 443: SSA definition: Deprecation of revocation_uri)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/443)
 
 ### Decision Proposals
 
@@ -43,6 +44,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
+| Client Registration SSA Definition | `revocation_uri` removed from SSA definition | [Client Registration](https://consumerdatastandardsaustralia.github.io/standards/?examples#client-registration) |
+
 
 ## Consumer Experience
 
