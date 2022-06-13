@@ -155,11 +155,11 @@
                             "properties": {
                                 "code": {
                                     "type": "string",
-                                    "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+                                    "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends **MUST** be provided in the meta object. Otherwise, the value is the error code URN."
                                 },
                                 "title": {
                                     "type": "string",
-                                    "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                                    "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
                                 },
                                 "detail": {
                                     "type": "string",
@@ -239,7 +239,7 @@
                     },
                     "isGenerator": {
                         "type": "boolean",
-                        "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer"
+                        "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this **MAY** include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer"
                     },
                     "validFromDate": {
                         "type": "string",
@@ -332,7 +332,7 @@
                     },
                     "isGenerator": {
                         "type": "boolean",
-                        "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer"
+                        "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this **MAY** include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer"
                     },
                     "validFromDate": {
                         "type": "string",
@@ -413,7 +413,7 @@
                         "$ref": "#/components/schemas/CommonPhysicalAddress"
                     },
                     "meters": {
-                        "description": "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
+                        "description": "The meters associated with the service point. This **MAY** be empty where there are no meters physically installed at the service point",
                         "type": "array",
                         "items": {
                             "type": "object",
@@ -480,7 +480,7 @@
                                     }
                                 },
                                 "registers": {
-                                    "description": "Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point",
+                                    "description": "Usage data registers available from the meter. This **MAY** be empty where there are no meters physically installed at the service point",
                                     "type": "array",
                                     "items": {
                                         "type": "object",
@@ -728,7 +728,7 @@
 						"type": "object",
 						"properties": {
 							"exportLimitkva": {
-								"description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
+								"description": "Maximum amount of power (kVA) that **MAY** be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
 								"type": "number"
 							},
 							"underFrequencyProtection": {
@@ -812,7 +812,7 @@
 									"type": "number"
 								},
 								"count": {
-									"description": "Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes",
+									"description": "Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included **MUST** have the same attributes",
 									"type": "integer",
 									"x-cds-type": "PositiveInteger"
 								},
@@ -986,7 +986,7 @@
                   },
                   "state": {
                     "type": "string",
-                    "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+                    "description": "Free text if the country is not Australia. If country is Australia then **MUST** be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
                   },
                   "country": {
                     "type": "string",
@@ -1243,7 +1243,7 @@
 			},
 			"x-v": {
 				"name": "x-v",
-				"description": "Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
+				"description": "Version of the API end point requested by the client. **MUST** be set to a positive integer. The data holder **SHOULD** respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header **SHOULD** be treated as absent. If all versions requested are not supported then the data holder **MUST** respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 				"in": "header",
 				"required": true,
 				"schema": {
@@ -1252,7 +1252,7 @@
 			},
 			"x-min-v": {
 				"name": "x-min-v",
-				"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
+				"description": "Minimum version of the API end point requested by the client. **MUST** be set to a positive integer if provided. The data holder **SHOULD** respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder **MUST** respond with a 406 Not Acceptable.",
 				"in": "header",
 				"required": false,
 				"schema": {
@@ -1261,7 +1261,7 @@
 			},
 			"x-fapi-interaction-id": {
 				"name": "x-fapi-interaction-id",
-				"description": "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder MUST create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
+				"description": "The x-fapi-interaction-id header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder **MUST** create a unique **[[RFC4122]](#nref-RFC4122)** UUID value for the x-fapi-interaction-id header.",
 				"in": "header",
 				"required": true,
 				"schema": {
@@ -1270,7 +1270,7 @@
 			},
             "x-cds-arrangement": {
 				"name": "x-cds-arrangement",
-				"description": "A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier MUST be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field MUST be populated but AEMO MUST NOT seek to validate the consent associated with the arrangement",
+				"description": "A unique string representing a consent arrangement between a Data Recipient Software Product and Data Holder for a given consumer. The identifier **MUST** be unique per customer according to the definition of customer in the CDR Federation section of this profile. The x-cds-arrangement **SHOULD** contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field **MUST** be populated but AEMO **MUST NOT** seek to validate the consent associated with the arrangement",
 				"in": "header",
 				"required": true,
 				"schema": {
@@ -1328,7 +1328,7 @@
                     "x-fapi-interaction-id": {
                         "schema": {
                             "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -1352,7 +1352,7 @@
                     "x-fapi-interaction-id": {
                         "schema": {
                             "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -1376,7 +1376,7 @@
                     "x-fapi-interaction-id": {
                         "schema": {
                             "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -1400,7 +1400,7 @@
                     "x-fapi-interaction-id": {
                         "schema": {
                             "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -1424,7 +1424,7 @@
                     "x-fapi-interaction-id": {
                         "schema": {
                             "type": "string",
-                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                            "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                         }
                     }
                 },
@@ -1476,12 +1476,12 @@
 						"$ref": "#/components/responses/servicePointList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1494,12 +1494,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1512,12 +1512,12 @@
         				}
                     },
                     "422": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1563,12 +1563,12 @@
 						"$ref": "#/components/responses/servicePointDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1581,12 +1581,12 @@
         				}
                     },
                     "404": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1599,12 +1599,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1662,12 +1662,12 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1680,12 +1680,12 @@
         				}
                     },
                     "404": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1698,12 +1698,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1716,12 +1716,12 @@
         				}
                     },
                     "422": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1779,12 +1779,12 @@
 						"$ref": "#/components/responses/usageList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1797,12 +1797,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1815,12 +1815,12 @@
         				}
                     },
                     "422": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1866,12 +1866,12 @@
 						"$ref": "#/components/responses/derDetail"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1884,12 +1884,12 @@
         				}
                     },
                     "404": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Service Point](#error-404-unavailable-service-point)</li><li>[404 - Invalid Service Point](#error-404-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1902,12 +1902,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1959,12 +1959,12 @@
 						"$ref": "#/components/responses/derList"
                     },
                     "400": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1977,12 +1977,12 @@
         				}
                     },
                     "406": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },
@@ -1995,12 +1995,12 @@
         				}
                     },
                     "422": {
-                        "description": "The following error codes MUST be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
+                        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Service Point](#error-422-unavailable-service-point)</li><li>[422 - Invalid Service Point](#error-422-invalid-service-point)</li></ul>",
                         "headers": {
                             "x-fapi-interaction-id": {
                                 "schema": {
                                     "type": "string",
-                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
+                                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the x-fapi-interaction-id response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction."
                                 }
                             }
                         },

@@ -1,7 +1,7 @@
 
 ## Data Quality
 
-If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder must take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.
+If a Data Holder of CDR data is required or authorised under the Consumer Data Rules to disclose product data, the Data Holder **MUST** take reasonable steps to ensure that the product data is, having regard to the purpose for which it is held, accurate, up to date and complete.
 
 Data Holders are required to be able to demonstrate that reasonable steps to maintain data quality of product data are being undertaken.
 

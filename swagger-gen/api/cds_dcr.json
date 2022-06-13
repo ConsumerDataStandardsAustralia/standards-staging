@@ -330,7 +330,7 @@
           },
           "redirect_uris": {
             "type": "array",
-            "description": "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
+            "description": "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris **MUST** match or be a subset of the redirect_uris as defined in the SSA",
             "example": [
               "https://www.mockcompany.com.au/redirects/redirect1",
               "https://www.mockcompany.com.au/redirects/redirect2"
@@ -347,7 +347,7 @@
           },
           "logo_uri": {
             "type": "string",
-            "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
+            "description": "URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval",
             "example": "https://www.mockcompany.com.au/logos/logo1.png"
           },
           "tos_uri": {
@@ -372,7 +372,7 @@
           },
           "recipient_base_uri": {
             "type": "string",
-            "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
+            "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other Data Recipient Endpoints",
             "example": "https://www.mockcompany.com.au"
           },
           "token_endpoint_auth_method": {

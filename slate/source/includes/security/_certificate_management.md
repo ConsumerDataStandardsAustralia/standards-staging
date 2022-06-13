@@ -50,7 +50,7 @@ Please refer to the [Register onboarding guide](https://www.accc.gov.au/focus-ar
 Further details on the Register CA issued certificates can be found in the [ACCC Certificate Practice Statement V1.0](https://www.cdr.gov.au/sites/default/files/2020-12/CDR%20-%20ACCC%20Certification%20practice%20statement.pdf).
 
 ### Certificate Validation
-Certificate validation must check:
+Certificate validation **MUST** check:
 
 **1. Checking for certificate validity**
 

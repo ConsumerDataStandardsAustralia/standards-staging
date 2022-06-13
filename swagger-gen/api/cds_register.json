@@ -91,7 +91,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -99,7 +99,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -215,7 +215,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "required": true,
             "schema": {
               "type": "string"
@@ -224,7 +224,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -335,7 +335,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -343,7 +343,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -489,7 +489,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -497,7 +497,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -598,7 +598,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -606,7 +606,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -707,7 +707,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -715,7 +715,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -816,7 +816,7 @@
           {
             "name": "x-v",
             "in": "header",
-            "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+            "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
             "schema": {
               "type": "string"
             }
@@ -824,7 +824,7 @@
           {
             "name": "x-min-v",
             "in": "header",
-            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+            "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
@@ -1045,7 +1045,7 @@
           },
           "kid": {
             "type": "string",
-            "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set"
+            "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters **SHOULD** be used to progressively to identify a key within a set"
           },
           "kty": {
             "type": "string",
@@ -1827,11 +1827,11 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends **MUST** be provided in the meta object. Otherwise, the value is the error code URN."
           },
           "title": {
             "type": "string",
-            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+            "description": "A short, human-readable summary of the problem that **MUST NOT** change from occurrence to occurrence of the problem represented by the error code."
           },
           "detail": {
             "type": "string",
@@ -1899,7 +1899,7 @@
       "XV": {
         "name": "x-v",
         "in": "header",
-        "description": "The version of the API end point requested by the client. Must be set to a positive integer.",
+        "description": "The version of the API end point requested by the client. **MUST** be set to a positive integer.",
         "schema": {
           "type": "string"
         }
@@ -1922,7 +1922,7 @@
       "XMinV": {
         "name": "x-min-v",
         "in": "header",
-        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. Must be set to a positive integer if provided.",
+        "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API end point requested by the client. **MUST** be set to a positive integer if provided.",
         "schema": {
           "type": "string"
         }

@@ -214,7 +214,7 @@ WWW-Authenticate:   Bearer error="invalid_token",
 
 
 <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
+To perform this operation, you **MUST** be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
 </aside>
 
 ## Update a Client Registration for a given Client ID
@@ -309,7 +309,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 
 <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
+To perform this operation, you **MUST** be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
 </aside>
 
 
@@ -350,7 +350,7 @@ Authorization: Bearer <access-token>
 
 
 <aside class="notice">
-To perform this operation, you must be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
+To perform this operation, you **MUST** be authenticated and authorised with the following scope: [cdr:registration](#authorisation-scopes).
 </aside>
 
 
@@ -416,14 +416,14 @@ To perform this operation, you must be authenticated and authorised with the fol
 |legal_entity_name|string|false|none|Human-readable string name of the Accredited Data Recipient Legal Entity|
 |org_id|string|true|none|A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand|
 |org_name|string|true|none|Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization|
-|redirect_uris|[string]|true|none|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA|
+|redirect_uris|[string]|true|none|Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris **MUST** match or be a subset of the redirect_uris as defined in the SSA|
 |sector_identifier_uri|string|false|none|URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier|
-|logo_uri|string|true|none|URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval|
+|logo_uri|string|true|none|URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval|
 |tos_uri|string|false|none|URL string that points to a human-readable terms of service document for the Software Product|
 |policy_uri|string|false|none|URL string that points to a human-readable policy document for the Software Product|
 |jwks_uri|string|true|none|URL string referencing the client JSON Web Key (JWK) Set [RFC7517] document, which contains the client public keys|
 |revocation_uri|string|false|none|URI string that references the location of the Software Product consent revocation endpoint|
-|recipient_base_uri|string|false|none|Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)|
+|recipient_base_uri|string|false|none|Base URI for the Consumer Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](https://consumerdatastandardsaustralia.github.io/standards/#end-points)|
 |token_endpoint_auth_method|string|true|none|The requested authentication method for the token endpoint|
 |token_endpoint_auth_signing_alg|string|true|none|The algorithm used for signing the JWT|
 |grant_types|[string]|true|none|Array of OAuth 2.0 grant type strings that the client can use at the token endpoint|

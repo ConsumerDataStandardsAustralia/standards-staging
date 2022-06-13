@@ -39,13 +39,13 @@
 5. https://www.energyretailer.com.au/api/cds-au/v1/ACME/apply
 ```
 
-The URI structure for API end points in the standards MUST be implemented as follows:  
+The URI structure for API end points in the standards **MUST** be implemented as follows:  
 <pre class="display-inline light-box highlight">
 <b>uri-string</b> =  "https://" <b>\<holder-path\></b> "/" <b>cds-au</b> "/" <b>\<version\></b> "/" ( <b>\<industry\></b> | <b>\<HID\></b> ) "/" <b>\<resource\></b>
 
 The components of this URI structure are described as follows:
 <ul><li><b>\<holder-path\></b>  = string.
-The holder path is a path set by the data holder. It can be any URI desired by the holder. While all authenticated end points must be accessible under the same holder path the data holder may stipulate a different holder path for unauthenticated end points.</li>
+The holder path is a path set by the data holder. It can be any URI desired by the holder. While all authenticated end points **MUST** be accessible under the same holder path the data holder **MAY** stipulate a different holder path for unauthenticated end points.</li>
 <li><b>cds-au</b>         = "cds-au" string.
 This is a static string representing the end points defined by the Consumer Data Standards for Australia. This static string allows for separation from other APIs available at the same base holder path and also allows for extension if the standards are adopted by another jurisdiction in whole or in part.</li>
 <li><b>\<version\></b>      = "v1" string.
@@ -87,6 +87,6 @@ Under this model, collections, individual members and collection sub-resources w
 `POST …/accounts` | Create a new account
 `POST …/accounts/search` | Returns an array of accounts based on a complex query
 
-The final example above represents a complex query accessed via a POST request.  In this situation the POST URI should be applied to a sub-resource of the collection.  A POST to a collection is reserved for the creation of a new collection member.
+The final example above represents a complex query accessed via a POST request.  In this situation the POST URI **SHOULD** be applied to a sub-resource of the collection.  A POST to a collection is reserved for the creation of a new collection member.
 
-If no valid sub-resource exists then a dedicated sub-resource should be created, such as the “search” URI listed in the example above.
+If no valid sub-resource exists then a dedicated sub-resource **SHOULD** be created, such as the “search” URI listed in the example above.

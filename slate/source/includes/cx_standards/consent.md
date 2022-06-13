@@ -11,7 +11,7 @@
 <br><br>
 The standards in this section outline insight description requirements that apply where an insight disclosure consent is being sought and may also feature in CDR Receipts and Dashboards. These standards do not alter any existing rules obligations for CDR receipts or dashboards.
 <br><br>
-**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
+**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this **SHOULD NOT** be taken to mean a non-accredited person or trusted adviser.
 
 |Area|CX Standard|
 |-------------------|------------------------------|
@@ -23,9 +23,9 @@ The standards in this section outline insight description requirements that appl
 <br>
 **Disclosure Consent: Non-Accredited Person Disclosure Notification**
 <br><br>
-The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.<br><br>These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.
+The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents and trusted adviser disclosure consents.<br><br>These standards will feature where such a disclosure consent is being sought and **MAY**, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.
 <br><br>
-**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
+**Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this **SHOULD NOT** be taken to mean a non-accredited person or trusted adviser.
 
 |Area|CX Standard|
 |-------------------|------------------------------|

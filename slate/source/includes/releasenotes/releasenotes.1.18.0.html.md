@@ -32,7 +32,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Embolden use of RFC2119 keywords | [**Standards Maintenance #511**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511): All usage of RFC2119 Requirements Level keywords have been emboldened for readability and consistency. Addresses [Issue 511 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/511#issuecomment-1136665838). | N/A |
 
 ## API End Points
 

@@ -40,11 +40,11 @@ Participants will be required to register base URIs against each of their brands
 
 | Base URI | DH Brand | ADR Brand | Description
 |-----------|------|------|-----------------------------------------------------------------------------------------------|
-|**PublicBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard public endpoints. This should encompass all endpoints not requiring authentication |
-|**ResourceBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard resource endpoints. This should encompass all CDS resource endpoints requiring authentication |
+|**PublicBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard public endpoints. This **SHOULD** encompass all endpoints not requiring authentication |
+|**ResourceBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard resource endpoints. This **SHOULD** encompass all CDS resource endpoints requiring authentication |
 |**InfoSecBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard InfoSec endpoints. This provides ADRs reference to the [OIDC Discovery Endpoint](https://openid.net/specs/openid-connect-discovery-1_0.html) |
 |**AdminBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register |
 |**ExtensionBaseUri**|	<i class="icon-check"></i> | | Base URI for the Data Holder extension endpoints to the Consumer Data Standard **(optional)** |
 |**RevocationUri**|	| <i class="icon-check"></i> | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#dynamic-client-registration) |
-|**RecipientBaseUri**|	| <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This should be the base to provide reference to [Data Recipient Endpoints](#end-points) |
+|**RecipientBaseUri**|	| <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This **SHOULD** be the base to provide reference to [Data Recipient Endpoints](#end-points) |
 |**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | **DH:** Used for client authentication for DH -> DRSP communication and is populated in the [GetDataHolderBrands API](#getdataholderbrands)</br> **DR:** Used for client authentication for DRSP -> DH & Register communication and is populated in the [SSA](#dynamic-client-registration) |

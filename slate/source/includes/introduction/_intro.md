@@ -29,4 +29,8 @@ These standards represent version 1.18.0 of the high level standards.  See the [
 
 ## Interpretation
 
+```diff
+Updated all usages of RFC2119 keywords to be capitalised and emboldened.
+```
+
 Note that, in these standards, the key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in **[[RFC2119]](#nref-RFC2119)**.

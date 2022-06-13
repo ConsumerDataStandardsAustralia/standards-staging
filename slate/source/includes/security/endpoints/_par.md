@@ -61,7 +61,7 @@ Cache-Control: no-cache, no-store
 ```
 ## This is used by the ADR in the subsequent authorisation request as follows
 ## (note that until PAR is an RFC standard, the mandatory oAuth parameters as
-## per FAPI R/W for confidential clients must be replayed in the request URL):
+## per FAPI R/W for confidential clients **MUST** be replayed in the request URL):
 
 GET /authorise?client_id=s6BhdRkqt3&
    response_type=code%20id_token&

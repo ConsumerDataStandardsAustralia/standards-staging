@@ -172,7 +172,7 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 |page|query|integer(int32)|false|the page number to return|
 |page-size|query|integer(int32)|false|the number of records to return per page|
 |Authorization|header|string|true|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. **MUST** be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -254,7 +254,7 @@ Allows Data Recipients to discover data holder brands available in the CDR ecosy
 
 
 <aside class="notice">
-To perform this operation, the Data Recipient or Data Holder must be authenticated and authorised with the following scope: [cdr-register:bank:read](#authorisation-scopes).
+To perform this operation, the Data Recipient or Data Holder **MUST** be authenticated and authorised with the following scope: [cdr-register:bank:read](#authorisation-scopes).
 </aside>
 
 ## Get Data Recipient Software Statement Assertion (SSA)
@@ -291,7 +291,7 @@ Get a Software Statement Assertion (SSA) for a software product on the CDR Regis
 |dataRecipientBrandId|path|string|true|Unique id for the Accredited Data Recipient Brand that the Software Product is associated with in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
 |softwareProductId|path|string|true|Unique id for the Accredited Data Recipient Software Product in the CDR Register. Refer to [Identifiers](https://cdr-register.github.io/register/#identifiers) for details|
 |Authorization|header|string|true|An Authorisation Token as per [RFC6750](https://tools.ietf.org/html/rfc6750)|
-|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. **MUST** be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -358,7 +358,7 @@ Endpoint used by participants to discover the statuses for software products fro
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|true|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. **MUST** be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -428,7 +428,7 @@ Endpoint used by participants to discover the statuses for Data Recipients from 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|true|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. **MUST** be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -498,7 +498,7 @@ Endpoint used by participants to discover data recipients and associated brands 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |industry|path|string|true|The industry the participant is retrieving data for (Banking, etc)|
-|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. Must be set to a positive integer.|
+|x-v|header|string|false|The [version](https://consumerdatastandardsaustralia.github.io/standards/#response-headers) of the API end point requested by the client. **MUST** be set to a positive integer.|
 
 #### Enumerated Values
 
@@ -681,7 +681,7 @@ This operation does not require authentication
 |alg|string|true|none|The "alg" (algorithm) parameter identifies the algorithm intended for use with the key|
 |e|string|true|none|The "e" RSA public exponent parameter|
 |key_ops|[string]|true|none|The "key_ops" (key operations) parameter identifies the operation(s) for which the key is intended to be used|
-|kid|string|true|none|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set|
+|kid|string|true|none|The "kid" (key ID) parameter is partially used to match a specific key. Note the "kid" parameter is not guaranteed unique and additional parameters **SHOULD** be used to progressively to identify a key within a set|
 |kty|string|true|none|The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key|
 |n|string|true|none|The "n" RSA public modulus parameter|
 
