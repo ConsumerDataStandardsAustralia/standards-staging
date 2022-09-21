@@ -19,6 +19,7 @@ This release addresses the following minor defects raised on [Standards Staging]
 
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
+* [Issue 530: Iteration 12 Holistic Feedback](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530)
 
 
 ### Decision Proposals
@@ -32,7 +33,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Cleaned up Future Dated Obligations section | Cleaned up references in the Future Dated Obligation section to consistency use capitalisation for Requirement Levels and remove outdated obligations. Addresses [Issue 530 comment (a)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1226758035) and [Issue 530 comment (b)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238840167) | [Future Dated Obligations](../../#future-dated-obligations) |
 
 ## High Level Standards
 
