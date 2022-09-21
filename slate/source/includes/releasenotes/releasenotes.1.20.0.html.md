@@ -53,7 +53,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Fixed links for Participant Endpoints | Corrected the in-page links for client registration. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1234960498) | [Participant Endpoints](../../#security-endpoints) |
 
 
 ## Consumer Experience
