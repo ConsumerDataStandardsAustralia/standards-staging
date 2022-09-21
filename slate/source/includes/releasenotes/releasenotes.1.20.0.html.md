@@ -54,7 +54,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Fixed links for Participant Endpoints | Corrected the in-page links for client registration. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1234960498) | [Participant Endpoints](../../#security-endpoints) |
+| Fixed links for Participant Endpoints | Corrected the in-page links for client registration. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1234960498) | [Participant Endpoints](../../#security-endpoints). |
+| Fixed Markdown rendering | Fixed Markdown formatting for `private_key_jwt` emphasis in the CDR Register swagger. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238843926). | [Register APIs](../../#register-apis)|
 
 
 ## Consumer Experience
