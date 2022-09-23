@@ -48,7 +48,7 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| | | |
+| Fixed Energy Respose Headers | Included descriptions for response headers in the Energy APIs to be consistent with the presentation of the Banking APIs. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238967968) | [Participant Endpoints](../../#energy-apis). |
 
 
 ## Information Security Profile
