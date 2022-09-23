@@ -7,11 +7,12 @@ The table below highlights these areas of the standards.
 ```diff
 Removed "future dated obligations" that had expired over six months ago
 Applied consistent use of bold and uppercasing to Requirement Level keywords such as MUST, SHOULD and MAY
+Fixed in-page link to the Profile Scope data language
 ```
 
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
-|[Profile Scope Data Language](#profile-scope)|For new and amended consents and authorisations only, CDR participants **SHOULD** comply with the following standards from 1 February 2022, but **MUST** comply by 1 July 2022:<ul><li>Technical Standards: Revised Claims</li><li>CX Standards: Profile Scope - Data Language Standards</li></ul>**Note:** These standards changes **do not** apply to existing consents and authorisations unless they are amended on or following the compliance dates. | July 1st 2022 |
+|[Profile Scope Data Language](#profile-scope-and-standard-claims-common)|For new and amended consents and authorisations only, CDR participants **SHOULD** comply with the following standards from 1 February 2022, but **MUST** comply by 1 July 2022:<ul><li>Technical Standards: Revised Claims</li><li>CX Standards: Profile Scope - Data Language Standards</li></ul>**Note:** These standards changes **do not** apply to existing consents and authorisations unless they are amended on or following the compliance dates. | July 1st 2022 |
 |[CX Standards: Joint Accounts](#consumer-experience) | Data holders **MUST** implement the following data standards from 1 July 2022:<ul><li>Notifications: Alternative notification schedules for joint accounts</li><li>Notifications: Joint account alerts</li><li>Authorisation: Pending status</li><li>Withdrawal: Joint accounts</li></ul> | July 1st 2022 |
 |[Information Security profile](#security-profile) | FAPI 1.0 adoption is introduced across three phases.<br/><strong>Phase 1: Voluntary FAPI 1.0 support & hygiene enhancements</strong> includes, amongst other changes:<ul><li>Enforces requirements for authorisation code, token and request object use</li><li>Data Holders **MAY** support of FAPI 1.0 Final</li><li>Data Holders **MAY** support of Authorization Code Flow (including **[[PKCE]](#nref-PKCE)** and **[[JARM]](#nref-JARM)**) in conjunction with Hybrid Flow</li></ul> | July 4th 2022 |
 |[Get Payee Detail V2](#get-payee-detail)|Version 2 of this end point **MUST** be made available by affected data holders by July 31st 2022|July 31st 2022|

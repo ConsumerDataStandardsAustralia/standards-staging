@@ -35,6 +35,7 @@ This release addresses the following Decision Proposals published on [Standards]
 |------|-----------|----|
 | Cleaned up Future Dated Obligations section | Cleaned up references in the Future Dated Obligation section to consistency use capitalisation for Requirement Levels and remove outdated obligations. Addresses [Issue 530 comment (a)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1226758035) and [Issue 530 comment (b)](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238840167) | [Future Dated Obligations](../../#future-dated-obligations) |
 | Reordered Register Dependency Schedule dates | Re-ordered Register Dependency Schedule dates in ascending order. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238840167). | [Register Dependency Schedule](../../#register-dependency-schedule) |
+| Fixed Profile Scope FDO link | Fixed in-page link to the Profile Scope data language in the Future Dated Obligations table. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238851996). | [Future Dated Obligations](../../#future-dated-obligations) |
 
 ## High Level Standards
 
