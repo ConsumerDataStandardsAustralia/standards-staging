@@ -38,6 +38,13 @@ Host: cdr.register
 
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the Consumer Data Standards
 
+```diff
+Fixed in-page links for:
++ Data Recipient Endpoints
++ GetDataHolderBrands API
++ SSA
+```
+
 | Base URI | DH Brand | ADR Brand | Description
 |-----------|------|------|-----------------------------------------------------------------------------------------------|
 |**PublicBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard public endpoints. This should encompass all endpoints not requiring authentication |
@@ -45,6 +52,6 @@ Participants will be required to register base URIs against each of their brands
 |**InfoSecBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard InfoSec endpoints. This provides ADRs reference to the [OIDC Discovery Endpoint](#nref-oidd) |
 |**AdminBaseUri**|	<i class="icon-check"></i> | | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register |
 |**ExtensionBaseUri**|	<i class="icon-check"></i> | | Base URI for the Data Holder extension endpoints to the Consumer Data Standard **(optional)** |
-|**RevocationUri**|	| <i class="icon-check"></i> | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#dcr-apis) |
+|**RevocationUri**|	| <i class="icon-check"></i> | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#software-statement-assertion-ssa) |
 |**RecipientBaseUri**|	| <i class="icon-check"></i> | Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. </br>This should be the base to provide reference to [Data Recipient Endpoints](#get-data-recipients) |
 |**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | **Data Holder:** Used for client authentication for Data Holder -> Data Recipient Software Product communication and is populated in the [GetDataHolderBrands API](#get-data-holder-brands)</br> **Data Recipient:** Used for client authentication for Data Recipient Software Product -> Data Holder & Register communication and is populated in the [SSA](#software-statement-assertion-ssa) |

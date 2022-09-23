@@ -4,6 +4,11 @@ The standards, as published from time to time, **MAY** include specific statemen
 
 The table below highlights these areas of the standards.
 
+```diff
+Removed "future dated obligations" that had expired over six months ago
+Applied consistent use of bold and uppercasing to Requirement Level keywords such as MUST, SHOULD and MAY
+```
+
 |Section|Description|Applicable Date|
 |-------|-----------|---------------|
 |[Profile Scope Data Language](#profile-scope)|For new and amended consents and authorisations only, CDR participants **SHOULD** comply with the following standards from 1 February 2022, but **MUST** comply by 1 July 2022:<ul><li>Technical Standards: Revised Claims</li><li>CX Standards: Profile Scope - Data Language Standards</li></ul>**Note:** These standards changes **do not** apply to existing consents and authorisations unless they are amended on or following the compliance dates. | July 1st 2022 |

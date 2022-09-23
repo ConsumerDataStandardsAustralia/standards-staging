@@ -6,6 +6,10 @@ The Register APIs dependency schedule specifies the latest dates the CDR Registe
 
 The table below highlights these dependency dates.
 
+```diff
+Reordered the dependency schedule ascending by date and alphabetical sort order
+```
+
 |Section|Description|Dependency Date|
 |-------|-----------|---------------|
 |[Get Data Holder Brands Summary V1](#get-data-holder-brands-summary)|CDR Register must introduce version 1 of this end point by October 1st 2022|October 1st 2022|
