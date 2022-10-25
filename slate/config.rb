@@ -1,5 +1,7 @@
 # Unique header generation
-require './lib/unique_head.rb'
+# require './lib/unique_head.rb'
+# Unique header generation
+require './lib/nesting_unique_head.rb'
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -12,7 +14,8 @@ set :markdown,
     tables: true,
     with_toc_data: true,
     no_intra_emphasis: true,
-    renderer: UniqueHeadCounter
+#    renderer: UniqueHeadCounter
+    renderer: NestingUniqueHeadCounter
 
 # Alternative layouts
 # For pages that don't include code snippets/ examples, remove the code panel so the main content has wider display real estate
