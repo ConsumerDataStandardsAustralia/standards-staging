@@ -3,10 +3,64 @@
 	"info": {
 		"title": "CDR Energy API",
 		"description": "Consumer Data Right end points and payloads for the Energy sector",
-		"version": "1.19.0"
+		"version": "1.21.0"
 	},
 	"components": {
 		"schemas": {
+            "AccountIdList": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "accountIds"
+                        ],
+                        "properties": {
+                            "accountIds": {
+                                "description": "Array of specific accountIds to obtain data for",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
+            "ServicePointIdList": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "servicePointIds"
+                        ],
+                        "properties": {
+                            "servicePointIds": {
+                                "description": "Array of specific servicePointIds to obtain data for",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
             "EnergyPlanListResponse": {
                 "type": "object",
                 "required": [
@@ -4197,41 +4251,6 @@
 						}
 					}
 				}
-			},
-			"accountIdList": {
-				"description": "Request payload containing list of specific Accounts to obtain data for",
-				"required": true,
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"required": [
-								"data",
-								"meta"
-							],
-							"properties": {
-								"data": {
-									"type": "object",
-									"required": [
-										"accountIds"
-									],
-									"properties": {
-										"accountIds": {
-											"description": "Array of specific accountIds to obtain data for",
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"meta": {
-									"$ref": "#/components/schemas/Meta"
-								}
-							}
-						}
-					}
-				}
 			}
 		},
 		"responses": {
@@ -5287,7 +5306,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+				  "description": "Request payload containing list of specific Service Points to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ServicePointIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {
@@ -5582,7 +5609,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+				    "description": "Request payload containing list of specific Service Points to obtain data for",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/ServicePointIdList"
+                        }
+                      }
+                    },
+                    "required": true
 				},
 				"responses": {
 					"200": {
@@ -6270,7 +6305,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/accountIdList"
+				  "description": "Request payload containing list of specific Accounts to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/AccountIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {
@@ -6607,7 +6650,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/accountIdList"
+					"description": "Request payload containing list of specific Accounts to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/AccountIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {
@@ -6944,7 +6995,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/accountIdList"
+					"description": "Request payload containing list of specific Accounts to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/AccountIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {

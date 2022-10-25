@@ -7,6 +7,33 @@
 	},
 	"components": {
 		"schemas": {
+            "ServicePointIdList": {
+                "type": "object",
+                "required": [
+                    "data",
+                    "meta"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "servicePointIds"
+                        ],
+                        "properties": {
+                            "servicePointIds": {
+                                "description": "Array of specific NMIs to obtain data for",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "$ref": "#/components/schemas/Meta"
+                    }
+                }
+            },
             "EnergyServicePointListResponse": {
                 "type": "object",
                 "required": [
@@ -1502,7 +1529,15 @@
 					}
 				],
                 "requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+                  "description": "Request payload containing list of specific Service Points to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ServicePointIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
                 "responses": {
 					"200": {
@@ -1811,7 +1846,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+					"description": "Request payload containing list of specific Service Points to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ServicePointIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {
@@ -1991,7 +2034,15 @@
 					}
 				],
 				"requestBody": {
-					"$ref": "#/components/requestBodies/servicePointIdList"
+					"description": "Request payload containing list of specific Service Points to obtain data for",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ServicePointIdList"
+                      }
+                    }
+                  },
+                  "required": true
 				},
 				"responses": {
 					"200": {
