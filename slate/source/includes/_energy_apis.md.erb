@@ -14,5 +14,11 @@ This specification defines the APIs for Data Holders exposing Energy endpoints.
 Aligned description of response headers to be consistent with Banking APIs.
 
 Added general note to Get Invoices for Account API clarifying `issueDate` will be used as effective date for filtering/ordering
+
+Updated description of EnergyServicePoint.validFromDate and EnergyServicePointDetail.validFromDate fields
+from:
+- The start date from which this service point first became valid
+to:
++ The latest start date from which the constituent data sets of this service point became valid
 ```
 <%= partial "includes/cds_energy.md" %>
