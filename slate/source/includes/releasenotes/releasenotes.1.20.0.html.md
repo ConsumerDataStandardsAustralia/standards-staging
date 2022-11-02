@@ -48,8 +48,8 @@ This release addresses the following Decision Proposals published on [Standards]
 
 |Change|Description|Link|
 |------|-----------|----|
-| Clarified effective date for Energy Invoices API | Added note in the description of Get Invoice for Account energy API clarifying `issueDate` will be used as effective date for filtering/ordering. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1219499185) | [Energy APIs](../../#energy-apis). |
-| Fixed Energy Respose Headers | Included descriptions for response headers in the Energy APIs to be consistent with the presentation of the Banking APIs. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238967968) | [Energy APIs](../../#energy-apis). |
+| Clarified effective date for Energy Invoices API | Added note in the description of Get Invoice for Account energy API clarifying `issueDate` will be used as effective date for filtering/ordering. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1219499185) | [Energy Schema](../../#energy-apis) |
+| Fixed Energy Respose Headers | Included descriptions for response headers in the Energy APIs to be consistent with the presentation of the Banking APIs. Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1238967968) | [Energy Schema](../../#energy-apis) |
 | Updated description of fields | Updated descriptions of `EnergyServicePoint.validFromDate` and `EnergyServicePointDetail.validFromDate` fields to "The latest start date from which the constituent data sets of this service point became valid". Addresses [Issue 530 comment](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/530#issuecomment-1260397410) | [Energy Schema](../../#energy-apis) |
 
 
