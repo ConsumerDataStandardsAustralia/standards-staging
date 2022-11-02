@@ -6337,7 +6337,7 @@
 			"get": {
 				"summary": "Get Invoices For Account",
 				"operationId": "getInvoicesForAccount",
-				"description": "Obtain the invoices for a specific account",
+				"description": "Obtain the invoices for a specific account. \n\nSome general notes that apply to all end points that retrieve invoices:\n\n- For the purpose of filtering and ordering it is expected that the data holder will use the `issuedate` as the \"effective\" date",
                 "x-scopes": [
                     "energy:billing:read"
                 ],
