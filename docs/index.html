@@ -1220,6 +1220,12 @@
                                 <a href="#tocSerrorlistresponse" class="toc-h3 toc-link" data-title="ErrorListResponse">ErrorListResponse</a>
                               </li>
                               <li>
+                                <a href="#tocSmetaerror" class="toc-h3 toc-link" data-title="MetaError">MetaError</a>
+                              </li>
+                              <li>
+                                <a href="#tocSresponseerrorlistv2" class="toc-h3 toc-link" data-title="ResponseErrorListV2">ResponseErrorListV2</a>
+                              </li>
+                              <li>
                                 <a href="#tocStelcoproduct" class="toc-h3 toc-link" data-title="TelcoProduct">TelcoProduct</a>
                               </li>
                               <li>
@@ -43730,19 +43736,19 @@ Note that the standards for the telecommunications sector are currently in draft
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -43989,19 +43995,19 @@ This operation does not require authentication
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-resource-invalid">404 - Invalid Resource</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44248,25 +44254,25 @@ This operation does not require authentication
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-service-point">404 - Unavailable Service Point</a></li><li><a href="#error-404-invalid-service-point">404 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44567,19 +44573,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -44899,19 +44905,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-service-point">422 - Unavailable Service Point</a></li><li><a href="#error-422-invalid-service-point">422 - Invalid Service Point</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45203,19 +45209,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45464,19 +45470,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45730,19 +45736,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -45979,19 +45985,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46266,19 +46272,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46574,19 +46580,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -46922,19 +46928,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47226,25 +47232,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47571,19 +47577,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -47943,19 +47949,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48251,25 +48257,25 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-404-unavailable-telco-account">404 - Unavailable Telco Account</a></li><li><a href="#error-404-invalid-telco-account">404 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48565,19 +48571,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -48906,19 +48912,19 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-invalid-page-size">400 - Invalid Page Size</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>406</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 <tr>
 <td>422</td>
 <td><a href="https://tools.ietf.org/html/rfc2518#section-10.3">Unprocessable Entity</a></td>
 <td>The following error codes MUST be supported:<br/><ul class="error-code-list"><li><a href="#error-422-field-invalid-page">422 - Invalid Page</a></li><li><a href="#error-422-unavailable-telco-account">422 - Unavailable Telco Account</a></li><li><a href="#error-422-invalid-telco-account">422 - Invalid Telco Account</a></li></ul></td>
-<td><a href="#schemacdr-telco-apierrorlistresponse">ErrorListResponse</a></td>
+<td><a href="#schemacdr-telco-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
 </tr>
 </tbody></table>
 
@@ -50173,6 +50179,93 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tr>
 </tbody></table>
 
+<h3 class="schema-toc" id="tocSmetaerror">MetaError</h3>
+
+<p><a id="schemacdr-telco-apimetaerror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p><em>Additional data for customised error codes</em></p>
+
+<h3 id='properties-14'>Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>urn</td>
+<td>string</td>
+<td>conditional</td>
+<td>The CDR error code URN which the application-specific error code extends. Mandatory if the error <code>code</code> is an application-specific error rather than a standardised error code.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p><a id="schemacdr-telco-apiresponseerrorlistv2"></a></p>
+
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"urn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>[object]</td>
+<td>mandatory</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» code</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.</td>
+</tr>
+<tr>
+<td>» title</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.</td>
+</tr>
+<tr>
+<td>» detail</td>
+<td>string</td>
+<td>mandatory</td>
+<td>A human-readable explanation specific to this occurrence of the problem.</td>
+</tr>
+<tr>
+<td>» meta</td>
+<td><a href="#schemacdr-telco-apimetaerror">MetaError</a></td>
+<td>optional</td>
+<td>Additional data for customised error codes</td>
+</tr>
+</tbody></table>
+
 <h3 class="schema-toc" id="tocStelcoproduct">TelcoProduct</h3>
 
 <p><a id="schemacdr-telco-apitelcoproduct"></a></p>
@@ -50215,7 +50308,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50392,7 +50485,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan</em></p>
 
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -50436,7 +50529,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"serviceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50514,7 +50607,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50591,7 +50684,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50651,7 +50744,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"openStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50748,7 +50841,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -50824,7 +50917,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <p><em>allOf</em></p>
 
 <table><thead>
@@ -50910,7 +51003,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -50999,7 +51092,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51178,7 +51271,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"paymentStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51338,7 +51431,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Object containing usage summary</em></p>
 
-<h3 id='properties-25'>Properties</h3>
+<h3 id='properties-27'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -51388,7 +51481,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Object contain charges and credits related to usage</em></p>
 
-<h3 id='properties-26'>Properties</h3>
+<h3 id='properties-28'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -51480,7 +51573,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51581,7 +51674,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51644,7 +51737,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51698,7 +51791,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51793,7 +51886,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRECT_DEBIT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -51927,7 +52020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Object containing account service usage summary</em></p>
 
-<h3 id='properties-32'>Properties</h3>
+<h3 id='properties-34'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -52013,7 +52106,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Telco balances for a service</em></p>
 
-<h3 id='properties-33'>Properties</h3>
+<h3 id='properties-35'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -52071,7 +52164,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported</em></p>
 
-<h3 id='properties-34'>Properties</h3>
+<h3 id='properties-36'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -52157,7 +52250,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52220,7 +52313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Required if addressUType is set to simple</em></p>
 
-<h3 id='properties-36'>Properties</h3>
+<h3 id='properties-38'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -52313,7 +52406,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Australian address formatted according to the file format defined by the <a href="https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf">PAF file format</a>. Required if addressUType is set to paf</em></p>
 
-<h3 id='properties-37'>Properties</h3>
+<h3 id='properties-39'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -52465,7 +52558,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52487,7 +52580,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><a id="schemacdr-telco-apimeta"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 
-</span></code></pre><h3 id='properties-39'>Properties</h3>
+</span></code></pre><h3 id='properties-41'>Properties</h3>
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="tocSlinkspaginated">LinksPaginated</h3>
@@ -52501,7 +52594,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-40'>Properties</h3>
+</span></code></pre><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52550,7 +52643,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-41'>Properties</h3>
+</span></code></pre><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52619,7 +52712,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-42'>Properties</h3>
+</span></code></pre><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52707,7 +52800,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-43'>Properties</h3>
+</span></code></pre><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52801,7 +52894,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-44'>Properties</h3>
+</span></code></pre><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52850,7 +52943,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-45'>Properties</h3>
+</span></code></pre><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52902,7 +52995,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-46'>Properties</h3>
+</span></code></pre><h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -52941,7 +53034,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-47'>Properties</h3>
+</span></code></pre><h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53032,7 +53125,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-48'>Properties</h3>
+</span></code></pre><h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53119,7 +53212,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-49'>Properties</h3>
+</span></code></pre><h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53232,7 +53325,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-50'>Properties</h3>
+</span></code></pre><h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53358,7 +53451,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-51'>Properties</h3>
+</span></code></pre><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53471,7 +53564,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-52'>Properties</h3>
+</span></code></pre><h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53541,7 +53634,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-53'>Properties</h3>
+</span></code></pre><h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53569,7 +53662,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Additional data for customised error codes</em></p>
 
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-56'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -53600,7 +53693,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-55'>Properties</h3>
+</span></code></pre><h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53645,7 +53738,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-56'>Properties</h3>
+</span></code></pre><h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53695,7 +53788,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Object that contains links to additional information on specific topics</em></p>
 
-<h3 id='properties-57'>Properties</h3>
+<h3 id='properties-59'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -53749,7 +53842,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-58'>Properties</h3>
+</span></code></pre><h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53799,7 +53892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-59'>Properties</h3>
+</span></code></pre><h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53892,7 +53985,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-60'>Properties</h3>
+</span></code></pre><h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53942,7 +54035,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-61'>Properties</h3>
+</span></code></pre><h3 id='properties-63'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -53985,7 +54078,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-62'>Properties</h3>
+</span></code></pre><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54016,7 +54109,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-63'>Properties</h3>
+</span></code></pre><h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54054,7 +54147,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-64'>Properties</h3>
+</span></code></pre><h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54097,7 +54190,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-65'>Properties</h3>
+</span></code></pre><h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54135,7 +54228,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-66'>Properties</h3>
+</span></code></pre><h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54238,7 +54331,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-67'>Properties</h3>
+</span></code></pre><h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54335,7 +54428,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-68'>Properties</h3>
+</span></code></pre><h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54365,7 +54458,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Mandatory if openStatus is OPEN</em></p>
 
-<h3 id='properties-69'>Properties</h3>
+<h3 id='properties-71'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54413,7 +54506,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-70'>Properties</h3>
+</span></code></pre><h3 id='properties-72'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54511,7 +54604,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>The array of plans containing services and associated plan details</em></p>
 
-<h3 id='properties-71'>Properties</h3>
+<h3 id='properties-73'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54551,7 +54644,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Detail on the plan applicable to this account. Mandatory if openStatus is OPEN</em></p>
 
-<h3 id='properties-72'>Properties</h3>
+<h3 id='properties-74'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54589,7 +54682,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"suffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-73'>Properties</h3>
+</span></code></pre><h3 id='properties-75'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -54666,7 +54759,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>The array of plans containing services and associated plan details</em></p>
 
-<h3 id='properties-74'>Properties</h3>
+<h3 id='properties-76'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54734,7 +54827,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit</em></p>
 
-<h3 id='properties-75'>Properties</h3>
+<h3 id='properties-77'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54826,7 +54919,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit</em></p>
 
-<h3 id='properties-76'>Properties</h3>
+<h3 id='properties-78'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -54907,7 +55000,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet</em></p>
 
-<h3 id='properties-77'>Properties</h3>
+<h3 id='properties-79'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55009,7 +55102,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment</em></p>
 
-<h3 id='properties-78'>Properties</h3>
+<h3 id='properties-80'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55040,7 +55133,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice</em></p>
 
-<h3 id='properties-79'>Properties</h3>
+<h3 id='properties-81'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55078,7 +55171,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>A discount for on time payment</em></p>
 
-<h3 id='properties-80'>Properties</h3>
+<h3 id='properties-82'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55121,7 +55214,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Roaming Data Usage</em></p>
 
-<h3 id='properties-81'>Properties</h3>
+<h3 id='properties-83'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55164,7 +55257,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of data usage</em></p>
 
-<h3 id='properties-82'>Properties</h3>
+<h3 id='properties-84'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55220,7 +55313,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>National voice calls</em></p>
 
-<h3 id='properties-83'>Properties</h3>
+<h3 id='properties-85'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55264,7 +55357,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>International voice calls. Requied if international calling is supported</em></p>
 
-<h3 id='properties-84'>Properties</h3>
+<h3 id='properties-86'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55308,7 +55401,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Roaming voice calls, Required if roaming is supported</em></p>
 
-<h3 id='properties-85'>Properties</h3>
+<h3 id='properties-87'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55364,7 +55457,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of voice calls. Required if voice calls are included in product plan</em></p>
 
-<h3 id='properties-86'>Properties</h3>
+<h3 id='properties-88'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55409,7 +55502,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of SMS usage</em></p>
 
-<h3 id='properties-87'>Properties</h3>
+<h3 id='properties-89'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55460,7 +55553,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of MMS usage</em></p>
 
-<h3 id='properties-88'>Properties</h3>
+<h3 id='properties-90'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55519,7 +55612,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of messaging. Required if messaging services is included in the product plan</em></p>
 
-<h3 id='properties-89'>Properties</h3>
+<h3 id='properties-91'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55557,7 +55650,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)</em></p>
 
-<h3 id='properties-90'>Properties</h3>
+<h3 id='properties-92'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55642,7 +55735,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-91'>Properties</h3>
+</span></code></pre><h3 id='properties-93'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -55678,7 +55771,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Balance of data roaming charges. Required unless planType is UNSUPPORTED</em></p>
 
-<h3 id='properties-92'>Properties</h3>
+<h3 id='properties-94'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55729,7 +55822,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of data balances</em></p>
 
-<h3 id='properties-93'>Properties</h3>
+<h3 id='properties-95'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55792,7 +55885,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>National voice calls</em></p>
 
-<h3 id='properties-94'>Properties</h3>
+<h3 id='properties-96'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55843,7 +55936,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>International voice calls</em></p>
 
-<h3 id='properties-95'>Properties</h3>
+<h3 id='properties-97'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55894,7 +55987,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Roaming voice calls</em></p>
 
-<h3 id='properties-96'>Properties</h3>
+<h3 id='properties-98'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -55960,7 +56053,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of voice balances. Required if voice calls are included in product plan</em></p>
 
-<h3 id='properties-97'>Properties</h3>
+<h3 id='properties-99'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -56012,7 +56105,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of SMS Balance. Required if the service plan supports SMS messaging</em></p>
 
-<h3 id='properties-98'>Properties</h3>
+<h3 id='properties-100'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -56070,7 +56163,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of MMS Balance. Required if the service plan supports MMS messaging</em></p>
 
-<h3 id='properties-99'>Properties</h3>
+<h3 id='properties-101'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -56138,7 +56231,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>Summary of messaging. Required if messaging services is included in the product plan</em></p>
 
-<h3 id='properties-100'>Properties</h3>
+<h3 id='properties-102'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -56229,7 +56322,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><em>A summary of Service balances</em></p>
 
-<h3 id='properties-101'>Properties</h3>
+<h3 id='properties-103'>Properties</h3>
 
 <table><thead>
 <tr>
