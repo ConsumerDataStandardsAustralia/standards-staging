@@ -11,18 +11,18 @@ For more detail on the Consumer Data Standards, including how to contribute feed
 Changes will be made to this repository via three different types of branches.  These are:
 
 * **Change request branches:** `maintenance/<id>`<br/>
-Changes related to a change request where <id> is the issue id for the change request in the standards-maintenance repository (e.g. maintenance/301).
+Changes related to a change request where `<id>` is the issue id for the change request in the standards-maintenance repository (e.g. maintenance/301).
   
 * **Defect fix branch:** `defect/<id>`<br/>
-Changes related to a defect fix where <id> is the issue id for the defect in the standards- staging repository. The standards-staging issue tracker will be used to track defects to the standards, where a defect is considered a modification to align or clarify published decisions that does not materially change the standard.
+Changes related to a defect fix where `<id>` is the issue id for the defect in the standards-staging repository. The standards-staging issue tracker will be used to track defects to the standards, where a defect is considered a modification to align or clarify published decisions that does not materially change the standard.
 
 * **Decision proposal branches:** `dp/<id>`<br/>
-Change related to a decision proposal where <id> is the identifier of the decision proposal as published in the issue tracker in the standard repository (e.g. dp/114).
+Change related to a decision proposal where `<id>` is the identifier of the decision proposal as published in the issue tracker in the standard repository (e.g. dp/114).
 
 Once a release is scheduled the changes authored via the above branches will be merged into a release branch which, once reviewed for correctness, will be pushed to the main standards repository.  Release branches will also include direct changes such as modification of release notes, version numbers and links to archives of previous versions.  Release branches will take the following form.
 
 * **Release candidate branches:** `release/<version>`</br>
-The name of the each release branch where <version> is the semver version of the candidate release (e.g. release/1.6.0).
+The name of the each release branch where `<version>` is the semver version of the candidate release (e.g. release/1.6.0).
   
 In addition, the following branch types will be used for specific purposes:
 
