@@ -2,9 +2,9 @@
 This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
 
 
-Specifically the OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
+Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
 
-From July 4th 2022, Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)  of **[[OIDC]](#nref-OIDC)** is supported.
+**Until May 12th 2025**, Data Holders **MAY** support OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
 
 No other flows are currently supported.
 
@@ -36,14 +36,15 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 * Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
 * Data Holders **MUST** support Authorization Code Flow.  
-* Data Holders **MUST** support the OIDC Hybrid Flow.
 
-**From July 10th 2023 (FAPI 1.0 Migration Phase 4),**   
+**From May 12th 2025**   
 
-* Data Holders **MAY** retire support for the OIDC Hybrid Flow.
+* Data Holders **SHALL** require the value of `response_type` described in [**[RFC6749]**](#nref-RFC6749) to be `code`
 
 
 #### Data Recipient Software Products
+
+**From 12th May 2025**, Data Recipient Software Products **SHALL ONLY** use `response_type` value `code` for authorisation requests.
 
 The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
 
