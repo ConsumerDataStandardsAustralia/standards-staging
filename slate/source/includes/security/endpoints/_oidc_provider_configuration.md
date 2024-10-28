@@ -1,5 +1,9 @@
 ### OpenID Provider Configuration End Point
 
+```diff
+- Removed OIDC Hybrid Flow requirement parameters from the non-normative example.
+```
+
 > Non-Normative Example
 
 ```
@@ -17,15 +21,13 @@ Content-Type: application/json
   "authorization_endpoint": "https://www.dh.com.au/authorise",
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
-  "id_token_encryption_alg_values_supported": [ "RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW" ],
-  "id_token_encryption_enc_values_supported": [ "A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM" ],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
   "issuer": "https://www.dh.com.au",
   "jwks_uri": "https://www.dh.com.au/jwks",
   "registration_endpoint": "https://www.dh.com.au/register",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "response_modes_supported": ["fragment", "jwt"],
-  "response_types_supported": ["code id_token", "code"],
+  "response_types_supported": ["code"],
   "subject_types_supported": ["pairwise"],
   "scopes_supported": ["openid", "profile", "..."],
   "token_endpoint": "https://www.dh.com.au/token",
@@ -62,6 +64,10 @@ Data Holders MUST make their OpenID Provider Metadata available via a configurat
 
 This endpoint does not require [CORS](https://consumerdatastandardsaustralia.github.io/standards/#cors).
 
+```diff
+- Removed id_token_encrypted_response_alg and id_token_encrypted_response_enc from the list of mandatory parameters. These parameters were only required for OIDC Hybrid Flow
+```
+
 At a minimum, the Data Holder metadata **MUST** include:
 
 **[[OIDD]](#nref-OIDD)**
@@ -70,8 +76,6 @@ At a minimum, the Data Holder metadata **MUST** include:
 - `authorization_endpoint`: URL of the Authorization End Point
 - `claims_supported`:  The list of supported claims
 - `grant_types_supported`: The list of the OAuth 2.0 Grant Type values supported
-- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required for Data Holders supporting OIDC Hybrid Flow
-- `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens. Required for Data Holders supporting OIDC Hybrid Flow
 - `id_token_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported
 - `issuer`: URL that the Data Holder asserts as its Issuer Identifier
 - `jwks_uri`: The JSON Web Key Set for the data holder

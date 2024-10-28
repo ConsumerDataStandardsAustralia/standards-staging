@@ -3,7 +3,7 @@
   "info": {
     "title": "CDR Dynamic Client Registration API",
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
-    "version": "1.32.0"
+    "version": "1.33.0"
   },
   "servers": [
     {
@@ -428,7 +428,7 @@
           },
           "response_types": {
             "type": "array",
-            "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. Response type value `code id_token` is required for OIDC Hybrid Flow.",
+            "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.<br><br>Response type value `code` is required for Authorization Code Flow. ",
             "items": {
               "type": "string",
               "x-cds-type": "Enum",
@@ -454,18 +454,6 @@
               "PS256",
               "ES256"
             ]
-          },
-          "id_token_encrypted_response_alg": {
-            "type": "string",
-            "description": "JWE `alg` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.",
-            "example": "RSA-OAEP",
-            "x-cds-type": "ExternalRef"
-          },
-          "id_token_encrypted_response_enc": {
-            "type": "string",
-            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required if OIDC Hybrid Flow (response type `code id_token`) is registered.",
-            "example": "A256GCM",
-            "x-cds-type": "ExternalRef"
           },
           "authorization_signed_response_alg": {
             "type": "string",

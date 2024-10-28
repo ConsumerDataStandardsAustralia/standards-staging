@@ -4,17 +4,18 @@ This profile supports the authentication flows specified by [OpenID Connect](htt
 
 Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
 
-**Until May 12th 2025**, Data Holders **MAY** support OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
-
 No other flows are currently supported.
 
+```diff
+- Removed OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+```
 
 ### Baseline Security Provisions
 
 #### Data Holders
 The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
-In addition, the following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
+In addition, the following statements apply:
 
 - Data Holders **MUST** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page
 - Data Holders **MUST NOT** request that the customer enter an existing password in the redirected page
@@ -44,34 +45,23 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 
 #### Data Recipient Software Products
 
-**From 12th May 2025**, Data Recipient Software Products **SHALL ONLY** use `response_type` value `code` for authorisation requests.
+Data Recipient Software Products 
 
-The following statements are applicable to both the OIDC Hybrid Flow and Authorization Code Flow:
+The following statements apply to Data Recipient Software Products:
 
-- Data Recipient Software Products **SHOULD** record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
-
-* Data Recipient Software Products **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
-* Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
-* Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-* Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
-* Data Recipient Software Products **SHOULD** use Authorization Code Flow.
-
-### OIDC Hybrid Flow
-The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user
-agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
-Holder’s Authorisation end point in the context of an **[[OIDC]](#nref-OIDC)** authentication
-request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
-authorisation code flow detailed under **[[OIDC]](#nref-OIDC)**.
-
-
-Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
+- **SHALL ONLY** use `response_type` value `code` for authorisation requests.
+- **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+- **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
+- **SHOULD** record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
+- **SHOULD NOT** reuse "authorization_code" values, and if reused, it will be rejected.
+- **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 
 ### Authorization Code Flow
 
 The following statements are applicable for this flow:
 
-* Only a `response_type` (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code` **SHALL** be allowed.
-* Data Holders **MUST** also support **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**
+- Only a `response_type` (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code` **SHALL** be allowed.
+- Data Holders **MUST** also support **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**
 
 #### Data Holders
 Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
