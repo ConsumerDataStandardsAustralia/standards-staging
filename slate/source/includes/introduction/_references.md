@@ -1,10 +1,5 @@
 ## Normative References
 
-```diff
-+ Added BCP195 to the list of normative references
-- Removed BCP195 from the list of informative references
-```
-
 | **Reference**  | **Description**  | **Version** |
 |-|-|-|
 | <a id="nref-BCP195"></a>**[BCP195]** | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <https://tools.ietf.org/html/bcp195> | |
@@ -41,10 +36,6 @@
 | <a id="nref-RFC9126"></a>**[RFC9126]**  | OAuth 2.0 Pushed Authorization Requests: <https://tools.ietf.org/html/rfc9126>                                                                                                |September 2021
 
 ## Informative References
-
-```diff
-Improved styling of 'Code samples' displayed in the Non-Normative Examples tab
-```
 
 | **Reference**  | **Description**                                                                                                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

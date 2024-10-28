@@ -26,13 +26,6 @@ OAUTB SHALL NOT be supported due to a lack industry support.
 
 ### Ciphers
 
-
-```diff
-Obligation change from March 17th 2025:
-- Removed specific named ciphers
-+ Adopted BCP195
-```
-
 **Until March 17th 2025, the following SHALL requirements apply:**
 
 Only the following cipher suites SHALL be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**:
