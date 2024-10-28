@@ -17,12 +17,11 @@ Release notes for version v1.33.0 of the [CDR Standards](../../index.html).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-
+- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
 - [Standards Maintenance #666 - Retirement of OIDC Hybrid Flow](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/666)
-
 
 ### Decision Proposals
 This release addresses the following Decision Proposals published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
@@ -44,7 +43,6 @@ None
 
 ## API Endpoints
 None
-
 
 ## Information Security Profile
 |Change|Description|Link|

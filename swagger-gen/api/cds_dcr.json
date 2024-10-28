@@ -433,8 +433,7 @@
               "type": "string",
               "x-cds-type": "Enum",
               "enum": [
-                "code",
-                "code id_token"
+                "code"
               ]
             }
           },

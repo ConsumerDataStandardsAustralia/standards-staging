@@ -6,6 +6,7 @@ There are certain aspects of the standards that are actively under review. These
 Removed three known issues related to Register endpoint specfications that are resolved
 ```
 
+
 Issue | Description
 :---- | :----------
 None | N/A

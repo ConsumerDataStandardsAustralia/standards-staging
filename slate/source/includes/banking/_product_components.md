@@ -3,10 +3,6 @@
 <a id="productfeaturetypedoc"></a>
 <h3 id="tocSproductfeaturetypedoc">Product Feature Types</h3>
 
-```diff
-Updated styling of text referring to field names and values and added links to common field types
-```
-
 Description of the usage of the _featureType_ field as it applies to products.
 
 | Value | Description | Use of _additionalValue_ Field |
@@ -160,10 +156,6 @@ A deposit product is expected to present a single Base rate corresponding to rel
 <a id="productdepositadjustmentratetypedoc"></a>
 <ul><li id="tocSproductdepositadjustmentratetypedoc"><b>Deposit Adjustment Rate Types</b></li></ul>
 
-```diff
-Clarified the format of deposit 'bonus' adjustment rate values
-```
-
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 
 | Value | Description | Use of _additionalValue_ Field |
@@ -198,10 +190,6 @@ Card products may have two or more base rates, including `CASH_ADVANCE` and `PUR
 
 <a id="productlendingadjustmentratetypedoc"></a>
 <ul><li id="tocSproductlendingadjustmentratetypedoc"><b>Lending Adjustment Rate Types</b></li></ul>
-
-```diff
-Clarified the format of lending 'discount' and 'penalty' adjustment rate values
-```
 
 A product may have zero, one, or multiple adjustment rates that are taken to apply to a Base rate.
 

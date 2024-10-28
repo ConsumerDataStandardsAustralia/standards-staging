@@ -23,13 +23,23 @@ ID Tokens are specified in [section 2](https://openid.net/specs/openid-connect-c
 
 ```diff
 - Removed OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+- Removed OIDC Hybrid Flow qualifications
 ```
 
-In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard, required claims for ID Tokens **MUST** align to [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack) of the **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** profile.
+In addition to the mandatory claims specified in [section 2](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) of the **[[OIDC]](#nref-OIDC)** standard, required claims for ID Tokens **MUST** align to [section 5.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-server) and [section 8.4.3](https://openid.net/specs/openid-financial-api-part-2-1_0.html#authorization-response-parameter-injection-attack) of the **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** profile.
 
 ID Tokens **MUST** be signed by Data Holders as specified in [section 8.6](https://openid.net/specs/openid-financial-api-part-2-1_0.html#algorithm-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
 
-ID Token **MUST NOT** contain any Personal Information (PI) claims.
+```diff
+- Moved PI restriction for ID tokens out of the OIDC Hybrid Flow requirements to apply as a Baseline requirement
+```
+
+ID Tokens **MUST NOT** contain any Personal Information (PI) claims.
+
+```diff
+- Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
+- Removed hashing value requirements which are only related to OIDC Hybrid Flow.
+```
 
 #### Authorization Code Flow requirements
 

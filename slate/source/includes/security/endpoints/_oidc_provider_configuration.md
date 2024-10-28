@@ -70,6 +70,10 @@ This endpoint does not require [CORS](https://consumerdatastandardsaustralia.git
 
 At a minimum, the Data Holder metadata **MUST** include:
 
+```diff
+Separated OIDC Hybrid Flow requirements during transitionary period to retirement
+```
+
 **[[OIDD]](#nref-OIDD)**
 
 - `acr_values_supported`: The supported ACR values
@@ -89,6 +93,11 @@ At a minimum, the Data Holder metadata **MUST** include:
 - `token_endpoint_auth_methods_supported`: The list of Client Authentication methods supported by the Token Endpoint
 - `token_endpoint_auth_signing_alg_values_supported`: The list of the JWS signing algorithms (`alg` values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the "private_key_jwt" authentication method
 - `userinfo_endpoint`: URL of the UserInfo End Point
+
+**[[OIDD]](#nref-OIDD), only if OIDC Hybrid Flow is supported**
+
+- `id_token_encryption_alg_values_supported`: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required only for Data Holders supporting OIDC Hybrid Flow
+- `id_token_encryption_enc_values_supported`: The list of the supported JWE encryption methods for securing the issued ID tokens. Required only for Data Holders supporting OIDC Hybrid Flow
 
 **[[RFC8414]](#nref-RFC8414)**
 

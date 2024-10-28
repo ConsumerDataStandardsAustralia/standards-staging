@@ -7,7 +7,7 @@ Additionally cleaned up references as Phase 3 transition for FAPI 1.0 is complet
 ```
 
 > Non-Normative Example 
-> Utilising FAPI 1.0 Final, PAR RFC9126, PKCE, JARM and Authorization Code Flow
+> Utilising FAPI 1.0 Final, RFC9126, PKCE, JARM and Authorization Code Flow
 
 > Request
 
@@ -19,7 +19,7 @@ POST /par HTTP/1.1
 request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 ```
 
-> Decoded Request 
+> Decoded Request
 This example shows an authorisation request using the Authorisation Code Flow
 
 ```
@@ -55,7 +55,7 @@ This example shows an authorisation request using the Authorisation Code Flow
 }
 ```
 
-> Response 
+> Response
 
 ```
 HTTP/1.1 201 Created
@@ -66,7 +66,7 @@ Cache-Control: no-cache, no-store
   "expires_in": 3600
 }
 ```
-> Authorise 
+> Authorise
 
 ```
 ## This is used by the ADR in the subsequent authorisation request as follows
@@ -78,7 +78,7 @@ HTTP/1.1
 Host: data.holder.com.au
 ```
 
-> Authorisation response using JARM response encryption 
+> Authorisation response using JARM response encryption
 
 ```
 eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9kYXRhLmhvbGRlci5jb20uYXUvIiwic3RhdGUiOiJhZjBpZmpzbGRraiIsImV4cCI6MTY2NzI2ODAwMH0.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
