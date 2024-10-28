@@ -24,6 +24,8 @@ The `request_uri` parameter is only supported if the Data Holder supports PAR.
 
 In addition, the following statements are applicable:
 
+- Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
+- Data Holders **MUST** support Authorization Code Flow.  
 - Data Holders **MUST** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page
 - Data Holders **MUST NOT** request that the customer enter an existing password in the redirected page
 - Data Holders **MUST** provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page
@@ -35,19 +37,16 @@ In addition, the following statements are applicable:
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but **SHOULD** incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page
 
+**From May 12th 2025**   
+
+- Data Holders **SHALL** require the value of `response_type` described in [**[RFC6749]**](#nref-RFC6749) to be `code`
+
 In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise disclosure of CDR data, unwarranted friction for OTP delivery is considered to include:
 
 - the addition of any requirements beyond normal data holder practices for verification code delivery
 - providing or requesting additional information beyond normal data holder practices for verification code delivery
 - offering additional or alternative services
 - reference or inclusion of other documents
-
-* Data Holders **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-* Data Holders **MUST** support Authorization Code Flow.  
-
-**From May 12th 2025**   
-
-* Data Holders **SHALL** require the value of `response_type` described in [**[RFC6749]**](#nref-RFC6749) to be `code`
 
 
 #### Data Recipient Software Products
