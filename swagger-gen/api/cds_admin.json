@@ -160,7 +160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ResponseMetricsListV5"
+                  "$ref": "#/components/schemas/ResponseMetricsListV6"
                 }
               }
             }
@@ -190,7 +190,7 @@
           "admin:metrics.basic:read"
         ],
         "x-restricted-access": "REGISTER",
-        "x-version": "5"
+        "x-version": "6"
       }
     }
   },
@@ -223,7 +223,7 @@
           }
         }
       },
-      "ResponseMetricsListV5": {
+      "ResponseMetricsListV6": {
         "required": [
           "data",
           "links"
@@ -275,7 +275,7 @@
                 "$ref": "#/components/schemas/PeakTPSMetricsV2"
               },
               "errors": {
-                "$ref": "#/components/schemas/ErrorMetricsV2"
+                "$ref": "#/components/schemas/ErrorMetricsV3"
               },
               "rejections": {
                 "$ref": "#/components/schemas/RejectionMetricsV3"
@@ -1252,7 +1252,7 @@
           }
         }
       },
-      "ErrorMetricsV2": {
+      "ErrorMetricsV3": {
         "required": [
           "aggregate",
           "unauthenticated",
@@ -1290,12 +1290,45 @@
               "currentDay": {
                 "description": "Error counts, by HTTP error code, for current day",
                 "type": "object",
+                "required": [
+                  "400","404","406","422","500","503","504"
+                ],
                 "properties": {
-                  "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
-                  }
+                    "400": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 400."
+                    },
+                    "404": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 404."
+                    },
+                    "406": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 406."
+                    },
+                    "422": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 422."
+                    },
+                    "500": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 500."
+                    },
+                    "503": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 503."
+                    },
+                    "504": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 504."
+                    }
                 },
                 "additionalProperties": {
                   "type" : "integer",
@@ -1306,13 +1339,44 @@
               "previousDays": {
                 "type": "array",
                 "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                
                 "items": {
                   "type": "object",
                   "properties": {
+                    "400": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 400."
+                    },
+                    "404": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 404."
+                    },
+                    "406": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 406."
+                    },
+                    "422": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 422."
+                    },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                      "description": "Number of errors for HTTP error code 500."
+                    },
+                    "503": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 503."
+                    },
+                    "504": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 504."
                     }
                   },
                   "additionalProperties": {
@@ -1335,12 +1399,55 @@
               "currentDay": {
                 "description": "Error counts, by HTTP error code, for current day",
                 "type": "object",
+                "required": [
+                  "400","401","403","404","406","422","500","503","504"
+                ],
                 "properties": {
-                  "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
-                  }
+                    "400": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 400."
+                    },
+                    "401": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 401."
+                    },
+                    "403": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 403."
+                    },
+                    "404": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 404."
+                    },
+                    "406": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 406."
+                    },
+                    "422": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 422."
+                    },
+                    "500": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 500."
+                    },
+                    "503": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 503."
+                    },
+                    "504": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 504."
+                    }
                 },
                 "additionalProperties": {
                   "type" : "integer",
@@ -1351,13 +1458,54 @@
               "previousDays": {
                 "type": "array",
                 "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                
                 "items": {
                   "type": "object",
                   "properties": {
+                    "400": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 400."
+                    },
+                    "401": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 401."
+                    },
+                    "403": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 403."
+                    },
+                    "404": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 404."
+                    },
+                    "406": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 406."
+                    },
+                    "422": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 422."
+                    },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
+                      "description": "Number of errors for HTTP error code 500."
+                    },
+                    "503": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 503."
+                    },
+                    "504": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 504."
                     }
                   },
                   "additionalProperties": {

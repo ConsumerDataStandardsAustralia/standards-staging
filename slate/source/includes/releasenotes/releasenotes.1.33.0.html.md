@@ -51,7 +51,7 @@ This release addresses the following Decision Proposals published on [Standards]
 ## API Endpoints
 |Change|Description|Link|
 |------|-----------|----|
-
+| Error code metrics | [**Standards Maintenance #655**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/655): New version of Get Metrics to explicitly list error codes metrics that Data Holders must report error counts for. | [Get Metrics V6](../../#cdr-admin-api_get-metrics)
 
 ## Information Security Profile
 |Change|Description|Link|
