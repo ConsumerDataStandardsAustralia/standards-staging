@@ -1297,53 +1297,58 @@
                     "400": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 400."
+                      "description": "Number of requests resulting in HTTP error code 400."
                     },
                     "404": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 404."
+                      "description": "Number of requests resulting in HTTP error code 404."
                     },
                     "405": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 405."
+                      "description": "Number of requests resulting in HTTP error code 405."
                     },
                     "406": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 406."
+                      "description": "Number of requests resulting in HTTP error code 406."
+                    },
+                    "415": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of requests resulting in HTTP error code 415."
                     },
                     "422": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 422."
+                      "description": "Number of requests resulting in HTTP error code 422."
                     },
                     "429": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 429."
+                      "description": "Number of requests resulting in HTTP error code 429."
                     },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500."
+                      "description": "Number of requests resulting in HTTP error code 500."
                     },
                     "503": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 503."
+                      "description": "Number of requests resulting in HTTP error code 503."
                     },
                     "504": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 504."
+                      "description": "Number of requests resulting in HTTP error code 504."
                     }
                 },
                 "additionalProperties": {
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                  "description": "Number of requests resulting in other HTTP error codes. Note that the property name must be 3 digits representing each respective HTTP error code."
                 }
               },
               "previousDays": {
@@ -1358,48 +1363,58 @@
                     "400": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 400."
+                      "description": "Number of requests resulting in HTTP error code 400."
                     },
                     "404": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 404."
+                      "description": "Number of requests resulting in HTTP error code 404."
+                    },
+                    "405": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of requests resulting in HTTP error code 405."
                     },
                     "406": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 406."
+                      "description": "Number of requests resulting in HTTP error code 406."
+                    },
+                    "415": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of requests resulting in HTTP error code 415."
                     },
                     "422": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 422."
+                      "description": "Number of requests resulting in HTTP error code 422."
                     },
                     "429": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 429."
+                      "description": "Number of requests resulting in HTTP error code 429."
                     },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500."
+                      "description": "Number of requests resulting in HTTP error code 500."
                     },
                     "503": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 503."
+                      "description": "Number of requests resulting in HTTP error code 503."
                     },
                     "504": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 504."
+                      "description": "Number of requests resulting in HTTP error code 504."
                     }
                   },
                   "additionalProperties": {
                     "type" : "integer",
                     "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                    "description": "Number of requests resulting in other HTTP error codes. Note that the property name must be 3 digits representing each respective HTTP error code."
                   }
                 }
               }
@@ -1423,58 +1438,68 @@
                     "400": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 400."
+                      "description": "Number of requests resulting in HTTP error code 400."
                     },
                     "401": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 401."
+                      "description": "Number of requests resulting in HTTP error code 401."
                     },
                     "403": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 403."
+                      "description": "Number of requests resulting in HTTP error code 403."
                     },
                     "404": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 404."
+                      "description": "Number of requests resulting in HTTP error code 404."
+                    },
+                    "405": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of requests resulting in HTTP error code 405."
                     },
                     "406": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 406."
+                      "description": "Number of requests resulting in HTTP error code 406."
+                    },
+                    "415": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of requests resulting in HTTP error code 415."
                     },
                     "422": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 422."
+                      "description": "Number of requests resulting in HTTP error code 422."
                     },
                     "429": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 429."
+                      "description": "Number of requests resulting in HTTP error code 429."
                     },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500."
+                      "description": "Number of requests resulting in HTTP error code 500."
                     },
                     "503": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 503."
+                      "description": "Number of requests resulting in HTTP error code 503."
                     },
                     "504": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 504."
+                      "description": "Number of requests resulting in HTTP error code 504."
                     }
                 },
                 "additionalProperties": {
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                  "description": "Number of requests resulting in other HTTP error codes. Note that the property name must be 3 digits representing each respective HTTP error code."
                 }
               },
               "previousDays": {
@@ -1489,58 +1514,58 @@
                     "400": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 400."
+                      "description": "Number of requests resulting in HTTP error code 400."
                     },
                     "401": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 401."
+                      "description": "Number of requests resulting in HTTP error code 401."
                     },
                     "403": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 403."
+                      "description": "Number of requests resulting in HTTP error code 403."
                     },
                     "404": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 404."
+                      "description": "Number of requests resulting in HTTP error code 404."
                     },
                     "406": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 406."
+                      "description": "Number of requests resulting in HTTP error code 406."
                     },
                     "422": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 422."
+                      "description": "Number of requests resulting in HTTP error code 422."
                     },
                     "429": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 429."
+                      "description": "Number of requests resulting in HTTP error code 429."
                     },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 500."
+                      "description": "Number of requests resulting in HTTP error code 500."
                     },
                     "503": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 503."
+                      "description": "Number of requests resulting in HTTP error code 503."
                     },
                     "504": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
-                      "description": "Number of errors for HTTP error code 504."
+                      "description": "Number of requests resulting in HTTP error code 504."
                     }
                   },
                   "additionalProperties": {
                     "type" : "integer",
                     "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
+                    "description": "Number of requests resulting in other HTTP error codes. Note that the property name must be 3 digits representing each respective HTTP error code."
                   }
                 }
               }
