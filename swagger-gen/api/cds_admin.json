@@ -1291,7 +1291,7 @@
                 "description": "Error counts, by HTTP error code, for current day",
                 "type": "object",
                 "required": [
-                  "400","404","406","422","500","503","504"
+                  "400","404","405","406","415","422","429","500","503","504"
                 ],
                 "properties": {
                     "400": {
@@ -1304,6 +1304,11 @@
                       "x-cds-type" : "NaturalNumber",
                       "description": "Number of errors for HTTP error code 404."
                     },
+                    "405": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 405."
+                    },
                     "406": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
@@ -1313,6 +1318,11 @@
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
                       "description": "Number of errors for HTTP error code 422."
+                    },
+                    "429": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 429."
                     },
                     "500": {
                       "type" : "integer",
@@ -1333,13 +1343,15 @@
                 "additionalProperties": {
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
                 }
               },
               "previousDays": {
                 "type": "array",
                 "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-                
+                "required": [
+                  "400","404","405","406","415","422","429","500","503","504"
+                ],                
                 "items": {
                   "type": "object",
                   "properties": {
@@ -1363,6 +1375,11 @@
                       "x-cds-type" : "NaturalNumber",
                       "description": "Number of errors for HTTP error code 422."
                     },
+                    "429": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 429."
+                    },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
@@ -1382,7 +1399,7 @@
                   "additionalProperties": {
                     "type" : "integer",
                     "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
                   }
                 }
               }
@@ -1400,7 +1417,7 @@
                 "description": "Error counts, by HTTP error code, for current day",
                 "type": "object",
                 "required": [
-                  "400","401","403","404","406","422","500","503","504"
+                  "400","401","403","404","405","406","415","422","429","500","503","504"
                 ],
                 "properties": {
                     "400": {
@@ -1433,6 +1450,11 @@
                       "x-cds-type" : "NaturalNumber",
                       "description": "Number of errors for HTTP error code 422."
                     },
+                    "429": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 429."
+                    },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
@@ -1452,13 +1474,15 @@
                 "additionalProperties": {
                   "type" : "integer",
                   "x-cds-type" : "NaturalNumber",
-                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                  "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
                 }
               },
               "previousDays": {
                 "type": "array",
                 "description": "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-                
+                "required": [
+                  "400","401","403","404","405","406","415","422","429","500","503","504"
+                ],
                 "items": {
                   "type": "object",
                   "properties": {
@@ -1492,6 +1516,11 @@
                       "x-cds-type" : "NaturalNumber",
                       "description": "Number of errors for HTTP error code 422."
                     },
+                    "429": {
+                      "type" : "integer",
+                      "x-cds-type" : "NaturalNumber",
+                      "description": "Number of errors for HTTP error code 429."
+                    },
                     "500": {
                       "type" : "integer",
                       "x-cds-type" : "NaturalNumber",
@@ -1511,7 +1540,7 @@
                   "additionalProperties": {
                     "type" : "integer",
                     "x-cds-type" : "NaturalNumber",
-                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
+                    "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for."
                   }
                 }
               }
