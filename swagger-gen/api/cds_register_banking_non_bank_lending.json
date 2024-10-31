@@ -4,8 +4,7 @@
     "title": "CDR Participant Discovery API",
     "version": "1.33.0"
   },
-  "servers": [
-    {
+  "servers": [{
       "url": "https://<register-base-url>/"
     }
   ],
@@ -19,8 +18,7 @@
         "summary": "Get Data Holder Brands",
         "description": "Allows Data Recipients to discover Data Holder Brands available in the CDR ecosystem.\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-v1.html), [v2](../../../../includes/obsolete/get-data-holder-brands-v2.html)",
         "operationId": "GetDataHolderBrands",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "industry",
             "in": "path",
             "description": "The industry the participant is retrieving data for (Banking, etc)",
@@ -36,8 +34,7 @@
                 "all"
               ]
             }
-          },
-          {
+          }, {
             "name": "Authorization",
             "in": "header",
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.",
@@ -46,8 +43,7 @@
               "type": "string",
               "x-cds-type": "ExternalRef"
             }
-          },
-          {
+          }, {
             "name": "x-v",
             "in": "header",
             "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
@@ -55,16 +51,14 @@
               "type": "string",
               "default": 1
             }
-          },
-          {
+          }, {
             "name": "x-min-v",
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "updated-since",
             "in": "query",
             "description": "query filter returns results updated since the specified date-time",
@@ -72,8 +66,7 @@
               "type": "string",
               "x-cds-type": "DateTimeString"
             }
-          },
-          {
+          }, {
             "name": "page",
             "in": "query",
             "description": "the page number to return",
@@ -82,8 +75,7 @@
               "default": 1
             },
             "x-cds-type": "PositiveInteger"
-          },
-          {
+          }, {
             "name": "page-size",
             "in": "query",
             "description": "the number of records to return per page",
@@ -160,8 +152,7 @@
         "summary": "Get Data Holder Brands Summary",
         "description": "Endpoint used by participants to discover public details of Data Holder Brands from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-brands-summary-v1.html)",
         "operationId": "GetDataHolderBrandsSummary",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "industry",
             "in": "path",
             "description": "The industry the participant is retrieving data for (Banking, etc)",
@@ -177,8 +168,7 @@
                 "all"
               ]
             }
-          },
-          {
+          }, {
             "name": "x-v",
             "in": "header",
             "description": "The version of the API endpoint requested by the client. Must be set to a positive integer.",
@@ -186,16 +176,14 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "x-min-v",
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "If-None-Match",
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",
@@ -285,8 +273,7 @@
         "summary": "Get Data Holder Statuses",
         "description": "Endpoint used by participants to discover the statuses for Data Holders from the CDR Register\n\nObsolete versions: [v1](../../../../includes/obsolete/get-data-holder-statuses-v1.html)",
         "operationId": "GetDataHolderStatuses",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "industry",
             "in": "path",
             "description": "The industry the participant is retrieving data for (Banking, etc)",
@@ -302,8 +289,7 @@
                 "all"
               ]
             }
-          },
-          {
+          }, {
             "name": "x-v",
             "in": "header",
             "description": "The version of the API endpoint requested by the client. Must be set to a positive integer. For backwards compatiblity defaults to 1 if absent. Note that once version 1 is decommissioned the header will be mandatory for a valid response to be obtained",
@@ -311,16 +297,14 @@
               "type": "string",
               "default": "1"
             }
-          },
-          {
+          }, {
             "name": "x-min-v",
             "in": "header",
             "description": "The [minimum version](https://consumerdatastandardsaustralia.github.io/standards/#http-headers) of the API endpoint requested by the client. Must be set to a positive integer if provided.",
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "If-None-Match",
             "in": "header",
             "description": "Makes the request method conditional on a recipient cache or origin server not having any current representation of the target resource with an entity-tag that does not match any of those listed in the field-value.",

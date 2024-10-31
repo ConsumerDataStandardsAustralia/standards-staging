@@ -14,69 +14,84 @@
     "title": "CDR Telco API",
     "version": "1.33.0"
   },
-  "servers": [ {
-    "url": "https://data.holder.com.au/cds-au/v1"
-  } ],
+  "servers": [{
+      "url": "https://data.holder.com.au/cds-au/v1"
+    }
+  ],
   "paths": {
     "/telco/products": {
       "get": {
         "description": "Obtain a list of telco products that are currently offered to the market.\n\nNote that the results returned by this endpoint are expected to be ordered in descending order according to `lastUpdated`.",
         "operationId": "listProducts",
-        "parameters": [ {
-          "name": "type",
-          "description": "Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "enum": [ "MOBILE", "BROADBAND", "ALL" ],
-            "default": "ALL",
-            "type": "string"
+        "parameters": [{
+            "name": "type",
+            "description": "Used to filter results on the type field. Any one of the valid values for this field can be supplied. If absent, defaults to include ALL products. Valid values are [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service. BROADBAND fixed internet service or ALL",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "MOBILE",
+                "BROADBAND",
+                "ALL"
+              ],
+              "default": "ALL",
+              "type": "string"
+            }
+          }, {
+            "name": "billing-type",
+            "description": "Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "PRE_PAID",
+                "POST_PAID",
+                "UPFRONT_PAID",
+                "ALL"
+              ],
+              "type": "string"
+            }
+          }, {
+            "name": "effective",
+            "description": "Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": "CURRENT",
+              "enum": [
+                "CURRENT",
+                "FUTURE",
+                "ALL"
+              ],
+              "type": "string"
+            }
+          }, {
+            "name": "updated-since",
+            "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all plans",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-cds-type": "DateTimeString"
+          }, {
+            "name": "brand",
+            "description": "Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
           }
-        }, {
-          "name": "billing-type",
-          "description": "Used to filter results on the billing-type field. Any one of the valid values for this field can be supplied. If absent, defaults to include all billing types. Valid values are ‘PRE_PAID’, ‘POST_PAID’, 'UPFRONT_PAID', 'ALL'",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "enum": [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "ALL" ],
-            "type": "string"
-          }
-        }, {
-          "name": "effective",
-          "description": "Allows for the filtering of productd based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "default": "CURRENT",
-            "enum": [ "CURRENT", "FUTURE", "ALL" ],
-            "type": "string"
-          }
-        }, {
-          "name": "updated-since",
-          "description": "Only include products that have been updated after the specified date and time. If absent defaults to include all plans",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "x-cds-type": "DateTimeString"
-        }, {
-          "name": "brand",
-          "description": "Used to filter results on the brand field. If absent, defaults to include all products. For service providers that operate a number of mobile and internet brands",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          }
-        }, {
-        	"$ref": "#/components/parameters/page"
-        }, {
-        	"$ref": "#/components/parameters/page-size"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        } ],
+        ],
         "responses": {
           "200": {
             "content": {
@@ -125,7 +140,10 @@
           }
         },
         "summary": "Get Telco Products",
-        "tags": [ "Telco", "Products" ],
+        "tags": [
+          "Telco",
+          "Products"
+        ],
         "x-version": "1"
       }
     },
@@ -133,19 +151,20 @@
       "get": {
         "description": "Obtain detailed information on a single telco prouct offered openly to the market",
         "operationId": "getProduct",
-        "parameters": [ {
-          "name": "productId",
-          "description": "ID of the specific product requested",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
+        "parameters": [{
+            "name": "productId",
+            "description": "ID of the specific product requested",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
           }
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }	],
+        ],
         "responses": {
           "200": {
             "content": {
@@ -195,7 +214,10 @@
           }
         },
         "summary": "Get Telco Product Detail",
-        "tags": [ "Telco", "Products" ],
+        "tags": [
+          "Telco",
+          "Products"
+        ],
         "x-version": "1"
       }
     },
@@ -203,25 +225,26 @@
       "get": {
         "description": "Obtain a usage data from a particular service Id",
         "operationId": "getUsageForService",
-        "parameters": [ {
-        	"$ref": "#/components/parameters/serviceId"
-        }, {
-        	"$ref": "#/components/parameters/oldest-date"
-        }, {
-        	"$ref": "#/components/parameters/newest-date"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/serviceId"
+          }, {
+            "$ref": "#/components/parameters/oldest-date"
+          }, {
+            "$ref": "#/components/parameters/newest-date"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -303,8 +326,14 @@
           }
         },
         "summary": "Get Usage For Telco Service",
-        "tags": [ "Telco", "Billing", "Usage" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Usage"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -312,27 +341,28 @@
       "get": {
         "description": "Obtain usage data for all services associated with the customer",
         "operationId": "listUsage",
-        "parameters": [ {
-        	"$ref": "#/components/parameters/oldest-date"
-        }, {
-        	"$ref": "#/components/parameters/newest-date"
-        }, {
-        	"$ref": "#/components/parameters/page"
-        }, {
-        	"$ref": "#/components/parameters/page-size"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/oldest-date"
+          }, {
+            "$ref": "#/components/parameters/newest-date"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -399,30 +429,37 @@
           }
         },
         "summary": "Get Usage",
-        "tags": [ "Telco", "Billing", "Usage" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Usage"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       },
       "post": {
         "description": "Obtain usage data for a specific service",
         "operationId": "listUsageForService",
-        "parameters": [ {
-        	"$ref": "#/components/parameters/page"
-        }, {
-        	"$ref": "#/components/parameters/page-size"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/serviceIdList"
         },
@@ -492,8 +529,13 @@
           }
         },
         "summary": "Get Usage For Specific Telco Service",
-        "tags": [ "Telco", "Usage" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Usage"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -501,42 +543,47 @@
       "get": {
         "description": "Obtain the list of telco accounts available under the authorised consent",
         "operationId": "listAccounts",
-        "parameters": [ {
-          "name": "open-status",
-          "description": "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "default": "ALL",
-            "enum": [ "ALL", "CLOSED", "OPEN" ],
-            "type": "string"
+        "parameters": [{
+            "name": "open-status",
+            "description": "Used to filter results according to open/closed status. Values can be OPEN, CLOSED or ALL. If absent then ALL is assumed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "default": "ALL",
+              "enum": [
+                "ALL",
+                "CLOSED",
+                "OPEN"
+              ],
+              "type": "string"
+            }
+          }, {
+            "name": "updated-since",
+            "description": "Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-cds-type": "DateString"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
           }
-        }, {
-          "name": "updated-since",
-          "description": "Only include accounts that have been updated after the specified date and time. If absent defaults to include all plans",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "x-cds-type": "DateString"
-        }, {
-        	"$ref": "#/components/parameters/page"
-        }, {
-        	"$ref": "#/components/parameters/page-size"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        ],
         "responses": {
           "200": {
             "content": {
@@ -603,8 +650,13 @@
           }
         },
         "summary": "Get Telco Accounts",
-        "tags": [ "Telco", "Accounts" ],
-        "x-scopes": [ "telco:accounts.basic:read" ],
+        "tags": [
+          "Telco",
+          "Accounts"
+        ],
+        "x-scopes": [
+          "telco:accounts.basic:read"
+        ],
         "x-version": "1"
       }
     },
@@ -612,21 +664,22 @@
       "get": {
         "description": "Obtain detailed information for a specific telco account",
         "operationId": "getAccount",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        },{
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -693,8 +746,13 @@
           }
         },
         "summary": "Get Telco Account Detail",
-        "tags": [ "Telco", "Accounts" ],
-        "x-scopes": [ "telco:accounts.detail:read" ],
+        "tags": [
+          "Telco",
+          "Accounts"
+        ],
+        "x-scopes": [
+          "telco:accounts.detail:read"
+        ],
         "x-version": "1"
       }
     },
@@ -702,21 +760,22 @@
       "get": {
         "description": "Obtain the agreed payment schedule and details, if any, for a specific telco account. \n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API</li></ul>",
         "operationId": "getPaymentSchedule",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -783,8 +842,13 @@
           }
         },
         "summary": "Get Telco Agreed Payment Schedule",
-        "tags": [ "Telco", "Accounts" ],
-        "x-scopes": [ "telco:accounts.paymentschedule:read" ],
+        "tags": [
+          "Telco",
+          "Accounts"
+        ],
+        "x-scopes": [
+          "telco:accounts.paymentschedule:read"
+        ],
         "x-version": "1"
       }
     },
@@ -792,21 +856,22 @@
       "get": {
         "description": "Obtain the details of any concessions or arrangements applied to a specific telco account",
         "operationId": "getConcessions",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        },{
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -873,8 +938,13 @@
           }
         },
         "summary": "Get Telco Concessions",
-        "tags": [ "Telco", "Accounts" ],
-        "x-scopes": [ "telco:accounts.concessions:read" ],
+        "tags": [
+          "Telco",
+          "Accounts"
+        ],
+        "x-scopes": [
+          "telco:accounts.concessions:read"
+        ],
         "x-version": "1"
       }
     },
@@ -882,21 +952,22 @@
       "get": {
         "description": "Obtain the current balance for a specific account",
         "operationId": "getBalanceForAccount",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        },{
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -963,8 +1034,14 @@
           }
         },
         "summary": "Get Balance For Telco Account",
-        "tags": [ "Telco", "Billing", "Balance" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Balance"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -972,23 +1049,24 @@
       "get": {
         "description": "Obtain the current balance for all accounts",
         "operationId": "listBalance",
-        "parameters": [ {
-        	"$ref": "#/components/parameters/page"
-        }, {
-        	"$ref": "#/components/parameters/page-size"
-        }, {
-        	"$ref": "#/components/parameters/x-v"
-        }, {
-        	"$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -1055,30 +1133,37 @@
           }
         },
         "summary": "Get Bulk Telco Balances",
-        "tags": [ "Telco", "Billing", "Balance" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Balance"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       },
       "post": {
         "description": "Obtain the current balance for a specified set of accounts",
         "operationId": "listBalancesForAccounts",
-        "parameters": [ {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/accountIdList"
         },
@@ -1148,8 +1233,14 @@
           }
         },
         "summary": "Get Balances For Specific Telco Accounts",
-        "tags": [ "Telco", "Billing", "Balance" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Balance"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -1157,21 +1248,22 @@
       "get": {
         "description": "Obtain the invoices for a specific account",
         "operationId": "getInvoicesForAccount",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-         }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        },{
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -1253,8 +1345,14 @@
           }
         },
         "summary": "Get Invoices For Telco Account",
-        "tags": [ "Telco", "Billing", "Invoices" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Invoices"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -1262,27 +1360,28 @@
       "get": {
         "description": "Obtain the invoices for all accounts",
         "operationId": "listInvoices",
-        "parameters": [ {
-        	"$ref": "#/components/parameters/newest-date"
-        }, {
-        	"$ref": "#/components/parameters/oldest-date"
-        }, {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/newest-date"
+          }, {
+            "$ref": "#/components/parameters/oldest-date"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -1349,34 +1448,41 @@
           }
         },
         "summary": "Get Telco Invoices",
-        "tags": [ "Telco", "Billing", "Invoices" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Invoices"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       },
       "post": {
         "description": "Obtain invoices for a specified set of accounts",
         "operationId": "listInvoicesForAccounts",
-        "parameters": [ {
-          "$ref": "#/components/parameters/newest-date"
-        }, {
-          "$ref": "#/components/parameters/oldest-date"
-        }, {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/newest-date"
+          }, {
+            "$ref": "#/components/parameters/oldest-date"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/accountIdList"
         },
@@ -1446,8 +1552,14 @@
           }
         },
         "summary": "Get Invoices For Specific Telco Accounts",
-        "tags": [ "Telco", "Billing", "Invoices" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Invoices"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -1455,29 +1567,30 @@
       "get": {
         "description": "Obtain the billing transactions for a specific account",
         "operationId": "getTransactionsForAccount",
-        "parameters": [ {
-          "$ref": "#/components/parameters/accountId"
-        }, {
-          "$ref": "#/components/parameters/newest-time"
-        }, {
-          "$ref": "#/components/parameters/oldest-time"
-        }, {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/accountId"
+          }, {
+            "$ref": "#/components/parameters/newest-time"
+          }, {
+            "$ref": "#/components/parameters/oldest-time"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -1559,8 +1672,14 @@
           }
         },
         "summary": "Get Transactions For Telco Account",
-        "tags": [ "Telco", "Billing", "Transactions" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Transactions"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     },
@@ -1568,27 +1687,28 @@
       "get": {
         "description": "Obtain billing transactions for all accounts",
         "operationId": "listTransactions",
-        "parameters": [ {
-          "$ref": "#/components/parameters/newest-time"
-        }, {
-          "$ref": "#/components/parameters/oldest-time"
-        }, {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/newest-time"
+          }, {
+            "$ref": "#/components/parameters/oldest-time"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "responses": {
           "200": {
             "content": {
@@ -1655,34 +1775,41 @@
           }
         },
         "summary": "Get Telco Transactions",
-        "tags": [ "Telco", "Billing", "Transactions" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Transactions"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       },
       "post": {
         "description": "Obtain transactions for a specified set of accounts",
         "operationId": "listBillingForAccounts",
-        "parameters": [ {
-          "$ref": "#/components/parameters/newest-time"
-        }, {
-          "$ref": "#/components/parameters/oldest-time"
-        }, {
-         "$ref": "#/components/parameters/page"
-        }, {
-         "$ref": "#/components/parameters/page-size"
-        }, {
-         "$ref": "#/components/parameters/x-v"
-        }, {
-         "$ref": "#/components/parameters/x-min-v"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-interaction-id"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-auth-date"
-        }, {
-          "$ref": "#/components/parameters/x-fapi-customer-ip-address"
-        }, {
-          "$ref": "#/components/parameters/x-cds-client-headers"
-        } ],
+        "parameters": [{
+            "$ref": "#/components/parameters/newest-time"
+          }, {
+            "$ref": "#/components/parameters/oldest-time"
+          }, {
+            "$ref": "#/components/parameters/page"
+          }, {
+            "$ref": "#/components/parameters/page-size"
+          }, {
+            "$ref": "#/components/parameters/x-v"
+          }, {
+            "$ref": "#/components/parameters/x-min-v"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-interaction-id"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-auth-date"
+          }, {
+            "$ref": "#/components/parameters/x-fapi-customer-ip-address"
+          }, {
+            "$ref": "#/components/parameters/x-cds-client-headers"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/accountIdList"
         },
@@ -1752,8 +1879,14 @@
           }
         },
         "summary": "Get Transactions For Specific Telco Accounts",
-        "tags": [ "Telco", "Billing", "Transactions" ],
-        "x-scopes": [ "telco:billing:read" ],
+        "tags": [
+          "Telco",
+          "Billing",
+          "Transactions"
+        ],
+        "x-scopes": [
+          "telco:billing:read"
+        ],
         "x-version": "1"
       }
     }
@@ -1799,7 +1932,11 @@
         "required": false,
         "schema": {
           "default": "ALL",
-          "enum": [ "ALL", "CLOSED", "OPEN" ],
+          "enum": [
+            "ALL",
+            "CLOSED",
+            "OPEN"
+          ],
           "type": "string"
         }
       },
@@ -1937,14 +2074,19 @@
                       "type": "array"
                     }
                   },
-                  "required": [ "serviceIds" ],
+                  "required": [
+                    "serviceIds"
+                  ],
                   "type": "object"
                 },
                 "meta": {
                   "$ref": "#/components/schemas/Meta"
                 }
               },
-              "required": [ "data", "meta" ],
+              "required": [
+                "data",
+                "meta"
+              ],
               "type": "object"
             }
           }
@@ -1967,14 +2109,19 @@
                       "type": "array"
                     }
                   },
-                  "required": [ "accountIds" ],
+                  "required": [
+                    "accountIds"
+                  ],
                   "type": "object"
                 },
                 "meta": {
                   "$ref": "#/components/schemas/Meta"
                 }
               },
-              "required": [ "data", "meta" ],
+              "required": [
+                "data",
+                "meta"
+              ],
               "type": "object"
             }
           }
@@ -2196,17 +2343,22 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoProductResponse": {
         "properties": {
           "data": {
-            "allOf": [ {
-              "$ref": "#/components/schemas/TelcoProduct"
-            }, {
-              "$ref": "#/components/schemas/TelcoProductDetail"
-            } ]
+            "allOf": [{
+                "$ref": "#/components/schemas/TelcoProduct"
+              }, {
+                "$ref": "#/components/schemas/TelcoProductDetail"
+              }
+            ]
           },
           "links": {
             "$ref": "#/components/schemas/Links"
@@ -2215,7 +2367,10 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links" ],
+        "required": [
+          "data",
+          "links"
+        ],
         "type": "object"
       },
       "TelcoUsageResponse": {
@@ -2230,7 +2385,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoServiceUsageResponse": {
@@ -2245,7 +2404,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoServiceUsageListResponse": {
@@ -2263,7 +2426,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoAccountListResponse": {
@@ -2278,7 +2445,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoAccountDetailResponse": {
@@ -2293,7 +2464,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoPaymentScheduleResponse": {
@@ -2308,7 +2483,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoConcessionsResponse": {
@@ -2323,7 +2502,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoBalanceListResponse": {
@@ -2338,7 +2521,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoBalanceResponse": {
@@ -2353,7 +2540,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoTransactionListResponse": {
@@ -2368,7 +2559,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "MetaError": {
@@ -2456,19 +2651,31 @@
           },
           "type": {
             "description": "The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
-            "enum": [ "MOBILE", "BROADBAND" ],
+            "enum": [
+              "MOBILE",
+              "BROADBAND"
+            ],
             "default": "MOBILE",
             "type": "string"
           },
           "purpose": {
             "description": "The purpose type of the product. If absent, then the value PERSONAL is assumed",
-            "enum": [ "PERSONAL", "BUSINESS", "ALL" ],
+            "enum": [
+              "PERSONAL",
+              "BUSINESS",
+              "ALL"
+            ],
             "default": "PERSONAL",
             "type": "string"
           },
           "billingType": {
             "description": "The type of product",
-            "enum": [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
+            "enum": [
+              "PRE_PAID",
+              "POST_PAID",
+              "UPFRONT_PAID",
+              "OTHER"
+            ],
             "default": "PRE_PAID",
             "type": "string"
           },
@@ -2511,9 +2718,20 @@
             "$ref": "#/components/schemas/TelcoAdditionalInformation"
           }
         },
-        "required": [ "brand", "brandName", "name", "pricing", "productId", "type", "usage", "billingType" ],
+        "required": [
+          "brand",
+          "brandName",
+          "name",
+          "pricing",
+          "productId",
+          "type",
+          "usage",
+          "billingType"
+        ],
         "type": "object",
-        "x-conditional": [ "contract" ]
+        "x-conditional": [
+          "contract"
+        ]
       },
       "TelcoContract": {
         "description": "Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan",
@@ -2537,7 +2755,10 @@
             "x-cds-type": "URIString"
           }
         },
-        "required": [ "name", "duration" ],
+        "required": [
+          "name",
+          "duration"
+        ],
         "type": "object"
       },
       "TelcoServiceDetail": {
@@ -2547,7 +2768,9 @@
             "type": "string"
           }
         },
-        "required": [ "serviceId" ]
+        "required": [
+          "serviceId"
+        ]
       },
       "TelcoAccountUsage": {
         "properties": {
@@ -2563,7 +2786,10 @@
             "type": "array"
           }
         },
-        "required": [ "accountId", "services" ],
+        "required": [
+          "accountId",
+          "services"
+        ],
         "type": "object"
       },
       "TelcoServiceUsage": {
@@ -2594,9 +2820,14 @@
             "$ref": "#/components/schemas/TelcoUsage"
           }
         },
-        "required": [ "serviceId", "startDate" ],
+        "required": [
+          "serviceId",
+          "startDate"
+        ],
         "type": "object",
-        "x-conditional": [ "phoneNumber" ]
+        "x-conditional": [
+          "phoneNumber"
+        ]
       },
       "TelcoAccountBase": {
         "properties": {
@@ -2629,27 +2860,36 @@
           "openStatus": {
             "default": "OPEN",
             "description": "Open or closed status for the account. If not present then OPEN is assumed",
-            "enum": [ "CLOSED", "OPEN" ],
+            "enum": [
+              "CLOSED",
+              "OPEN"
+            ],
             "type": "string"
           }
         },
-        "required": [ "accountId, creationDate, lastUpdateDateTime" ],
+        "required": [
+          "accountId, creationDate, lastUpdateDateTime"
+        ],
         "type": "object",
-        "x-conditional": [ "accountNumber" ]
+        "x-conditional": [
+          "accountNumber"
+        ]
       },
       "TelcoAccountResponseData": {
-        "allOf": [ {
-          "$ref": "#/components/schemas/TelcoAccountBase"
-        }, {
-          "$ref": "#/components/schemas/TelcoAccount"
-        } ]
+        "allOf": [{
+            "$ref": "#/components/schemas/TelcoAccountBase"
+          }, {
+            "$ref": "#/components/schemas/TelcoAccount"
+          }
+        ]
       },
       "TelcoAccountDetailResponseData": {
-        "allOf": [ {
-          "$ref": "#/components/schemas/TelcoAccountBase"
-        }, {
-          "$ref": "#/components/schemas/TelcoAccountDetail"
-        } ]
+        "allOf": [{
+            "$ref": "#/components/schemas/TelcoAccountBase"
+          }, {
+            "$ref": "#/components/schemas/TelcoAccountDetail"
+          }
+        ]
       },
       "TelcoPaymentSchedule": {
         "properties": {
@@ -2660,7 +2900,12 @@
           },
           "paymentScheduleUType": {
             "description": "The type of object present in this response",
-            "enum": [ "cardDebit", "directDebit", "manualPayment", "digitalWallet" ],
+            "enum": [
+              "cardDebit",
+              "directDebit",
+              "manualPayment",
+              "digitalWallet"
+            ],
             "type": "string"
           },
           "cardDebit": {
@@ -2676,16 +2921,27 @@
             "$ref": "#/components/schemas/TelcoPaymentScheduleManualPayment"
           }
         },
-        "required": [ "paymentScheduleUType" ],
+        "required": [
+          "paymentScheduleUType"
+        ],
         "type": "object",
-        "x-conditional": [ "cardDebit", "directDebit", "manualPayment", "digitalWallet" ]
+        "x-conditional": [
+          "cardDebit",
+          "directDebit",
+          "manualPayment",
+          "digitalWallet"
+        ]
       },
       "TelcoConcession": {
         "properties": {
           "type": {
             "default": "CONCESSION",
             "description": "The concession type",
-            "enum": [ "CONCESSION", "REBATE", "GRANT" ],
+            "enum": [
+              "CONCESSION",
+              "REBATE",
+              "GRANT"
+            ],
             "type": "string"
           },
           "displayName": {
@@ -2729,15 +2985,26 @@
           "appliedTo": {
             "description": "Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed",
             "items": {
-              "enum": [ "INVOICE", "USAGE" ],
+              "enum": [
+                "INVOICE",
+                "USAGE"
+              ],
               "type": "string"
             },
             "type": "array"
           }
         },
-        "required": [ "displayName", "startDate", "type" ],
+        "required": [
+          "displayName",
+          "startDate",
+          "type"
+        ],
         "type": "object",
-        "x-conditional": [ "discountFrequency", "amount", "percentage" ]
+        "x-conditional": [
+          "discountFrequency",
+          "amount",
+          "percentage"
+        ]
       },
       "TelcoInvoice": {
         "properties": {
@@ -2795,14 +3062,27 @@
           },
           "paymentStatus": {
             "description": "Indicator of the payment status for the invoice",
-            "enum": [ "PAID", "PARTIALLY_PAID", "NOT_PAID" ],
+            "enum": [
+              "PAID",
+              "PARTIALLY_PAID",
+              "NOT_PAID"
+            ],
             "default": "NOT_PAID",
             "type": "string"
           }
         },
-        "required": [ "accountId", "balanceAtIssue", "invoiceNumber", "issueDate", "paymentStatus", "services" ],
+        "required": [
+          "accountId",
+          "balanceAtIssue",
+          "invoiceNumber",
+          "issueDate",
+          "paymentStatus",
+          "services"
+        ],
         "type": "object",
-        "x-conditional": [ "period" ]
+        "x-conditional": [
+          "period"
+        ]
       },
       "TelcoUsage": {
         "description": "Object containing usage summary",
@@ -2818,7 +3098,11 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "data", "voice", "messaging" ]
+        "x-conditional": [
+          "data",
+          "voice",
+          "messaging"
+        ]
       },
       "TelcoInvoiceAccountCharges": {
         "description": "Object contain charges and credits related to usage",
@@ -2847,7 +3131,11 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "totalDiscounts", "totalOnceOffCharges", "totalUsageCharges" ],
+        "required": [
+          "totalDiscounts",
+          "totalOnceOffCharges",
+          "totalUsageCharges"
+        ],
         "type": "object"
       },
       "TelcoBillingTransaction": {
@@ -2868,7 +3156,12 @@
           },
           "transactionUType": {
             "description": "Indicator of the type of transaction object present in this record",
-            "enum": [ "account", "onceOff", "otherCharges", "payment" ],
+            "enum": [
+              "account",
+              "onceOff",
+              "otherCharges",
+              "payment"
+            ],
             "type": "string"
           },
           "account": {
@@ -2884,9 +3177,17 @@
             "$ref": "#/components/schemas/TelcoBillingPaymentTransaction"
           }
         },
-        "required": [ "accountId", "executionDateTime", "transactionUType" ],
+        "required": [
+          "accountId",
+          "executionDateTime",
+          "transactionUType"
+        ],
         "type": "object",
-        "x-conditional": [ "usage", "onceOff", "payment" ]
+        "x-conditional": [
+          "usage",
+          "onceOff",
+          "payment"
+        ]
       },
       "TelcoBillingAccountTransaction": {
         "properties": {
@@ -2925,7 +3226,11 @@
             "type": "array"
           }
         },
-        "required": [ "amount", "endDate", "startDate" ],
+        "required": [
+          "amount",
+          "endDate",
+          "startDate"
+        ],
         "type": "object"
       },
       "TelcoBillingOnceOffTransaction": {
@@ -2948,7 +3253,10 @@
             "type": "string"
           }
         },
-        "required": [ "amount", "description" ],
+        "required": [
+          "amount",
+          "description"
+        ],
         "type": "object"
       },
       "TelcoBillingOtherTransaction": {
@@ -2973,7 +3281,13 @@
           },
           "type": {
             "description": "Type of charge. Assumed to be OTHER if absent",
-            "enum": [ "SERVICE", "NETWORK", "EQUIPMENT", "METERING", "OTHER" ],
+            "enum": [
+              "SERVICE",
+              "NETWORK",
+              "EQUIPMENT",
+              "METERING",
+              "OTHER"
+            ],
             "default": "OTHER",
             "type": "string"
           },
@@ -2994,7 +3308,10 @@
             "type": "array"
           }
         },
-        "required": [ "amount", "description" ],
+        "required": [
+          "amount",
+          "description"
+        ],
         "type": "object"
       },
       "TelcoBillingPaymentTransaction": {
@@ -3006,11 +3323,23 @@
           },
           "method": {
             "description": "The method of payment",
-            "enum": [ "DIRECT_DEBIT", "CARD", "TRANSFER", "BPAY", "CASH", "CHEQUE", "VOUCHER", "OTHER" ],
+            "enum": [
+              "DIRECT_DEBIT",
+              "CARD",
+              "TRANSFER",
+              "BPAY",
+              "CASH",
+              "CHEQUE",
+              "VOUCHER",
+              "OTHER"
+            ],
             "type": "string"
           }
         },
-        "required": [ "amount", "method" ],
+        "required": [
+          "amount",
+          "method"
+        ],
         "type": "object"
       },
       "TelcoBalance": {
@@ -3019,14 +3348,17 @@
           "services": {
             "description": "Summary of balances",
             "items": {
-              "allOf": [ {
-                "$ref": "#/components/schemas/TelcoServiceBalance"
-               } ]
+              "allOf": [{
+                  "$ref": "#/components/schemas/TelcoServiceBalance"
+                }
+              ]
             },
             "type": "array"
           }
         },
-        "required": [ "services" ],
+        "required": [
+          "services"
+        ],
         "type": "object"
       },
       "TelcoServiceBalance": {
@@ -3058,20 +3390,32 @@
             "$ref": "#/components/schemas/TelcoServiceBalances"
           }
         },
-        "required": [ "serviceId, startDate, balance" ],
+        "required": [
+          "serviceId, startDate, balance"
+        ],
         "type": "object",
-        "x-conditional": [ "phoneNumber" ]
+        "x-conditional": [
+          "phoneNumber"
+        ]
       },
       "TelcoPlanType": {
         "description": "Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported",
-        "enum": [ "METERED", "UNMETERED", "LIMITED", "UNSUPPORTED" ],
+        "enum": [
+          "METERED",
+          "UNMETERED",
+          "LIMITED",
+          "UNSUPPORTED"
+        ],
         "type": "string"
       },
       "CommonPhysicalAddress": {
         "properties": {
           "addressUType": {
             "description": "The type of address object present",
-            "enum": [ "paf", "simple" ],
+            "enum": [
+              "paf",
+              "simple"
+            ],
             "type": "string"
           },
           "simple": {
@@ -3081,9 +3425,14 @@
             "$ref": "#/components/schemas/CommonPAFAddress"
           }
         },
-        "required": [ "addressUType" ],
+        "required": [
+          "addressUType"
+        ],
         "type": "object",
-        "x-conditional": [ "simple", "paf" ]
+        "x-conditional": [
+          "simple",
+          "paf"
+        ]
       },
       "CommonSimpleAddress": {
         "description": "Required if addressUType is set to simple",
@@ -3123,9 +3472,15 @@
             "x-cds-type": "ExternalRef"
           }
         },
-        "required": [ "addressLine1", "city", "state" ],
+        "required": [
+          "addressLine1",
+          "city",
+          "state"
+        ],
         "type": "object",
-        "x-conditional": [ "postcode" ]
+        "x-conditional": [
+          "postcode"
+        ]
       },
       "CommonPAFAddress": {
         "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
@@ -3222,7 +3577,11 @@
             "type": "string"
           }
         },
-        "required": [ "localityName", "postcode", "state" ],
+        "required": [
+          "localityName",
+          "postcode",
+          "state"
+        ],
         "type": "object"
       },
       "Links": {
@@ -3233,7 +3592,9 @@
             "x-cds-type": "URIString"
           }
         },
-        "required": [ "self" ],
+        "required": [
+          "self"
+        ],
         "type": "object"
       },
       "Meta": {
@@ -3267,9 +3628,16 @@
             "x-cds-type": "URIString"
           }
         },
-        "required": [ "self" ],
+        "required": [
+          "self"
+        ],
         "type": "object",
-        "x-conditional": [ "first", "prev", "next", "last" ]
+        "x-conditional": [
+          "first",
+          "prev",
+          "next",
+          "last"
+        ]
       },
       "MetaPaginated": {
         "properties": {
@@ -3284,7 +3652,10 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [ "totalPages", "totalRecords" ],
+        "required": [
+          "totalPages",
+          "totalRecords"
+        ],
         "type": "object"
       },
       "TelcoProductListResponseData": {
@@ -3297,7 +3668,9 @@
             "type": "array"
           }
         },
-        "required": [ "plans" ],
+        "required": [
+          "plans"
+        ],
         "type": "object"
       },
       "TelcoUsageListResponse": {
@@ -3312,7 +3685,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoUsageListResponseData": {
@@ -3325,7 +3702,9 @@
             "type": "array"
           }
         },
-        "required": [ "accounts" ],
+        "required": [
+          "accounts"
+        ],
         "type": "object"
       },
       "TelcoAccountListResponseData": {
@@ -3338,7 +3717,9 @@
             "type": "array"
           }
         },
-        "required": [ "accounts" ],
+        "required": [
+          "accounts"
+        ],
         "type": "object"
       },
       "TelcoPaymentScheduleResponseData": {
@@ -3351,7 +3732,9 @@
             "type": "array"
           }
         },
-        "required": [ "paymentSchedules" ],
+        "required": [
+          "paymentSchedules"
+        ],
         "type": "object"
       },
       "TelcoConcessionsResponseData": {
@@ -3364,7 +3747,9 @@
             "type": "array"
           }
         },
-        "required": [ "concessions" ],
+        "required": [
+          "concessions"
+        ],
         "type": "object"
       },
       "TelcoBalanceListResponseData": {
@@ -3377,7 +3762,9 @@
             "type": "array"
           }
         },
-        "required": [ "balances" ],
+        "required": [
+          "balances"
+        ],
         "type": "object"
       },
       "TelcoBalanceResponseData": {
@@ -3390,7 +3777,9 @@
             "$ref": "#/components/schemas/TelcoBalance"
           }
         },
-        "required": [ "accountId, balance" ],
+        "required": [
+          "accountId, balance"
+        ],
         "type": "object"
       },
       "TelcoInvoiceResponse": {
@@ -3405,7 +3794,11 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoInvoiceListResponse": {
@@ -3420,7 +3813,11 @@
             "$ref": "#/components/schemas/MetaPaginated"
           }
         },
-        "required": [ "data", "links", "meta" ],
+        "required": [
+          "data",
+          "links",
+          "meta"
+        ],
         "type": "object"
       },
       "TelcoInvoiceListResponseData": {
@@ -3433,7 +3830,9 @@
             "type": "array"
           }
         },
-        "required": [ "invoices" ],
+        "required": [
+          "invoices"
+        ],
         "type": "object"
       },
       "TelcoTransactionListResponseData": {
@@ -3446,7 +3845,9 @@
             "type": "array"
           }
         },
-        "required": [ "transactions" ],
+        "required": [
+          "transactions"
+        ],
         "type": "object"
       },
       "TelcoProductPricing": {
@@ -3470,7 +3871,11 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "description", "name" ],
+        "required": [
+          "amount",
+          "description",
+          "name"
+        ],
         "type": "object"
       },
       "TelcoAdditionalInformation": {
@@ -3530,7 +3935,10 @@
             "x-cds-type": "ExternalRef"
           }
         },
-        "required": [ "displayName", "minimumValue" ],
+        "required": [
+          "displayName",
+          "minimumValue"
+        ],
         "type": "object"
       },
       "TelcoProductDetailFeature": {
@@ -3545,11 +3953,24 @@
           },
           "category": {
             "description": "The type of the feature",
-            "enum": [ "DATA", "VOICE", "MESSAGING", "HANDSET", "DEVICE", "NETWORK", "ENTERTAINMENT", "SUBSCRIPTION", "SOFTWARE", "OTHER" ],
+            "enum": [
+              "DATA",
+              "VOICE",
+              "MESSAGING",
+              "HANDSET",
+              "DEVICE",
+              "NETWORK",
+              "ENTERTAINMENT",
+              "SUBSCRIPTION",
+              "SOFTWARE",
+              "OTHER"
+            ],
             "type": "string"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailBundles": {
@@ -3575,7 +3996,9 @@
             "type": "array"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailPlan": {
@@ -3601,7 +4024,9 @@
             "type": "array"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailPlanFeature": {
@@ -3615,7 +4040,9 @@
             "type": "string"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailDiscountFeature": {
@@ -3629,7 +4056,9 @@
             "type": "string"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailDiscounts": {
@@ -3655,7 +4084,9 @@
             "type": "array"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailIncentiveFeature": {
@@ -3669,7 +4100,9 @@
             "type": "string"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetailIncentives": {
@@ -3695,7 +4128,9 @@
             "type": "array"
           }
         },
-        "required": [ "displayName" ],
+        "required": [
+          "displayName"
+        ],
         "type": "object"
       },
       "TelcoProductDetail": {
@@ -3744,7 +4179,9 @@
             "$ref": "#/components/schemas/TelcoServiceUsage"
           }
         },
-        "required": [ "service" ],
+        "required": [
+          "service"
+        ],
         "type": "object"
       },
       "TelcoAccountPlanOverview": {
@@ -3765,7 +4202,9 @@
             "x-cds-type": "DateString"
           }
         },
-        "required": [ "startDate" ],
+        "required": [
+          "startDate"
+        ],
         "type": "object"
       },
       "TelcoAccountPlan": {
@@ -3776,13 +4215,21 @@
           },
           "type": {
             "description": "The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
-            "enum": [ "MOBILE", "BROADBAND" ],
+            "enum": [
+              "MOBILE",
+              "BROADBAND"
+            ],
             "default": "MOBILE",
             "type": "string"
           },
           "billingType": {
             "description": "The billing type of then plan",
-            "enum": [ "PRE_PAID", "POST_PAID", "UPFRONT_PAID", "OTHER" ],
+            "enum": [
+              "PRE_PAID",
+              "POST_PAID",
+              "UPFRONT_PAID",
+              "OTHER"
+            ],
             "default": "PRE_PAID",
             "type": "string"
           },
@@ -3797,8 +4244,13 @@
             "$ref": "#/components/schemas/TelcoAccountPlanOverview"
           }
         },
-        "required" : [ "serviceIds", "type", "billingType", "planOverview" ],
-        "type" : "object"
+        "required": [
+          "serviceIds",
+          "type",
+          "billingType",
+          "planOverview"
+        ],
+        "type": "object"
       },
       "TelcoAccount": {
         "description": "The array of plans containing services and associated plan details",
@@ -3811,8 +4263,10 @@
             "type": "array"
           }
         },
-        "required" : [ "plans" ],
-        "type" : "object"
+        "required": [
+          "plans"
+        ],
+        "type": "object"
       },
       "TelcoAccountPlanDetail": {
         "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
@@ -3828,10 +4282,14 @@
               }
             },
             "type": "object",
-            "required": [ "charges" ]
+            "required": [
+              "charges"
+            ]
           }
         },
-        "required": [ "planDetail" ],
+        "required": [
+          "planDetail"
+        ],
         "type": "object"
       },
       "TelcoAccountDetailAuthorisedContacts": {
@@ -3860,34 +4318,49 @@
             "type": "string"
           }
         },
-        "required": [ "lastName" ],
+        "required": [
+          "lastName"
+        ],
         "type": "object"
       },
-      "TelcoAccountDetail" : {
-        "description" : "The array of plans containing services and associated plan details",
-        "properties" : {
-          "plans" : {
-            "description" : "The array of plans containing services and associated plan details",
-            "items" : {
-              "allOf": [ {
-                "$ref": "#/components/schemas/TelcoAccountPlan"
-              }, {
-                "$ref": "#/components/schemas/TelcoAccountPlanDetail"
-              } ]
+      "TelcoAccountDetail": {
+        "description": "The array of plans containing services and associated plan details",
+        "properties": {
+          "plans": {
+            "description": "The array of plans containing services and associated plan details",
+            "items": {
+              "allOf": [{
+                  "$ref": "#/components/schemas/TelcoAccountPlan"
+                }, {
+                  "$ref": "#/components/schemas/TelcoAccountPlanDetail"
+                }
+              ]
             },
-            "type" : "array",
-            "required" : [ "planOverview", "planDetail" ]
+            "type": "array",
+            "required": [
+              "planOverview",
+              "planDetail"
+            ]
           }
         },
-        "required" : [ "plans" ],
-        "type" : "object"
+        "required": [
+          "plans"
+        ],
+        "type": "object"
       },
       "TelcoPaymentScheduleCardDebit": {
         "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
         "properties": {
           "cardScheme": {
             "description": "The type of credit card held on file",
-            "enum": [ "VISA", "MASTERCARD", "AMEX", "DINERS", "OTHER", "UNKNOWN" ],
+            "enum": [
+              "VISA",
+              "MASTERCARD",
+              "AMEX",
+              "DINERS",
+              "OTHER",
+              "UNKNOWN"
+            ],
             "type": "string"
           },
           "paymentFrequency": {
@@ -3897,11 +4370,19 @@
           },
           "calculationType": {
             "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
-            "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
+            "enum": [
+              "STATIC",
+              "BALANCE",
+              "CALCULATED"
+            ],
             "type": "string"
           }
         },
-        "required": [ "calculationType", "cardScheme", "paymentFrequency" ],
+        "required": [
+          "calculationType",
+          "cardScheme",
+          "paymentFrequency"
+        ],
         "type": "object"
       },
       "TelcoPaymentScheduleDirectDebit": {
@@ -3926,13 +4407,23 @@
           },
           "calculationType": {
             "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
-            "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
+            "enum": [
+              "STATIC",
+              "BALANCE",
+              "CALCULATED"
+            ],
             "type": "string"
           }
         },
-        "required": [ "calculationType", "paymentFrequency" ],
+        "required": [
+          "calculationType",
+          "paymentFrequency"
+        ],
         "type": "object",
-        "x-conditional": [ "bsb", "accountNumber" ]
+        "x-conditional": [
+          "bsb",
+          "accountNumber"
+        ]
       },
       "TelcoPaymentScheduleDigitalWallet": {
         "description": "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
@@ -3947,12 +4438,19 @@
           },
           "type": {
             "description": "The type of the digital wallet identifier",
-            "enum": [ "EMAIL", "CONTACT_NAME", "TELEPHONE" ],
+            "enum": [
+              "EMAIL",
+              "CONTACT_NAME",
+              "TELEPHONE"
+            ],
             "type": "string"
           },
           "provider": {
             "description": "The provider of the digital wallet",
-            "enum": [ "PAYPAL_AU", "OTHER" ],
+            "enum": [
+              "PAYPAL_AU",
+              "OTHER"
+            ],
             "type": "string"
           },
           "paymentFrequency": {
@@ -3962,11 +4460,22 @@
           },
           "calculationType": {
             "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
-            "enum": [ "STATIC", "BALANCE", "CALCULATED" ],
+            "enum": [
+              "STATIC",
+              "BALANCE",
+              "CALCULATED"
+            ],
             "type": "string"
           }
         },
-        "required": [ "calculationType", "identifier", "name", "paymentFrequency", "provider", "type" ],
+        "required": [
+          "calculationType",
+          "identifier",
+          "name",
+          "paymentFrequency",
+          "provider",
+          "type"
+        ],
         "type": "object"
       },
       "TelcoPaymentScheduleManualPayment": {
@@ -3978,7 +4487,9 @@
             "x-cds-type": "ExternalRef"
           }
         },
-        "required": [ "billFrequency" ],
+        "required": [
+          "billFrequency"
+        ],
         "type": "object"
       },
       "TelcoInvoicePeriod": {
@@ -3995,7 +4506,10 @@
             "x-cds-type": "DateString"
           }
         },
-        "required": [ "endDate", "startDate" ],
+        "required": [
+          "endDate",
+          "startDate"
+        ],
         "type": "object"
       },
       "TelcoInvoicePayOnTimeDiscount": {
@@ -4017,7 +4531,10 @@
             "x-cds-type": "DateString"
           }
         },
-        "required": [ "date", "discountAmount" ],
+        "required": [
+          "date",
+          "discountAmount"
+        ],
         "type": "object"
       },
       "TelcoUsageDatRoaming": {
@@ -4035,7 +4552,10 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "download", "amount" ]
+        "x-conditional": [
+          "download",
+          "amount"
+        ]
       },
       "TelcoUsageData": {
         "description": "Summary of data usage",
@@ -4065,7 +4585,11 @@
             "$ref": "#/components/schemas/TelcoUsageDatRoaming"
           }
         },
-        "required": [ "amount", "download", "upload" ],
+        "required": [
+          "amount",
+          "download",
+          "upload"
+        ],
         "x-condional": "roaming",
         "type": "object"
       },
@@ -4088,7 +4612,11 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "duration", "number" ],
+        "required": [
+          "amount",
+          "duration",
+          "number"
+        ],
         "type": "object"
       },
       "TelcoUsageVoiceInternational": {
@@ -4110,7 +4638,11 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "duration", "number" ],
+        "required": [
+          "amount",
+          "duration",
+          "number"
+        ],
         "type": "object"
       },
       "TelcoUsageVoiceRoaming": {
@@ -4132,7 +4664,11 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "duration", "number" ],
+        "required": [
+          "amount",
+          "duration",
+          "number"
+        ],
         "type": "object"
       },
       "TelcoUsageVoice": {
@@ -4148,9 +4684,17 @@
             "$ref": "#/components/schemas/TelcoUsageVoiceRoaming"
           }
         },
-        "required": [ "amount", "international", "national", "roaming" ],
+        "required": [
+          "amount",
+          "international",
+          "national",
+          "roaming"
+        ],
         "type": "object",
-        "x-conditional": [ "international", "roaming" ]
+        "x-conditional": [
+          "international",
+          "roaming"
+        ]
       },
       "TelcoUsageMessagingSms": {
         "description": "Summary of SMS usage",
@@ -4176,9 +4720,15 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "national" ],
+        "required": [
+          "amount",
+          "national"
+        ],
         "type": "object",
-        "x-conditional": [ "international", "roaming" ]
+        "x-conditional": [
+          "international",
+          "roaming"
+        ]
       },
       "TelcoUsageMessagingMms": {
         "description": "Summary of MMS usage",
@@ -4204,9 +4754,15 @@
             "x-cds-type": "AmountString"
           }
         },
-        "required": [ "amount", "national" ],
+        "required": [
+          "amount",
+          "national"
+        ],
         "type": "object",
-        "x-conditional": [ "international", "roaming" ]
+        "x-conditional": [
+          "international",
+          "roaming"
+        ]
       },
       "TelcoUsageMessaging": {
         "description": "Summary of messaging. Required if messaging services is included in the product plan",
@@ -4218,7 +4774,10 @@
             "$ref": "#/components/schemas/TelcoUsageMessagingMms"
           }
         },
-        "required": [ "sms", "mms" ],
+        "required": [
+          "sms",
+          "mms"
+        ],
         "type": "object"
       },
       "TelcoInvoiceAccountChargesOtherCharges": {
@@ -4236,11 +4795,24 @@
           },
           "type": {
             "description": "A free text description of the charge",
-            "enum": [ "SERVICE", "EQUIPMENT", "NETWORK", "HANDSET", "DEVICE", "ENTERTAINMENT", "SUBSCRIPTION", "SOFTWARE", "OTHER" ],
+            "enum": [
+              "SERVICE",
+              "EQUIPMENT",
+              "NETWORK",
+              "HANDSET",
+              "DEVICE",
+              "ENTERTAINMENT",
+              "SUBSCRIPTION",
+              "SOFTWARE",
+              "OTHER"
+            ],
             "type": "string"
           }
         },
-        "required": [ "amount", "description" ],
+        "required": [
+          "amount",
+          "description"
+        ],
         "type": "object"
       },
       "TelcoBillingAccountTransactionAdjustments": {
@@ -4255,7 +4827,10 @@
             "type": "string"
           }
         },
-        "required": [ "amount", "description" ],
+        "required": [
+          "amount",
+          "description"
+        ],
         "type": "object"
       },
       "TelcoServiceBalanceDataRoaming": {
@@ -4277,7 +4852,10 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "download", "amount" ]
+        "x-conditional": [
+          "download",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceData": {
         "description": "Summary of data balances",
@@ -4309,8 +4887,14 @@
           }
         },
         "type": "object",
-        "required": [ "planType" ],
-        "x-conditional": [ "description", "download", "amount" ]
+        "required": [
+          "planType"
+        ],
+        "x-conditional": [
+          "description",
+          "download",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceVoiceNational": {
         "description": "National voice calls",
@@ -4336,7 +4920,12 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "description", "duration", "number", "amount" ]
+        "x-conditional": [
+          "description",
+          "duration",
+          "number",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceVoiceInternational": {
         "description": "International voice calls",
@@ -4362,7 +4951,12 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "description", "national", "international", "amount" ]
+        "x-conditional": [
+          "description",
+          "national",
+          "international",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceVoiceRoaming": {
         "description": "Roaming voice calls",
@@ -4388,7 +4982,12 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "description", "national", "international", "amount" ]
+        "x-conditional": [
+          "description",
+          "national",
+          "international",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceVoice": {
         "description": "Summary of voice balances. Required if voice calls are included in product plan",
@@ -4407,9 +5006,14 @@
           }
         },
         "type": "object",
-        "required": [ "planType" ],
-        "x-conditional": ["national", "international", "roaming" ]
-
+        "required": [
+          "planType"
+        ],
+        "x-conditional": [
+          "national",
+          "international",
+          "roaming"
+        ]
       },
       "TelcoServiceBalanceMessagingSms": {
         "description": "Summary of SMS Balance. Required if the service plan supports SMS messaging",
@@ -4440,7 +5044,13 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "description", "national", "international", "roaming", "amount" ]
+        "x-conditional": [
+          "description",
+          "national",
+          "international",
+          "roaming",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceMessagingMms": {
         "description": "Summary of MMS Balance. Required if the service plan supports MMS messaging",
@@ -4471,7 +5081,13 @@
           }
         },
         "type": "object",
-        "x-conditional": [ "description", "national", "international", "roaming", "amount" ]
+        "x-conditional": [
+          "description",
+          "national",
+          "international",
+          "roaming",
+          "amount"
+        ]
       },
       "TelcoServiceBalanceMessaging": {
         "description": "Summary of messaging. Required if messaging services is included in the product plan",
@@ -4486,7 +5102,10 @@
             "$ref": "#/components/schemas/TelcoServiceBalanceMessagingMms"
           }
         },
-        "required": [ "sms", "mms" ],
+        "required": [
+          "sms",
+          "mms"
+        ],
         "type": "object"
       },
       "TelcoServiceBalances": {
@@ -4502,7 +5121,11 @@
             "$ref": "#/components/schemas/TelcoServiceBalanceMessaging"
           }
         },
-        "x-conditional": [ "data", "voice", "messaging" ],
+        "x-conditional": [
+          "data",
+          "voice",
+          "messaging"
+        ],
         "type": "object"
       }
     }

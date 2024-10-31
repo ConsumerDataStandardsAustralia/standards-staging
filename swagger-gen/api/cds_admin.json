@@ -14,8 +14,7 @@
     },
     "version": "1.33.0"
   },
-  "servers": [
-    {
+  "servers": [{
       "url": "https://data.holder.com.au/cds-au/v1"
     }
   ],
@@ -29,8 +28,7 @@
         "summary": "Metadata Update",
         "description": "Indicate that a critical update to the metadata for Accredited Data Recipients has been made and should be obtained",
         "operationId": "metadataUpdate",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "x-v",
             "in": "header",
             "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
@@ -38,8 +36,7 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "x-min-v",
             "in": "header",
             "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
@@ -113,8 +110,7 @@
         "summary": "Get Metrics",
         "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**\n\nIf the Data Holder supports private_key_jwt client authentication they MUST validate the scope.",
         "operationId": "getMetrics",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "period",
             "in": "query",
             "description": "The period of metrics to be requested. Values can be CURRENT (meaning metrics for current period, dependent on the metric type), HISTORIC (meaning metrics for previous period, depending on the metric type) or ALL. If absent the default is ALL.",
@@ -127,8 +123,7 @@
                 "ALL"
               ]
             }
-          },
-          {
+          }, {
             "name": "x-v",
             "in": "header",
             "description": "Version of the API endpoint requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
@@ -136,8 +131,7 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "x-min-v",
             "in": "header",
             "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable.",
@@ -282,12 +276,12 @@
               },
               "customerCount": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of customers with active authorisations at the time of the call"
               },
               "recipientCount": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
               },
               "secondaryHolder": {
@@ -322,16 +316,16 @@
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
+                "type": "string",
+                "x-cds-type": "RateString",
                 "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
               },
               "previousMonths": {
                 "type": "array",
                 "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
@@ -345,16 +339,16 @@
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
+                "type": "string",
+                "x-cds-type": "RateString",
                 "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
               },
               "previousMonths": {
                 "type": "array",
                 "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
@@ -368,16 +362,16 @@
             "type": "object",
             "properties": {
               "currentMonth": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
+                "type": "string",
+                "x-cds-type": "RateString",
                 "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
               },
               "previousMonths": {
                 "type": "array",
                 "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
@@ -403,16 +397,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "string",
-                "x-cds-type" : "RateString",
+                "type": "string",
+                "x-cds-type": "RateString",
                 "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%. Values must be a positive or zero",
                 "items": {
-                  "type" : "string",
-                  "x-cds-type" : "RateString"
+                  "type": "string",
+                  "x-cds-type": "RateString"
                 }
               }
             },
@@ -549,7 +543,7 @@
             ],
             "type": "object",
             "properties": {
-              "primary":{
+              "primary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
@@ -573,7 +567,7 @@
                   "previousDays"
                 ]
               },
-              "secondary":{
+              "secondary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
@@ -607,7 +601,7 @@
             ],
             "type": "object",
             "properties": {
-              "primary":{
+              "primary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
@@ -631,7 +625,7 @@
                   "previousDays"
                 ]
               },
-              "secondary":{
+              "secondary": {
                 "type": "object",
                 "properties": {
                   "currentDay": {
@@ -673,8 +667,8 @@
         }
       },
       "PerformanceHours": {
-        "type" : "string",
-        "x-cds-type" : "RateString",
+        "type": "string",
+        "x-cds-type": "RateString",
         "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero"
       },
       "InvocationMetricsV3": {
@@ -691,16 +685,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -714,16 +708,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -737,16 +731,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -760,16 +754,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -783,16 +777,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -806,16 +800,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -829,16 +823,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "API call counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1085,16 +1079,16 @@
         "type": "object",
         "properties": {
           "currentDay": {
-            "type" : "integer",
-            "x-cds-type" : "NaturalNumber",
+            "type": "integer",
+            "x-cds-type": "NaturalNumber",
             "description": "Session count for current day"
           },
           "previousDays": {
             "type": "array",
             "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
             "items": {
-              "type" : "integer",
-              "x-cds-type" : "NaturalNumber"
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
             }
           }
         },
@@ -1265,16 +1259,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "Error counts for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Error counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1292,14 +1286,14 @@
                 "type": "object",
                 "properties": {
                   "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
                   }
                 },
                 "additionalProperties": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber",
                   "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
                 }
               },
@@ -1310,14 +1304,14 @@
                   "type": "object",
                   "properties": {
                     "500": {
-                      "type" : "integer",
-                      "x-cds-type" : "NaturalNumber",
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
                       "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
                     }
                   },
                   "additionalProperties": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
                   }
                 }
@@ -1337,14 +1331,14 @@
                 "type": "object",
                 "properties": {
                   "500": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support for the JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
                   }
                 },
                 "additionalProperties": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber",
                   "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
                 }
               },
@@ -1355,14 +1349,14 @@
                   "type": "object",
                   "properties": {
                     "500": {
-                      "type" : "integer",
-                      "x-cds-type" : "NaturalNumber",
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
                       "description": "Number of errors for HTTP error code 500. Note that this field is an example of a single entry due to the lack of OAS support JSON Schema `patternProperties` syntax. See the `additionalProperties` field in this schema for the generic property structure for error code counts"
                     }
                   },
                   "additionalProperties": {
-                    "type" : "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of errors for a specific HTTP error code. Note that the property name must be 3 digits represent the HTTP error code the error is for"
                   }
                 }
@@ -1387,16 +1381,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of calls rejected for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1410,16 +1404,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of calls rejected for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1443,16 +1437,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of errors for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1466,16 +1460,16 @@
             "type": "object",
             "properties": {
               "currentDay": {
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of rejections for current day"
               },
               "previousDays": {
                 "type": "array",
                 "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1509,12 +1503,12 @@
             "properties": {
               "individual": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
+                "x-cds-type": "NaturalNumber",
                 "description": "Active ongoing authorisation count for individual customers"
               },
               "nonIndividual": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
+                "x-cds-type": "NaturalNumber",
                 "description": "Active ongoing authorisation count for non-individual customers"
               }
             },
@@ -1539,12 +1533,12 @@
                     "properties": {
                       "individual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
+                        "x-cds-type": "NaturalNumber",
                         "description": "New authorisation count for individual customers"
                       },
                       "nonIndividual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
+                        "x-cds-type": "NaturalNumber",
                         "description": "New authorisation count for non-individual customers"
                       }
                     },
@@ -1559,12 +1553,12 @@
                     "properties": {
                       "individual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
+                        "x-cds-type": "NaturalNumber",
                         "description": "New authorisation count for individual customers"
                       },
                       "nonIndividual": {
                         "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
+                        "x-cds-type": "NaturalNumber",
                         "description": "New authorisation count for non-individual customers"
                       }
                     },
@@ -1592,12 +1586,12 @@
                       "properties": {
                         "individual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
+                          "x-cds-type": "NaturalNumber",
                           "description": "New authorisation count for individual customers"
                         },
                         "nonIndividual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
+                          "x-cds-type": "NaturalNumber",
                           "description": "New authorisation count for non-individual customers"
                         }
                       },
@@ -1612,12 +1606,12 @@
                       "properties": {
                         "individual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
+                          "x-cds-type": "NaturalNumber",
                           "description": "New authorisation count for individual customers"
                         },
                         "nonIndividual": {
                           "type": "integer",
-                          "x-cds-type" : "NaturalNumber",
+                          "x-cds-type": "NaturalNumber",
                           "description": "New authorisation count for non-individual customers"
                         }
                       },
@@ -1645,12 +1639,12 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Revoked authorisation count for individual customers"
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Revoked authorisation count for non-individual customers"
                   }
                 },
@@ -1660,23 +1654,23 @@
                 "type": "array",
                 "description": "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Revoked authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Revoked authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Revoked authorisation count for individual customers"
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Revoked authorisation count for non-individual customers"
                     }
+                  }
                 }
               }
             },
@@ -1698,12 +1692,12 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Amended authorisation count for individual customers"
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Amended authorisation count for non-individual customers"
                   }
                 },
@@ -1713,23 +1707,23 @@
                 "type": "array",
                 "description": "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Amended authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Amended authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Amended authorisation count for individual customers"
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Amended authorisation count for non-individual customers"
                     }
+                  }
                 }
               }
             },
@@ -1751,12 +1745,12 @@
                 "properties": {
                   "individual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Expired authorisation count for individual customers"
                   },
                   "nonIndividual": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Expired authorisation count for non-individual customers"
                   }
                 },
@@ -1766,23 +1760,23 @@
                 "type": "array",
                 "description": "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
-                    "required": [
-                      "individual",
-                      "nonIndividual"
-                    ],
-                    "type": "object",
-                    "properties": {
-                      "individual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Expired authorisation count for individual customers"
-                      },
-                      "nonIndividual": {
-                        "type": "integer",
-                        "x-cds-type" : "NaturalNumber",
-                        "description": "Expired authorisation count for non-individual customers"
-                      }
+                  "required": [
+                    "individual",
+                    "nonIndividual"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "individual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Expired authorisation count for individual customers"
+                    },
+                    "nonIndividual": {
+                      "type": "integer",
+                      "x-cds-type": "NaturalNumber",
+                      "description": "Expired authorisation count for non-individual customers"
                     }
+                  }
                 }
               }
             },
@@ -1797,7 +1791,7 @@
             "properties": {
               "currentDay": {
                 "type": "integer",
-                "x-cds-type" : "NaturalNumber",
+                "x-cds-type": "NaturalNumber",
                 "description": "Number of consents flows that were not successfully authorised for the current day"
               },
               "previousDays": {
@@ -1805,7 +1799,7 @@
                 "description": "Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                 "items": {
                   "type": "integer",
-                  "x-cds-type" : "NaturalNumber"
+                  "x-cds-type": "NaturalNumber"
                 }
               }
             },
@@ -1831,7 +1825,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1839,7 +1833,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
@@ -1854,7 +1848,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1862,7 +1856,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
@@ -1877,7 +1871,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1885,7 +1879,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
@@ -1900,7 +1894,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1908,7 +1902,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
@@ -1923,7 +1917,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1931,7 +1925,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },
@@ -1946,7 +1940,7 @@
                 "properties": {
                   "currentDay": {
                     "type": "integer",
-                    "x-cds-type" : "NaturalNumber",
+                    "x-cds-type": "NaturalNumber",
                     "description": "Number of abandoned consent flows for this stage for the current day"
                   },
                   "previousDays": {
@@ -1954,7 +1948,7 @@
                     "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
                     "items": {
                       "type": "integer",
-                      "x-cds-type" : "NaturalNumber"
+                      "x-cds-type": "NaturalNumber"
                     }
                   }
                 },

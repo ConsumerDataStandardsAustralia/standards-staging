@@ -5,8 +5,7 @@
     "description": "This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.",
     "version": "1.33.0"
   },
-  "servers": [
-    {
+  "servers": [{
       "url": "https://data.holder.com.au/"
     }
   ],
@@ -63,8 +62,7 @@
         "summary": "Get oAuth Client Registration",
         "description": "Get a Client Registration for a given Client ID.",
         "operationId": "GetClientRegistration",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "ClientId",
             "in": "path",
             "description": "The client ID issued by the target Data Holder",
@@ -72,8 +70,7 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "Authorization",
             "in": "header",
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
@@ -122,8 +119,7 @@
         "summary": "Update Data Recipient Registration",
         "description": "Update a Client Registration for a given Client ID.",
         "operationId": "PutDataRecipientRegistration",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "ClientId",
             "in": "path",
             "description": "The client ID issued by the target Data Holder",
@@ -131,8 +127,7 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "Authorization",
             "in": "header",
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
@@ -203,8 +198,7 @@
         "summary": "Delete Data Recipient oAuth Client Registration",
         "description": "Delete a Client Registration for a given Client ID.",
         "operationId": "DeleteDataRecipientRegistration",
-        "parameters": [
-          {
+        "parameters": [{
             "name": "ClientId",
             "in": "path",
             "description": "The client ID issued by the target Data Holder",
@@ -212,8 +206,7 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
+          }, {
             "name": "Authorization",
             "in": "header",
             "description": "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**",
@@ -412,9 +405,9 @@
             "type": "array",
             "description": "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
             "example": [
-                "client_credentials",
-                "authorization_code",
-                "refresh_token"
+              "client_credentials",
+              "authorization_code",
+              "refresh_token"
             ],
             "items": {
               "type": "string",
@@ -532,8 +525,7 @@
         }
       },
       "ClientRegistration": {
-        "allOf": [
-          {
+        "allOf": [{
             "required": [
               "aud",
               "exp",
@@ -572,8 +564,7 @@
                 "x-cds-type": "URIString"
               }
             }
-          },
-          {
+          }, {
             "$ref": "#/components/schemas/RegistrationProperties"
           }
         ]
