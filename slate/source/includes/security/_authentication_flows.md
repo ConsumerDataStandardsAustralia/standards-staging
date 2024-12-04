@@ -37,7 +37,7 @@ In addition, the following statements are applicable:
 - The algorithm for the creation of the OTP is at the discretion of the Data Holder but **SHOULD** incorporate a level of pseudorandomness appropriate for the use case
 - Data Holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page
 
-**From May 12th 2025**   
+**From May 12th 2025**, 
 
 - Data Holders **SHALL** require the value of `response_type` described in [**[RFC6749]**](#nref-RFC6749) to be `code`
 
@@ -54,7 +54,8 @@ In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authoris
 ```diff
 - Deprecated OIDC Hybrid Flow requirements. This authentication flow is no longer supported
 ```
-**From 12th May 2025**, Data Recipient Software Products **SHALL ONLY** use `response_type` value `code` for authorisation requests.
+**Until 12th May 2025**, Data Recipient Software Products **SHOULD** use Authorization Code Flow. 
+**From 12th May 2025**, Data Recipient Software Products **SHALL** only use Authorization Code Flow. 
 
 In addition, the following statements are applicable:
 
@@ -63,14 +64,14 @@ In addition, the following statements are applicable:
 - Data Recipient Software Products **MAY** send requests with a "x-fapi-customer-ip-address" header containing a valid IPv4 or IPv6 address.
 - Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
 - Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use S256 as the code challenge method.
-- Data Recipient Software Products **SHOULD** use Authorization Code Flow. From May 12th 20205, Data Recipient Software Products **SHALL** only use Authorization Code Flow.
+
 
 ### OIDC Hybrid Flow
 The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user
 agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data
-Holder’s Authorisation end point in the context of an **[[OIDC]](#nref-OIDC)** authentication
-request. The OIDC Hybrid Flow incorporates aspects of the both the implicit flow and
-authorisation code flow detailed under **[[OIDC]](#nref-OIDC)**.
+Holder’s Authorization end point in the context of an **[[OIDC]](#nref-OIDC)** authentication
+request. The OIDC Hybrid Flow incorporates aspects of the both the Implicit Flow and
+Authorization Code Flow detailed under **[[OIDC]](#nref-OIDC)**.
 
 Only a `response_type` (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
 
@@ -85,7 +86,7 @@ The following statements are applicable for this flow:
 Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
 
 > **JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)**
-> Data Holders **MAY** support Authorisation Response encryption.
+> Data Holders **MAY** support Authorization Response encryption.
 >
 > However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption **MAY** be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.
 
