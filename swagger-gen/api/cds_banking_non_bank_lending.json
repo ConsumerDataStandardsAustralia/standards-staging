@@ -4173,7 +4173,7 @@
           },
           "status": {
             "type": "string",
-            "description": "Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction.",
+            "description": "Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction.<ul><li>`PENDING` meaning the transaction has affected the _availableBalance_ of the account</li><li>`POSTED` meaning it has affected the _availableBalance_ and _currentBalance_ of the account.</li></ul>",
             "enum": [
               "PENDING",
               "POSTED"
