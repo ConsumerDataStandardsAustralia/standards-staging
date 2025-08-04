@@ -1,5 +1,5 @@
 ---
-title: CDR Data Standards - v{version_number} Release Notes
+title: CDR Data Standards - v1.36.0 Release Notes
 
 #language_tabs: # must be one of https://git.io/vQNgJ
 
@@ -12,8 +12,8 @@ includes:
 search: false
 ---
 
-# V{version_number} Release Notes
-Release notes for version **{version_number}** of the [CDR Data Standards](../../).
+# V1.36.0 Release Notes
+Release notes for version **1.36.0** of the [CDR Data Standards](../../).
 
 ## Changes Made
 ### Change Requests
