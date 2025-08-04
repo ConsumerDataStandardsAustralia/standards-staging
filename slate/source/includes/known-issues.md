@@ -1,8 +1,6 @@
 # Known Issues
 
-```diff
-Removed Certificate Management known issue, as it has been addressed
-```
+
 
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
@@ -14,6 +12,7 @@ Inconsistencies in Telco Candidate Standards | <ul><li>The Get Telco Products en
 ## Future improvements
 
 The following improvements will be incorporated into future versions of the Standards.
+
 
 
 
