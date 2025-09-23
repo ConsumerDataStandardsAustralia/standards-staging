@@ -51,17 +51,7 @@ This release addresses the following Decisions published on [Standards](https://
 |------|-----------|----|
 
 
-## API Endpoints
-|Change|Description|Link|
-|------|-----------|----|
-
-
-## Information Security Profile
-|Change|Description|Link|
-|------|-----------|----|
-
-
-## Register Standards
+## Authentication Schedule
 |Change|Description|Link|
 |------|-----------|----|
 
@@ -71,12 +61,57 @@ This release addresses the following Decisions published on [Standards](https://
 |------|-----------|----|
 
 
-## Non-Functional Requirements
+## Security Profile
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## DCR APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Register APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Authorisation Scopes
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Non-functional Requirements
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Banking APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Energy APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Common APIs
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Admin APIs
 |Change|Description|Link|
 |------|-----------|----|
 
 
 ## Shared Responsibility
+|Change|Description|Link|
+|------|-----------|----|
+
+
+## Energy Secondary DH APIs
 |Change|Description|Link|
 |------|-----------|----|
 
