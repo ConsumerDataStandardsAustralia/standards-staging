@@ -1,7 +1,6 @@
 # Known Issues
 
 
-
 There are certain aspects of the standards that are actively under review. These known issues are articulated in the following table.
 
 Issue | Description
