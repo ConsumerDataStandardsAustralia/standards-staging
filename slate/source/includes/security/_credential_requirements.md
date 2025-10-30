@@ -13,7 +13,7 @@ Data holders:
 - **SHOULD** implement [Multi-Factor Authentication](#authentication-schedule) for user access to CDR data containing personal information.
 
 ### One Time Password Credential Requirements
-Where a data holder supports the 'Redirect to Web with OTP' flow:
+Where a data holder supports the 'Redirect to Web' flow with OTP:
 
 - The data holder **MUST** request a user identifier in accordance with [User Identifiers](#user-identifiers).
 - The data holder **MUST** provide a one-time password (OTP) to the customer through an existing channel or mechanism that the customer can then enter into the redirected page.
@@ -21,11 +21,15 @@ Where a data holder supports the 'Redirect to Web with OTP' flow:
 - The data holder **SHOULD** implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism.
 - The provided OTP **MUST** only be used for authentication for CDR based sharing and **MUST NOT** be usable for the authorisation of other transactions or actions.
 - The provided OTP **MUST** be invalidated after a period of time at the discretion of the data holder. This expiry period **SHOULD** facilitate enough time for the customer to reasonably complete the authorisation process.
-- The provided OTP **MUST** be numeric digits and be between 4 and 6 digits in length.
-- The algorithm for the creation of the OTP is at the discretion of the data holder but **SHOULD** incorporate a level of pseudo-randomness appropriate for the use case.
+- The provided OTP **MUST** be numeric digits and be between 6 and 10 digits in length. 
+- The algorithm for the creation of the OTP is at the discretion of the data holder but **MUST** incorporate a level of pseudo-randomness appropriate for the use case. 
+- **MUST** deliver OTPs to a channel that has been pre-registered by the customer and is currently elected by the end user to receive authentication secrets. 
 - The data holder **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
+
 
 ### Restricted Credentials
 The following credential constraints apply such that Authenticators:
 
 - **MUST NOT** permit Memorised Secrets defined by **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)** to achieve 'LoA 2' (as a single factor of authentication only).
+- **SHOULD NOT** use SMS as the delivery mechanism for OTPs.
+- **SHOULD NOT** use e-mail as the delivery mechanism for OTPs.
