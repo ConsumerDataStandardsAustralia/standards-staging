@@ -1999,6 +1999,137 @@
               }
             },
             "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned consent should assigned to one, and only one, stage)."
+          },
+          "authRequestChannel": {
+    "type": "array",
+    "description": "The number of new interactions by ADR request channel.",
+    "items": {
+        "required": [
+            "channel"
+        ],
+        "type": "object",
+        "properties": {
+            "channel": {
+                "type": "string",
+                "description": "The channel reported by the ADR to the Data Holder for initiating the authentication flow. Valid values are `WEB` or `APP` as provided by the ADR in the x-cds-originating-channel header.",
+                "enum": [
+                    "WEB",
+                    "APP"
+                ]
+            },
+            "currentDay": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber",
+                "description": "Number of new authorisations for the current day for the ADR request channel."
+            },
+            "previousDays": {
+                "type": "array",
+                "description": "Number of new authorisations for previous days for the ADR request channel. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                "items": {
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                }
+            }
+        }
+    }
+          },
+          "authCompletionChannel" : {
+              "type": "array",
+              "description": "The number of new interactions by Data Holder completion channel.",
+              "items": {
+                  "required": [
+                      "channel"
+                  ],
+                  "type": "object",
+                  "properties": {
+                      "channel": {
+                          "type": "string",
+                          "description": "This is the Data Holder channel that authorisation is completed by. It can be “WEB”, “APP” or “DECOUPLED”.",
+                          "enum": [
+                              "WEB",
+                              "APP",
+                              "DECOUPLED"
+                          ]
+                      },
+                      "currentDay": {
+                          "type": "integer",
+                          "x-cds-type": "NaturalNumber",
+                          "description": "Number of new authorisations for the current day for the Data Holder completion channel."
+                      },
+                      "previousDays": {
+                          "type": "array",
+                          "description": "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                          "items": {
+                              "type": "integer",
+                              "x-cds-type": "NaturalNumber"
+                          }
+                      }
+                  }
+              }
+          },
+          "authenticators" : {
+              "type": "array",
+              "description": "The list of authentication methods used.",
+              "items": {
+                  "required": [
+                      "levelOfAssurance",
+                      "channel",
+                      "methods",
+                      "count",
+                      "successCount"
+                  ],
+                  "type": "object",
+                  "properties": {
+                      "levelOfAssurance": {
+                          "type": "string",
+                          "description": "CDR Level of Assurance for authentication. One of “urn:cds.au:cdr:2”, “urn:cds.au:cdr:3”, or “urn:cds.au:cdr:4”.",
+                          "enum": [
+                              "urn:cds.au:cdr:2",
+                              "urn:cds.au:cdr:3",
+                              "urn:cds.au:cdr:4"
+                          ]
+                      },
+                      "channel": {
+                          "type": "string",
+                          "description": "This is the Data Holder channel that authentication is completed by. It can be “WEB”, “APP” or “DECOUPLED”.",
+                          "enum": [
+                              "WEB",
+                              "APP",
+                              "DECOUPLED"
+                          ]
+                      },
+                      "methods ": {
+                          "type": "array",
+                          "description": "List of authentication methods. Values chosen by Data Holders MUST align as closely as possible to Division 3 of [DigitalID-Accreditation]. Permitted values are: “MEMORISED_SECRET”, “LOOK_UP_SECRET”, “SF_OTP”, “MF_OTP”, “SF_CRYPTO_SW”, “MF_CRYPTO_SW”, “SF_CRYPTO_DEVICE”, “MF_CRYPTO_DEVICE”, “OUT_OF_BAND_DEVICE”, “PASSKEY”, “OTHER”. Where multiple factors are used to achieve the authentication challenge, each MUST be provided in the array.",
+                          "items": {
+                              "type": "string",
+                              "enum": [
+                                  "MEMORISED_SECRET",
+                                  "LOOK_UP_SECRET",
+                                  "SF_OTP",
+                                  "MF_OTP",
+                                  "SF_CRYPTO_SW",
+                                  "MF_CRYPTO_SW",
+                                  "SF_CRYPTO_DEVICE",
+                                  "MF_CRYPTO_DEVICE",
+                                  "OUT_OF_BAND_DEVICE",
+                                  "PASSKEY",
+                                  "OTHER"
+                              ]
+                          }
+                      },
+                      "count": {
+                          "type": "integer",
+                          "x-cds-type": "NaturalNumber",
+                          "description": "The number of authentications challenged for the Level of Assurance and methods list."
+                      },
+                      "successCount": {
+                          "type": "integer",
+                          "x-cds-type": "NaturalNumber",
+                          "description": "The number of successful authentications for the Credential Level and methods list."
+                      }
+                  }
+              }
           }
         },
         "description": "Authorisation counts for the data holder."
