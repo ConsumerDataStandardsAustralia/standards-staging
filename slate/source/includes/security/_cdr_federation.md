@@ -23,9 +23,10 @@ A Data Holder assumes the role of an **[[OIDC]](#nref-OIDC)** [OpenID Provider](
 For the purposes of this standard a single designated organisation **MAY** be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
 
 
+```diff
+Removed FDO from Multi Brand Support
+```
 #### Multi-Brand Support (Separate Issuers For Data Holder Brands)
-
-**From July 4th 2022**
 
 * Where a Data Holder has multiple brands, each brand **MUST** have a separate issuer.
 
