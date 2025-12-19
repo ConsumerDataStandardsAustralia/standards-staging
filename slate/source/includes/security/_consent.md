@@ -1,9 +1,9 @@
-## Consent
+## 9. Consent
 Consent requirements will be communicated between the Data Recipient Software Product and Data Holder via the authorisation request object. The primary mechanism for capturing consent will be scopes and claims under **[[OIDC]](#nref-OIDC)**.
 
 Other patterns for the establishment of consent **MAY** be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
-## Scopes and Claims
+## 10. Scopes and Claims
 
 ### OIDC Scopes
 In addition to CDR data scopes the following scopes **MUST** be supported:
@@ -12,8 +12,6 @@ In addition to CDR data scopes the following scopes **MUST** be supported:
 - `profile`: Data Holders **MUST** support the `profile` scope as described in [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) of **[[OIDC]](#nref-OIDC)**. This scope **MAY** be present on an authentication request.
 
 ### Claims
-
-
 
 The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[[OIDC]](#nref-OIDC)** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims **MUST** be supported for the authenticated End-User*:
 
@@ -24,7 +22,6 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 - _given_name_: Given name(s) or first name(s) of the End-User.
 - _family_name_: Surname(s) or last name(s) of the End-User.
 - _updated_at_: Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC _updated_at_ time.
-
 
 
 The following standard **[[OIDC]](#nref-OIDC)** claims **MAY** be supported:

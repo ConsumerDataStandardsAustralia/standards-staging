@@ -1,4 +1,4 @@
-## CDR Federation
+## 2. CDR Federation
 The CDR Federation will facilitate the secure exchange of consumer data and federation metadata between
 multiple system entities which will assume one or more of the following roles:
 
@@ -22,10 +22,11 @@ A Data Holder assumes the role of an **[[OIDC]](#nref-OIDC)** [OpenID Provider](
 
 For the purposes of this standard a single designated organisation **MAY** be represented via the Register as multiple separate Data Holders to support multiple brands or market identities.
 
-
 ```diff
-Removed FDO from Multi Brand Support
+Removed past FDO for Multi-Brand Support
+- From July 4th 2022
 ```
+
 #### Multi-Brand Support (Separate Issuers For Data Holder Brands)
 
 * Where a Data Holder has multiple brands, each brand **MUST** have a separate issuer.
@@ -33,9 +34,7 @@ Removed FDO from Multi Brand Support
 ### Secondary Data Holder
 A Secondary Data Holder (SDH) is a system entity that is designated to provide CDR data but does so via a standard Data Holder acting as a gateway. A Secondary Data Holder does not interact directly with Data Recipients and is not registered with the Register.
 
-
 A request for data from a Secondary Data Holder by a standard Data Holder is known as a 'Shared Responsibility Data Request'.
-
 
 See the [Shared Responsibility](#shared-responsibility) section contains standards related to Secondary Data Holders and Shared Responsibility Data Requests.
 

@@ -32,14 +32,16 @@ Accept: application/json;charset=UTF-8
 Accept: application/json
 Accept: AppliCAtion/JSon;Charset=uTf-8
 ```
-```diff
-Added following in header and response:
-+ x-cds-user-present
 
-Removed following from header:
-- x-fapi-auth-date 
+```diff
+Removed Request Headers:
+- x-fapi-auth-date
 - x-fapi-customer-ip-address
+
+Added Request Header:
++ x-cds-user-present
 ```
+
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
 **Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. The media type must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
@@ -48,7 +50,7 @@ Header Field | Description | Mandatory?
 **x-min-v** | Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The holder should respond with the highest supported version between _x-min-v_ and _x-v_. If the value of _x-min-v_ is equal to or higher than the value of _x-v_ then the _x-min-v_ header should be treated as absent. <br/>If all versions requested are not supported then the holder must respond with a `406 Not Acceptable`. | Optional
 **x-&lt;HID&gt;-v** | A holder specific version of extension fields. Should not be used in conjunction with _x-min-v_. | Optional
 **x-fapi-interaction-id** | An optional **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder must "play back" this value in the _x-fapi-interaction-id_ response header. Not required for unauthenticated calls.| Optional
-**x-cds-user-present** | The presence of this header indicates that the API is being called in a customer present context. Defaults to false if absent. | Conditional
+**x-cds-user-present** | The presence of this header indicates that the API is being called in a customer present context. Defaults to `false` if absent. | Conditional
 **x-cds-client-headers** | The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul>| Conditional
 
 ### Response headers
@@ -58,7 +60,6 @@ Header Field | Description | Mandatory?
 **Retry-After** | Header indicating the time (in seconds) that the client should wait before retrying an operation. The holder should include this header along with responses with the HTTP status code of `429 Too many requests`. | Optional
 **x-v** | The payload version that the endpoint has responded with. | Mandatory
 <span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. The data holder must set the response header _x-fapi-interaction-id_ to the value received from the corresponding request header or to a new **[[RFC4122]](#nref-RFC4122)** UUID value if the request header was not provided. This header **MUST** be responded for success and error responses for authenticated APIs. | Mandatory
-**x-cds-user-present** | The presence of this header indicates that the API is being called in a customer present context. Defaults to false if absent. | Conditional
 
 ### Additional Headers
 

@@ -1,5 +1,5 @@
 <a id="identifiers"></a>
-## Identifiers and Subject Types  
+## 12. Identifiers and Subject Types  
 ### sub claim
 The identifier for an authenticated end-user (subject) **MUST** be passed in the _sub_ claim of an [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and [UserInfo response](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse) as defined by **[[OIDC]](#nref-OIDC)**.
 

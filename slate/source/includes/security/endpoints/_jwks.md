@@ -14,9 +14,6 @@ Data Holders **MUST** support a JWKS endpoint.
 
 This endpoint does not require [CORS](#cors).
 
-
-#### JWKS URIs
-
-In addition to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** section 8.9 **from July 4th 2022**, the following requirements apply:
-
-* Data Holders and Data Recipients JWK sets **MUST NOT** contain multiple keys with the same _kid_.
+```diff
+Removed detail for JWKS URIs
+```

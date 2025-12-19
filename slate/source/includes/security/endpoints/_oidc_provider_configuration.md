@@ -84,10 +84,9 @@ At a minimum, the Data Holder metadata **MUST** include:
 - _token_endpoint_auth_signing_alg_values_supported_: The list of the JWS signing algorithms (_alg_ values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the `private_key_jwt` authentication method.
 - _userinfo_endpoint_: URL of the UserInfo endpoint.
 
-**[[OIDD]](#nref-OIDD), only if OIDC Hybrid Flow is supported**
-
-- _id_token_encryption_alg_values_supported_: The list of the supported JWE algorithms for securing the issued ID tokens. Must conform to **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** and **[[OIDD]](#nref-OIDD)**. Required only for Data Holders supporting OIDC Hybrid Flow.
-- _id_token_encryption_enc_values_supported_: The list of the supported JWE encryption methods for securing the issued ID tokens. Required only for Data Holders supporting OIDC Hybrid Flow.
+```diff
+Remove section '[OIDD], only if OIDC Hybrid Flow is supported'
+```
 
 **[[RFC8414]](#nref-RFC8414)**
 

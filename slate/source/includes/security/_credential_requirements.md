@@ -1,4 +1,4 @@
-## Credential Requirements
+## 14. Credential Requirements
 
 ### User Identifiers
 If a data holder requests a user identifier for the purposes of identifying the customer during authentication, then the data holder:

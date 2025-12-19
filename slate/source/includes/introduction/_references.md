@@ -1,14 +1,15 @@
 ## Normative References
 
 ```diff
-Added following references
+Removed Normative References:
+- FAPI 1.0 Baseline
+- FAPI 1.0 Advanced
+
+Added Normative References:
 + FAPI 2.0 Security Profile
 + FAPI 2.0 Message Signing
 + RFC6749
-
-Removed following references:
-- FAPI 1.0 Basic
-- FAPI 1.0 Advanced
++ RFC7636
 ```
 
 
@@ -19,7 +20,7 @@ Removed following references:
 | <a id="nref-DCR"></a>**[DCR]** | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591> | July 2015 |
 | <a id="nref-DigitalID-Accreditation"></a>**[DigitalID-Accreditation]** | Digital ID (Accreditation) Data Standards 2024: <https://www.legislation.gov.au/F2024L01435/latest/text> | November 2024 |
 | <a id="nref-FAPI-2-0-Security-Profile"></a>**[FAPI-2.0-Security-Profile]** | Financial-grade API Security Profile 2.0: <br><https://openid.net/specs/fapi-security-profile-2_0-final.html> | February 2025 |
-| <a id="nref-FAPI-2-0-Message-Signing"></a>**[FAPI-2.0-Message-Signing]** | Financial-grade API Security Profile 2.0 - Message Signing: <br><https://openid.net/specs/fapi-2_0-message-signing.html> | March 2023 |
+| <a id="nref-FAPI-2-0-Message-Signing"></a>**[FAPI-2.0-Message-Signing]** | Financial-grade API Security Profile 2.0 - Message Signing: <br><https://openid.net/specs/fapi-message-signing-2_0.html> | September 2025 |
 | <a id="nref-JARM"></a>**[JARM]** | Financial-grade API: JWT Secured Authorization Response Mode for OAuth 2.0 (JARM): <br><https://bitbucket.org/openid/fapi/src/master/Financial_API_JWT_Secured_Authorization_Response_Mode.md> | October 2020 |
 | <a id="nref-RFC8259"></a><a id="nref-JSON"></a>**[JSON]** | The JavaScript Object Notation (JSON) Data Interchange Format: <https://tools.ietf.org/html/rfc8259> | December 2017 |
 | <a id="nref-RFC7518"></a><a id="nref-JWA"></a>**[JWA]** | JSON Web Algorithms (JWA): <https://tools.ietf.org/html/rfc7518> | May 2015 |

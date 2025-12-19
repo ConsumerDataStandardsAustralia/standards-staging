@@ -1,16 +1,14 @@
-## Authentication Flows
+## 4. Authentication Flows
 
+```diff
+Section updated
+```
 
-This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI]](#iref-FAPI)**.
-
-
+This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI 2.0 Security Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
 
-**Until May 12th 2025**, Data Holders **MAY** support OIDC Hybrid Flow outlined at [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**.
-
 No other flows are currently supported.
-
 
 ### Baseline Security Provisions
 
@@ -23,9 +21,7 @@ In addition, the following statements are applicable:
 - Data Holders **MUST** support Authorization Code Flow.
 - Data Holders **SHALL** require the value of *response_type* described in **[[RFC6749]](#nref-RFC6749)** to be `code`.
 
-
 #### Data Recipient Software Products
-
 
 **Until 12th May 2025**, Data Recipient Software Products **SHOULD** use Authorization Code Flow. 
 **From 12th May 2025**, Data Recipient Software Products **SHALL** only use Authorization Code Flow. 
@@ -38,11 +34,9 @@ In addition, the following statements are applicable:
 - Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
 - Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use `S256` as the code challenge method.
 
-### OIDC Hybrid Flow
-The **[[OIDC]](#nref-OIDC)** Hybrid Flow is a type of redirection flow where the consumer's user agent is redirected from a Data Recipient Software Product’s (Relying Party) web site to a Data Holder’s Authorization endpoint in the context of an **[[OIDC]](#nref-OIDC)** authentication request. The OIDC Hybrid Flow incorporates aspects of the both the Implicit Flow and Authorization Code Flow detailed under **[[OIDC]](#nref-OIDC)**.
-
-Only a _response_type_ (see [section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code id_token` **SHALL** be allowed.
-
+```diff
+Removed OIDC Hybrid Flow section
+```
 
 ### Authorization Code Flow
 
@@ -74,7 +68,6 @@ In addition,
 - Data Recipients **MAY** request response encryption using one of the advertised encryption sets.
 - Data Recipients **MAY** request no response encryption by omitting the values in their client registration.
 - If _authorization_signed_response_alg_ is omitted, the default algorithm is `PS256`.
-
 
 Additional requirements and guidelines for the authentication flows are contained in the [Consumer Experience](#consumer-experience) section.
 

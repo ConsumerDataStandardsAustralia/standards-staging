@@ -1,7 +1,5 @@
 
-## Certificate Management
-
-
+## 16. Certificate Management
 
 ### Issued by the Register for Data Holders
 Certificate | Function | Notes
@@ -10,13 +8,10 @@ Certificate | Function | Notes
 
 ### Issued by the Register CA for Data Recipients
 
-
-
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 | **Client Certificate** | Secures the following:<ul><li>Consuming Register APIs.</li><li>Consuming Data Holder APIs.</li></ul>
 | <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN. | Not currently required by Data Recipients.
-
 
 ### Certificate Trust Model
 
@@ -25,8 +20,6 @@ The CDR utilises a private certificate trust chain for all Register CA secured e
 Operational detail related to the CDR Certificate Authority is maintained by the ACCC, and is [available here](https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/360415310/Certificate+Management).
 
 ### Certificate Signing Request Profile
-
-
 
 When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
 

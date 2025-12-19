@@ -1,6 +1,4 @@
-## Transaction Security
-
-
+## 15. Transaction Security
 
 ### Use of TLS
 All HTTP calls **MUST** be made using HTTPS incorporating TLS >= 1.2.
@@ -13,11 +11,7 @@ All back-channel communication between Data Recipient Software Product and Data 
 - The presented Client transport certificate **MUST** be issued by the CDR Certificate Authority (CA). The Server **MUST NOT** trust Client transport certificates issued by other authorities.
 - The presented Server transport certificate **MUST** be issued by the CDR Certificate Authority (CA). The Client **MUST NOT** trust Server transport certificates issued by other authorities.
 
-
-
-
 Endpoints for transferring CDR Data that are classified as not requiring authentication (i.e. public endpoints) or those specified as TLS, **MUST NOT** use **[[MTLS]](#nref-MTLS)**.
-
 
 ### Holder of Key Mechanism
 
@@ -27,10 +21,7 @@ Note that, by implication, resource requests **MUST** be validated to ensure the
 
 OAUTB **SHALL NOT** be supported due to a lack industry support.
 
-
-
 **[[MTLS]](#nref-MTLS)** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica) of **[[MTLS]](#nref-MTLS)**.
-
 
 ### Ciphers
 
@@ -49,4 +40,3 @@ The following cipher suites **SHOULD NOT** be supported:
 **From March 17th 2025, the following requirements SHALL apply:**
 
 In addition to [section 8.5](https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** only cipher suites recommended in **[[BCP195]](#nref-BCP195)** **SHALL** be permitted.
-
