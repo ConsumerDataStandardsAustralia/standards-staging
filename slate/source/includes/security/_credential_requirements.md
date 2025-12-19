@@ -23,7 +23,7 @@ Where a data holder supports the 'Redirect to Web' flow with OTP:
 - The provided OTP **MUST** be invalidated after a period of time at the discretion of the data holder. This expiry period **SHOULD** facilitate enough time for the customer to reasonably complete the authorisation process.
 - The provided OTP **MUST** be numeric digits and be between 6 and 10 digits in length. 
 - The algorithm for the creation of the OTP is at the discretion of the data holder but **MUST** incorporate a level of pseudo-randomness appropriate for the use case. 
-- **MUST** deliver OTPs to a channel that has been pre-registered by the customer and is currently elected by the end user to receive authentication secrets. 
+- The data holder **MUST** deliver OTPs to a channel that has been pre-registered by the customer and is currently elected by the end user to receive authentication secrets. 
 - The data holder **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
 
