@@ -35,10 +35,7 @@ Host: api.cdr.gov.au
 <InfoSecBaseUri>/.well-known/openid-configuration
 ```
 
-```diff
-Added ProductBaseUri row in Participant Endpoints table
-+ ProductBaseUri
-```
+
 
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the CDR Data Standards.
 

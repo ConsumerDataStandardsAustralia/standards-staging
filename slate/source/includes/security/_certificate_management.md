@@ -26,11 +26,7 @@ Operational detail related to the CDR Certificate Authority is maintained by the
 
 ### Certificate Signing Request Profile
 
-```diff
-Updated Organization (O) field for the Server in the Certificate Signing Request Profile
-- Brand Name
-+ Legal Entity Name or Brand Name
-```
+
 
 When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
 
