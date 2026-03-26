@@ -1,6 +1,16 @@
 ## Future Dated Obligations
 
+```diff
+Added FDOs for May 2027
++ Redirect to Web
++ One Time Password Credential Requirements
++ Restricted Credentials
++ Pushed Authorisation endpoint
++ Get Configuration v1
 
+Added FDO for November 2027
++ Get Metrics v6
+```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
@@ -43,3 +53,9 @@ The table below highlights these areas of the standards.
 |[Get Instalment Plans Bulk v1](#cdr-banking-api_get-instalment-plans-bulk)|<ul><li>Data Holders **MUST** implement v1 of this endpoint by **November 9th 2026**</li></ul> | November 9th 2026 |
 |[Redirect to App](#redirect-to-app)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
 |[Authentication Flows](#authentication-flows)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Redirect to Web](#redirect-to-web)| Data holders and data recipients **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[One Time Password Credential Requirements](#one-time-password-credential-requirements)| Data holders **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Restricted Credentials](#restricted-credentials)| Data holders **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Pushed Authorisation endpoint](#pushed-authorisation-endpoint)| Data holders and data recipients **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Get Configuration v1](#cdr-common-api_get-configuration)| Data Holders **SHALL** implement v1 of this endpoint by **May 10th 2027**. | May 10th 2027 |
+|[Get Metrics v6](#cdr-admin-api_get-metrics)| <ul><li>Data Holders **SHALL** implement v6 of this endpoint by **November 8th 2027**.</li><li>Data Holders **MAY** retire v5 of this endpoint from **December 10th 2027**.</li></ul> | November 8th 2027 |

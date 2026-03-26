@@ -34,6 +34,11 @@ Accept: application/json
 Accept: AppliCAtion/JSon;Charset=uTf-8
 ```
 
+```diff
+Added Request Header:
++ x-cds-originating-channel
+```
+
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
 **Content-Type** | Standard HTTP Header. Represents the format of the payload provided in the request. The media type must be set to `application/json`. Mandatory for PUT and POST calls.| Conditional
@@ -45,6 +50,7 @@ Header Field | Description | Mandatory?
 **x-fapi-auth-date** | The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls. | Conditional
 <span style="white-space: nowrap;">**x-fapi-customer-ip-address**</span> | The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls. | Conditional
 **x-cds-client-headers** | The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul>| Conditional
+**x-cds-originating-channel** | Mandatory for requests to the [PAR endpoint](#pushed-authorisation-endpoint) to indicate the channel in which the user is initiating an authorisation flow.<br>Valid values are: `APP`, `APP-DECOUPLED`, `WEB`, `WEB-DECOUPLED`. | Conditional
 
 ### Response headers
 Header Field | Description | Mandatory?

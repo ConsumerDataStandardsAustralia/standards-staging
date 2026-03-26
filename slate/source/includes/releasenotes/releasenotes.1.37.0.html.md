@@ -30,7 +30,7 @@ This release addresses the following change requests raised on [Standards Mainte
 ### Decisions
 This release addresses the following Decisions published on [Standards](https://github.com/ConsumerDataStandardsAustralia/standards/issues):
 
-- [Consultation Draft #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX)
+- [Consultation Draft #374 - Minimum Baseline Authentication](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374)
 
 
 ## General Changes
@@ -42,26 +42,35 @@ This release addresses the following Decisions published on [Standards](https://
 ## Introduction
 |Change|Description|Link|
 |------|-----------|----|
+| Updated FDOs | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Added new FDOs for new Redirect to Web, One Time Password Credential Requirements, and Restricted Credentials sections, the updated Pushed Authorisation Request endpoint, the new Get Configuration endpoint, and updated Get Metrics endpoint. | [Future Dated Obligations](../../?diff#future-dated-obligations)
 
 
 ## High Level Standards
 |Change|Description|Link|
 |------|-----------|----|
+| Updated HTTP Headers | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Added *x-cds-originating-channel* header for PAR requests. | [HTTP Headers](../../?diff#http-headers)
 
 
 ## Authentication Schedule
 |Change|Description|Link|
 |------|-----------|----|
+| Added Redirect to Web section | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Added Redirect to Web section. | [Redirect to Web](../../?diff#redirect-to-web)
+| Updated wording | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Minor update to wording in the Fallback Authentication Flows section to align to Redirect to Web. | [Fallback Authentication Flows](../../?diff#fallback-authentication-flows)
 
 
 ## Consumer Experience
 |Change|Description|Link|
 |------|-----------|----|
+| Authentication Standards additions | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): In the Common Authentication Standards table; renamed the 'App install' row to 'Digital onboarding' with additional detail, added new rows for accessibility, error messaging, and unique identifier. | [Common Authentication Standards](../../?diff#consumer-experience_common-authentication-standards)
 
 
 ## Security Profile
 |Change|Description|Link|
 |------|-----------|----|
+| Update to Baseline Credential Requirements | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Updated data holder requirements to expect a risk assessment to determine appropriate authentication levels. | [Credential Requirements](../../?diff#credential-requirements)
+| Updates to OTPs | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Updated One Time Password Credential Requirements section to increase OTP length requirement to 6-10 digits. Changed OTP algorithm requirement from SHOULD to SHALL. Added detail to state that OTPs SHALL be delivered to a channel that has been pre-registered and currently elected to receive authentication secrets. | [Credential Requirements](../../?diff#credential-requirements)
+| Updates to Restricted Credentials | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Updated Restricted Credentials section to discourage SMS and email as OTP delivery mechanisms. | [Credential Requirements](../../?diff#credential-requirements)
+| Updated PAR request headers | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Updated Pushed Authorisation endpoint to include mandatory *x-cds-originating-channel* header for PAR requests. | [Pushed Authorisation endpoint](../../?diff#pushed-authorisation-endpoint)
 
 
 ## DCR APIs
@@ -97,11 +106,13 @@ This release addresses the following Decisions published on [Standards](https://
 ## Common APIs
 |Change|Description|Link|
 |------|-----------|----|
+| Added Get Configuration endpoint | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Added Get Configuration endpoint to support discovery of authentication level requirements. | [Common APIs](../../?diff#common-apis)
 
 
 ## Admin APIs
 |Change|Description|Link|
 |------|-----------|----|
+| Updated Get Metrics | [**Decision #374**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/374): Updated the Get Metrics endpoint to v6 to support authentication metrics. | [Admin APIs](../../?diff#admin-apis)
 
 
 ## Shared Responsibility
