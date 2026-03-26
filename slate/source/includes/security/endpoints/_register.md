@@ -1,8 +1,6 @@
-### Register Endpoints
+### 19.11. Register Endpoints
 
 The CDR Register exposes an OIDC Configuration Endpoint with associated JWKS and token endpoints to facilitate issuance of access tokens to consume the protected Register APIs.
-
-
 
 > Retrieve CDR Register OIDC Discovery Endpoint
 
@@ -27,7 +25,7 @@ Host: api.cdr.gov.au
 }
 ```
 
-### Participant Endpoints
+### 19.12. Participant Endpoints
 
 > OIDC Discovery Configuration Endpoint
 
@@ -35,11 +33,9 @@ Host: api.cdr.gov.au
 <InfoSecBaseUri>/.well-known/openid-configuration
 ```
 
-
-
 Participants will be required to register base URIs against each of their brands to facilitate the implementation of the CDR Data Standards.
 
-Endpoints specified as MTLS **MUST** be configured according to the [Certificate Trust Model](#certificate-trust-model) in the [Certificate Management](#certificate-management) section.  
+Endpoints specified as MTLS **MUST** be configured according to the [Certificate Trust Model](#16-3-certificate-trust-model) in the [Certificate Management](#16-certificate-management) section.  
 Endpoints specified as TLS **MUST** be configured with a certificate issued by a public CA accepted by major web browsers.
 
 | Base URI | DH&nbsp;Brand | ADR&nbsp;Brand | Transaction Security | Description
@@ -47,10 +43,9 @@ Endpoints specified as TLS **MUST** be configured with a certificate issued by a
 |**PublicBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the Consumer Data Standard public endpoints. This should encompass endpoints not requiring authentication that do not have a dedicated base URI. |
 |**ProductBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the Consumer Data Standard product reference data endpoints. **MAY** be the same as the *publicBaseUri*.<br>Data Holders designated for the Energy sector are not required to expose energy product reference endpoints, but **MAY** provide the base URI of the product reference endpoints hosted by the designated data holder. |
 |**ResourceBaseUri**|	<i class="icon-check"></i> | | MTLS | Base URI for the Consumer Data Standard resource endpoints. This **MUST** encompass all CDS resource endpoints requiring authentication. |
-|**InfoSecBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the [OIDC Discovery endpoint](https://openid.net/specs/openid-connect-discovery-1_0.html) only.<br>Endpoints specified in the Discovery endpoint have the requirements detailed in the [Security Endpoints](#security-endpoints) section. |
+|**InfoSecBaseUri**|	<i class="icon-check"></i> | | TLS | Base URI for the [OIDC Discovery endpoint](https://openid.net/specs/openid-connect-discovery-1_0.html) only.<br>Endpoints specified in the Discovery endpoint have the requirements detailed in the [Security Endpoints](#19-security-endpoints) section. |
 |**AdminBaseUri**|	<i class="icon-check"></i> | | MTLS | Base URI for the Consumer Data Standard admin endpoints called by the CDR Register. |
 |**ExtensionBaseUri**|	<i class="icon-check"></i> | | TLS/MTLS | Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional).<ul><li>TLS: for public endpoints.<li>MTLS: for authenticated endpoints.</ul> |
-|**RevocationUri**|	| <i class="icon-check"></i> | TLS | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#dynamic-client-registration). |
+|**RevocationUri**|	| <i class="icon-check"></i> | TLS | Used for consent withdrawal notification from a Data Holder and is populated in the [SSA](#6-1-dynamic-client-registration). |
 |**RecipientBaseUri**|	| <i class="icon-check"></i> | TLS | Base URI for the Consumer Data Standard Data Recipient Software Product endpoints. <br>This **MUST** be the base to provide reference to [Data Recipient Endpoints](#cdr-register-api_get-data-recipients). |
-|**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | TLS | <ul><li>DH Brand: Used for client authentication for DH -> DRSP communication and is populated in the [Get Data Holder Brands](#cdr-register-api_get-data-holder-brands) endpoint. (See: _jwksEndpoint_).</li><li>ADR Brand: Used for client authentication for DRSP -> DH & Register communication and is populated in the [SSA](#dynamic-client-registration). (See: _jwks_uri_).</li></ul> |
-
+|**JwksUri**|	<i class="icon-check"></i> | <i class="icon-check"></i> | TLS | <ul><li>DH Brand: Used for client authentication for DH -> DRSP communication and is populated in the [Get Data Holder Brands](#cdr-register-api_get-data-holder-brands) endpoint. (See: _jwksEndpoint_).</li><li>ADR Brand: Used for client authentication for DRSP -> DH & Register communication and is populated in the [SSA](#6-1-dynamic-client-registration). (See: _jwks_uri_).</li></ul> |

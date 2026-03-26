@@ -6,7 +6,7 @@ In reference to the client types referenced in [section 2.1] (https://tools.ietf
 - Confidential Clients **MUST** be supported under this profile.
 - Public clients **MUST NOT** be supported.
 
-### JSON Web Key Sets
+### 8.1. JSON Web Key Sets
 
 Data Holder public keys **MUST** only be obtained from the standard OIDC endpoint used for that purpose.
 

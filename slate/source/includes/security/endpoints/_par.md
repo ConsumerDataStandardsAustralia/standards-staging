@@ -1,10 +1,7 @@
-
-### Pushed Authorisation endpoint
-
-
+### 19.9. Pushed Authorisation endpoint
 
 > Non-Normative Example  
-> Utilising FAPI 1.0 Final, RFC9126, PKCE, JARM and Authorization Code Flow
+> Utilising PAR/RFC9126, PKCE, JARM and Authorization Code Flow
 
 > Request
 
@@ -16,18 +13,25 @@ POST /par HTTP/1.1
   request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
 ```
 
-> Decoded Request - FAPI 1.0 Final Phase 3 Obligation  
-This example shows an authorisation request using the Authorisation Code Flow (FAPI 1.0 migration Phase 3)
+```diff
+Updated Non-normative example
+- "aud": "https://adr.example.com",
++ "aud": "https://tls.dh.example.com",
+```
+
+> Decoded Request  
+> This example shows an authorisation request using the Authorisation Code Flow  
+> Amendment requests include the cdr_arrangement_id claim
 
 ```
 {
-  "iss": "s6BhdRkqt3",
+  "iss": "{ClientId}",
   "exp": 1680832800,
   "nbf": 1680829200,
-  "aud": "https://adr.example.com",
+  "aud": "https://tls.dh.example.com",
   "response_type": "code",
   "response_mode": "jwt",
-  "client_id": "s6BhdRkqt3",
+  "client_id": "{ClientId}",
   "redirect_uri": "https://adr.example.com/redirects/redirect1",
   "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
   "nonce": "n-0S6_WzA2Mj",
@@ -51,6 +55,12 @@ This example shows an authorisation request using the Authorisation Code Flow (F
 }
 ```
 
+```diff
+Updated PAR response Non-Normative example
+- "expires_in": 3600
++ "expires_in": 90
+```
+
 > Response 
 
 ```
@@ -59,7 +69,7 @@ Content-Type: application/json
 Cache-Control: no-cache, no-store
 {
   "request_uri": "urn:mtls.dh.example.com:bwc4JK-ESC0w8acc191e-Y1LTC2",
-  "expires_in": 3600
+  "expires_in": 90
 }
 ```
 > Authorise 
@@ -68,16 +78,31 @@ Cache-Control: no-cache, no-store
 ## This is used by the ADR in the subsequent authorisation request as follows
 ## (this example uses PAR RFC 9126 and Authorization Code Flow):
 
-GET /authorise?client_id=s6BhdRkqt3&
+GET /authorise?client_id={ClientId}&
     request_uri=urn%3Amtls.dh.example.com%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 HTTP/1.1
 Host: tls.dh.example.com
 ```
 
-> Authorisation response using JARM response encryption 
+```diff
+Updated Non-Normative example
+- "iss": "https://mtls.dh.example.com/",
++ "iss": "https://tls.dh.example.com",
+
+Updated JARM response encryption example
+```
+
+> Authorisation response using JARM response encryption
 
 ```
-eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiIxMjM0NSIsImNvZGUiOiJpMVdzUm4xdUIxIiwiaXNzIjoiaHR0cHM6Ly9tdGxzLmRoLmV4YW1wbGUuY29tLyIsInN0YXRlIjoiYWYwaWZqc2xka2oiLCJleHAiOjE2NjcyNjgwMDB9.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
+## Data Holder authorisation flow completes
+GET /return
+HTTP/1.1
+Host: tls.dh.example.com
+
+## The location header of this 'return' response sends the user back to the client redirect_uri via a 303 redirect with a response JWT containing success or error parameters and correlation identifiers, according to FAPI 2.0 and JARM:
+HTTP/1.1 303 See Other
+Location: https://adr.example.com/redirects/redirect1?response=eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJ7Q2xpZW50SWR9IiwiY29kZSI6ImkxV3NSbjF1QjEiLCJpc3MiOiJodHRwczovL3Rscy5kaC5leGFtcGxlLmNvbS8iLCJzdGF0ZSI6ImFmMGlmanNsZGtqIiwiZXhwIjoxNjY3MjY4MDAwfQ.flBD3bTUHUFiNMbfgt-Uqt4wnEFHY79QYx0f9qrqPGPZLB-RBb-F20aPTyB9XaJ1JJ3ie1m0YxdMC7t6aiXSchZZQXBmYpIjvlbTceOVBYlr88llqeLAfQ5nCDD4p2axqyedpA83OgPF8i_Ngw0oRsCwBTueo6C40wYeI3ZT_n0hucQqGHcSoR1im7IY1rY0x99EZjJI3pxVtGwst6e-msomipnYedCdkNuPHE_Rnj0g897zi_NdK6m3dhxcpwaoMXcaYfMkkkzTlbz5_Ic9lWMx_z01C2wRNjRBArEJsNXW0Q8Vdhk_vtOAmO92Pr3cI8BpTr5KdY2O1iD-yRnkug
 
 ## Decoded Response
 {
@@ -85,9 +110,9 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
   "alg": "PS256"
 }
 {
-  "aud": "12345",
+  "aud": "{ClientId}",
   "code": "i1WsRn1uB1",
-  "iss": "https://mtls.dh.example.com/",
+  "iss": "https://tls.dh.example.com",
   "state": "af0ifjsldkj",
   "exp": 1667268000
 }
@@ -100,9 +125,14 @@ eyJraWQiOiIwZWQ3YTNkZi1hMGJlLTRhZjQtOTk0YS1jNDBhODc0ODQwNjMiLCJhbGciOiJQUzI1NiJ9
 | Client Authentication Required| Yes |
 | Bearer Token Required| No |
 
+```diff
+Updated PAR requirement
+- Data Recipient Software Products MUST send authorisation requests using [PAR] if supported by the Data Holder.
++ Data Recipient Software Products SHALL send authorisation requests using [PAR].
+```
 
 Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
 
-Data Recipient Software Products **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+Data Recipient Software Products **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)**.
 
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder's Authorisation endpoint to initiate an authorisation flow.

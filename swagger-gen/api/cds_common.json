@@ -52,10 +52,7 @@
             "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
-          },
-          {
-            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
+            "$ref": "#/components/parameters/HeaderXFAPIEndUserPresent"
           },
           {
             "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
@@ -97,10 +94,7 @@
             "$ref": "#/components/parameters/HeaderXFAPIInteractionId"
           },
           {
-            "$ref": "#/components/parameters/HeaderXFAPIAuthDate"
-          },
-          {
-            "$ref": "#/components/parameters/HeaderXFAPICustomerIPAddress"
+            "$ref": "#/components/parameters/HeaderXFAPIEndUserPresent"
           },
           {
             "$ref": "#/components/parameters/HeaderXCDSClientHeaders"
@@ -223,21 +217,14 @@
           "type": "string"
         }
       },
-      "HeaderXFAPIAuthDate": {
-        "name": "x-fapi-auth-date",
+      "HeaderXFAPIEndUserPresent": {
+        "name": "x-fapi-end-user-present",
         "in": "header",
-        "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+        "x-conditional": true,
+        "description": "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
         "schema": {
-          "type": "string"
-        },
-        "x-conditional": true
-      },
-      "HeaderXFAPICustomerIPAddress": {
-        "name": "x-fapi-customer-ip-address",
-        "in": "header",
-        "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-        "schema": {
-          "type": "string"
+          "type": "string",
+          "default": false
         }
       },
       "HeaderXCDSClientHeaders": {

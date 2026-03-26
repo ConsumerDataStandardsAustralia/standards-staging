@@ -1,89 +1,70 @@
 ## 4. Authentication Flows
 
 ```diff
-Section updated
+Introductory text updated to reference to FAPI 2.0 and remove a reference to the deprecated hybrid flow.
+
+Updated 'Baseline Security Provisions' to 'Baseline Authentication Flow Provisions' for Data Holders and Data Recipient Software Products
 ```
 
-This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI 2.0 Security Profile]](#nref-FAPI-2-0-Security-Profile)**.
+This profile supports the authentication flows specified by [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) **[[OIDC]](#nref-OIDC)** as constrained further by **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 Authorization Code Flow outlined at [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)** is supported.
 
 No other flows are currently supported.
 
-### Baseline Security Provisions
+### 4.1. Baseline Authentication Flow Provisions
 
-#### Data Holders
-The *request_uri* parameter is only supported if the Data Holder supports PAR.
+#### 4.1.1. Data Holders
 
-In addition, the following statements are applicable:
+1.	**SHALL** support the *request_uri* parameter in accordance with **[[RFC9126]](#nref-RFC9126)**.
+1.	**SHALL** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page.
+1.	**SHALL NOT** request that the customer enter an existing password in the redirected page.
+1.	**SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
-- Data Holders **MUST** support FAPI 1.0 Advanced Profile **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.
-- Data Holders **MUST** support Authorization Code Flow.
-- Data Holders **SHALL** require the value of *response_type* described in **[[RFC6749]](#nref-RFC6749)** to be `code`.
+#### 4.1.2. Data Recipient Software Products
 
-#### Data Recipient Software Products
-
-**Until 12th May 2025**, Data Recipient Software Products **SHOULD** use Authorization Code Flow. 
-**From 12th May 2025**, Data Recipient Software Products **SHALL** only use Authorization Code Flow. 
-
-In addition, the following statements are applicable:
-
-- Data Recipient Software Products **SHOULD** record the following information each time an authorisation flow is executed: username (consumer’s ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
-- Data Recipient Software Products **SHOULD NOT** reuse _authorization_code_ values, and if reused, it will be rejected.
-- Data Recipient Software Products **MAY** send requests with a _x-fapi-customer-ip-address_ header containing a valid IPv4 or IPv6 address.
-- Data Recipient Software Products **MUST** support FAPI 1.0 Advanced Profile (**[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**).
-- Data Recipient Software Products **MUST** use **[[RFC9126]](#nref-RFC9126)** (PAR) with **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and, if supported, **MUST** use `S256` as the code challenge method.
+1. **SHOULD** record the following information each time an authorisation flow is executed: username (consumer's ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration, and correlation identifiers (including *x-fapi-interaction-id*, *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id*).
 
 ```diff
-Removed OIDC Hybrid Flow section
+Removed 'OIDC Hybrid Flow' section
 ```
 
-### Authorization Code Flow
+### 4.2. Authorization Code Flow
 
-The following statements are applicable for this flow:
+```diff
+Updated Authorization Code Flow section
+```
 
-- Only a _response_type_ (see [section 3.1](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) of **[[OIDC]](#nref-OIDC)**) of `code` **SHALL** be allowed.
-- Data Holders **MUST** also support **[[JARM]](#nref-JARM)** and **[[PKCE]](#nref-PKCE)**
+#### 4.2.1. Data Holders
+1. **MAY** advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the unsupported parameters.
+1. **SHALL NOT** perform authorisation response encryption if *authorization_encrypted_response_alg* is omitted from a client registration request.
+1. **SHALL** use `PS256` as the default signing algorithm if *authorization_signed_response_alg* is omitted from a client registration request.
 
-#### Data Holders
-Data Holders **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.2.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm).
-
-> **JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)**  
-> Data Holders **MAY** support Authorization Response encryption.
->
-> However, at present, there is no confidential information in the authorization response, hence encryption of the authorization response is not required for the purposes of security or confidentiality. In addition, whilst response encryption **MAY** be used, to achieve greater interoperability, it is not recommended to use encryption in this case at this time.
-
-
-In addition,
-
-- Data Holders **MAY** advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the supported parameters.
-- If _authorization_encrypted_response_alg_ is omitted from the registration request, authorisation response encryption **SHALL NOT** be performed.
-
-#### Data Recipient Software Products
-Data Recipients **MUST** support **[[JARM]](#nref-JARM)** in accordance with **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** [section 5.2.3.2](https://openid.net/specs/openid-financial-api-part-2-1_0.html#jarm-1).
-
-In addition,
-
-- Data Recipients **MUST** request authorisation response signing using one of the _authorization_signing_alg_values_supported_ values offered by the Data Holder.
-- Data Recipients **MAY** request response encryption using one of the advertised encryption sets.
-- Data Recipients **MAY** request no response encryption by omitting the values in their client registration.
-- If _authorization_signed_response_alg_ is omitted, the default algorithm is `PS256`.
+#### 4.2.2. Data Recipient Software Products
+1. **SHALL** request authorisation response signing using one of the *authorization_signing_alg_values_supported* values offered by the Data Holder.
+1. **MAY** request response encryption using one of the advertised encryption sets.
+1. **MAY** request no response encryption by omitting *authorization_encrypted_response_alg* in their client registration.
 
 Additional requirements and guidelines for the authentication flows are contained in the [Consumer Experience](#consumer-experience) section.
 
-<h3 id="authentication-flows_redirect-to-app">Redirect to App</h3>
-<strong>Data Holders</strong>
+<h3 id="authentication-flows_redirect-to-app">4.3. Redirect to App</h3>
 
-Data holders **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+```diff
+Applied numbering and reformatted Redirect to App section
+```
 
-- Data holders **MUST** use a single issuer identifier per app.
-- Data holders **MUST** only support Authorization Code Flow for Redirect to App authentication.
-- Data holders **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
-- After authentication, the data holder **MUST** continue the authorisation flow within the data holder app.
-- Data holders **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
+#### 4.3.1. Data Holders
 
-<strong>Data Recipients</strong>
+Data holders **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
-Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
-<ul><li>Data recipients **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.</li>
-<li>If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.</li></ul>
+1. **SHALL** use a single issuer identifier per app.
+1. **SHALL** only support Authorization Code Flow for Redirect to App authentication.
+1. **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
+1. After authentication, **SHALL** continue the authorisation flow within the data holder app.
+
+#### 4.3.2. Data Recipients
+
+Data recipients **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+
+1. **SHALL** register separate Redirect URIs where they provide both app-based and web-based redirection.
+1. If data recipients initiate consent from an app, they **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.

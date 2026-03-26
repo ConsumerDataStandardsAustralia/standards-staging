@@ -1,4 +1,5 @@
-### Token endpoint
+### 19.4. Token endpoint
+
 | Description | Value |
 |---|---|
 | Hosted By | Data Holder |

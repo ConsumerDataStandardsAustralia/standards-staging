@@ -3,19 +3,24 @@ Consent requirements will be communicated between the Data Recipient Software Pr
 
 Other patterns for the establishment of consent **MAY** be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
+```diff
+Added detail to the Consent section to describe RAR support
+```
+Data Holders **MAY** support **[[RAR]](#nref-RAR)** to simplify authorisation server configuration for CDR. Data Recipient Software Products can determine support for RAR by referring to the *authorization_details_types_supported* field in Data Holder disovery metadata **[[OIDD]](#nref-OIDD)**. For more details on RAR refer to [Request Object](#18-request-object).
+
 ## 10. Scopes and Claims
 
-### OIDC Scopes
+### 10.1. OIDC Scopes
 In addition to CDR data scopes the following scopes **MUST** be supported:
 
 - `openid`: As described as [section 3.1.2.1](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) of **[[OIDC]](#nref-OIDC)**, this scope **MUST** be present on each authentication request.
 - `profile`: Data Holders **MUST** support the `profile` scope as described in [section 5.4](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims) of **[[OIDC]](#nref-OIDC)**. This scope **MAY** be present on an authentication request.
 
-### Claims
+### 10.2. Claims
 
 The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#NormalClaims) **[[OIDC]](#nref-OIDC)** and [standard claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) claims **MUST** be supported for the authenticated End-User*:
 
-- _sub_: [Pairwise Pseudonymous Identifier (PPID)](#identifiers-and-subject-types) for the End-User at the Data Holder.
+- _sub_: [Pairwise Pseudonymous Identifier (PPID)](#12-identifiers-and-subject-types) for the End-User at the Data Holder.
 - _acr_: Authentication Context Class Reference. **MUST** contain a valid [ordinal LoA value](#ordinal-loa).
 - _auth_time_: Time when the End-User authentication occurred. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC _auth_time_. It **MUST** be returned by the Data Holder in the ID Token when the Data Recipient Software Product has requested it as an essential claim according to section 2 of the **[[OIDC]](#nref-OIDC)** standard. It **SHOULD NOT** be returned via the UserInfo endpoint.
 - _name_: End-User's full name in displayable form including all name parts.
@@ -23,6 +28,11 @@ The following [normal](https://openid.net/specs/openid-connect-core-1_0.html#Nor
 - _family_name_: Surname(s) or last name(s) of the End-User.
 - _updated_at_: Time the End-User's information was last updated. Its value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC _updated_at_ time.
 
+```diff
+Updated Normative reference link in address claim detail
+- JSON [RFC4627] structure
++ JSON [JSON] structure
+```
 
 The following standard **[[OIDC]](#nref-OIDC)** claims **MAY** be supported:
 
@@ -30,7 +40,7 @@ The following standard **[[OIDC]](#nref-OIDC)** claims **MAY** be supported:
 - _email_verified_: `true` if the End-User's e-mail address has been verified; otherwise `false`. When this Claim Value is `true`, this means that the Data Holder took affirmative steps to ensure that this e-mail address was controlled by the End-User at the time the verification was performed. The means by which an e-mail address is verified is context-specific, and dependent upon the trust framework or contractual agreements within which the parties are operating. 
 - _phone_number_: End-User's preferred telephone number. **[[E.164]](#iref-E-164)** is **RECOMMENDED** as the format of this Claim, for example, `+1 (425) 555-1212` or `+56 (2) 687 2400`. If the phone number contains an extension, it is **RECOMMENDED** that the extension be represented using the **[[RFC3966]](#iref-RFC3966)** extension syntax, for example, `+1 (604) 555-1234;ext=5678`. 
 - _phone_number_verified_: `true` if the End-User's phone number has been verified; otherwise `false`. When this Claim Value is `true`, this means that the Data Holder took affirmative steps to ensure that this phone number was controlled by the End-User at the time the verification was performed. The means by which a phone number is verified is context-specific, and dependent upon the trust framework or contractual agreements within which the parties are operating. When `true`, the _phone_number_ Claim **MUST** be in **[[E.164]](#iref-E-164)** format and any extensions **MUST** be represented in **[[RFC3966]](#iref-RFC3966)** format. 
-- _address_: End-User's preferred postal address. The value of the address member is a JSON **[[RFC4627]](#nref-RFC4627)** structure containing some or all of the members defined in Section 5.1.1.
+- _address_: End-User's preferred postal address. The value of the address member is a JSON **[[JSON]](#nref-JSON)** structure containing some or all of the members defined in Section 5.1.1 of **[[OIDC]](#nref-OIDC)**.
 
 Other **[[OIDC]](#nref-OIDC)** Standard Claims **MUST** be ignored and not authorised.
 

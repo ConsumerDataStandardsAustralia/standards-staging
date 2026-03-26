@@ -1,4 +1,4 @@
-### Introspection endpoint
+### 19.6. Introspection endpoint
 
 | Description | Value |
 |---|---|

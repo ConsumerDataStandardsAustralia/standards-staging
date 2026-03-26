@@ -449,6 +449,9 @@ html, body {
   a:visited {
     color: #0D414D;
   }
+  .tab-examples a:visited {
+    color: #bbb;
+  }
 
   h1 {
     @extend %header-font;

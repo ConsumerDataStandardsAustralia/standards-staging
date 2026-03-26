@@ -25,20 +25,31 @@ would become the secondary endpoint:
 
 #### Endpoint Variations
 
+```diff
+Replaced references to deprecated headers
+- The x-fapi-auth-date header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
+- The x-fapi-customer-ip-address header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
++ Except for x-fapi-interaction-id, headers with the prefix "x-fapi-" SHALL NOT be passed to AEMO and AEMO SHALL NOT require these headers
+
+Added new header to support secondary data holder NFRs
++ The x-fapi-end-user-present header SHALL be passed to AEMO to reflect the value received from the Data Recipient
+
+Updated existing 'must' requirement
+- x-cds-arrangement must be passed to AEMO
++ x-cds-arrangement SHALL be passed to AEMO
+```
+
 The following variations to the endpoints published by AEMO from the energy sector endpoints apply:
 
-* The _x-fapi-auth-date_ header **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require this header
-* The _x-fapi-customer-ip-address_ header **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require this header
-* The _x-cds-client-headers_ header **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require this header
-* A new header named _x-cds-arrangement_ must be passed to AEMO for every invocation. This header should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field **MUST** be populated but AEMO **MUST NOT** seek to validate the consent associated with the arrangement
+* Except for *x-fapi-interaction-id*, headers with the prefix "*x-fapi-*" **SHALL NOT** be passed to AEMO and AEMO **SHALL NOT** require these headers
+* The _x-cds-client-headers_ header **SHALL NOT** be passed to AEMO and AEMO **SHALL NOT** require this header
+* The  *x-fapi-end-user-present* header **SHALL** be passed to AEMO to reflect the value received from the Data Recipient
+* A new header named _x-cds-arrangement_ **SHALL** be passed to AEMO for every invocation. This header should contain the arrangement ID for the consent that the request is being made under and will be used for tracing and audit purposes. This field **SHALL** be populated but AEMO **SHALL NOT** seek to validate the consent associated with the arrangement
 * All occurrences of the _servicePointId_ field, whether in a request, a response, or as an input parameter (such as path parameter or query parameter) should be populated with the equivalent _NationalMeteringId_ in plain text
-* Fields in the links object for all responses **MUST** be translated by the Data Holder into
-values that are valid for a Data Recipient to be able to call back to the Data Holder
+* Fields in the links object for all responses **MUST** be translated by the Data Holder into values that are valid for a Data Recipient to be able to call back to the Data Holder
 * The *Get Service Points* endpoint **MUST** be changed from a GET to a POST and will have the same request payload as the *Get Usage For Specific Service Points* endpoint.
 
 #### Additional Requirements
-
-
 
 The following statements also apply to the endpoints published by AEMO:
 

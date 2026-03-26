@@ -1,4 +1,10 @@
-### OpenID Provider Configuration endpoint
+### 19.1. OpenID Provider Configuration endpoint
+
+```diff
+Updated Non-Normative example
+- "issuer": "https://mtls.dh.example.com",
++ "issuer": "https://tls.dh.example.com",
+```
 
 > Non-Normative Example
 
@@ -7,7 +13,7 @@
 GET /.well-known/openid-configuration HTTP/1.1
 Host: tls.dh.example.com
 
-## Response - FAPI 1.0 Final Phase 3 Obligations
+## Response
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -15,15 +21,13 @@ Content-Type: application/json
   "authorization_endpoint": "https://tls.dh.example.com/authorise",
   "claims_supported": ["name", "given_name", "family_name", "acr", "auth_time", "sub"],
   "grant_types_supported": ["authorization_code", "client_credentials", "urn:openid:params:modrna:grant-type:backchannel_request"],
-  "id_token_encryption_alg_values_supported": ["RSA-OAEP", "RSA-OAEP-256", "dir", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A192KW", "ECDH-ES+A256KW", "A128KW", "A192KW", "A256KW", "A128GCMKW", "A192GCMKW", "A256GCMKW"],
-  "id_token_encryption_enc_values_supported": ["A128CBC-HS256", "A192CBC-HS384", "A256CBC-HS512", "A128GCM", "A192GCM", "A256GCM"],
   "id_token_signing_alg_values_supported": ["ES256", "PS256"],
-  "issuer": "https://mtls.dh.example.com",
+  "issuer": "https://tls.dh.example.com",
   "jwks_uri": "https://tls.dh.example.com/jwks",
   "registration_endpoint": "https://mtls.dh.example.com/register",
   "request_object_signing_alg_values_supported": ["ES256", "PS256"],
   "response_modes_supported": ["fragment", "jwt"],
-  "response_types_supported": ["code id_token", "code"],
+  "response_types_supported": ["code"],
   "subject_types_supported": ["pairwise"],
   "scopes_supported": ["openid", "profile", "..."],
   "token_endpoint": "https://mtls.dh.example.com/token",
@@ -45,7 +49,9 @@ Content-Type: application/json
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
-  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke"
+  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke",
+
+  "authorization_details_types_supported": ["cdr-data-sharing"]
 }
 ```
 
@@ -58,9 +64,7 @@ Content-Type: application/json
 
 Data Holders **MUST** make their OpenID Provider Metadata available via a configuration endpoint as outlined in [Section 3 and 4 of the OpenID Connect Discovery standards](https://openid.net/specs/openid-connect-discovery-1_0.html) **[[OIDD]](#nref-OIDD)**.
 
-This endpoint does not require [CORS](#cors).
-
-
+This endpoint does not require [CORS](#17-cors).
 
 At a minimum, the Data Holder metadata **MUST** include:
 
@@ -85,7 +89,7 @@ At a minimum, the Data Holder metadata **MUST** include:
 - _userinfo_endpoint_: URL of the UserInfo endpoint.
 
 ```diff
-Remove section '[OIDD], only if OIDC Hybrid Flow is supported'
+Removed section '[OIDD], only if OIDC Hybrid Flow is supported'
 ```
 
 **[[RFC8414]](#nref-RFC8414)**
@@ -115,3 +119,14 @@ Where Data Holders support authorisation response encryption according to **[[JA
 In addition, the Data Holder metadata **MUST** also include:
 
 - _cdr_arrangement_revocation_endpoint_: The URL of the CDR Arrangement Revocation endpoint for consent revocation.
+
+**[[RAR]](#nref-RAR)**
+
+```diff
+Added optional metadata field to indicate support for RAR (authorization_details_types_supported)
++ [RAR]
+```
+
+Where Data Holders support Rich Authorization Requests according to **[[RAR]](#nref-RAR)**, the following parameter provisions **SHALL** be supported:
+
+- *authorization_details_types_supported*: A JSON array containing a list of authorization details types supported. If the Data Holder supports **[[RAR]](#nref-RAR)**, they **SHALL** support the `cdr-data-sharing` type.

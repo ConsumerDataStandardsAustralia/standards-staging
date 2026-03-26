@@ -1,25 +1,25 @@
 
 ## 16. Certificate Management
 
-### Issued by the Register for Data Holders
+### 16.1. Issued by the Register for Data Holders
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
-| <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN.<br><br>Secures the endpoints as detailed in [Participant endpoints](#participant-endpoints). | It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.
+| <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN.<br><br>Secures the endpoints as detailed in [Participant endpoints](#19-12-participant-endpoints). | It will be up to the DH on how these endpoints are segregated. They may all be on the one domain (so only one certificate required) or could be separated.
 
-### Issued by the Register CA for Data Recipients
+### 16.2. Issued by the Register CA for Data Recipients
 
 Certificate | Function | Notes
 -----------|------------------------------------------|------------------------------
 | **Client Certificate** | Secures the following:<ul><li>Consuming Register APIs.</li><li>Consuming Data Holder APIs.</li></ul>
 | <span style="white-space: nowrap;">**Server Certificate(s)**</span> | Certificate is issued to a FQDN. | Not currently required by Data Recipients.
 
-### Certificate Trust Model
+### 16.3. Certificate Trust Model
 
-The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#participant-endpoints), [Data Recipients](#participant-endpoints) and the [Register](#register-apis).
+The CDR utilises a private certificate trust chain for all Register CA secured endpoints being hosted by [Data Holders](#19-12-participant-endpoints), [Data Recipients](#19-12-participant-endpoints) and the [Register](#register-apis).
 
 Operational detail related to the CDR Certificate Authority is maintained by the ACCC, and is [available here](https://consumerdataright.atlassian.net/wiki/spaces/DP/pages/360415310/Certificate+Management).
 
-### Certificate Signing Request Profile
+### 16.4. Certificate Signing Request Profile
 
 When requesting the Register CA certificates, certificate signing requests will need to be provided, conforming to the following profile:
 
@@ -41,10 +41,10 @@ CSR Field | Required | Server | Client
 
 Please refer to the [Register onboarding guide](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0/on-boarding-guide) for further information on certificate issuance.
 
-### Certificate Usage
+### 16.5. Certificate Usage
 Further details on the Register CA issued certificates can be found on the [Digital certificate agreements](https://www.cdr.gov.au/resources/agreements/digital-certificate-agreements) page.
 
-### Certificate Validation
+### 16.6. Certificate Validation
 Certificate validation must check:
 
 **1. Checking for certificate validity**
@@ -65,5 +65,5 @@ Status is checked through Certificate Revocation Lists (CRL) or Online Certifica
 
 The Certificate Practice Statement provides details for certificate validation requirements and a summary has been provided in the CDR Support Portal article: [Certificate Validation](https://cdr-support.zendesk.com/hc/en-us/articles/900005826963-Certificate-Validation).
 
-### OCSP stapling
+### 16.7. OCSP stapling
 The use of OCSP Stapling within the CDR ecosystem is not recommended.

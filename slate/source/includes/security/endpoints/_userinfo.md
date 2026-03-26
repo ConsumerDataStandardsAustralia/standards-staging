@@ -1,4 +1,5 @@
-### UserInfo endpoint
+### 19.5. UserInfo endpoint
+
 | Description | Value |
 |---|---|
 | Hosted By | Data Holder |

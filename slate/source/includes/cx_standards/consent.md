@@ -1,14 +1,15 @@
 <h2 class="schema-heading" id="consumer-experience_consent-standards">Consent Standards</h2>
 
-
+```diff
+Updated Consent Standards - removed first row
+```
 
 |Area|CX Standard|
 |-------------------|------------------------------|
-|**Consent:**<br/>Amendment of Collection Consents and Authorisations |When notifying a Data Holder of an amended collection consent as per rules 4.18C or 4.20S, Data Recipients **MUST** supply the relevant CDR Arrangement ID to the Data Holder according to [Specifying an existing arrangement](#specifying-an-existing-arrangement). Providing the CDR Arrangement ID is necessary to trigger the Data Holder authorisation flow simplifications outlined in the [Amending Authorisation Standards](#amending-authorisation-standards). Failure to supply the CDR Arrangement ID will result in the full authorisation flow and a disconnected data sharing arrangement history on consumer dashboards.|
-|**Consent:**<br/>Redirection|Data recipients **MUST** notify consumers of redirection prior to authentication.|
+|**Consent:**<br>Redirection|Data recipients **MUST** notify consumers of redirection prior to authentication.|
 |**Business consumer statement:** Method|When seeking a business consumer statement, data recipients **MUST** invite the business consumer to give the business consumer statement in a manner that is explicit, express, and through an active selection or declaration.<br><br>The giving of a business consumer statement **MUST** be clearly separated from any other interaction or information provided to the consumer and **MUST NOT** be implied or bundled with any other permission.|
 |**Business consumer statement:** Content|Data recipients **MUST** use plain and concise language when inviting a consumer to give a business consumer statement.|
-|**Disclosure consent:**<br/>Collection source|In the course of seeking a consumer’s consent to disclose data as part of a disclosure consent:<ol><li>Data Recipients **MUST** specify which CDR Participant(s) they collected the associated CDR data from.</li><li>Data Recipients **SHOULD** specify the sector(s) the data was collected from or associated with.</li></ol>**Note:**<ul><li>Point (1) only requires the Data Recipient to refer to the CDR Participant(s) immediately preceding them in the disclosure chain, which may not always include a consumer’s Data Holder(s).</li><li>This standard is proposed to apply to all data to be disclosed by a Data Recipient, including unmodified, aggregated, derived, and transformed CDR data.</li><li>Where applicable, the existing data language standards apply to descriptions of CDR data that have not been modified.</li></ul>|
+|**Disclosure consent:**<br>Collection source|In the course of seeking a consumer’s consent to disclose data as part of a disclosure consent:<ol><li>Data Recipients **MUST** specify which CDR Participant(s) they collected the associated CDR data from.</li><li>Data Recipients **SHOULD** specify the sector(s) the data was collected from or associated with.</li></ol>**Note:**<ul><li>Point (1) only requires the Data Recipient to refer to the CDR Participant(s) immediately preceding them in the disclosure chain, which may not always include a consumer’s Data Holder(s).</li><li>This standard is proposed to apply to all data to be disclosed by a Data Recipient, including unmodified, aggregated, derived, and transformed CDR data.</li><li>Where applicable, the existing data language standards apply to descriptions of CDR data that have not been modified.</li></ul>|
 |**Disclosure Consent:** Descriptions of Data to be Collected and Disclosed|If:<ol><li>An accredited person is seeking a collection consent to collect CDR data from a particular accredited data recipient; or</li><li>An accredited data recipient is seeking a disclosure consent from a consumer to disclose CDR data;</li></ol>and the data subject to the disclosure or collection is not within the data language standards as it does not relate to a relevant data cluster, then that data **MUST** be described in language that is as easy to understand as practicable.|
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-insight-descriptions">Disclosure Consent: Insight Descriptions</h3>
@@ -26,15 +27,11 @@ The standards in this section outline insight description requirements that appl
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_consent-standards_disclosure-consent-non-accredited-person-disclosure-notification">Disclosure Consent: Non-Accredited Person Disclosure Notification</h3>
 
-
-
 The standards in this section outline requirements that apply when a disclosure consent is being sought to disclose data to a non-accredited person, which includes insight disclosure consents, business consumer disclosure consents, and trusted adviser disclosure consents.
 
 These standards will feature where such a disclosure consent is being sought and may, as stated in any accompanying notes, also feature in CDR Receipts and Dashboards.
 
 **Note:** The use of the term ‘data recipients’ to refer to accredited data recipients is consistent with the data standards nomenclature. Where these standards refer to ‘data recipient’, this should not be taken to mean a non-accredited person or trusted adviser.
-
-
 
 |Area|CX Standard|
 |-------------------|------------------------------|

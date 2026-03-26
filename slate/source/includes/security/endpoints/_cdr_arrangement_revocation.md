@@ -1,8 +1,8 @@
-### CDR Arrangement Revocation endpoint
+### 19.8. CDR Arrangement Revocation endpoint
 
 > Non-Normative Example: Data Holder endpoint  
 > _(Data Recipients calling Data Holders)_  
->Request
+> Request
 
 ```
 POST https://mtls.dh.example.com/arrangements/revoke
@@ -10,7 +10,7 @@ HTTP/1.1
 Host: mtls.dh.example.com
 Content-Type: application/x-www-form-urlencoded
 
-  client_id=s6BhdRkqt3&
+  client_id={ClientId}&
   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
   client_assertion=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...&
   cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
@@ -29,17 +29,14 @@ Content-Type: application/x-www-form-urlencoded
 
 Data Holders and Data Recipient Software Products **MUST** implement a CDR Arrangement Revocation endpoint that can be used to revoke an existing sharing arrangement.
 
-<br/>
 
-
-
-**CDR Arrangement Form Parameter method**
+**19.8.1. CDR Arrangement Form Parameter method**
 
 The request **MUST** include the following parameter using the `application/x-www-form-urlencoded` format in the HTTP request entity-body:
 
 * _cdr_arrangement_id_: The ID of the arrangement that the client wants to revoke.
 
-**CDR Arrangement JWT method**
+**19.8.2. CDR Arrangement JWT method**
 
 The request **MUST** include the following parameter using the `application/x-www-form-urlencoded` format in the HTTP request entity-body:
 
@@ -47,7 +44,7 @@ The request **MUST** include the following parameter using the `application/x-ww
   * _cdr_arrangement_id_: The ID of the arrangement that the client wants to revoke.
   * This JWT **SHOULD** also include all parameters in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](https://consumerdatastandardsaustralia.github.io/standards/#self-signed-jwt-client-authentication).
 
-**Data Holder hosted endpoint**
+**19.8.3. Data Holder hosted endpoint**
 
 The location of the Data Holder CDR Arrangement Revocation endpoint is determined by the _cdr_arrangement_revocation_endpoint_ in the Data Holder's OpenID Provider metadata.
 
@@ -61,24 +58,8 @@ This endpoint will be implemented according to the following:
 
 
 > Non-Normative Example: Data Recipient endpoint  
-> **Until July 31st 2022**  
 > _(Data Holders calling Data Recipients)_  
->Request
-
-```
-POST https://adr.example.com/arrangements/revoke
-HTTP/1.1
-Host: adr.example.com
-Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey...
-
-  cdr_arrangement_id=5a1bf696-ee03-408b-b315-97955415d1f0
-```
-
-> Non-Normative Example: Data Recipient endpoint  
->**From March 31st 2022**  
-> _(Data Holders calling Data Recipients)_  
->Request
+> Request
 
 ```
 POST https://adr.example.com/arrangements/revoke
@@ -98,8 +79,8 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 {
   "cdr_arrangement_id": "5a1bf696-ee03-408b-b315-97955415d1f0",
-  "iss":"dataholderbrand-123",
-  "sub":"dataholderbrand-123",
+  "iss":"{dataHolderBrandId}",
+  "sub":"{dataHolderBrandId}",
   "aud":"https://adr.example.com/arrangements/revoke",
   "iat":1516239022,
   "exp":1516239322,
@@ -107,7 +88,22 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 }
 ```
 
-**Data Recipient hosted endpoint**
+**19.8.4. Data Recipient hosted endpoint**
+
+```diff
+Updated obligations relate to past FDOs
+- From March 31st 2022, Data Recipients MUST support the "CDR Arrangement JWT" method.
+- From July 31st 2022, Data Holders MUST send the cdr_arrangement_id using the "CDR Arrangement JWT" method.
++ Data Recipients SHALL support the "CDR Arrangement JWT" method.
++ Data Holders SHALL send the cdr_arrangement_id using the "CDR Arrangement JWT" method.
+
+- If the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products SHOULD validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
+- From November 15th 2022, if the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products MUST validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
++ If the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products SHALL validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
+
+- From November 15th 2022, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products MUST validate in accordance with Data Holders calling Data Recipients using Self-Signed JWT Client Authentication.
++ If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products SHALL validate in accordance with Data Holders calling Data Recipients using Self-Signed JWT Client Authentication.
+```
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation endpoint is determined by the _RecipientBaseURI_ provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
 
@@ -116,15 +112,14 @@ This endpoint will be implemented according to the following:
 * Data Recipient Software Products **MUST** expose their CDR Arrangement Revocation endpoint under their _recipient_base_uri_ published in their Software Statement Assertion.
 * Data Holders must be authenticated when they call this endpoint according to the guidance in the Client Authentication section.
 * If the _cdr_arrangement_id_ is not related to the client making the call it **MUST** be rejected.
-* **From March 31st 2022**, Data Recipients **MUST** support the "CDR Arrangement JWT" method.
-* **From July 31st 2022**, Data Holders **MUST** send the _cdr_arrangement_id_ using the "CDR Arrangement JWT" method.
+* Data Recipients **SHALL** support the "CDR Arrangement JWT" method.
+* Data Holders **SHALL** send the _cdr_arrangement_id_ using the "CDR Arrangement JWT" method.
 * Data Holders **MAY** additionally send a duplicate of the _cdr_arrangement_id_ as a form parameter.
 * Data Recipient Software Products **MUST NOT** reject requests including the _cdr_arrangement_id_ as a form parameter. 
-* If the _cdr_arrangement_id_ is presented as a form parameter, Data Recipient Software Products **SHOULD** validate it is identical to the _cdr_arrangement_id_ presented in the "CDR Arrangement JWT".
-* **From November 15th 2022**, if the _cdr_arrangement_id_ is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the _cdr_arrangement_id_ presented in the "CDR Arrangement JWT".
-* **From November 15th 2022**, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#self-signed-jwt-client-authentication).
+* If the _cdr_arrangement_id_ is presented as a form parameter, Data Recipient Software Products **SHALL** validate it is identical to the _cdr_arrangement_id_ presented in the "CDR Arrangement JWT".
+* If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **SHALL** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#5-2-self-signed-jwt-client-authentication).
 
-**Response Codes**
+**19.8.5. Response Codes**
 
 The following responses are in addition to error responses covered by normative references. Error scenarios in the following table **MUST** use the error structure defined in the [Payload Conventions](#payload-conventions).
 
@@ -133,9 +128,7 @@ Response Code | Situation | Description
 204 No Content | Success | The sharing arrangement has been revoked successfully.
 422 Unprocessable Entity | Invalid Arrangement ID | The client submitted an invalid arrangement identifier or the identifier could not be found. The server **MUST** respond with [Invalid Consent Arrangement](#error-422-authorisation-invalid-arrangement).
 
-
-
-**Revoking consent**
+**19.8.6. Revoking consent**
 
 Data Recipient Software Products **MUST** use the Data Holder's CDR Arrangement Revocation endpoint with a valid _cdr_arrangement_id_ to notify the Data Holder when consent is withdrawn or otherwise expires, except for the following reasons:
 

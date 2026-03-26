@@ -1,10 +1,11 @@
 ## 15. Transaction Security
 
-### Use of TLS
+### 15.1. Use of TLS
 All HTTP calls **MUST** be made using HTTPS incorporating TLS >= 1.2.
 
 <a id="mutual-tls"></a>
-### Use of MTLS
+
+### 15.2. Use of MTLS
 
 All back-channel communication between Data Recipient Software Product and Data Holder systems **MUST** incorporate, unless stated otherwise, **[[MTLS]](#nref-MTLS)** as part of the TLS handshake:
 
@@ -13,7 +14,7 @@ All back-channel communication between Data Recipient Software Product and Data 
 
 Endpoints for transferring CDR Data that are classified as not requiring authentication (i.e. public endpoints) or those specified as TLS, **MUST NOT** use **[[MTLS]](#nref-MTLS)**.
 
-### Holder of Key Mechanism
+### 15.3. Holder of Key Mechanism
 
 **[[MTLS]](#nref-MTLS)** **MUST** be supported as a Holder of Key (HoK) Mechanism.
 
@@ -23,20 +24,10 @@ OAUTB **SHALL NOT** be supported due to a lack industry support.
 
 **[[MTLS]](#nref-MTLS)** HoK allows issued tokens to be bound to a client certificate as specified in [section 3](https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica) of **[[MTLS]](#nref-MTLS)**.
 
-### Ciphers
+### 15.4. Ciphers
 
-**Until March 17th 2025, the following SHALL requirements apply:**
+```diff
+Updated Ciphers section to remove past FDOs
+```
 
-Only the following cipher suites **SHALL** be permitted in accordance with [section 8.5](https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**:
-
-- `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
-- `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
-
-The following cipher suites **SHOULD NOT** be supported:
-
-- `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`
-- `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
-
-**From March 17th 2025, the following requirements SHALL apply:**
-
-In addition to [section 8.5](https://openid.net/specs/openid-financial-api-part-2-1_0.html#tls-considerations) of **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)** only cipher suites recommended in **[[BCP195]](#nref-BCP195)** **SHALL** be permitted.
+In accordance with [section 5.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** only cipher suites recommended in **[[BCP195]](#nref-BCP195)** **SHALL** be permitted.

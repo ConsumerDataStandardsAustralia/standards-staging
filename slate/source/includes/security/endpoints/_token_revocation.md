@@ -1,4 +1,4 @@
-### Token Revocation endpoint
+### 19.7. Token Revocation endpoint
 
 | Description | Value |
 |---|---|
