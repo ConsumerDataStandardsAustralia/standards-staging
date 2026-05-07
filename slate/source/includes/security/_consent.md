@@ -6,7 +6,7 @@ Other patterns for the establishment of consent **MAY** be considered in the fut
 ```diff
 Added detail to the Consent section to describe RAR support
 ```
-Data Holders **MAY** support **[[RAR]](#nref-RAR)** to simplify authorisation server configuration for CDR. Data Recipient Software Products can determine support for RAR by referring to the *authorization_details_types_supported* field in Data Holder disovery metadata **[[OIDD]](#nref-OIDD)**. For more details on RAR refer to [Request Object](#18-request-object).
+Data Holders **MAY** support **[[RAR]](#nref-RAR)** to simplify authorisation server configuration for CDR. Data Recipient Software Products can determine support for RAR by referring to the *authorization_details_types_supported* field in Data Holder discovery metadata **[[OIDD]](#nref-OIDD)**. For more details on RAR refer to [Request Object](#18-request-object).
 
 ## 10. Scopes and Claims
 
