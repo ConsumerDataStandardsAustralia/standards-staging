@@ -15,7 +15,7 @@ In addition, Data Holders:
 1. **SHALL** only use **[[MTLS]](#nref-MTLS)** as the mechanism for sender-constrained access tokens.
 1. **SHALL** support client authentication using *private_key_jwt*.
 1. **SHALL NOT** support refresh token rotation.
-1. **SHALL** distribute disovery metadata using **[[OIDD]](#nref-OIDD)**.
+1. **SHALL** distribute discovery metadata using **[[OIDD]](#nref-OIDD)**.
 1. **MAY** optionally, and in addition, distribute authorisation server metadata using **[[RFC8414]](#nref-RFC8414)**.
 1. **SHALL** set *require_pushed_authorization_requests parameter* to `true`, distributed using **[[OIDD]](#nref-OIDD)**.
 1. **SHALL** support *mtls_endpoint_aliases*, distributed using **[[OIDD]](#nref-OIDD)** in accordance with section [5.2.2.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.2.2.1) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
