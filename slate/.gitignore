@@ -23,3 +23,14 @@ _yardoc
 doc/
 .idea/
 .ruby-version
+
+# Build files
+source/includes/swagger/
+source/includes/cds_admin.md
+source/includes/cds_banking.md
+source/includes/cds_common.md
+source/includes/cds_dcr.md
+source/includes/cds_energy_sdh.md
+source/includes/cds_energy.md
+source/includes/cds_register.md
+source/includes/cds_telco.md

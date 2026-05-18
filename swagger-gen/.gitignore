@@ -2,3 +2,12 @@ node_modules
 create-markdown-log.txt
 diff*.txt
 *-e.md
+# Build files
+cds_admin.md
+cds_banking.md
+cds_common.md
+cds_dcr.md
+cds_energy_sdh.md
+cds_energy.md
+cds_register.md
+cds_telco.md

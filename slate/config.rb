@@ -23,7 +23,7 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :fonts_dir, 'fonts'
-set :build_dir, '../docs'
+set :build_dir, ENV['TARGET_DOCS'] || '../docs-dev'
 
 # Activate the syntax highlighter
 activate :syntax
@@ -57,7 +57,7 @@ end
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567
-activate :livereload
+# activate :livereload
 
 helpers do
   require './lib/toc_data.rb'

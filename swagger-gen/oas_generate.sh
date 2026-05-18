@@ -46,6 +46,7 @@ OUTFILE="${FILENAME}.$OUTPUT_EXT"
 
 # move it to output dir
 echo "*** Moving to output dir " $OUTPUT_DIR
+mkdir -p "$OUTPUT_DIR"
 if [ "$OUTPUT_EXT" == "yaml" ]; then
     cp $SWAGGER_CODEGEN_OUTPUT/openapi/openapi.$OUTPUT_EXT $OUTPUT_DIR/$OUTFILE
 else
