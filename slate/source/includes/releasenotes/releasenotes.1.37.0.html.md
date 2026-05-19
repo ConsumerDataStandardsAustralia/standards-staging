@@ -20,7 +20,7 @@ Release notes for version **1.37.0** of the [CDR Data Standards](../../).
 
 This release addresses the following minor defects raised on [Standards Staging](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues):
 
-- [Standards Staging #XXX - Title](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX)
+- [Standards Staging #493 - Standards staging fixes](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/493)
 
 This release addresses the following change requests raised on [Standards Maintenance](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues):
 
@@ -36,9 +36,7 @@ This release addresses the following Decisions published on [Standards](https://
 ## General Changes
 |Change|Description|Link|
 |------|-----------|----|
-| Change summary | [**Standards Staging #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Standards Maintenance #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues/XXX): Change detail. | [Standards section](../../#section)
-| Change summary | [**Decision #XXX**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/XXX): Change detail. | [Standards section](../../#section)
+| Standards staging fixes | [**Standards Staging #493**](https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/493): Minor updates to the standards development codebase. | 
 
 
 ## Introduction
@@ -124,4 +122,3 @@ This release addresses the following Decisions published on [Standards](https://
 ## Known Issues
 |Change|Description|Link|
 |------|-----------|----|
-
