@@ -2,3 +2,4 @@
 .idea/
 .vagrant/
 /docs-dev/
+/temp_cds_swagger_gen/

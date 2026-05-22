@@ -13,7 +13,7 @@ SWAGGER_CODEGEN=$HOME/swagger-codegen
 OAS_CODEGEN=$HOME/openapi-codegen
 
 #location of generated output
-SWAGGER_CODEGEN_OUTPUT=/tmp/cds_swagger_gen
+SWAGGER_CODEGEN_OUTPUT="$(cd "$(dirname "$0")/.." && pwd)/temp_cds_swagger_gen"
 
 #TODO Command line parse
 # format <filename> <cli_output_format> <ext> <output-dir>
