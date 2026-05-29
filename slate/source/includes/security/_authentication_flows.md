@@ -19,7 +19,7 @@ No other flows are currently supported.
 1.	**SHALL** support the *request_uri* parameter in accordance with **[[RFC9126]](#nref-RFC9126)**.
 1.	**SHALL** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page.
 1.	**SHALL NOT** request that the customer enter an existing password in the redirected page.
-1.	**SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
+1.	**SHALL** implement additional controls to minimise the risk of enumeration attacks on the authentication process, such as rate limiting.
 
 #### 4.1.2. Data Recipient Software Products
 
