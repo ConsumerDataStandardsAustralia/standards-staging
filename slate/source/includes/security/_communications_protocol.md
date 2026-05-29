@@ -27,6 +27,7 @@ In addition, Data Holders:
 1. **SHALL** accept *x-fapi-end-user-present* as an indicator that the end-user is present when a resource endpoint is called.
 1. **SHALL** log the value of *x-fapi-end-user-present* in the correlated resource request and response log entries.
 1. **SHALL NOT** serve a JWK set via their *jwks_uri* that contains multiple keys with the same *kid*.
+1. **SHALL** comply with all requirements defined in section [5.4.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.4.1) (Cryptography and Secrets) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 1. **SHOULD** certify their implementation as FAPI Certified as defined in **[[OpenID-Certification]](#iref-OpenID-Certification)**.
 
 **3.1.1.1. Authorisation Server Baseline Provisions**
@@ -55,12 +56,14 @@ In addition, Data Recipient Software Products:
 1. **SHALL** only use **[[MTLS]](#nref-MTLS)** as the mechanism for sender-constrained access tokens.
 1. **SHALL** support client authentication using *private_key_jwt*.
 1. **SHALL** only request authorisation using Authorization Code Flow such that *response_type* described in **[[RFC6749]](#nref-RFC6749)** is set to `code`.
-1. **SHALL** support authorisation request signing in accordance with section [5.3.1](https://openid.net/specs/fapi-message-signing-2_0.html#section-5.3.1) of **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)**.
+1. **SHALL** support authorisation request signing in accordance with section [5.3.2](https://openid.net/specs/fapi-message-signing-2_0.html#section-5.3.2) of **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)**.
 1. **SHOULD** record the following information each time an authorisation flow is executed: username (consumer's ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
 1. **SHOULD NOT** reuse *authorization_code* values, and if reused, it will be rejected.
+1. **SHALL** send requests with *x-fapi-interaction-id*, *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id* headers in accordance with [HTTP Headers](#http-headers) and [Correlation Identifiers](#3-2-correlation-identifiers).
 1. **SHALL** log the values of *x-fapi-interaction-id*, *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id* in the correlated PAR, Authorisation, Token and resource request and response log entries.
 1. **SHALL NOT** serve a JWK set via their *jwks_uri* that contains multiple keys with the same *kid*.
 1. **SHALL** send requests with an *x-fapi-end-user-present* header in accordance with the [HTTP Headers](#http-headers) section.
+1. **SHALL** comply with all requirements defined in section [5.4.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.4.1) (Cryptography and Secrets) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 1. **SHOULD** certify their Relying Party implementation as FAPI Certified as defined in **[[OpenID-Certification]](#iref-OpenID-Certification)**.
 
 
