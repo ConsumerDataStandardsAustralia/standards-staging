@@ -60,7 +60,7 @@ This end point is not required to be implemented by the Australian Energy Market
 
 NOTE: This version must be implemented by **October 1st 2022**
 
-Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
+Obsolete versions: [v1](../../includes/obsolete/get-metrics-v1.html) [v2](../../includes/obsolete/get-metrics-v2.html).
 
 If the Data Holder supports private_key_jwt client authentication they MUST validate the scope.
 

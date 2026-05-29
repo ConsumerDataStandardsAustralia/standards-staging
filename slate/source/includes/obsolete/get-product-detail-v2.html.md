@@ -57,7 +57,7 @@ Obtain detailed information on a single product offered openly to the market.
 
 NOTE: This version must be implemented by **July 2020**
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html)
+Obsolete versions: [v1](../../includes/obsolete/get-product-detail-v1.html)
 
 ###Endpoint Version
 |   |  |

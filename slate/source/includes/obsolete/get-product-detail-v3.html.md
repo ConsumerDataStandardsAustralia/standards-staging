@@ -55,7 +55,7 @@ $.ajax({
 
 Obtain detailed information on a single product offered openly to the market.
 
-Obsolete versions: [v1](includes/obsolete/get-product-detail-v1.html) [v2](includes/obsolete/get-product-detail-v2.html)
+Obsolete versions: [v1](../../includes/obsolete/get-product-detail-v1.html) [v2](../../includes/obsolete/get-product-detail-v2.html)
 
 ###Endpoint Version
 |   |  |
