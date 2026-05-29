@@ -64,7 +64,7 @@
           "Banking Accounts"
         ],
         "summary": "Get Accounts",
-        "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html), [v2](includes/obsolete/get-accounts-v2.html).",
+        "description": "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html), [v2](includes/obsolete/get-accounts-v2.html), [v3](includes/obsolete/get-accounts-v3.html).",
         "operationId": "listBankingAccounts",
         "parameters": [
           {
@@ -115,7 +115,7 @@
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "3"
+        "x-version": "4"
       }
     },
     "/banking/accounts/balances": {
@@ -124,7 +124,7 @@
           "Banking Account Balances"
         ],
         "summary": "Get Bulk Balances",
-        "description": "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-balances-v1.html).",
+        "description": "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-balances-v1.html), [v2](includes/obsolete/get-bulk-balances-v2.html).",
         "operationId": "listBankingBalancesBulk",
         "parameters": [
           {
@@ -175,14 +175,14 @@
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       },
       "post": {
         "tags": [
           "Banking Account Balances"
         ],
         "summary": "Get Balances For Specific Accounts",
-        "description": "Obtain balances for a specified list of accounts.",
+        "description": "Obtain balances for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-balances-for-specific-accounts-v1.html).",
         "operationId": "listBankingBalancesSpecificAccounts",
         "parameters": [
           {
@@ -227,7 +227,7 @@
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/balance": {
@@ -236,7 +236,7 @@
           "Banking Account Balances"
         ],
         "summary": "Get Account Balance",
-        "description": "Obtain the balance for a single specified account.",
+        "description": "Obtain the balance for a single specified account.\n\nObsolete versions: [v1](includes/obsolete/get-account-balance-v1.html).",
         "operationId": "getBankingBalance",
         "parameters": [
           {
@@ -275,7 +275,7 @@
         "x-scopes": [
           "bank:accounts.basic:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}": {
@@ -284,7 +284,7 @@
           "Banking Accounts"
         ],
         "summary": "Get Account Detail",
-        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html), [v4](includes/obsolete/get-account-detail-v4.html).",
+        "description": "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html), [v4](includes/obsolete/get-account-detail-v4.html), [v5](includes/obsolete/get-account-detail-v5.html).",
         "operationId": "getBankingAccountDetail",
         "parameters": [
           {
@@ -323,7 +323,7 @@
         "x-scopes": [
           "bank:accounts.detail:read"
         ],
-        "x-version": "5"
+        "x-version": "6"
       }
     },
     "/banking/accounts/{accountId}/transactions": {
@@ -332,7 +332,7 @@
           "Banking Account Transactions"
         ],
         "summary": "Get Transactions For Account",
-        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>\n\nObsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html).",
+        "description": "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>\n\nObsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html), [v2](includes/obsolete/get-transactions-for-account-v2.html).",
         "operationId": "listBankingTransactions",
         "parameters": [
           {
@@ -395,7 +395,7 @@
         "x-scopes": [
           "bank:transactions:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/accounts/{accountId}/transactions/{transactionId}": {
@@ -404,7 +404,7 @@
           "Banking Account Transactions"
         ],
         "summary": "Get Transaction Detail",
-        "description": "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html), [v2](includes/obsolete/get-transaction-detail-v2.html).",
+        "description": "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html), [v2](includes/obsolete/get-transaction-detail-v2.html), [v3](includes/obsolete/get-transaction-detail-v3.html).",
         "operationId": "getBankingTransactionDetail",
         "parameters": [
           {
@@ -452,7 +452,7 @@
         "x-scopes": [
           "bank:transactions:read"
         ],
-        "x-version": "3"
+        "x-version": "4"
       }
     },
     "/banking/accounts/{accountId}/direct-debits": {
@@ -461,7 +461,7 @@
           "Banking Account Direct Debits"
         ],
         "summary": "Get Direct Debits For Account",
-        "description": "Obtain direct debit authorisations for a specific account.",
+        "description": "Obtain direct debit authorisations for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-direct-debits-for-account-v1.html).",
         "operationId": "listDirectDebits",
         "parameters": [
           {
@@ -509,7 +509,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/direct-debits": {
@@ -518,7 +518,7 @@
           "Banking Account Direct Debits"
         ],
         "summary": "Get Bulk Direct Debits",
-        "description": "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html).",
+        "description": "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html), [v2](includes/obsolete/get-bulk-direct-debits-v2.html).",
         "operationId": "listDirectDebitsBulk",
         "parameters": [
           {
@@ -569,14 +569,14 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       },
       "post": {
         "tags": [
           "Banking Account Direct Debits"
         ],
         "summary": "Get Direct Debits For Specific Accounts",
-        "description": "Obtain direct debit authorisations for a specified list of accounts.",
+        "description": "Obtain direct debit authorisations for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-direct-debits-for-specific-accounts-v1.html).",
         "operationId": "listDirectDebitsSpecificAccounts",
         "parameters": [
           {
@@ -621,7 +621,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/{accountId}/payments/scheduled": {
@@ -630,7 +630,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments for Account",
-        "description": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html).",
+        "description": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html), [v2](includes/obsolete/get-scheduled-payments-for-account-v2.html).",
         "operationId": "listScheduledPayments",
         "parameters": [
           {
@@ -678,7 +678,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/payments/scheduled": {
@@ -687,7 +687,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments Bulk",
-        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html).",
+        "description": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html), [v3](includes/obsolete/get-scheduled-payments-bulk-v3.html).",
         "operationId": "listScheduledPaymentsBulk",
         "parameters": [
           {
@@ -738,14 +738,14 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "3"
+        "x-version": "4"
       },
       "post": {
         "tags": [
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Scheduled Payments For Specific Accounts",
-        "description": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).",
+        "description": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html), [v2](includes/obsolete/get-scheduled-payments-for-specific-accounts-v2.html).",
         "operationId": "listScheduledPaymentsSpecificAccounts",
         "parameters": [
           {
@@ -790,7 +790,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/accounts/{accountId}/payments/plans": {
@@ -799,7 +799,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Instalment Plans for Account",
-        "description": "Obtain instalment plans for a single specified account. The response **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_ was specified as `true` for the provided _accountId_ but no plans match the provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_ was specified as `false` for the provided _accountId_, then the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+        "description": "Obtain instalment plans for a single specified account. The response **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_ was specified as `true` for the provided _accountId_ but no plans match the provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_ was specified as `false` for the provided _accountId_, then the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).\n\nObsolete versions: [v1](includes/obsolete/get-instalment-plans-for-account-v1.html).",
         "operationId": "listInstalmentPlans",
         "parameters": [
           {
@@ -850,7 +850,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/accounts/payments/plans": {
@@ -859,7 +859,7 @@
           "Banking Account Scheduled Payments"
         ],
         "summary": "Get Instalment Plans Bulk",
-        "description": "Obtain instalment plans for multiple accounts. The response **MUST** be ordered by plan _creationDate_ in descending order. If instalments are not supported for any account type, the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+        "description": "Obtain instalment plans for multiple accounts. The response **MUST** be ordered by plan _creationDate_ in descending order. If instalments are not supported for any account type, the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).\n\nObsolete versions: [v1](includes/obsolete/get-instalment-plans-bulk-v1.html).",
         "operationId": "listInstalmentPlansBulk",
         "parameters": [
           {
@@ -904,7 +904,7 @@
         "x-scopes": [
           "bank:regular_payments:read"
         ],
-        "x-version": "1"
+        "x-version": "2"
       }
     },
     "/banking/payees": {
@@ -913,7 +913,7 @@
           "Banking Payees"
         ],
         "summary": "Get Payees",
-        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html).",
+        "description": "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html), [v2](includes/obsolete/get-payees-v2.html).",
         "operationId": "listBankingPayees",
         "parameters": [
           {
@@ -971,7 +971,7 @@
         "x-scopes": [
           "bank:payees:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/payees/{payeeId}": {
@@ -980,7 +980,7 @@
           "Banking Payees"
         ],
         "summary": "Get Payee Detail",
-        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).",
+        "description": "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html), [v2](includes/obsolete/get-payee-detail-v2.html).",
         "operationId": "getBankingPayeeDetail",
         "parameters": [
           {
@@ -1028,7 +1028,7 @@
         "x-scopes": [
           "bank:payees:read"
         ],
-        "x-version": "2"
+        "x-version": "3"
       }
     },
     "/banking/products": {

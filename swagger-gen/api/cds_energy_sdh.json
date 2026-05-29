@@ -37,13 +37,13 @@
     "/secondary/energy/electricity/servicepoints": {
       "post": {
         "summary": "Get Service Points (SR)",
-        "description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-SR-v1.html).",
+        "description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-SR-v1.html), [v2](includes/obsolete/get-service-points-SR-v2.html).",
         "operationId": "listElectricityServicePointsSR",
         "x-restricted-access": "AEMO",
         "tags": [
           "Electricity Service Points (SR)"
         ],
-        "x-version": "2",
+        "x-version": "3",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -90,12 +90,12 @@
       "get": {
         "summary": "Get Service Point Detail (SR)",
         "operationId": "getElectricityServicePointDetailSR",
-        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-SR-v1.html).",
+        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-SR-v1.html), [v2](includes/obsolete/get-service-point-detail-SR-v2.html).",
         "x-restricted-access": "AEMO",
         "tags": [
           "Electricity Service Points (SR)"
         ],
-        "x-version": "2",
+        "x-version": "3",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathSDHServicePointId"
@@ -136,12 +136,12 @@
       "get": {
         "summary": "Get Usage For Service Point (SR)",
         "operationId": "getElectricityServicePointUsageSR",
-        "description": "Obtain a list of electricity usage data from a particular service point.",
+        "description": "Obtain a list of electricity usage data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-service-point-SR-v1.html).",
         "x-restricted-access": "AEMO",
         "tags": [
           "Electricity Usage (SR)"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathSDHServicePointId"
@@ -200,12 +200,12 @@
       "post": {
         "summary": "Get Usage For Specific Service Points (SR)",
         "operationId": "listElectricityUsageForServicePointsSR",
-        "description": "Obtain the electricity usage data for a specific set of service points.",
+        "description": "Obtain the electricity usage data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-specific-service-points-SR-v1.html).",
         "x-restricted-access": "AEMO",
         "tags": [
           "Electricity Usage (SR)"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryOldestDate"
@@ -261,12 +261,12 @@
       "get": {
         "summary": "Get DER For Service Point (SR)",
         "operationId": "getElectricityDERForServicePointSR",
-        "description": "Obtain a list of DER data from a particular service point.",
+        "description": "Obtain a list of DER data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-der-for-service-point-SR-v1.html).",
         "x-restricted-access": "AEMO",
         "tags": [
           "Distributed Energy Resources (SR)"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathSDHServicePointId"
@@ -307,12 +307,12 @@
       "post": {
         "summary": "Get DER For Specific Service Points (SR)",
         "operationId": "listElectricityDERForSpecificServicePointsSR",
-        "description": "Obtain DER data for a specific set of service points.",
+        "description": "Obtain DER data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-der-for-specific-service-points-SR-v1.html).",
         "x-restricted-access": "AEMO",
         "tags": [
           "Distributed Energy Resources (SR)"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"

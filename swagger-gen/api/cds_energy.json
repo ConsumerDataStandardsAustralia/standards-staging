@@ -212,7 +212,7 @@
     "/energy/electricity/servicepoints": {
       "get": {
         "summary": "Get Service Points",
-        "description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-v1.html).",
+        "description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-v1.html), [v2](includes/obsolete/get-service-points-v2.html).",
         "operationId": "listElectricityServicePoints",
         "x-scopes": [
           "energy:electricity.servicepoints.basic:read"
@@ -220,7 +220,7 @@
         "tags": [
           "Electricity Service Points"
         ],
-        "x-version": "2",
+        "x-version": "3",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -267,11 +267,11 @@
         "x-scopes": [
           "energy:electricity.servicepoints.detail:read"
         ],
-        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-v1.html).",
+        "description": "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-v1.html), [v2](includes/obsolete/get-service-point-detail-v2.html).",
         "tags": [
           "Electricity Service Points"
         ],
-        "x-version": "2",
+        "x-version": "3",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathServicePointId"
@@ -315,11 +315,11 @@
         "x-scopes": [
           "energy:electricity.usage:read"
         ],
-        "description": "Obtain a list of electricity usage data from a particular service point.",
+        "description": "Obtain a list of electricity usage data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-service-point-v1.html).",
         "tags": [
           "Electricity Usage"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathServicePointId"
@@ -381,11 +381,11 @@
         "x-scopes": [
           "energy:electricity.usage:read"
         ],
-        "description": "Obtain usage data for all service points associated with the customer.",
+        "description": "Obtain usage data for all service points associated with the customer.\n\nOther Versions: [v1](includes/obsolete/get-bulk-usage-v1.html).",
         "tags": [
           "Electricity Usage"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryEnergyIntervalReads"
@@ -439,11 +439,11 @@
         "x-scopes": [
           "energy:electricity.usage:read"
         ],
-        "description": "Obtain the electricity usage data for a specific set of service points.",
+        "description": "Obtain the electricity usage data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-specific-service-points-v1.html).",
         "tags": [
           "Electricity Usage"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryOldestDate"
@@ -499,14 +499,14 @@
       "get": {
         "summary": "Get DER For Service Point",
         "operationId": "getElectricityDERForServicePoint",
-        "description": "Obtain a list of DER data from a particular service point.",
+        "description": "Obtain a list of DER data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-der-for-service-point-v1.html).",
         "x-scopes": [
           "energy:electricity.der:read"
         ],
         "tags": [
           "Distributed Energy Resources"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathServicePointId"
@@ -547,14 +547,14 @@
       "get": {
         "summary": "Get Bulk DER",
         "operationId": "listElectricityDERBulk",
-        "description": "Obtain DER data for all service points associated with the customer.",
+        "description": "Obtain DER data for all service points associated with the customer.\n\nOther Versions: [v1](includes/obsolete/get-bulk-der-v1.html).",
         "x-scopes": [
           "energy:electricity.der:read"
         ],
         "tags": [
           "Distributed Energy Resources"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -596,14 +596,14 @@
       "post": {
         "summary": "Get DER For Specific Service Points",
         "operationId": "listElectricityDERForSpecificServicePoints",
-        "description": "Obtain DER data for a specific set of service points.",
+        "description": "Obtain DER data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-der-for-specific-service-points-v1.html).",
         "x-scopes": [
           "energy:electricity.der:read"
         ],
         "tags": [
           "Distributed Energy Resources"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -650,14 +650,14 @@
       "get": {
         "summary": "Get Energy Accounts",
         "operationId": "listEnergyAccounts",
-        "description": "Obtain the list of energy accounts available under the authorised consent.\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html).",
+        "description": "Obtain the list of energy accounts available under the authorised consent.\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html), [v2](includes/obsolete/get-energy-accounts-v2.html).",
         "x-scopes": [
           "energy:accounts.basic:read"
         ],
         "tags": [
           "Energy Accounts"
         ],
-        "x-version": "2",
+        "x-version": "3",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryEnergyAccountOpenStatus"
@@ -704,15 +704,14 @@
       "get": {
         "summary": "Get Energy Account Detail",
         "operationId": "getEnergyAccountDetail",
-        "description": "Obtain detailed information for a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html), [v2](includes/obsolete/get-energy-account-detail-v2.html), [v3](includes/obsolete/get-energy-account-detail-v3.html).",
+        "description": "Obtain detailed information for a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html), [v2](includes/obsolete/get-energy-account-detail-v2.html), [v3](includes/obsolete/get-energy-account-detail-v3.html), [v4](includes/obsolete/get-energy-account-detail-v4.html).",
         "x-scopes": [
           "energy:accounts.detail:read"
         ],
         "tags": [
           "Energy Accounts"
         ],
-        "x-version": "4",
-        "x-version-notes": "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details.",
+        "x-version": "5",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -753,14 +752,14 @@
       "get": {
         "summary": "Get Agreed Payment Schedule",
         "operationId": "getEnergyAccountPaymentSchedule",
-        "description": "Obtain the agreed payment schedule and details, if any, for a specific energy account.\n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>",
+        "description": "Obtain the agreed payment schedule and details, if any, for a specific energy account.\n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>\n\nOther Versions: [v1](includes/obsolete/get-agreed-payment-schedule-v1.html).",
         "x-scopes": [
           "energy:accounts.paymentschedule:read"
         ],
         "tags": [
           "Energy Accounts"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -801,14 +800,14 @@
       "get": {
         "summary": "Get Concessions",
         "operationId": "getEnergyAccountConcessions",
-        "description": "Obtain the details of any concessions or arrangements applied to a specific energy account.",
+        "description": "Obtain the details of any concessions or arrangements applied to a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-concessions-v1.html).",
         "x-scopes": [
           "energy:accounts.concessions:read"
         ],
         "tags": [
           "Energy Accounts"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -849,14 +848,14 @@
       "get": {
         "summary": "Get Balance For Energy Account",
         "operationId": "getEnergyAccountBalance",
-        "description": "Obtain the current balance for a specific account.",
+        "description": "Obtain the current balance for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-balance-for-energy-account-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Balances"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -897,14 +896,14 @@
       "get": {
         "summary": "Get Bulk Balances for Energy",
         "operationId": "listEnergyAccountBalancesBulk",
-        "description": "Obtain the current balance for all accounts.",
+        "description": "Obtain the current balance for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-balances-for-energy-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Balances"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -946,14 +945,14 @@
       "post": {
         "summary": "Get Balances For Specific Energy Accounts",
         "operationId": "listEnergyAccountBalancesSpecificAccounts",
-        "description": "Obtain the current balance for a specified set of accounts.",
+        "description": "Obtain the current balance for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-balances-for-specific-energy-accounts-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Balances"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryPage"
@@ -1000,14 +999,14 @@
       "get": {
         "summary": "Get Invoices For Account",
         "operationId": "getEnergyAccountInvoices",
-        "description": "Obtain the invoices for a specific account.",
+        "description": "Obtain the invoices for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-invoices-for-account-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -1063,14 +1062,14 @@
       "get": {
         "summary": "Get Bulk Invoices",
         "operationId": "listEnergyAccountInvoicesBulk",
-        "description": "Obtain the invoices for all accounts.",
+        "description": "Obtain the invoices for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-invoices-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryNewestDateInvoices"
@@ -1118,14 +1117,14 @@
       "post": {
         "summary": "Get Invoices For Specific Accounts",
         "operationId": "listEnergyInvoicesForSpecificAccounts",
-        "description": "Obtain invoices for a specified set of accounts.",
+        "description": "Obtain invoices for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-invoices-for-specific-accounts-v1.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "1",
+        "x-version": "2",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryNewestDateInvoices"
@@ -1178,14 +1177,14 @@
       "get": {
         "summary": "Get Billing For Account",
         "operationId": "getBillingForEnergyAccount",
-        "description": "Obtain the billing transactions for a specific account.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-account-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-account-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description": "Obtain the billing transactions for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-billing-for-account-v1.html), [v2](includes/obsolete/get-billing-for-account-v2.html), [v3](includes/obsolete/get-billing-for-account-v3.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "3",
+        "x-version": "4",
         "parameters": [
           {
             "$ref": "#/components/parameters/PathAccountId"
@@ -1241,14 +1240,14 @@
       "get": {
         "summary": "Get Bulk Billing",
         "operationId": "listEnergyAccountBillingBulk",
-        "description": "Obtain billing transactions for all accounts.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-bulk-billing-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-bulk-billing-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description": "Obtain billing transactions for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-billing-v1.html), [v2](includes/obsolete/get-bulk-billing-v2.html), [v3](includes/obsolete/get-bulk-billing-v3.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "3",
+        "x-version": "4",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryNewestTime"
@@ -1296,14 +1295,14 @@
       "post": {
         "summary": "Get Billing For Specific Accounts",
         "operationId": "listEnergyAccountBillingForSpecificAccounts",
-        "description": "Obtain billing for a specified set of accounts.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description": "Obtain billing for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html), [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html), [v3](includes/obsolete/get-billing-for-specific-accounts-v3.html).",
         "x-scopes": [
           "energy:billing:read"
         ],
         "tags": [
           "Energy Account Billing"
         ],
-        "x-version": "3",
+        "x-version": "4",
         "parameters": [
           {
             "$ref": "#/components/parameters/QueryNewestTime"

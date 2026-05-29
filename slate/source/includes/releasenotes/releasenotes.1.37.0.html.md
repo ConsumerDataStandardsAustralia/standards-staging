@@ -43,7 +43,7 @@ This release addresses the following Decisions published on [Standards](https://
 |Change|Description|Link|
 |------|-----------|----|
 | Updated Chair detail | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Added Dr Scott Farrell as the new Data Standards Chair. | [Data Standards Chair](../../?diff#data-standards-chair)
-| Updated FDOs | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Removed past FDOs and added new FDOs for:<ul><li>Adoption of FAPI 2.0<li>Communications Protocol<li>Client Authentication<li>HTTP Headers<li>Shared Responsibility > Energy > Endpoint Variations.</ul> | [Future Dated Obligations](../../?diff#future-dated-obligations)
+| Updated FDOs | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Removed past FDOs and added new FDOs for:<ul><li>Adoption of FAPI 2.0<li>Communications Protocol<li>Client Authentication<li>HTTP Headers<li>Resource endpoint version increment<li>Shared Responsibility > Energy > Endpoint Variations.</ul> | [Future Dated Obligations](../../?diff#future-dated-obligations)
 | Normative References | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated Normative References, including titles, descriptions and links to reflect current locations and details. Replaced FAPI 1.0 references with FAPI 2.0. | [Normative References](../../?diff#normative-references)
 | Informative References | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated Informative References, including descriptions and links to reflect current locations and details. Added **[OpenID-Certification]**. | [Informative References](../../?diff#informative-references)
 
@@ -100,19 +100,19 @@ This release addresses the following Decisions published on [Standards](https://
 ## Banking APIs
 |Change|Description|Link|
 |------|-----------|----|
-| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. | [Banking APIs](../../?diff#banking-apis)
+| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. Incremented all affected endpoints. | [Banking APIs](../../?diff#banking-apis)
 
 
 ## Energy APIs
 |Change|Description|Link|
 |------|-----------|----|
-| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. | [Energy APIs](../../?diff#energy-apis)
+| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. Incremented all affected endpoints. | [Energy APIs](../../?diff#energy-apis)
 
 
 ## Common APIs
 |Change|Description|Link|
 |------|-----------|----|
-| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. | [Common APIs](../../?diff#common-apis)
+| Updated Parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Updated endpoint Parameters tables to remove *x-fapi-auth-date* and replace *x-fapi-customer-ip-address* with *x-fapi-end-user-present*. Incremented all affected endpoints. | [Common APIs](../../?diff#common-apis)
 
 
 ## Admin APIs
@@ -129,7 +129,7 @@ This release addresses the following Decisions published on [Standards](https://
 ## Energy Secondary DH APIs
 |Change|Description|Link|
 |------|-----------|----|
-| Updated endpoint parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Added *x-fapi-end-user-present* header to Energy Secondary DH APIs to support NFRs. | [Energy Secondary DH APIs](../../?diff#energy-secondary-dh-apis)
+| Updated endpoint parameters | [**Decision #210**](https://github.com/ConsumerDataStandardsAustralia/standards/issues/210): Added *x-fapi-end-user-present* header to Energy Secondary DH APIs to support NFRs. Incremented all affected endpoints. | [Energy Secondary DH APIs](../../?diff#energy-secondary-dh-apis)
 
 
 ## Additional Standards
