@@ -2046,9 +2046,7 @@
             "description": "The channel specified by the data recipient in the *x-cds-originating-channel* header in the PAR request initiating the authorisation flow.",
             "enum": [
               "APP",
-              "APP-DECOUPLED",
-              "WEB",
-              "WEB-DECOUPLED"
+              "WEB"
             ]
           },
           "previousDays": {
