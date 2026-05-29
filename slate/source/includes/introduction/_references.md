@@ -2,6 +2,7 @@
 
 ```diff
 Updated links referencing tools.ietf.org and updated Normative References detail for: [JARM], [OIDC], [OIDD].  
+Updated link for [BCP195].  
 Removed [RFC4627] as it has been obsoleted by [RFC8259]:
 - [RFC4627]
 
@@ -9,6 +10,9 @@ Removed, as they were not referenced:
 - [JWA]
 - [RFC7521]
 - [RFC7523]
+
+Added:
++ [JAR]
 
 Updated title for [JSON]:
 - [JSON]
@@ -34,11 +38,12 @@ Added Normative References:
 
 | Reference | Description | Version |
 |-----------|-------------|---------|
-| <a id="nref-BCP195"></a>**[BCP195]** | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <br><https://www.rfc-editor.org/info/bcp195> | |
+| <a id="nref-BCP195"></a>**[BCP195]** | Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS): <br><https://www.rfc-editor.org/info/bcp195/> | |
 | <a id="nref-DCR"></a>**[DCR]** | OAuth 2.0 Dynamic Client Registration Protocol: <https://datatracker.ietf.org/doc/html/rfc7591> | July 2015 |
 | <a id="nref-DigitalID-Accreditation"></a>**[DigitalID-Accreditation]** | Digital ID (Accreditation) Data Standards 2024: <https://www.legislation.gov.au/F2024L01435/latest/text> | November 2024 |
 | <a id="nref-FAPI-2-0-Security-Profile"></a>**[FAPI-2.0-Security-Profile]** | FAPI 2.0 Security Profile: <https://openid.net/specs/fapi-security-profile-2_0-final.html> | February 2025 |
 | <a id="nref-FAPI-2-0-Message-Signing"></a>**[FAPI-2.0-Message-Signing]** | FAPI 2.0 Message Signing: <https://openid.net/specs/fapi-message-signing-2_0.html> | September 2025 |
+| <a id="nref-JAR"></a>**[JAR]** | JWT-Secured Authorization Request (JAR): <br><https://datatracker.ietf.org/doc/html/rfc9101> | August 2021 |
 | <a id="nref-JARM"></a>**[JARM]** | JWT Secured Authorization Response Mode for OAuth 2.0 (JARM): <br><https://openid.net/specs/oauth-v2-jarm-final.html> | November 2022 |
 | <a id="nref-RFC8259"></a><a id="nref-JSON"></a>**[JSON]** / **[RFC8259]** | The JavaScript Object Notation (JSON) Data Interchange Format: <https://datatracker.ietf.org/doc/html/rfc8259> | December 2017 |
 | <a id="nref-RFC7516"></a><a id="nref-JWE"></a>**[JWE]** | JSON Web Encryption (JWE): <https://datatracker.ietf.org/doc/html/rfc7516> | May 2015 |

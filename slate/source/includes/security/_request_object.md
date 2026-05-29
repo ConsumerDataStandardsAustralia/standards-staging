@@ -45,7 +45,7 @@ Updated Non-Normative example
 
 The Request Object is a signed and encoded JWT specified in [section 6.1](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) of **[OIDC]**. The Request Object enables **[OIDC]** requests to be passed in a single and self-contained parameter.
 
-Request Objects **SHALL** be signed by Data Recipient Software Products in accordance with **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)** and **[[JARM]](#nref-JARM)**.
+Request Objects **SHALL** be signed by Data Recipient Software Products in accordance with **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)** and **[[JAR]](#nref-JAR)**.
 
 ### 18.1. Requesting Sharing Duration
 To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient Software Product to specify a sharing duration to the Data Holder is required.
