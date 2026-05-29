@@ -114,7 +114,7 @@ Data Recipient Software Products and Data Holders supporting the self-signed JWT
   * _exp_ - REQUIRED. Expiration time on or after which the ID Token **SHALL NOT** be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
   * _iat_ - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC 'issued at' time.
 1. Validation and use of the JWT and the claims described above **SHALL** be performed in accordance with **[[JWT]](#nref-JWT)**. 
-1. The JWT **SHALL** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://tools.ietf.org/html/rfc6750#section-2.1) of **[[RFC6750]](#nref-RFC6750)**.
+1. The JWT **SHALL** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://datatracker.ietf.org/doc/html/rfc6750#section-2.1) of **[[RFC6750]](#nref-RFC6750)**.
 1. In accordance with _jti_ requirements, self-signed JWTs are one-time use only. The authenticating server **SHALL** reject JWTs reuse.
 
 ### 5.3. CDR Register calling Data Holders
