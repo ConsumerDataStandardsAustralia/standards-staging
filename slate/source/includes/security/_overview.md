@@ -7,12 +7,19 @@ This information security profile builds upon the foundations of the [Financial-
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
 
+```diff
+Added terms:
++ CSPRNG
++ TOTP
+```
+
 ### Symbols and Abbreviated terms
-- **API**: Application Programming Interface
-- **CA**: Certificate Authority
+- **API:** Application Programming Interface
+- **CA:** Certificate Authority
 - **CDR:** Consumer Data Right
-- **CDR-SP**: Consumer Data Right Security Profile
-- **CL**: Credential Level
+- **CDR-SP:** Consumer Data Right Security Profile
+- **CL:** Credential Level
+- **CSPRNG:** Cryptographically Secure Pseudo-Random Number Generator
 - **DH:** Data Holder
 - **DR:** Data Recipient
 - **DRSP:** Data Recipient Software Product
@@ -21,7 +28,7 @@ For information on the specific normative references that underpin this profile 
 - **FQDN:** Fully Qualified Domain Name
 - **HoK:** Holder of Key
 - **JSON:** The JavaScript Object Notation
-- **JARM**: JWT Secured Authorization Response Mode
+- **JARM:** JWT Secured Authorization Response Mode
 - **JWA:** JSON Web Algorithms
 - **JWE:** JSON Web Encryption
 - **JWK:** JSON Web Key
@@ -41,3 +48,4 @@ For information on the specific normative references that underpin this profile 
 - **REST:** Representational State Transfer
 - **SP:** Data Recipient Software Product
 - **TLS:** Transport Layer Security
+- **TOTP:** Time-Based One-Time Password
