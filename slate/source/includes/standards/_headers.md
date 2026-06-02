@@ -44,6 +44,7 @@ Added Request Headers:
 + x-fapi-end-user-present
 + x-cds-authorisation-attempt-id
 + x-cds-authorisation-intent-id
++ x-cds-originating-channel
 ```
 
 Header Field | Description | Mandatory?
@@ -58,6 +59,7 @@ Header Field | Description | Mandatory?
 **x-cds-client-headers** | The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul>| Conditional
 <span style="white-space: nowrap;">**x-cds-authorisation-attempt-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id for a unique authorisation attempt in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
 **x-cds-authorisation-intent-id** | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id for tracking multiple authorisation attempts correlated to the same authorisation intent in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
+**x-cds-originating-channel** | Mandatory for requests to the [PAR endpoint](#19-9-pushed-authorisation-endpoint) to indicate the channel in which the user is initiating an authorisation flow.<br>Valid values are `APP` and `WEB`. | Mandatory
 
 ```diff
 Updated title

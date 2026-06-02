@@ -11,9 +11,6 @@ Removed, as they were not referenced:
 - [RFC7521]
 - [RFC7523]
 
-Added:
-+ [JAR]
-
 Updated title for [JSON]:
 - [JSON]
 + [JSON] / [RFC8259]
@@ -33,6 +30,7 @@ Removed Normative References:
 Added Normative References:
 + [FAPI-2.0-Security-Profile]
 + [FAPI-2.0-Message-Signing]
++ [JAR]
 + [RAR] / [RFC9396]
 ```
 

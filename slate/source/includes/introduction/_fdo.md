@@ -21,6 +21,14 @@ Added FDOs for May 2027
 + HTTP Headers
 + Resource endpoint version increment
 + Shared Responsibility > Energy > Endpoint Variations
++ Redirect to Web
++ One Time Password Credential Requirements
++ Restricted Credentials
++ Pushed Authorisation endpoint
++ Get Configuration v1
+
+Added FDO for November 2027
++ Get Metrics v6
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
@@ -59,3 +67,9 @@ The table below highlights these areas of the standards.
 |[HTTP Headers](#http-headers) | <ul><li>Data Recipients **SHOULD** continue to send the *x-fapi-customer-ip-address* header in accordance with its specification in any corresponding version requests, including where a range is requested, to ensure customer presence is interpreted correctly.</li><li>Data Holders and Data Recipients **SHALL** support *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id* headers as [Correlation Identifiers](#3-2-correlation-identifiers) from **May 10th 2027**.</li></ul> | May 10th 2027 |
 |[Resource endpoint version increment](#endpoint-version-schedule) | <ul><li>Data Holders **SHALL** support applicable resource endpoint versions which have been incremented to specify the *x-fapi-end-user-present* request header from **May 10th 2027**.</li><li>Data Holders **MAY** retire deprecated versions from **June 14th 2027**.</li><li>Data Holders **SHALL** refer to the *x-fapi-end-user-present* header to determine customer presence for NFR purposes from **May 10th 2027**.</li></ul> | May 10th 2027 |
 |[Shared Responsibility > Energy > Endpoint&nbsp;Variations](#endpoint-variations) | Energy Data Holders **SHALL** align to updated Secondary DH API header requirements from **May 10th 2027**. | May 10th 2027 |
+|[Redirect to Web](#redirect-to-web)| Data holders and data recipients **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[One Time Password Credential Requirements](#14-3-one-time-password-credential-requirements)| Data holders **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Restricted Credentials](#14-4-restricted-credentials)| Data holders **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Pushed Authorisation endpoint](#19-9-pushed-authorisation-endpoint)| Data holders and data recipients **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
+|[Get Configuration v1](#cdr-common-api_get-configuration)| Data Holders **SHALL** implement v1 of this endpoint by **May 10th 2027**. | May 10th 2027 |
+|[Get Metrics v6](#cdr-admin-api_get-metrics)| <ul><li>Data Holders **SHALL** implement v6 of this endpoint by **November 8th 2027**.</li><li>Data Holders **MAY** retire v5 of this endpoint from **December 10th 2027**.</li></ul> | November 8th 2027 |

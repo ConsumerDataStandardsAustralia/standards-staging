@@ -71,7 +71,7 @@
           "Data Holder Admin"
         ],
         "summary": "Get Metrics",
-        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.",
+        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.\n\nOther versions: [v1](includes/obsolete/get-metrics-v1.html), [v2](includes/obsolete/get-metrics-v2.html), [v3](includes/obsolete/get-metrics-v3.html), [v4](includes/obsolete/get-metrics-v4.html), [v5](includes/obsolete/get-metrics-v5.html).",
         "operationId": "getMetrics",
         "parameters": [
           {
@@ -99,7 +99,7 @@
           "admin:metrics.basic:read"
         ],
         "x-restricted-access": "REGISTER",
-        "x-version": "5"
+        "x-version": "6"
       }
     }
   },
@@ -202,7 +202,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseMetricsListV5"
+              "$ref": "#/components/schemas/ResponseMetricsListV6"
             }
           }
         }
@@ -256,7 +256,7 @@
           }
         }
       },
-      "ResponseMetricsListV5": {
+      "ResponseMetricsListV6": {
         "required": [
           "data",
           "links"
@@ -277,7 +277,8 @@
               "rejections",
               "requestTime",
               "sessionCount",
-              "authorisations"
+              "authorisations",
+              "authentication"
             ],
             "type": "object",
             "properties": {
@@ -328,6 +329,9 @@
               },
               "authorisations": {
                 "$ref": "#/components/schemas/AuthorisationMetricsV2"
+              },
+              "authentication": {
+                "$ref": "#/components/schemas/AuthenticationMetricsV1"
               }
             },
             "x-conditional": [
@@ -1522,6 +1526,7 @@
         "description": "Errors and rejections received by the primary data holder from the secondary data holder. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster."
       },
       "AuthorisationMetricsV2": {
+        "description": "Authorisation counts for the data holder.",
         "required": [
           "activeAuthorisationCount",
           "newAuthorisationCount",
@@ -2000,8 +2005,146 @@
             },
             "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned consent should assigned to one, and only one, stage)."
           }
-        },
-        "description": "Authorisation counts for the data holder."
+        }
+      },
+      "AuthenticationMetricsV1": {
+        "description": "Authentication detail.",
+        "required": [
+          "channels",
+          "levels"
+        ],
+        "type": "object",
+        "properties": {
+          "channels": {
+            "type": "array",
+            "description": "Detail about the channels associated with authorisation attempts.",
+            "items": {
+              "$ref": "#/components/schemas/AuthenticationChannelsV1"
+            }
+          },
+          "levels": {
+            "type": "array",
+            "description": "Detail about the level of assurance (LoA) associated with authentication attempts.",
+            "items": {
+              "$ref": "#/components/schemas/AuthenticationLevelsV1"
+            }
+          }
+        }
+      },
+      "AuthenticationChannelsV1": {
+        "type": "object",
+        "required": [
+          "initiatingChannel",
+          "completionChannels"
+        ],
+        "x-conditional": [
+          "previousDays"
+        ],
+        "properties": {
+          "initiatingChannel": {
+            "type": "string",
+            "description": "The channel specified by the data recipient in the *x-cds-originating-channel* header in the PAR request initiating the authorisation flow.",
+            "enum": [
+              "APP",
+              "WEB"
+            ]
+          },
+          "previousDays": {
+            "type": "array",
+            "description": "Number of authentications initiated in previous days for this *initiatingChannel*. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items": {
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          },
+          "completionChannels": {
+            "type": "array",
+            "description": "Array of completion channel detail associated with the *initiatingChannel*.",
+            "items": {
+              "type": "object",
+              "required": [
+                "completionChannel"
+              ],
+              "x-conditional": [
+                "previousDays"
+              ],
+              "properties": {
+                "completionChannel": {
+                  "description": "The channel where the consumer completed the authentication initiated by the associated *initiatingChannel*.",
+                  "enum": [
+                    "APP",
+                    "WEB"
+                  ]
+                },
+                "previousDays": {
+                  "type": "array",
+                  "description": "Number of authentications completed in previous days in the associated *completionChannel*. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                  "items": {
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AuthenticationLevelsV1": {
+        "type": "object",
+        "required": [
+          "levelOfAssurance",
+          "methods"
+        ],
+        "x-conditional": [
+          "startedPreviousDays",
+          "completedPreviousDays"
+        ],
+        "properties": {
+          "levelOfAssurance": {
+            "type": "string",
+            "description": "The level of assurance initiated for authentication.",
+            "enum": [
+              "urn:cds.au:cdr:2",
+              "urn:cds.au:cdr:3",
+              "urn:cds.au:cdr:4"
+            ]
+          },
+          "methods": {
+            "type": "array",
+            "description": "Methods involved in authentications initiated for the associated *levelOfAssurance*. Values provided **SHALL** align as closely as possible to Division 3 of **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)**. Where multiple factors are used to achieve the authentication challenge, each **SHALL** be provided in the array.",
+            "items": {
+              "enum": [
+                "LOOK_UP_SECRET",
+                "MEMORISED_SECRET",
+                "MF_CRYPTO_DEVICE",
+                "MF_CRYPTO_SW",
+                "MF_OTP",
+                "OTHER",
+                "OUT_OF_BAND_DEVICE",
+                "PASSKEY",
+                "SF_CRYPTO_DEVICE",
+                "SF_CRYPTO_SW",
+                "SF_OTP"
+              ]
+            }
+          },
+          "startedPreviousDays": {
+            "type": "array",
+            "description": "Number of authentications initiated in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items": {
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          },
+          "completedPreviousDays": {
+            "type": "array",
+            "description": "Number of authentications completed in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items": {
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          }
+        }
       },
       "Links": {
         "required": [

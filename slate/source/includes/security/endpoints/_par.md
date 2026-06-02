@@ -1,4 +1,9 @@
+
 ### 19.9. Pushed Authorisation endpoint
+
+```diff
+Updated the Pushed Authorisation endpoint section to include detail for the x-cds-originating-channel request header
+```
 
 > Non-Normative Example  
 > Utilising PAR/RFC9126, PKCE, JARM and Authorization Code Flow
@@ -136,3 +141,12 @@ Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed
 Data Recipient Software Products **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)**.
 
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder's Authorisation endpoint to initiate an authorisation flow.
+
+**Data Holders**
+
+- **SHALL** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
+
+**Data Recipient Software Products**
+
+- **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+- **SHALL** include the *x-cds-originating-channel* header in the PAR request indicating the channel from which the user is initiating an authorisation flow. For details see [HTTP Headers](#http-headers).
