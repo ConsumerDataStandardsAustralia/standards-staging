@@ -1,5 +1,40 @@
 # Register APIs
 
+```diff
+Clarified the Get Software Statement Assertion (SSA) response schema, including clearer references to client metadata fields and their updated optional/mandatory requirements
+
+Specified the following fields as optional in an SSA:
+ - org_id
+ - org_name
+ - client_name
+ - client_description
+ - client_uri
+ - logo_uri
+
+Removed these fields from the SSA:
+- revocation_uri
+- software_roles
+
+Added this field to the SSA to support versioning:
++ ssaVersion
+
+Added these fields to the Get Data Holder Brands endpoint:
++ legalEntityRef
++ brandRef
+
+Added this field to the Get Data Holder Brands Summary endpoint:
++ brandRef
+
+Added these fields to the Get Data Recipients endpoint:
++ clientUri
++ tosUri
++ policyUri
++ softwareProductRef
++ brandRef
+
+Field 'maxLength' values are appended to the field description if specified
+```
+
 The following section provides an overview of the Register APIs for Data Holders and Data Recipients to collect participant metadata.
 These endpoints are exposed by the Register and consumed by Data Holders and Data Recipients.
 

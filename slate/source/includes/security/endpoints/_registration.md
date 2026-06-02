@@ -1,19 +1,21 @@
 ### Dynamic Client Registration endpoints
 
+```diff
+Split DCR endpoint Path details into a new column in the table
+```
+
 Data Holders **MUST** expose the following endpoints in accordance with **[[DCR]](#nref-DCR)**.
 
 For more details of these endpoints see the [DCR APIs](#dcr-apis) section.
 
 For additional statements on the operation of these endpoint during client registration see the [Client Registration](#client-registration) section.
 
-
-
-| HTTP Verb | Auth Server Support | MTLS | HoK | Grant Type | Access Token Scope
-|--------------|-------|:-------:|:-------:|------|-----------------------------------------------------------------------------
-|**POST /register**| Required | <i class="icon-check"></i> | | N/A | None
-|**GET /register/{clientID}**| Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
-|**PUT /register/{clientID}**| Required | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
-|**DELETE /register/{clientID}**| Optional | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
+| HTTP Verb | Path                   | Auth Server Support | MTLS                       | HoK                        | Grant Type         | Access Token Scope
+|-----------|------------------------|---------------------|:--------------------------:|:--------------------------:|--------------------|-------------------
+|**POST**   | `/register`            | Required            | <i class="icon-check"></i> |                            | N/A                | None
+|**GET**    | `/register/{ClientId}` | Required            | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
+|**PUT**    | `/register/{ClientId}` | Required            | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
+|**DELETE** | `/register/{ClientId}` | Optional            | <i class="icon-check"></i> | <i class="icon-check"></i> | Client Credentials | `cdr:registration`
 
 Additional statements regarding these endpoints:
 

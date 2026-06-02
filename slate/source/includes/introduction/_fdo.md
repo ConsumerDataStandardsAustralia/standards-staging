@@ -1,6 +1,8 @@
 ## Future Dated Obligations
 
-
+```diff
+Added FDO for updated fields in the SSA and DCR
+```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
 
@@ -9,7 +11,7 @@ Please also refer to the [Obligation Date Schedule](includes/endpoint-version-sc
 The table below highlights these areas of the standards.
 
 |Section|Description|Applicable Date|
-|-------|-----------|---------------|
+|-------|-----------|--------------:|
 |[Get Generic Plan Detail](#cdr-energy-api_get-generic-plan-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v2 of this endpoint from **March 3rd 2025**</li></ul>| <span style="white-space: nowrap;">November 11th 2024</span> |
 |[Get Energy Account Detail](#cdr-energy-api_get-energy-account-detail)|<ul><li>Data Holders **MUST** implement v4 of this endpoint by **November 11th 2024**</li><li>Data Holder **MAY** retire v3 of this endpoint from **March 3rd 2025**</li></ul>| <span style="white-space: nowrap;">November 11th 2024</span> |
 |[Transaction Security Ciphers](#transaction-security)|Data Holders and Data Recipients **MUST** only support BCP195 recommended ciphers by **March 17th 2025**| <span style="white-space: nowrap;">March 17th 2025</span> |
@@ -41,5 +43,6 @@ The table below highlights these areas of the standards.
 |[Get Transaction Detail v3](#cdr-banking-api_get-transaction-detail)|<ul><li>Data Holders **MUST** implement v3 of this endpoint by **November 9th 2026**</li><li>Data Holders **MAY** retire v2 of this endpoint from **December 7th 2026**</li></ul> | November 9th 2026 |
 |[Get Instalment Plans for Account v1](#cdr-banking-api_get-instalment-plans-for-account)|<ul><li>Data Holders **MUST** implement v1 of this endpoint by **November 9th 2026**</li></ul> | November 9th 2026 |
 |[Get Instalment Plans Bulk v1](#cdr-banking-api_get-instalment-plans-bulk)|<ul><li>Data Holders **MUST** implement v1 of this endpoint by **November 9th 2026**</li></ul> | November 9th 2026 |
+|Updated fields in the [SSA](#cdr-register-api_get-software-statement-assertion-ssa) and [DCR](#cdr-dynamic-client-registration-api_register-data-recipient-oauth-client)| Data Holders **MUST** accept a DCR request with a v4 SSA schema and allow all client metadata fields in existing registrations to be modified from **November 9th 2026**. | November 9th 2026 |
 |[Redirect to App](#redirect-to-app)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
 |[Authentication Flows](#authentication-flows)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |

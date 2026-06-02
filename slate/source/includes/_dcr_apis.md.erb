@@ -1,5 +1,14 @@
 # DCR APIs
 
+```diff
+Refined the DCR request and response schemas to better align with the updated Get Software Statement Assertion (SSA) response, including clearer references to the software statement and client metadata fields and their updated optional/mandatory requirements
+
+As the DCR response is expected to reflect accepted fields from the Registration request, this additional field in the SSA is also represented as optional in DCR responses. Its presence will depend on the client request and data holder support:
++ ssaVersion
+
+Field 'maxLength' values are appended to the field description if specified
+```
+
 This specification defines the APIs for Data Holders exposing Dynamic Client Registration endpoints.
 
 <table>

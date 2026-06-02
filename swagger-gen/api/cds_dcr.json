@@ -30,10 +30,10 @@
           "Data Holder Client Registration"
         ],
         "summary": "Register Data Recipient oAuth Client",
-        "description": "Register a client using a CDR Register issued Software Statement Assertion. \n\nThis endpoint does not require [CORS](#cors).",
+        "description": "Register a client using a CDR Register issued Software Statement Assertion. For more details, refer to [Client Registration](#client-registration).\n\nThis endpoint does not require [CORS](#cors).",
         "operationId": "postClientRegistration",
         "requestBody": {
-          "$ref": "#/components/requestBodies/RequestClientRegistration"
+          "$ref": "#/components/requestBodies/RequestBodyClientRegistration"
         },
         "responses": {
           "201": {
@@ -92,7 +92,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/RequestClientRegistration"
+          "$ref": "#/components/requestBodies/RequestBodyClientRegistration"
         },
         "responses": {
           "200": {
@@ -170,12 +170,12 @@
       }
     },
     "requestBodies": {
-      "RequestClientRegistration": {
+      "RequestBodyClientRegistration": {
         "description": "The registration request JWT to be used to register with a Data Holder.",
         "content": {
           "application/jwt": {
             "schema": {
-              "$ref": "#/components/schemas/ClientRegistrationRequestV1"
+              "$ref": "#/components/schemas/RequestDCRJWTV1"
             }
           }
         },
@@ -188,7 +188,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/RegistrationProperties"
+              "$ref": "#/components/schemas/ClientRegistrationResponseV1"
             }
           }
         }
@@ -198,7 +198,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/RegistrationProperties"
+              "$ref": "#/components/schemas/ClientRegistrationResponseV1"
             }
           }
         }
@@ -208,7 +208,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/RegistrationProperties"
+              "$ref": "#/components/schemas/ClientRegistrationResponseV1"
             }
           }
         }
@@ -243,32 +243,88 @@
       }
     },
     "schemas": {
-      "ClientRegistrationRequestV1": {
+      "RequestDCRJWTV1": {
         "type": "string",
-        "description": "The registration request JWT to be used to register with a Data Holder. The schema of the payload section of the decoded string(JWT) is defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).",
         "format": "JWT",
-        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        "example": "header.payload.signature",
+        "description": "The registration request JWT to be used to register with a Data Holder. The decoded payload section of the JWT aligns to the [DCRJWTPayloadSectionV1](#cdr-dynamic-client-registration-api_schemas_tocSdcrjwtpayloadsectionv1) schema."
       },
-      "RegistrationProperties": {
+      "DCRJWTPayloadSectionV1": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "iss",
+              "iat",
+              "exp",
+              "jti",
+              "aud",
+              "software_statement"
+            ],
+            "properties": {
+              "iss": {
+                "type": "string",
+                "description": "Contains the identifier for the ADR Software Product (softwareProductId) as defined in the CDR Register.",
+                "example": "{softwareProductId}"
+              },
+              "iat": {
+                "type": "integer",
+                "description": "The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
+                "example": 1571808167,
+                "x-cds-type": "ExternalRef"
+              },
+              "exp": {
+                "type": "integer",
+                "description": "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
+                "example": 2147483646,
+                "x-cds-type": "ExternalRef"
+              },
+              "jti": {
+                "type": "string",
+                "description": "Unique identifier for the JWT, used to prevent replay of the token.",
+                "example": "37747cd1c10545699f754adf28b73e31"
+              },
+              "aud": {
+                "type": "string",
+                "description": "Contains the Data Holder *issuer* value as described in the [OIDC Discovery Document](#openid-provider-configuration-endpoint).",
+                "example": "https://tls.dh.example.com",
+                "x-cds-type": "URIString"
+              },
+              "redirect_uris": {
+                "type": "array",
+                "description": "Array of redirection URI strings for use in redirect-based flows. If used, *redirect_uris* **MUST** match or be a subset of the *redirect_uris* as defined in the SSA.",
+                "example": [
+                  "https://adr.example.com/redirects/redirect1",
+                  "https://adr.example.com/redirects/redirect2"
+                ],
+                "items": {
+                  "type": "string",
+                  "x-cds-type": "URIString"
+                }
+              },
+              "software_statement": {
+                "type": "string",
+                "format": "JWT",
+                "example": "header.payload.signature",
+                "description": "Software Statement Assertion (SSA) issued by the CDR Register."
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/ClientRegistrationSettingsV1"
+          }
+        ]
+      },
+      "ClientRegistrationSettingsV1": {
+        "type": "object",
         "required": [
-          "client_description",
-          "client_id",
-          "client_name",
-          "client_uri",
-          "grant_types",
-          "id_token_signed_response_alg",
-          "jwks_uri",
-          "logo_uri",
-          "org_id",
-          "org_name",
-          "redirect_uris",
-          "request_object_signing_alg",
-          "response_types",
-          "scope",
-          "software_id",
-          "software_statement",
           "token_endpoint_auth_method",
-          "token_endpoint_auth_signing_alg"
+          "token_endpoint_auth_signing_alg",
+          "grant_types",
+          "response_types",
+          "id_token_signed_response_alg",
+          "request_object_signing_alg",
+          "software_statement"
         ],
         "x-conditional": [
           "id_token_encrypted_response_alg",
@@ -276,109 +332,7 @@
           "authorization_signed_response_alg",
           "authorization_encrypted_response_alg"
         ],
-        "type": "object",
         "properties": {
-          "client_id": {
-            "type": "string",
-            "description": "Data Holder issued client identifier string.",
-            "example": "2cfefa98-7d4a-4bcb-95da-47063b84d410"
-          },
-          "client_id_issued_at": {
-            "type": "integer",
-            "description": "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
-            "example": 1574398833,
-            "x-cds-type": "ExternalRef"
-          },
-          "client_name": {
-            "type": "string",
-            "description": "Human-readable string name of the software product to be presented to the end-user during authorization.",
-            "example": "Mock Software"
-          },
-          "client_description": {
-            "type": "string",
-            "description": "Human-readable string name of the software product description to be presented to the end user during authorization.",
-            "example": "A mock software product"
-          },
-          "client_uri": {
-            "type": "string",
-            "description": "URL string of a web page providing information about the client.",
-            "example": "https://adr.example.com",
-            "x-cds-type": "URIString"
-          },
-          "legal_entity_id": {
-            "type": "string",
-            "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.",
-            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C7"
-          },
-          "legal_entity_name": {
-            "type": "string",
-            "description": "Human-readable string name of the Accredited Data Recipient Legal Entity.",
-            "example": "Mock Company Pty Ltd."
-          },
-          "org_id": {
-            "type": "string",
-            "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.",
-            "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8"
-          },
-          "org_name": {
-            "type": "string",
-            "description": "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization.",
-            "example": "Mock Company Brand"
-          },
-          "redirect_uris": {
-            "type": "array",
-            "description": "Array of redirection URI strings for use in redirect-based flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_ as defined in the SSA.",
-            "example": [
-              "https://adr.example.com/redirects/redirect1",
-              "https://adr.example.com/redirects/redirect2"
-            ],
-            "items": {
-              "type": "string",
-              "x-cds-type": "URIString"
-            }
-          },
-          "sector_identifier_uri": {
-            "type": "string",
-            "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier.",
-            "example": "https://adr.example.com/sector_identifier.json",
-            "x-cds-type": "URIString"
-          },
-          "logo_uri": {
-            "type": "string",
-            "description": "URL string that references a logo for the client. If present, the server **SHOULD** display this image to the end-user during approval.",
-            "example": "https://adr.example.com/logos/logo1.png",
-            "x-cds-type": "URIString"
-          },
-          "tos_uri": {
-            "type": "string",
-            "description": "URL string that points to a human-readable terms of service document for the Software Product.",
-            "example": "https://adr.example.com/tos.html",
-            "x-cds-type": "URIString"
-          },
-          "policy_uri": {
-            "type": "string",
-            "description": "URL string that points to a human-readable policy document for the Software Product.",
-            "example": "https://adr.example.com/policy.html",
-            "x-cds-type": "URIString"
-          },
-          "jwks_uri": {
-            "type": "string",
-            "description": "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys.",
-            "example": "https://adr.example.com/jwks",
-            "x-cds-type": "URIString"
-          },
-          "revocation_uri": {
-            "type": "string",
-            "description": "URI string that references the location of the Software Product consent revocation endpoint.",
-            "example": "https://adr.example.com/revocation",
-            "x-cds-type": "URIString"
-          },
-          "recipient_base_uri": {
-            "type": "string",
-            "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints.",
-            "example": "https://adr.example.com",
-            "x-cds-type": "URIString"
-          },
           "token_endpoint_auth_method": {
             "type": "string",
             "description": "The requested authentication method for the token endpoint.",
@@ -413,7 +367,7 @@
           },
           "response_types": {
             "type": "array",
-            "description": "Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br><br>_response_type_ value `code` is required for Authorization Code Flow.<br>_response_type_ value `code id_token` is required for OIDC Hybrid Flow.",
+            "description": "Array of the OAuth 2.0 *response_type* strings that the client can use at the authorization endpoint.<br>*response_type* value `code` is required for Authorization Code Flow.<br>*response_type* value `code id_token` is required for OIDC Hybrid Flow.<br>**From May 12th 2025** Data Recipients **SHALL** only use _response_type_ value `code` for authorisation requests.",
             "items": {
               "type": "string",
               "enum": [
@@ -424,7 +378,7 @@
           },
           "application_type": {
             "type": "string",
-            "description": "Kind of the application. The only supported application type will be `web`.",
+            "description": "Kind of application. The only supported application type will be `web`.",
             "default": "web",
             "enum": [
               "web"
@@ -432,7 +386,7 @@
           },
           "id_token_signed_response_alg": {
             "type": "string",
-            "description": "Algorithm with which an id_token is to be signed.",
+            "description": "Algorithm with which an id_token is to be signed.<br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**. Required for both Authorization Code Flow (_response_type_: `code`) and OIDC Hybrid Flow (_response_type_: `code id_token`).",
             "enum": [
               "PS256",
               "ES256"
@@ -440,20 +394,19 @@
           },
           "id_token_encrypted_response_alg": {
             "type": "string",
-            "description": "JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.",
+            "description": "JWE _alg_ algorithm with which an id_token is to be encrypted.<br>Required only if OIDC Hybrid Flow (*response_type*: `code id_token`) is registered. **SHALL NOT** be used for Authorization Code Flow.",
             "example": "RSA-OAEP",
             "x-cds-type": "ExternalRef"
           },
           "id_token_encrypted_response_enc": {
             "type": "string",
-            "description": "JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.",
+            "description": "JWE _enc_ algorithm with which an id_token is to be encrypted.<br>Required only if OIDC Hybrid Flow (*response_type*: `code id_token`) is registered. **SHALL NOT** be used for Authorization Code Flow.",
             "example": "A256GCM",
             "x-cds-type": "ExternalRef"
           },
           "authorization_signed_response_alg": {
             "type": "string",
-            "x-conditional": true,
-            "description": "The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.",
+            "description": "The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br>Required if *response_type* of `code` is registered by the client.",
             "example": "PS256",
             "enum": [
               "PS256",
@@ -462,8 +415,7 @@
           },
           "authorization_encrypted_response_alg": {
             "type": "string",
-            "x-conditional": true,
-            "description": "The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if _authorization_encrypted_response_enc_ is included.",
+            "description": "The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br>Required if *authorization_encrypted_response_enc* is included.",
             "example": "RSA-OAEP",
             "enum": [
               "RSA-OAEP",
@@ -472,7 +424,7 @@
           },
           "authorization_encrypted_response_enc": {
             "type": "string",
-            "description": "The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.",
+            "description": "The JWE _enc_ algorithm required for encrypting authorization responses. If *authorization_encrypted_response_alg* is specified, the default is `A128CBC-HS256`.",
             "example": "A128CBC-HS256",
             "enum": [
               "A256GCM",
@@ -481,84 +433,179 @@
           },
           "request_object_signing_alg": {
             "type": "string",
-            "description": "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.",
+            "description": "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.<br>If field not present in the request, data holders are expected to respond with an appropriate default value.<br>Supported values as constrained by **[[FAPI-1.0-Advanced]](#nref-FAPI-1-0-Advanced)**.",
             "enum": [
               "PS256",
               "ES256"
             ]
-          },
-          "software_statement": {
-            "type": "string",
-            "description": "The Software Statement Assertion, as defined in the CDR Data Standards.",
-            "format": "JWT"
-          },
-          "software_id": {
-            "type": "string",
-            "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same for the lifetime of the product, across multiple updates and versions.",
-            "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE"
-          },
-          "software_roles": {
-            "type": "string",
-            "description": "String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.",
-            "default": "data-recipient-software-product",
-            "example": "data-recipient-software-product",
-            "enum": [
-              "data-recipient-software-product"
-            ]
-          },
-          "scope": {
-            "type": "string",
-            "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
-            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
           }
         }
       },
-      "ClientRegistration": {
+      "ClientRegistrationResponseV1": {
         "allOf": [
           {
-            "required": [
-              "aud",
-              "exp",
-              "iat",
-              "iss",
-              "jti"
-            ],
             "type": "object",
+            "required": [
+              "client_id",
+              "software_statement"
+            ],
+            "x-conditional": [
+              "ssaVersion"
+            ],
             "properties": {
-              "iss": {
+              "client_id": {
                 "type": "string",
-                "description": "Contains the identifier for the ADR Software Product (SoftwareProductId) as defined in the CDR Register.",
-                "example": "CDR Software Product ID"
+                "description": "Data Holder issued client identifier string.",
+                "example": "{ClientId}"
               },
-              "iat": {
+              "client_id_issued_at": {
                 "type": "integer",
-                "description": "The time at which the request was issued by the Data Recipient expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
-                "example": 1571808167,
+                "description": "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
+                "example": 1574398833,
                 "x-cds-type": "ExternalRef"
               },
-              "exp": {
+              "software_statement": {
+                "type": "string",
+                "format": "JWT",
+                "example": "header.payload.signature",
+                "description": "The Software Statement Assertion (SSA) issued by the CDR Register, as presented by the client."
+              },
+              "ssaVersion": {
                 "type": "integer",
-                "description": "The time at which the request expires expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC.",
-                "example": 2147483646,
-                "x-cds-type": "ExternalRef"
-              },
-              "jti": {
-                "type": "string",
-                "description": "Unique identifier for the JWT, used to prevent replay of the token.",
-                "example": "37747cd1c10545699f754adf28b73e31"
-              },
-              "aud": {
-                "type": "string",
-                "description": "Contains the Data Holder issuer value as described in the OIDC Discovery Document.",
-                "example": "https://mtls.dh.example.com/issuer",
-                "x-cds-type": "URIString"
+                "x-cds-type": "PositiveInteger",
+                "description": "Value of the *ssaVersion* field in the SSA that was presented by the client. Mandatory if the field was present in the request payload and the version specified is supported by the Data Holder.",
+                "example": 4
               }
             }
           },
           {
-            "$ref": "#/components/schemas/RegistrationProperties"
+            "$ref": "#/components/schemas/ClientRegistrationSettingsV1"
+          },
+          {
+            "$ref": "#/components/schemas/SSAProductMetaDataV1"
           }
         ]
+      },
+      "SSAProductMetaDataV1": {
+        "type": "object",
+        "description": "Data Recipient Software Product metadata.",
+        "required": [
+          "redirect_uris",
+          "jwks_uri",
+          "recipient_base_uri",
+          "software_id",
+          "scope"
+        ],
+        "properties": {
+          "legal_entity_id": {
+            "type": "string",
+            "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity.",
+            "example": "3b0b0a7b-3e7b-4a2c-9497-e357a71d07c7",
+            "maxLength": 36
+          },
+          "legal_entity_name": {
+            "type": "string",
+            "description": "Name of the Accredited Data Recipient Legal Entity.",
+            "example": "Mock Company Pty Ltd.",
+            "maxLength": 200
+          },
+          "org_id": {
+            "type": "string",
+            "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand.",
+            "example": "3b0b0a7b-3e7b-4a2c-9497-e357a71d07c8",
+            "maxLength": 36
+          },
+          "org_name": {
+            "type": "string",
+            "description": "Name of the Accredited Data Recipient Brand to be presented to the end user during authorisation.",
+            "example": "Mock Company Brand",
+            "maxLength": 200
+          },
+          "client_name": {
+            "type": "string",
+            "description": "Name of the Software Product to be presented to the end-user during authorisation.",
+            "example": "Mock Software",
+            "maxLength": 160
+          },
+          "client_description": {
+            "type": "string",
+            "description": "Description of the Software Product to be presented to the end-user during authorisation.",
+            "example": "A mock software product",
+            "maxLength": 4000
+          },
+          "client_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string of a web page providing information about the Software Product.",
+            "example": "https://adr.example.com",
+            "maxLength": 1000
+          },
+          "redirect_uris": {
+            "type": "array",
+            "description": "Array of redirection URI strings for use in redirect-based flows.",
+            "items": {
+              "type": "string",
+              "x-cds-type": "URIString"
+            },
+            "example": [
+              "https://adr.example.com/redirects/redirect1",
+              "https://adr.example.com/redirects/redirect2"
+            ]
+          },
+          "sector_identifier_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string referencing the client's sector identifier URI, used as an optional input to the Pairwise Identifier as described in [section 8](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes) of **[[OIDC]](#nref-OIDC)**.",
+            "example": "https://adr.example.com/sector_identifier.json",
+            "maxLength": 2048
+          },
+          "logo_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string that references a logo for the client Software Product. The server **SHOULD** display this image to the end-user during approval.",
+            "example": "https://adr.example.com/logos/logo1.png",
+            "maxLength": 1000
+          },
+          "tos_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string that points to a human-readable terms of service document for the Software Product.",
+            "example": "https://adr.example.com/tos.html",
+            "maxLength": 1000
+          },
+          "policy_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string that points to a human-readable policy document for the Software Product.",
+            "example": "https://adr.example.com/policy.html",
+            "maxLength": 1000
+          },
+          "jwks_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "URL string referencing the client's JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client's public keys.",
+            "example": "https://adr.example.com/jwks",
+            "maxLength": 1000
+          },
+          "recipient_base_uri": {
+            "type": "string",
+            "x-cds-type": "URIString",
+            "description": "Base URI for the CDR Data Standard Data Recipient endpoints. This **SHOULD** be the base to provide reference to all other [Data Recipient Endpoints](#security-endpoints).",
+            "example": "https://adr.example.com",
+            "maxLength": 1000
+          },
+          "software_id": {
+            "type": "string",
+            "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the Software Product to be dynamically registered.<br>The *software_id* will remain the same across multiple updates or versions of the same piece of software.<br>The *software_id* **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations.",
+            "example": "{softwareProductId}",
+            "maxLength": 36
+          },
+          "scope": {
+            "type": "string",
+            "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.<br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes).<br>The DCR scope value is defined at: [Client Registration Management](#dynamic-client-registration-endpoints).<br>As per the [CDS Scopes and Claims](#scopes-and-claims), `openid` and `profile` are included in the SSA.",
+            "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read energy:electricity.servicepoints.basic:read energy:electricity.servicepoints.detail:read energy:electricity.usage:read energy:electricity.der:read energy:accounts.basic:read energy:accounts.detail:read energy:accounts.paymentschedule:read energy:accounts.concessions:read energy:billing:read common:customer.basic:read common:customer.detail:read cdr:registration"
+          }
+        }
       },
       "RegistrationError": {
         "required": [
@@ -574,11 +621,13 @@
               "invalid_client_metadata",
               "invalid_software_statement",
               "unapproved_software_statement"
-            ]
+            ],
+            "example": "invalid_software_statement"
           },
           "error_description": {
             "type": "string",
             "description": "Additional text description of the error for debugging.",
+            "example": "Duplicate registrations for a given software_id are not valid",
             "x-cds-type": "ASCIIString"
           }
         }
