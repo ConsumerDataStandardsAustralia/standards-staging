@@ -4,8 +4,6 @@
 
 <h2 id="cdr-telco-api_get-telco-products">Get Telco Products</h2>
 
-<p id="get-telco-products" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -309,8 +307,6 @@ This operation does not require authentication.
 
 <h2 id="cdr-telco-api_get-telco-product-detail">Get Telco Product Detail</h2>
 
-<p id="get-telco-product-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -569,8 +565,6 @@ This operation does not require authentication.
 
 <h2 id="cdr-telco-api_get-telco-accounts">Get Telco Accounts</h2>
 
-<p id="get-telco-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -580,8 +574,7 @@ This operation does not require authentication.
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -589,8 +582,7 @@ This operation does not require authentication.
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -690,20 +682,12 @@ This operation does not require authentication.
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -875,8 +859,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-telco-account-detail">Get Telco Account Detail</h2>
 
-<p id="get-telco-account-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -886,8 +868,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -895,8 +876,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -972,20 +952,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1135,8 +1107,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-telco-agreed-payment-schedule">Get Telco Agreed Payment Schedule</h2>
 
-<p id="get-telco-agreed-payment-schedule" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1146,8 +1116,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1155,8 +1124,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1236,20 +1204,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1402,8 +1362,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-telco-concessions">Get Telco Concessions</h2>
 
-<p id="get-telco-concessions" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1413,8 +1371,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1422,8 +1379,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1499,20 +1455,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1656,8 +1604,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-usage-for-telco-service">Get Usage For Telco Service</h2>
 
-<p id="get-usage-for-telco-service" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1667,8 +1613,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1676,8 +1621,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1769,20 +1713,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1960,8 +1896,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-usage">Get Usage</h2>
 
-<p id="get-usage" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1971,8 +1905,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1980,8 +1913,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2081,20 +2013,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2270,8 +2194,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-usage-for-specific-telco-service">Get Usage For Specific Telco Service</h2>
 
-<p id="get-usage-for-specific-telco-service" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2282,8 +2204,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -2300,8 +2221,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2398,20 +2318,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2599,8 +2511,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-balance-for-telco-account">Get Balance For Telco Account</h2>
 
-<p id="get-balance-for-telco-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2610,8 +2520,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2619,8 +2528,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2696,20 +2604,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2887,8 +2787,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-bulk-telco-balances">Get Bulk Telco Balances</h2>
 
-<p id="get-bulk-telco-balances" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2898,8 +2796,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2907,8 +2804,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2992,20 +2888,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3197,8 +3085,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-balances-for-specific-telco-accounts">Get Balances For Specific Telco Accounts</h2>
 
-<p id="get-balances-for-specific-telco-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3209,8 +3095,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -3227,8 +3112,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3325,20 +3209,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3542,8 +3418,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-invoices-for-telco-account">Get Invoices For Telco Account</h2>
 
-<p id="get-invoices-for-telco-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3553,8 +3427,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3562,8 +3435,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3639,20 +3511,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3860,8 +3724,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-telco-invoices">Get Telco Invoices</h2>
 
-<p id="get-telco-invoices" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3871,8 +3733,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3880,8 +3741,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3981,20 +3841,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4196,8 +4048,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-invoices-for-specific-telco-accounts">Get Invoices For Specific Telco Accounts</h2>
 
-<p id="get-invoices-for-specific-telco-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4208,8 +4058,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -4226,8 +4075,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4340,20 +4188,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4563,8 +4403,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-transactions-for-telco-account">Get Transactions For Telco Account</h2>
 
-<p id="get-transactions-for-telco-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4574,8 +4412,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4583,8 +4420,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4692,20 +4528,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4889,8 +4717,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-telco-transactions">Get Telco Transactions</h2>
 
-<p id="get-telco-transactions" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4900,8 +4726,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4909,8 +4734,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5010,20 +4834,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5194,8 +5010,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-telco-api_get-transactions-for-specific-telco-accounts">Get Transactions For Specific Telco Accounts</h2>
 
-<p id="get-transactions-for-specific-telco-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5206,8 +5020,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -5224,8 +5037,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5338,20 +5150,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5532,8 +5336,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSrequestaccountidlistv1">RequestAccountIdListV1</h3>
 
-<p id="tocSrequestaccountidlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_requestaccountidlist"></a>
   <a class="schema-anchor" id="schemacdr-telco-apirequestaccountidlistv1"></a>
@@ -5583,8 +5385,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSrequestserviceidlistv1">RequestServiceIdListV1</h3>
 
-<p id="tocSrequestserviceidlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_requestserviceidlist"></a>
   <a class="schema-anchor" id="schemacdr-telco-apirequestserviceidlistv1"></a>
@@ -5633,8 +5433,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductlistresponse">TelcoProductListResponse</h3>
-
-<p id="tocStelcoproductlistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductlistresponse"></a>
@@ -5738,8 +5536,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductresponse">TelcoProductResponse</h3>
-
-<p id="tocStelcoproductresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductresponse"></a>
@@ -5888,8 +5684,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousageresponse">TelcoUsageResponse</h3>
 
-<p id="tocStelcousageresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousageresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousageresponse"></a>
@@ -5994,8 +5788,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusageresponse">TelcoServiceUsageResponse</h3>
 
-<p id="tocStelcoserviceusageresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoserviceusageresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoserviceusageresponse"></a>
@@ -6093,8 +5885,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountlistresponse">TelcoAccountListResponse</h3>
 
-<p id="tocStelcoaccountlistresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountlistresponse"></a>
@@ -6184,8 +5974,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponse">TelcoAccountDetailResponse</h3>
 
-<p id="tocStelcoaccountdetailresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountdetailresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountdetailresponse"></a>
@@ -6267,8 +6055,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduleresponse">TelcoPaymentScheduleResponse</h3>
-
-<p id="tocStelcopaymentscheduleresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentscheduleresponse"></a>
@@ -6362,8 +6148,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcessionsresponse">TelcoConcessionsResponse</h3>
 
-<p id="tocStelcoconcessionsresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoconcessionsresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoconcessionsresponse"></a>
@@ -6442,8 +6226,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalancelistresponse">TelcoBalanceListResponse</h3>
-
-<p id="tocStelcobalancelistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcobalancelistresponse"></a>
@@ -6576,8 +6358,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponse">TelcoBalanceResponse</h3>
 
-<p id="tocStelcobalanceresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobalanceresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponse"></a>
@@ -6695,8 +6475,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcotransactionlistresponse">TelcoTransactionListResponse</h3>
 
-<p id="tocStelcotransactionlistresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcotransactionlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcotransactionlistresponse"></a>
@@ -6807,8 +6585,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_responseerrorlist"></a>
   <a class="schema-anchor" id="schemacdr-telco-apiresponseerrorlistv2"></a>
@@ -6847,8 +6623,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_error"></a>
@@ -6912,8 +6686,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproduct">TelcoProduct</h3>
-
-<p id="tocStelcoproduct" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproduct"></a>
@@ -7145,8 +6917,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcocontract">TelcoContract</h3>
 
-<p id="tocStelcocontract" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcocontract"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcocontract"></a>
@@ -7202,8 +6972,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountusage">TelcoAccountUsage</h3>
-
-<p id="tocStelcoaccountusage" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountusage"></a>
@@ -7302,8 +7070,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceusage">TelcoServiceUsage</h3>
-
-<p id="tocStelcoserviceusage" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoserviceusage"></a>
@@ -7417,8 +7183,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountbase">TelcoAccountBase</h3>
 
-<p id="tocStelcoaccountbase" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountbase"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountbase"></a>
@@ -7515,8 +7279,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountresponsedata">TelcoAccountResponseData</h3>
 
-<p id="tocStelcoaccountresponsedata" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountresponsedata"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountresponsedata"></a>
@@ -7596,8 +7358,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountdetailresponsedata">TelcoAccountDetailResponseData</h3>
-
-<p id="tocStelcoaccountdetailresponsedata" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountdetailresponsedata"></a>
@@ -7689,8 +7449,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedule">TelcoPaymentSchedule</h3>
-
-<p id="tocStelcopaymentschedule" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentschedule"></a>
@@ -7806,8 +7564,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoconcession">TelcoConcession</h3>
-
-<p id="tocStelcoconcession" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoconcession"></a>
@@ -7942,8 +7698,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoice">TelcoInvoice</h3>
-
-<p id="tocStelcoinvoice" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoice"></a>
@@ -8154,8 +7908,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousage">TelcoUsage</h3>
 
-<p id="tocStelcousage" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousage"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousage"></a>
@@ -8242,8 +7994,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountcharges">TelcoInvoiceAccountCharges</h3>
 
-<p id="tocStelcoinvoiceaccountcharges" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoiceaccountcharges"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoinvoiceaccountcharges"></a>
@@ -8311,8 +8061,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingtransaction">TelcoBillingTransaction</h3>
-
-<p id="tocStelcobillingtransaction" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingtransaction"></a>
@@ -8461,8 +8209,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransaction">TelcoBillingAccountTransaction</h3>
 
-<p id="tocStelcobillingaccounttransaction" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingaccounttransaction"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransaction"></a>
@@ -8546,8 +8292,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingonceofftransaction">TelcoBillingOnceOffTransaction</h3>
 
-<p id="tocStelcobillingonceofftransaction" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingonceofftransaction"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobillingonceofftransaction"></a>
@@ -8601,8 +8345,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingothertransaction">TelcoBillingOtherTransaction</h3>
-
-<p id="tocStelcobillingothertransaction" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingothertransaction"></a>
@@ -8725,8 +8467,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingpaymenttransaction">TelcoBillingPaymentTransaction</h3>
 
-<p id="tocStelcobillingpaymenttransaction" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingpaymenttransaction"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobillingpaymenttransaction"></a>
@@ -8806,8 +8546,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalance">TelcoServiceBalance</h3>
-
-<p id="tocStelcoservicebalance" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalance"></a>
@@ -8930,8 +8668,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoplantype">TelcoPlanType</h3>
 
-<p id="tocStelcoplantype" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoplantype"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoplantype"></a>
@@ -8988,8 +8724,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinks">Links</h3>
 
-<p id="tocSlinks" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_links"></a>
   <a class="schema-anchor" id="schemacdr-telco-apilinks"></a>
@@ -9020,8 +8754,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-telco-apimeta"></a>
@@ -9033,8 +8765,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
-
-<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_linkspaginated"></a>
@@ -9098,8 +8828,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 
-<p id="tocSmetapaginated" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_metapaginated"></a>
   <a class="schema-anchor" id="schemacdr-telco-apimetapaginated"></a>
@@ -9137,8 +8865,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagelistresponse">TelcoUsageListResponse</h3>
-
-<p id="tocStelcousagelistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcousagelistresponse"></a>
@@ -9255,8 +8981,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobalanceresponsedata">TelcoBalanceResponseData</h3>
 
-<p id="tocStelcobalanceresponsedata" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobalanceresponsedata"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobalanceresponsedata"></a>
@@ -9363,8 +9087,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceresponse">TelcoInvoiceResponse</h3>
-
-<p id="tocStelcoinvoiceresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoiceresponse"></a>
@@ -9499,8 +9221,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicelistresponse">TelcoInvoiceListResponse</h3>
-
-<p id="tocStelcoinvoicelistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoicelistresponse"></a>
@@ -9643,8 +9363,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductpricing">TelcoProductPricing</h3>
 
-<p id="tocStelcoproductpricing" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductpricing"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductpricing"></a>
@@ -9698,8 +9416,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoadditionalinformation">TelcoAdditionalInformation</h3>
-
-<p id="tocStelcoadditionalinformation" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoadditionalinformation"></a>
@@ -9765,8 +9481,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailmeteringcharges">TelcoProductDetailMeteringCharges</h3>
 
-<p id="tocStelcoproductdetailmeteringcharges" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailmeteringcharges"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailmeteringcharges"></a>
@@ -9828,8 +9542,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailfeature">TelcoProductDetailFeature</h3>
-
-<p id="tocStelcoproductdetailfeature" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailfeature"></a>
@@ -9927,8 +9639,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailbundles">TelcoProductDetailBundles</h3>
 
-<p id="tocStelcoproductdetailbundles" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailbundles"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailbundles"></a>
@@ -9989,8 +9699,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplan">TelcoProductDetailPlan</h3>
 
-<p id="tocStelcoproductdetailplan" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailplan"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplan"></a>
@@ -10050,8 +9758,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailplanfeature">TelcoProductDetailPlanFeature</h3>
 
-<p id="tocStelcoproductdetailplanfeature" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailplanfeature"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailplanfeature"></a>
@@ -10090,8 +9796,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscountfeature">TelcoProductDetailDiscountFeature</h3>
 
-<p id="tocStelcoproductdetaildiscountfeature" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetaildiscountfeature"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetaildiscountfeature"></a>
@@ -10129,8 +9833,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetaildiscounts">TelcoProductDetailDiscounts</h3>
-
-<p id="tocStelcoproductdetaildiscounts" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetaildiscounts"></a>
@@ -10191,8 +9893,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentivefeature">TelcoProductDetailIncentiveFeature</h3>
 
-<p id="tocStelcoproductdetailincentivefeature" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailincentivefeature"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductdetailincentivefeature"></a>
@@ -10230,8 +9930,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetailincentives">TelcoProductDetailIncentives</h3>
-
-<p id="tocStelcoproductdetailincentives" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetailincentives"></a>
@@ -10291,8 +9989,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductdetail">TelcoProductDetail</h3>
-
-<p id="tocStelcoproductdetail" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductdetail"></a>
@@ -10478,8 +10174,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplanoverview">TelcoAccountPlanOverview</h3>
 
-<p id="tocStelcoaccountplanoverview" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountplanoverview"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplanoverview"></a>
@@ -10525,8 +10219,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplanbase">TelcoAccountPlanBase</h3>
-
-<p id="tocStelcoaccountplanbase" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountplanbase"></a>
@@ -10630,8 +10322,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountplandetail">TelcoAccountPlanDetail</h3>
 
-<p id="tocStelcoaccountplandetail" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountplandetail"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountplandetail"></a>
@@ -10718,8 +10408,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulecarddebit">TelcoPaymentScheduleCardDebit</h3>
-
-<p id="tocStelcopaymentschedulecarddebit" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentschedulecarddebit"></a>
@@ -10815,8 +10503,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledirectdebit">TelcoPaymentScheduleDirectDebit</h3>
 
-<p id="tocStelcopaymentscheduledirectdebit" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentscheduledirectdebit"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentscheduledirectdebit"></a>
@@ -10902,8 +10588,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentscheduledigitalwallet">TelcoPaymentScheduleDigitalWallet</h3>
-
-<p id="tocStelcopaymentscheduledigitalwallet" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentscheduledigitalwallet"></a>
@@ -11019,8 +10703,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcopaymentschedulemanualpayment">TelcoPaymentScheduleManualPayment</h3>
 
-<p id="tocStelcopaymentschedulemanualpayment" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcopaymentschedulemanualpayment"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcopaymentschedulemanualpayment"></a>
@@ -11052,8 +10734,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceperiod">TelcoInvoicePeriod</h3>
-
-<p id="tocStelcoinvoiceperiod" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoiceperiod"></a>
@@ -11094,8 +10774,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoicepayontimediscount">TelcoInvoicePayOnTimeDiscount</h3>
-
-<p id="tocStelcoinvoicepayontimediscount" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoicepayontimediscount"></a>
@@ -11145,8 +10823,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedataroaming">TelcoUsageDataRoaming</h3>
 
-<p id="tocStelcousagedataroaming" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousagedataroaming"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousagedataroaming"></a>
@@ -11186,8 +10862,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagedata">TelcoUsageData</h3>
-
-<p id="tocStelcousagedata" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcousagedata"></a>
@@ -11256,8 +10930,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoicenational">TelcoUsageVoiceNational</h3>
 
-<p id="tocStelcousagevoicenational" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousagevoicenational"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoicenational"></a>
@@ -11305,8 +10977,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceinternational">TelcoUsageVoiceInternational</h3>
-
-<p id="tocStelcousagevoiceinternational" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcousagevoiceinternational"></a>
@@ -11356,8 +11026,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoiceroaming">TelcoUsageVoiceRoaming</h3>
 
-<p id="tocStelcousagevoiceroaming" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousagevoiceroaming"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousagevoiceroaming"></a>
@@ -11405,8 +11073,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagevoice">TelcoUsageVoice</h3>
-
-<p id="tocStelcousagevoice" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcousagevoice"></a>
@@ -11468,8 +11134,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingsms">TelcoUsageMessagingSms</h3>
 
-<p id="tocStelcousagemessagingsms" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousagemessagingsms"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessagingsms"></a>
@@ -11525,8 +11189,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessagingmms">TelcoUsageMessagingMms</h3>
-
-<p id="tocStelcousagemessagingmms" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcousagemessagingmms"></a>
@@ -11584,8 +11246,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcousagemessaging">TelcoUsageMessaging</h3>
 
-<p id="tocStelcousagemessaging" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcousagemessaging"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcousagemessaging"></a>
@@ -11635,8 +11295,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoinvoiceaccountchargesothercharges">TelcoInvoiceAccountChargesOtherCharges</h3>
-
-<p id="tocStelcoinvoiceaccountchargesothercharges" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoinvoiceaccountchargesothercharges"></a>
@@ -11732,8 +11390,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcobillingaccounttransactionadjustments">TelcoBillingAccountTransactionAdjustments</h3>
 
-<p id="tocStelcobillingaccounttransactionadjustments" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcobillingaccounttransactionadjustments"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcobillingaccounttransactionadjustments"></a>
@@ -11771,8 +11427,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedataroaming">TelcoServiceBalanceDataRoaming</h3>
-
-<p id="tocStelcoservicebalancedataroaming" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancedataroaming"></a>
@@ -11821,8 +11475,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancedata">TelcoServiceBalanceData</h3>
-
-<p id="tocStelcoservicebalancedata" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancedata"></a>
@@ -11900,8 +11552,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoicenational">TelcoServiceBalanceVoiceNational</h3>
 
-<p id="tocStelcoservicebalancevoicenational" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancevoicenational"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoicenational"></a>
@@ -11957,8 +11607,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceinternational">TelcoServiceBalanceVoiceInternational</h3>
-
-<p id="tocStelcoservicebalancevoiceinternational" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceinternational"></a>
@@ -12016,8 +11664,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoiceroaming">TelcoServiceBalanceVoiceRoaming</h3>
 
-<p id="tocStelcoservicebalancevoiceroaming" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancevoiceroaming"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancevoiceroaming"></a>
@@ -12073,8 +11719,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancevoice">TelcoServiceBalanceVoice</h3>
-
-<p id="tocStelcoservicebalancevoice" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancevoice"></a>
@@ -12147,8 +11791,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingsms">TelcoServiceBalanceMessagingSms</h3>
 
-<p id="tocStelcoservicebalancemessagingsms" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingsms"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessagingsms"></a>
@@ -12212,8 +11854,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessagingmms">TelcoServiceBalanceMessagingMms</h3>
-
-<p id="tocStelcoservicebalancemessagingmms" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancemessagingmms"></a>
@@ -12279,8 +11919,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalancemessaging">TelcoServiceBalanceMessaging</h3>
 
-<p id="tocStelcoservicebalancemessaging" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalancemessaging"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoservicebalancemessaging"></a>
@@ -12340,8 +11978,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoservicebalances">TelcoServiceBalances</h3>
-
-<p id="tocStelcoservicebalances" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoservicebalances"></a>
@@ -12438,8 +12074,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoproductid">TelcoProductId</h3>
 
-<p id="tocStelcoproductid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoproductid"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoproductid"></a>
@@ -12470,8 +12104,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoaccountid">TelcoAccountId</h3>
 
-<p id="tocStelcoaccountid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-telco-api_schema-base_telcoaccountid"></a>
   <a class="schema-anchor" id="schemacdr-telco-apitelcoaccountid"></a>
@@ -12501,8 +12133,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-telco-api_schemas_tocStelcoserviceid">TelcoServiceId</h3>
-
-<p id="tocStelcoserviceid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-telco-api_schema-base_telcoserviceid"></a>

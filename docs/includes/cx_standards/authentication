@@ -1,7 +1,17 @@
 <h2 class="schema-heading" id="consumer-experience_authentication-standards">Authentication Standards</h2>
 
 <h3 class="schema-toc" data-cds-menu="h3" id="consumer-experience_common-authentication-standards">Common Authentication Standards</h3>
-
+<pre class="highlight diff tab-diff"><code>Updated row
+<span class="gd">- Authentication: App Install
+- Data holders MAY invite consumers using 'Redirect to Web' flows to...
+</span><span class="gi">+ Authentication: Digital onboarding
++ Data holders MAY invite consumers using 'Redirect to Web' flows to create an online account or...
+</span>
+Added rows
+<span class="gi">+ Authentication: Accessible authentication
++ Authentication: Error messaging and redirection
++ Authentication: Unique identifier
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Area</th>
@@ -9,16 +19,28 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><strong>Authentication:</strong><br>App Install</td>
-<td>Data holders <strong>MAY</strong> invite consumers using &#39;Redirect to Web&#39; flows to install the data holder app used for the purposes of CDR authentication. This invitation <strong>MUST NOT</strong> introduce unwarranted friction.</td>
+<td><strong>Authentication:</strong><br>Digital onboarding</td>
+<td>Data holders <strong>MAY</strong> invite consumers using &#39;Redirect to Web&#39; flows to create an online account or install the data holder app used for the purposes of CDR authentication. This invitation <strong>SHALL NOT</strong> introduce unwarranted friction.</td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br >Passwords</td>
+<td><strong>Authentication:</strong><br>Passwords</td>
 <td><p>Data holders and data recipients <strong>MUST</strong> state in consumer-facing interactions and communications that third parties do not need consumer passwords to access CDR data. The exact phrasing of this is at the discretion of the data holder and data recipient.</p><p><strong>Note:</strong> In this context, &#39;third parties&#39; refers to entities on the ADR-side and does not include any third parties that the data holder may engage.</p></td>
 </tr>
 <tr>
 <td><strong>Authentication:</strong><br>Friction</td>
 <td><p>Data holders <strong>MUST NOT</strong> introduce unwarranted friction into the authentication process.</p><p>In line with CDR Rule 4.24 on restrictions when asking CDR consumers to authorise the disclosure of CDR data, unwarranted friction for authentication flows and methods is considered to include, but is not limited to:<br><ul><li>The addition of any requirements beyond normal data holder practices for authenticating the consumer including, but not limited to, One Time Password (OTP) verification code delivery.</li><li>Providing or requesting additional information beyond normal data holder practices for authenticating the consumer including, but not limited to, OTP verification code delivery.</li><li>Offering additional or alternative services.</li><li>Referencing or including other documents.</li></ul></p></td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>Accessible authentication</td>
+<td><p>When implementing CDR authentication, data holders <strong>SHOULD</strong> ensure compliance with relevant accessibility standards, in particular WCAG 2.2 Success Criteria <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html">3.3.8</a> and <a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html">3.3.9</a>, to support accessible and inclusive authentication experiences.</p></td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>Error messaging and redirection</td>
+<td><p>In the event of an authentication failure (e.g., OTP expiry/non-delivery, or redirection issues) the data holder <strong>SHOULD</strong> provide clear and consistent error messaging to the consumer. The error message <strong>SHALL</strong> provide actionable guidance for resolution.</p><p>Where an authentication flow cannot be completed successfully, the data holder <strong>SHOULD</strong> implement a standardised redirection flow that returns the consumer to the ADR. The redirection <strong>SHALL</strong> include contextual error information sufficient for the ADR to present appropriate next steps.</p></td>
+</tr>
+<tr>
+<td><strong>Authentication:</strong><br>Unique identifier</td>
+<td><p>Where feasible, data holders <strong>SHOULD</strong> support alternative identifiers familiar to the consumer, such as mobile phone numbers or email addresses, for CDR authentication. The identifier <strong>SHALL</strong> uniquely identify a customer and <strong>SHALL NOT</strong> be a shared or group identifier.</p></td>
 </tr>
 </tbody></table>
 

@@ -1,5 +1,6 @@
 <h2 id="consumer-experience_amending-consent-standards">Amending Consent Standards</h2>
-
+<pre class="highlight diff tab-diff"><code>Updated Amending Consent Standards - added second row
+</code></pre>
 <p>Each of the below data standards are for the purposes of rule 8.11(1)(a)(ii):</p>
 
 <table><thead>
@@ -9,7 +10,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><strong><span style="white-space: nowrap;">Amending consent:</span></strong><br>Changing attributes</td>
+<td><strong><span style="white-space: nowrap;">Amending Consent:</span></strong><br>Changing attributes</td>
 <td><p>A data recipient inviting a consumer to amend a consent <strong>MUST</strong> indicate where datasets, uses, and durations are being amended.</p><p>A data recipient <strong>MAY</strong> apply this standard to other changing attributes where the attribute in the amending consent request differs to that of the previous consent. How a changed attribute is signified is at the data recipient&#39;s discretion.</p></td>
+</tr>
+<tr>
+<td><strong>Amending Consent:</strong><br>Amendment of Collection Consents and Authorisations</td>
+<td><p>When notifying a Data Holder of an amended collection consent as per rules 4.18C or 4.20S, Data Recipients <strong>SHALL</strong> supply the relevant CDR Arrangement ID to the Data Holder according to <a href="#18-2-specifying-an-existing-arrangement">Specifying an existing arrangement</a>.</p><p><strong>Note:</strong> Providing the CDR Arrangement ID is necessary to trigger the Data Holder authorisation flow simplifications outlined in the <a href="#amending-authorisation-standards">Amending Authorisation Standards</a>. Failure to supply the CDR Arrangement ID will result in the full authorisation flow and a disconnected data sharing arrangement history on consumer dashboards.</p></td>
 </tr>
 </tbody></table>

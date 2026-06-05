@@ -4,8 +4,6 @@
 
 <h2 id="cdr-admin-api_metadata-update">Metadata Update</h2>
 
-<p id="metadata-update" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -176,8 +174,6 @@ This operation may only be called by the CDR Register.
 
 <h2 id="cdr-admin-api_get-metrics">Get Metrics</h2>
 
-<p id="get-metrics" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -208,18 +204,9 @@ This operation may only be called by the CDR Register.
 
 <p>This endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).</p>
 
-<p>NOTE: This version <strong>MUST</strong> be implemented by <strong>May 13th 2024</strong></p>
-
-<p>Obsolete versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a> <a href="includes/obsolete/get-metrics-v2.html">v2</a>.</p>
-
-<p>Deprecated versions:</p>
-
-<ul>
-<li><a href="includes/obsolete/get-metrics-v3.html">v3</a> - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders <strong>MAY</strong> retire this version from the earlier of <strong>13th May 2024</strong> or from the time the ACCC announce that they no longer call this version</li>
-<li><a href="includes/obsolete/get-metrics-v4.html">v4</a> - This version, or v5, <strong>MUST</strong> be implemented by <strong>November 1st 2023</strong>.</li>
-</ul>
-
 <p>If the Data Holder supports <code>private_key_jwt</code> client authentication they <strong>MUST</strong> validate the scope.</p>
+
+<p>Other versions: <a href="includes/obsolete/get-metrics-v1.html">v1</a>, <a href="includes/obsolete/get-metrics-v2.html">v2</a>, <a href="includes/obsolete/get-metrics-v3.html">v3</a>, <a href="includes/obsolete/get-metrics-v4.html">v4</a>, <a href="includes/obsolete/get-metrics-v5.html">v5</a>.</p>
 
 <h3 id="cdr-admin-api_get-metrics_endpoint-version">Endpoint Version</h3>
 
@@ -231,7 +218,7 @@ This operation may only be called by the CDR Register.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>5</strong></td>
+<td><strong>6</strong></td>
 </tr>
 </tbody></table>
 
@@ -750,6 +737,38 @@ This operation may only be called by the CDR Register.
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"initiatingChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"completionChannels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"completionChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="mi">0</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"levelOfAssurance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"LOOK_UP_SECRET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"startedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"completedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -772,7 +791,7 @@ This operation may only be called by the CDR Register.
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Successful response</td>
-<td><a href="#schemacdr-admin-apiresponsemetricslistv5">ResponseMetricsListV5</a></td>
+<td><a href="#schemacdr-admin-apiresponsemetricslistv6">ResponseMetricsListV6</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -821,8 +840,6 @@ This operation may only be called by the CDR Register.
 <h2 class="schema-heading" id="cdr-admin-api-schemas">Schemas</h2>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrequestmetadataupdatev1">RequestMetaDataUpdateV1</h3>
-
-<p id="tocSrequestmetadataupdatev1" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_requestmetadataupdate"></a>
@@ -883,13 +900,11 @@ This operation may only be called by the CDR Register.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
-
-<p id="tocSresponsemetricslistv5" class="orig-anchor"></p>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv6">ResponseMetricsListV6</h3>
 
 <p>
   <a id="cdr-admin-api_schema-base_responsemetricslist"></a>
-  <a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv5"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiresponsemetricslistv6"></a>
 </p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1341,6 +1356,38 @@ This operation may only be called by the CDR Register.
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"initiatingChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"completionChannels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"completionChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="mi">0</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"levelOfAssurance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"LOOK_UP_SECRET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"startedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"completedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1349,7 +1396,7 @@ This operation may only be called by the CDR Register.
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="cdr-admin-api_responsemetricslistv5_properties">Properties</h3>
+<h3 id="cdr-admin-api_responsemetricslistv6_properties">Properties</h3>
 
 <table><thead>
 <tr>
@@ -1466,6 +1513,13 @@ This operation may only be called by the CDR Register.
 <td>Authorisation counts for the data holder.</td>
 </tr>
 <tr>
+<td>» authentication</td>
+<td><a href="#schemacdr-admin-apiauthenticationmetricsv1">AuthenticationMetricsV1</a></td>
+<td>mandatory</td>
+<td></td>
+<td>Authentication detail.</td>
+</tr>
+<tr>
 <td>links</td>
 <td><a href="#schemacdr-admin-apilinks">Links</a></td>
 <td>mandatory</td>
@@ -1482,8 +1536,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
-
-<p id="tocSavailabilitymetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_availabilitymetrics"></a>
@@ -1589,8 +1641,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</h3>
-
-<p id="tocSperformancemetricsv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_performancemetrics"></a>
@@ -1940,8 +1990,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancepreviousdays">PerformancePreviousDays</h3>
 
-<p id="tocSperformancepreviousdays" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_performancepreviousdays"></a>
   <a class="schema-anchor" id="schemacdr-admin-apiperformancepreviousdays"></a>
@@ -1974,8 +2022,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancehours">PerformanceHours</h3>
 
-<p id="tocSperformancehours" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_performancehours"></a>
   <a class="schema-anchor" id="schemacdr-admin-apiperformancehours"></a>
@@ -2005,8 +2051,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSinvocationmetricsv3">InvocationMetricsV3</h3>
-
-<p id="tocSinvocationmetricsv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_invocationmetrics"></a>
@@ -2220,8 +2264,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
-
-<p id="tocSaverageresponsemetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_averageresponsemetrics"></a>
@@ -2508,8 +2550,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
 
-<p id="tocSsessioncountmetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_sessioncountmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a>
@@ -2551,8 +2591,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
-
-<p id="tocSaveragetpsmetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_averagetpsmetrics"></a>
@@ -2659,8 +2697,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
 
-<p id="tocSpeaktpsmetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_peaktpsmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a>
@@ -2765,8 +2801,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrormetricsv2">ErrorMetricsV2</h3>
-
-<p id="tocSerrormetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_errormetrics"></a>
@@ -2945,8 +2979,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrejectionmetricsv3">RejectionMetricsV3</h3>
 
-<p id="tocSrejectionmetricsv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_rejectionmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a>
@@ -3025,8 +3057,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
 
-<p id="tocSsecondaryholdermetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_secondaryholdermetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
@@ -3104,8 +3134,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
-
-<p id="tocSauthorisationmetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_authorisationmetrics"></a>
@@ -3664,9 +3692,296 @@ This operation may only be called by the CDR Register.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthenticationmetricsv1">AuthenticationMetricsV1</h3>
 
-<p id="tocSlinks" class="orig-anchor"></p>
+<p>
+  <a id="cdr-admin-api_schema-base_authenticationmetrics"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiauthenticationmetricsv1"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"channels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"initiatingChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"completionChannels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"completionChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">0</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"levelOfAssurance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"LOOK_UP_SECRET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"startedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"completedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><em>Authentication detail.</em></p>
+
+<h3 id="cdr-admin-api_authenticationmetricsv1_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channels</td>
+<td>[<a href="#schemacdr-admin-apiauthenticationchannelsv1">AuthenticationChannelsV1</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Detail about the channels associated with authorisation attempts.</td>
+</tr>
+<tr>
+<td>levels</td>
+<td>[<a href="#schemacdr-admin-apiauthenticationlevelsv1">AuthenticationLevelsV1</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Detail about the level of assurance (LoA) associated with authentication attempts.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthenticationchannelsv1">AuthenticationChannelsV1</h3>
+
+<p>
+  <a id="cdr-admin-api_schema-base_authenticationchannels"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiauthenticationchannelsv1"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"initiatingChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"completionChannels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"completionChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">0</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-admin-api_authenticationchannelsv1_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>initiatingChannel</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The channel specified by the data recipient in the <em>x-cds-originating-channel</em> header in the PAR request initiating the authorisation flow.</td>
+</tr>
+<tr>
+<td>previousDays</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
+<td>conditional</td>
+<td></td>
+<td>Number of authentications initiated in previous days for this <em>initiatingChannel</em>. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>completionChannels</td>
+<td>[object]</td>
+<td>mandatory</td>
+<td></td>
+<td>Array of completion channel detail associated with the <em>initiatingChannel</em>.</td>
+</tr>
+<tr>
+<td>» completionChannel</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The channel where the consumer completed the authentication initiated by the associated <em>initiatingChannel</em>.</td>
+</tr>
+<tr>
+<td>» previousDays</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
+<td>conditional</td>
+<td></td>
+<td>Number of authentications completed in previous days in the associated <em>completionChannel</em>. The first element indicates yesterday and so on. A maximum of seven entries is required if available</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-admin-api_authenticationchannelsv1_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>initiatingChannel</td>
+<td>APP</td>
+</tr>
+<tr>
+<td>initiatingChannel</td>
+<td>WEB</td>
+</tr>
+<tr>
+<td>completionChannel</td>
+<td>APP</td>
+</tr>
+<tr>
+<td>completionChannel</td>
+<td>WEB</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthenticationlevelsv1">AuthenticationLevelsV1</h3>
+
+<p>
+  <a id="cdr-admin-api_schema-base_authenticationlevels"></a>
+  <a class="schema-anchor" id="schemacdr-admin-apiauthenticationlevelsv1"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"levelOfAssurance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"LOOK_UP_SECRET"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"startedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"completedPreviousDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-admin-api_authenticationlevelsv1_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>levelOfAssurance</td>
+<td><a href="#common-field-types">Enum</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The level of assurance initiated for authentication.</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>[<a href="#common-field-types">Enum</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Methods involved in authentications initiated for the associated <em>levelOfAssurance</em>. Values provided <strong>SHALL</strong> align as closely as possible to Division 3 of <strong><a href="#nref-DigitalID-Accreditation">[DigitalID-Accreditation]</a></strong>. Where multiple factors are used to achieve the authentication challenge, each <strong>SHALL</strong> be provided in the array.</td>
+</tr>
+<tr>
+<td>startedPreviousDays</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
+<td>conditional</td>
+<td></td>
+<td>Number of authentications initiated in previous days for the <em>levelOfAssurance</em> and <em>methods</em> combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+<tr>
+<td>completedPreviousDays</td>
+<td><a href="#common-field-types">[NaturalNumber]</a></td>
+<td>conditional</td>
+<td></td>
+<td>Number of authentications completed in previous days for the <em>levelOfAssurance</em> and <em>methods</em> combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.</td>
+</tr>
+</tbody></table>
+
+<h4 id="cdr-admin-api_authenticationlevelsv1_enumerated-values-main">Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>levelOfAssurance</td>
+<td>urn:cds.au:cdr:2</td>
+</tr>
+<tr>
+<td>levelOfAssurance</td>
+<td>urn:cds.au:cdr:3</td>
+</tr>
+<tr>
+<td>levelOfAssurance</td>
+<td>urn:cds.au:cdr:4</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>LOOK_UP_SECRET</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>MEMORISED_SECRET</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>MF_CRYPTO_DEVICE</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>MF_CRYPTO_SW</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>MF_OTP</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>OUT_OF_BAND_DEVICE</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>PASSKEY</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>SF_CRYPTO_DEVICE</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>SF_CRYPTO_SW</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>SF_OTP</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
 
 <p>
   <a id="cdr-admin-api_schema-base_links"></a>
@@ -3698,8 +4013,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-admin-apimeta"></a>
@@ -3711,8 +4024,6 @@ This operation may only be called by the CDR Register.
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
-
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_responseerrorlist"></a>
@@ -3752,8 +4063,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_error"></a>

@@ -7,7 +7,7 @@ info:
   description: Specifications for resource endpoints applicable to secondary data
     holders in the Energy sector.
   title: CDR Energy Secondary Data Holder API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: TLS
   url: https://tls.sdh.example.com/cds-au/v1
@@ -27,7 +27,7 @@ paths:
       description: |-
         Obtain a list of service points owned by the customer that has authorised the current session.
 
-        Other Versions: [v1](includes/obsolete/get-service-points-SR-v1.html).
+        Other Versions: [v1](includes/obsolete/get-service-points-SR-v1.html), [v2](includes/obsolete/get-service-points-SR-v2.html).
       operationId: listElectricityServicePointsSR
       parameters:
       - description: Page of results to request (standard pagination).
@@ -86,6 +86,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -159,13 +171,13 @@ paths:
       tags:
       - Electricity Service Points (SR)
       x-restricted-access: AEMO
-      x-version: "2"
+      x-version: "3"
   /secondary/energy/electricity/servicepoints/{servicePointId}:
     get:
       description: |-
         Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.
 
-        Other Versions: [v1](includes/obsolete/get-service-point-detail-SR-v1.html).
+        Other Versions: [v1](includes/obsolete/get-service-point-detail-SR-v1.html), [v2](includes/obsolete/get-service-point-detail-SR-v2.html).
       operationId: getElectricityServicePointDetailSR
       parameters:
       - description: The independent ID of the service point, known in the industry
@@ -216,6 +228,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -287,11 +311,13 @@ paths:
       tags:
       - Electricity Service Points (SR)
       x-restricted-access: AEMO
-      x-version: "2"
+      x-version: "3"
   /secondary/energy/electricity/servicepoints/{servicePointId}/usage:
     get:
-      description: Obtain a list of electricity usage data from a particular service
-        point.
+      description: |-
+        Obtain a list of electricity usage data from a particular service point.
+
+        Other Versions: [v1](includes/obsolete/get-usage-for-service-point-SR-v1.html).
       operationId: getElectricityServicePointUsageSR
       parameters:
       - description: The independent ID of the service point, known in the industry
@@ -396,6 +422,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -471,11 +509,13 @@ paths:
       tags:
       - Electricity Usage (SR)
       x-restricted-access: AEMO
-      x-version: "1"
+      x-version: "2"
   /secondary/energy/electricity/servicepoints/usage:
     post:
-      description: Obtain the electricity usage data for a specific set of service
-        points.
+      description: |-
+        Obtain the electricity usage data for a specific set of service points.
+
+        Other Versions: [v1](includes/obsolete/get-usage-for-specific-service-points-SR-v1.html).
       operationId: listElectricityUsageForServicePointsSR
       parameters:
       - description: Constrain the request to records with effective date at or after
@@ -570,6 +610,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -638,10 +690,13 @@ paths:
       tags:
       - Electricity Usage (SR)
       x-restricted-access: AEMO
-      x-version: "1"
+      x-version: "2"
   /secondary/energy/electricity/servicepoints/{servicePointId}/der:
     get:
-      description: Obtain a list of DER data from a particular service point.
+      description: |-
+        Obtain a list of DER data from a particular service point.
+
+        Other Versions: [v1](includes/obsolete/get-der-for-service-point-SR-v1.html).
       operationId: getElectricityDERForServicePointSR
       parameters:
       - description: The independent ID of the service point, known in the industry
@@ -692,6 +747,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -755,10 +822,13 @@ paths:
       tags:
       - Distributed Energy Resources (SR)
       x-restricted-access: AEMO
-      x-version: "1"
+      x-version: "2"
   /secondary/energy/electricity/servicepoints/der:
     post:
-      description: Obtain DER data for a specific set of service points.
+      description: |-
+        Obtain DER data for a specific set of service points.
+
+        Other Versions: [v1](includes/obsolete/get-der-for-specific-service-points-SR-v1.html).
       operationId: listElectricityDERForSpecificServicePointsSR
       parameters:
       - description: Page of results to request (standard pagination).
@@ -817,6 +887,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
+        explode: false
+        in: header
+        name: x-fapi-end-user-present
+        required: false
+        schema:
+          default: "false"
+          type: string
+        style: simple
+        x-conditional: true
       - description: A unique string representing a consent arrangement between a
           Data Recipient Software Product and Data Holder for a given consumer. The
           identifier **MUST** be unique per customer according to the definition of
@@ -884,7 +966,7 @@ paths:
       tags:
       - Distributed Energy Resources (SR)
       x-restricted-access: AEMO
-      x-version: "1"
+      x-version: "2"
 components:
   headers:
     XV:
@@ -1017,6 +1099,19 @@ components:
       schema:
         type: string
       style: simple
+    HeaderXFAPIEndUserPresent:
+      description: The presence of this header with a value of `true` indicates that
+        the API is being called in a customer present context. Defaults to `false`
+        if absent.
+      explode: false
+      in: header
+      name: x-fapi-end-user-present
+      required: false
+      schema:
+        default: "false"
+        type: string
+      style: simple
+      x-conditional: true
     HeaderXCDSArrangement:
       description: A unique string representing a consent arrangement between a Data
         Recipient Software Product and Data Holder for a given consumer. The identifier

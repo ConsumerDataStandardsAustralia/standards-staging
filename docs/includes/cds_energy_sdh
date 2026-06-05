@@ -4,8 +4,6 @@
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-service-points-sr">Get Service Points (SR)</h2>
 
-<p id="get-service-points-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -16,6 +14,7 @@
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -32,6 +31,7 @@
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -49,7 +49,7 @@
 
 <p>Obtain a list of service points owned by the customer that has authorised the current session.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-service-points-SR-v1.html">v1</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-service-points-SR-v1.html">v1</a>, <a href="includes/obsolete/get-service-points-SR-v2.html">v2</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -73,7 +73,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -128,6 +128,14 @@
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -275,8 +283,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr">Get Service Point Detail (SR)</h2>
 
-<p id="get-service-point-detail-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -286,6 +292,7 @@ This operation may only be called by an Energy Retailer using the information se
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -293,6 +300,7 @@ This operation may only be called by an Energy Retailer using the information se
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -309,7 +317,7 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-SR-v1.html">v1</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-SR-v1.html">v1</a>, <a href="includes/obsolete/get-service-point-detail-SR-v2.html">v2</a>.</p>
 
 <h3 id="cdr-energy-secondary-data-holder-api_get-service-point-detail-sr_endpoint-version">Endpoint Version</h3>
 
@@ -321,7 +329,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -368,6 +376,14 @@ This operation may only be called by an Energy Retailer using the information se
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -575,8 +591,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr">Get Usage For Service Point (SR)</h2>
 
-<p id="get-usage-for-service-point-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -586,6 +600,7 @@ This operation may only be called by an Energy Retailer using the information se
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -593,6 +608,7 @@ This operation may only be called by an Energy Retailer using the information se
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -609,6 +625,8 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p>Obtain a list of electricity usage data from a particular service point.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-usage-for-service-point-SR-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-secondary-data-holder-api_get-usage-for-service-point-sr_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -619,7 +637,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -706,6 +724,14 @@ This operation may only be called by an Energy Retailer using the information se
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -894,8 +920,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-usage-for-specific-service-points-sr">Get Usage For Specific Service Points (SR)</h2>
 
-<p id="get-usage-for-specific-service-points-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -906,6 +930,7 @@ This operation may only be called by an Energy Retailer using the information se
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -922,6 +947,7 @@ This operation may only be called by an Energy Retailer using the information se
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -938,6 +964,8 @@ This operation may only be called by an Energy Retailer using the information se
 <p><code>POST /secondary/energy/electricity/servicepoints/usage</code></p>
 
 <p>Obtain the electricity usage data for a specific set of service points.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-usage-for-specific-service-points-SR-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -961,7 +989,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1040,6 +1068,14 @@ This operation may only be called by an Energy Retailer using the information se
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1227,8 +1263,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr">Get DER For Service Point (SR)</h2>
 
-<p id="get-der-for-service-point-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1238,6 +1272,7 @@ This operation may only be called by an Energy Retailer using the information se
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1245,6 +1280,7 @@ This operation may only be called by an Energy Retailer using the information se
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1261,6 +1297,8 @@ This operation may only be called by an Energy Retailer using the information se
 
 <p>Obtain a list of DER data from a particular service point.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-der-for-service-point-SR-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-secondary-data-holder-api_get-der-for-service-point-sr_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1271,7 +1309,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1318,6 +1356,14 @@ This operation may only be called by an Energy Retailer using the information se
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1482,8 +1528,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h2 id="cdr-energy-secondary-data-holder-api_get-der-for-specific-service-points-sr">Get DER For Specific Service Points (SR)</h2>
 
-<p id="get-der-for-specific-service-points-sr" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1494,6 +1538,7 @@ This operation may only be called by an Energy Retailer using the information se
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-arrangement</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -1510,6 +1555,7 @@ This operation may only be called by an Energy Retailer using the information se
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-arrangement'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1526,6 +1572,8 @@ This operation may only be called by an Energy Retailer using the information se
 <p><code>POST /secondary/energy/electricity/servicepoints/der</code></p>
 
 <p>Obtain DER data for a specific set of service points.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-der-for-specific-service-points-SR-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -1549,7 +1597,7 @@ This operation may only be called by an Energy Retailer using the information se
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1604,6 +1652,14 @@ This operation may only be called by an Energy Retailer using the information se
 <td>mandatory</td>
 <td></td>
 <td>The <em>x-fapi-interaction-id</em> header value provided by the Data Recipient. If not supplied by the Data Recipient, the primary Data Holder <strong>MUST</strong> create a unique <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value for the <em>x-fapi-interaction-id</em> header.</td>
+</tr>
+<tr>
+<td>x-fapi-end-user-present</td>
+<td>header</td>
+<td>string</td>
+<td>conditional</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-arrangement</td>
@@ -1789,8 +1845,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointlistresponsev2">EnergyServicePointListResponseV2</h3>
 
-<p id="tocSenergyservicepointlistresponsev2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyservicepointlistresponsev2"></a>
@@ -1870,8 +1924,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</h3>
-
-<p id="tocSenergyservicepointdetailresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetailresponse"></a>
@@ -2010,8 +2062,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
-<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusagelistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusagelistresponse"></a>
@@ -2105,8 +2155,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
-
-<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderlistresponse"></a>
@@ -2224,8 +2272,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
-<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderdetailresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyderdetailresponse"></a>
@@ -2324,8 +2370,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_responseerrorlist"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apiresponseerrorlistv2"></a>
@@ -2364,8 +2408,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_error"></a>
@@ -2429,8 +2471,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointv2">EnergyServicePointV2</h3>
-
-<p id="tocSenergyservicepointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepoint"></a>
@@ -2664,8 +2704,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyservicepointdetailv2">EnergyServicePointDetailV2</h3>
-
-<p id="tocSenergyservicepointdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyservicepointdetail"></a>
@@ -3160,8 +3198,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
 
-<p id="tocSenergyusageread" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyusageread"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergyusageread"></a>
@@ -3388,8 +3424,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
-
-<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energyderrecord"></a>
@@ -3830,8 +3864,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_commonphysicaladdress"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonphysicaladdress"></a>
@@ -3928,8 +3960,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_commonsimpleaddress"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apicommonsimpleaddress"></a>
@@ -4017,8 +4047,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
-
-<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_commonpafaddress"></a>
@@ -4220,8 +4248,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSrequestsdhservicepointidlistv1">RequestSDHServicePointIdListV1</h3>
 
-<p id="tocSrequestsdhservicepointidlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_requestsdhservicepointidlist"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apirequestsdhservicepointidlistv1"></a>
@@ -4271,8 +4297,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSenergysdhservicepointid">EnergySDHServicePointId</h3>
 
-<p id="tocSenergysdhservicepointid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_energysdhservicepointid"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apienergysdhservicepointid"></a>
@@ -4302,8 +4326,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinks">Links</h3>
-
-<p id="tocSlinks" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_links"></a>
@@ -4335,8 +4357,6 @@ This operation may only be called by an Energy Retailer using the information se
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-energy-secondary-data-holder-apimeta"></a>
@@ -4348,8 +4368,6 @@ This operation may only be called by an Energy Retailer using the information se
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
-
-<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_linkspaginated"></a>
@@ -4412,8 +4430,6 @@ This operation may only be called by an Energy Retailer using the information se
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-secondary-data-holder-api_schemas_tocSmetapaginated">MetaPaginated</h3>
-
-<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-secondary-data-holder-api_schema-base_metapaginated"></a>

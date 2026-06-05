@@ -1,0 +1,17 @@
+<h2 id='redirect-to-web'>Redirect to Web</h2><pre class="highlight diff tab-diff"><code>Added Redirect to Web section
+</code></pre>
+<h3 id="authentication-schedule_redirect-to-web_data-holders">Data Holders</h3>
+
+<p>Data holders <strong>SHALL</strong> implement Redirect to Web in accordance with the relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>
+
+<p>Data holders <strong>MAY</strong> implement Redirect to Web ahead of the date specified in the <a href="#future-dated-obligations">Future Dated Obligations</a> schedule.</p>
+
+<p><strong>Note:</strong> As per the future dated obligation schedule, data holders subject to this standard are required to implement Redirect to Web on and from 10 May 2027.</p>
+
+<h3 id="authentication-schedule_redirect-to-web_data-recipients">Data Recipients</h3>
+
+<p>Data recipients <strong>SHALL</strong> implement Redirect to Web in accordance with the relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>
+
+<p>Data recipients <strong>MAY</strong> implement Redirect to Web ahead of the date specified in the <a href="#future-dated-obligations">Future Dated Obligations</a> schedule.</p>
+
+<p><strong>Note:</strong> As per the future dated obligation schedule, data recipients subject to this standard are required to implement Redirect to Web on and from 10 May 2027.</p>

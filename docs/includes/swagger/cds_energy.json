@@ -8,7 +8,7 @@
     },
     "description" : "Specifications for resource endpoints applicable to data holders in the Energy sector.",
     "title" : "CDR Energy API",
-    "version" : "1.36.0"
+    "version" : "1.37.0"
   },
   "servers" : [ {
     "description" : "MTLS",
@@ -298,7 +298,7 @@
     },
     "/energy/electricity/servicepoints" : {
       "get" : {
-        "description" : "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-v1.html).",
+        "description" : "Obtain a list of service points owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-points-v1.html), [v2](includes/obsolete/get-service-points-v2.html).",
         "operationId" : "listElectricityServicePoints",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -353,26 +353,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -454,12 +445,12 @@
         "summary" : "Get Service Points",
         "tags" : [ "Electricity Service Points" ],
         "x-scopes" : [ "energy:electricity.servicepoints.basic:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}" : {
       "get" : {
-        "description" : "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-v1.html).",
+        "description" : "Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.\n\nOther Versions: [v1](includes/obsolete/get-service-point-detail-v1.html), [v2](includes/obsolete/get-service-point-detail-v2.html).",
         "operationId" : "getElectricityServicePointDetail",
         "parameters" : [ {
           "description" : "The _servicePointId_ to obtain data for. _servicePointId_ values are returned by service point list endpoints. Note that it is not a _nationalMeteringId_.",
@@ -502,26 +493,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -603,12 +585,12 @@
         "summary" : "Get Service Point Detail",
         "tags" : [ "Electricity Service Points" ],
         "x-scopes" : [ "energy:electricity.servicepoints.detail:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}/usage" : {
       "get" : {
-        "description" : "Obtain a list of electricity usage data from a particular service point.",
+        "description" : "Obtain a list of electricity usage data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-service-point-v1.html).",
         "operationId" : "getElectricityServicePointUsage",
         "parameters" : [ {
           "description" : "The _servicePointId_ to obtain data for. _servicePointId_ values are returned by service point list endpoints. Note that it is not a _nationalMeteringId_.",
@@ -707,26 +689,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -823,12 +796,12 @@
         "summary" : "Get Usage For Service Point",
         "tags" : [ "Electricity Usage" ],
         "x-scopes" : [ "energy:electricity.usage:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/electricity/servicepoints/usage" : {
       "get" : {
-        "description" : "Obtain usage data for all service points associated with the customer.",
+        "description" : "Obtain usage data for all service points associated with the customer.\n\nOther Versions: [v1](includes/obsolete/get-bulk-usage-v1.html).",
         "operationId" : "listElectricityUsageBulk",
         "parameters" : [ {
           "description" : "Type of interval reads. Any one of the valid values for this field can be supplied. If absent defaults to `NONE`.",
@@ -917,26 +890,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1018,10 +982,10 @@
         "summary" : "Get Bulk Usage",
         "tags" : [ "Electricity Usage" ],
         "x-scopes" : [ "energy:electricity.usage:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain the electricity usage data for a specific set of service points.",
+        "description" : "Obtain the electricity usage data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-usage-for-specific-service-points-v1.html).",
         "operationId" : "listElectricityUsageForServicePoints",
         "parameters" : [ {
           "description" : "Constrain the request to records with effective date at or after this date. If absent defaults to _newest-date_ minus 24 months. Format is aligned to DateString common type.",
@@ -1110,26 +1074,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1214,12 +1169,12 @@
         "summary" : "Get Usage For Specific Service Points",
         "tags" : [ "Electricity Usage" ],
         "x-scopes" : [ "energy:electricity.usage:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/electricity/servicepoints/{servicePointId}/der" : {
       "get" : {
-        "description" : "Obtain a list of DER data from a particular service point.",
+        "description" : "Obtain a list of DER data from a particular service point.\n\nOther Versions: [v1](includes/obsolete/get-der-for-service-point-v1.html).",
         "operationId" : "getElectricityDERForServicePoint",
         "parameters" : [ {
           "description" : "The _servicePointId_ to obtain data for. _servicePointId_ values are returned by service point list endpoints. Note that it is not a _nationalMeteringId_.",
@@ -1262,26 +1217,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1363,12 +1309,12 @@
         "summary" : "Get DER For Service Point",
         "tags" : [ "Distributed Energy Resources" ],
         "x-scopes" : [ "energy:electricity.der:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/electricity/servicepoints/der" : {
       "get" : {
-        "description" : "Obtain DER data for all service points associated with the customer.",
+        "description" : "Obtain DER data for all service points associated with the customer.\n\nOther Versions: [v1](includes/obsolete/get-bulk-der-v1.html).",
         "operationId" : "listElectricityDERBulk",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -1423,26 +1369,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1524,10 +1461,10 @@
         "summary" : "Get Bulk DER",
         "tags" : [ "Distributed Energy Resources" ],
         "x-scopes" : [ "energy:electricity.der:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain DER data for a specific set of service points.",
+        "description" : "Obtain DER data for a specific set of service points.\n\nOther Versions: [v1](includes/obsolete/get-der-for-specific-service-points-v1.html).",
         "operationId" : "listElectricityDERForSpecificServicePoints",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -1582,26 +1519,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1686,12 +1614,12 @@
         "summary" : "Get DER For Specific Service Points",
         "tags" : [ "Distributed Energy Resources" ],
         "x-scopes" : [ "energy:electricity.der:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts" : {
       "get" : {
-        "description" : "Obtain the list of energy accounts available under the authorised consent.\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html).",
+        "description" : "Obtain the list of energy accounts available under the authorised consent.\n\nOther Versions: [v1](includes/obsolete/get-energy-accounts-v1.html), [v2](includes/obsolete/get-energy-accounts-v2.html).",
         "operationId" : "listEnergyAccounts",
         "parameters" : [ {
           "description" : "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed.",
@@ -1758,26 +1686,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1859,12 +1778,12 @@
         "summary" : "Get Energy Accounts",
         "tags" : [ "Energy Accounts" ],
         "x-scopes" : [ "energy:accounts.basic:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/energy/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information for a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html), [v2](includes/obsolete/get-energy-account-detail-v2.html), [v3](includes/obsolete/get-energy-account-detail-v3.html).",
+        "description" : "Obtain detailed information for a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-energy-account-detail-v1.html), [v2](includes/obsolete/get-energy-account-detail-v2.html), [v3](includes/obsolete/get-energy-account-detail-v3.html), [v4](includes/obsolete/get-energy-account-detail-v4.html).",
         "operationId" : "getEnergyAccountDetail",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -1907,26 +1826,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2008,13 +1918,12 @@
         "summary" : "Get Energy Account Detail",
         "tags" : [ "Energy Accounts" ],
         "x-scopes" : [ "energy:accounts.detail:read" ],
-        "x-version" : "4",
-        "x-version-notes" : "The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the [v1.32.0 release notes](includes/releasenotes/releasenotes.1.32.0.html) for more details."
+        "x-version" : "5"
       }
     },
     "/energy/accounts/{accountId}/payment-schedule" : {
       "get" : {
-        "description" : "Obtain the agreed payment schedule and details, if any, for a specific energy account.\n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>",
+        "description" : "Obtain the agreed payment schedule and details, if any, for a specific energy account.\n\nSome general notes about this endpoint:\n\n <ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer's preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul>\n\nOther Versions: [v1](includes/obsolete/get-agreed-payment-schedule-v1.html).",
         "operationId" : "getEnergyAccountPaymentSchedule",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -2057,26 +1966,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2158,12 +2058,12 @@
         "summary" : "Get Agreed Payment Schedule",
         "tags" : [ "Energy Accounts" ],
         "x-scopes" : [ "energy:accounts.paymentschedule:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/{accountId}/concessions" : {
       "get" : {
-        "description" : "Obtain the details of any concessions or arrangements applied to a specific energy account.",
+        "description" : "Obtain the details of any concessions or arrangements applied to a specific energy account.\n\nOther Versions: [v1](includes/obsolete/get-concessions-v1.html).",
         "operationId" : "getEnergyAccountConcessions",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -2206,26 +2106,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2307,12 +2198,12 @@
         "summary" : "Get Concessions",
         "tags" : [ "Energy Accounts" ],
         "x-scopes" : [ "energy:accounts.concessions:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/{accountId}/balance" : {
       "get" : {
-        "description" : "Obtain the current balance for a specific account.",
+        "description" : "Obtain the current balance for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-balance-for-energy-account-v1.html).",
         "operationId" : "getEnergyAccountBalance",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -2355,26 +2246,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2456,12 +2338,12 @@
         "summary" : "Get Balance For Energy Account",
         "tags" : [ "Energy Account Balances" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/balances" : {
       "get" : {
-        "description" : "Obtain the current balance for all accounts.",
+        "description" : "Obtain the current balance for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-balances-for-energy-v1.html).",
         "operationId" : "listEnergyAccountBalancesBulk",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -2516,26 +2398,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2617,10 +2490,10 @@
         "summary" : "Get Bulk Balances for Energy",
         "tags" : [ "Energy Account Balances" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain the current balance for a specified set of accounts.",
+        "description" : "Obtain the current balance for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-balances-for-specific-energy-accounts-v1.html).",
         "operationId" : "listEnergyAccountBalancesSpecificAccounts",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -2675,26 +2548,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2779,12 +2643,12 @@
         "summary" : "Get Balances For Specific Energy Accounts",
         "tags" : [ "Energy Account Balances" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/{accountId}/invoices" : {
       "get" : {
-        "description" : "Obtain the invoices for a specific account.",
+        "description" : "Obtain the invoices for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-invoices-for-account-v1.html).",
         "operationId" : "getEnergyAccountInvoices",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -2871,26 +2735,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2987,12 +2842,12 @@
         "summary" : "Get Invoices For Account",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/invoices" : {
       "get" : {
-        "description" : "Obtain the invoices for all accounts.",
+        "description" : "Obtain the invoices for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-invoices-v1.html).",
         "operationId" : "listEnergyAccountInvoicesBulk",
         "parameters" : [ {
           "description" : "Constrain the request to records with issue date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.",
@@ -3069,26 +2924,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3170,10 +3016,10 @@
         "summary" : "Get Bulk Invoices",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       },
       "post" : {
-        "description" : "Obtain invoices for a specified set of accounts.",
+        "description" : "Obtain invoices for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-invoices-for-specific-accounts-v1.html).",
         "operationId" : "listEnergyInvoicesForSpecificAccounts",
         "parameters" : [ {
           "description" : "Constrain the request to records with issue date at or before this date. If absent defaults to current date. Format is aligned to DateString common type.",
@@ -3250,26 +3096,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3354,12 +3191,12 @@
         "summary" : "Get Invoices For Specific Accounts",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/energy/accounts/{accountId}/billing" : {
       "get" : {
-        "description" : "Obtain the billing transactions for a specific account.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-account-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-account-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description" : "Obtain the billing transactions for a specific account.\n\nOther Versions: [v1](includes/obsolete/get-billing-for-account-v1.html), [v2](includes/obsolete/get-billing-for-account-v2.html), [v3](includes/obsolete/get-billing-for-account-v3.html).",
         "operationId" : "getBillingForEnergyAccount",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -3446,26 +3283,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3562,12 +3390,12 @@
         "summary" : "Get Billing For Account",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/energy/accounts/billing" : {
       "get" : {
-        "description" : "Obtain billing transactions for all accounts.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-bulk-billing-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-bulk-billing-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description" : "Obtain billing transactions for all accounts.\n\nOther Versions: [v1](includes/obsolete/get-bulk-billing-v1.html), [v2](includes/obsolete/get-bulk-billing-v2.html), [v3](includes/obsolete/get-bulk-billing-v3.html).",
         "operationId" : "listEnergyAccountBillingBulk",
         "parameters" : [ {
           "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.",
@@ -3644,26 +3472,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3745,10 +3564,10 @@
         "summary" : "Get Bulk Billing",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       },
       "post" : {
-        "description" : "Obtain billing for a specified set of accounts.\n\nDeprecated Versions: \n\n- [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html) - This version is to be ceased to be called by data recipients by September 9th 2024 and **MAY** be decommissioned by data holders as of that date \n- [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html) - This version **MAY** be retired by September 9th 2024 if v3 is implemented.",
+        "description" : "Obtain billing for a specified set of accounts.\n\nOther Versions: [v1](includes/obsolete/get-billing-for-specific-accounts-v1.html), [v2](includes/obsolete/get-billing-for-specific-accounts-v2.html), [v3](includes/obsolete/get-billing-for-specific-accounts-v3.html).",
         "operationId" : "listEnergyAccountBillingForSpecificAccounts",
         "parameters" : [ {
           "description" : "Constrain the request to records with effective time at or before this date/time. If absent defaults to current date/time. Format is aligned to DateTimeString common type.",
@@ -3825,26 +3644,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3929,7 +3739,7 @@
         "summary" : "Get Billing For Specific Accounts",
         "tags" : [ "Energy Account Billing" ],
         "x-scopes" : [ "energy:billing:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     }
   },
@@ -4132,28 +3942,18 @@
         },
         "style" : "simple"
       },
-      "HeaderXFAPIAuthDate" : {
-        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+      "HeaderXFAPIEndUserPresent" : {
+        "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
         "explode" : false,
         "in" : "header",
-        "name" : "x-fapi-auth-date",
+        "name" : "x-fapi-end-user-present",
         "required" : false,
         "schema" : {
+          "default" : "false",
           "type" : "string"
         },
         "style" : "simple",
         "x-conditional" : true
-      },
-      "HeaderXFAPICustomerIPAddress" : {
-        "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-        "explode" : false,
-        "in" : "header",
-        "name" : "x-fapi-customer-ip-address",
-        "required" : false,
-        "schema" : {
-          "type" : "string"
-        },
-        "style" : "simple"
       },
       "HeaderXCDSClientHeaders" : {
         "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",

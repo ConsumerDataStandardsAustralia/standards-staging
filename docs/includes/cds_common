@@ -1,10 +1,428 @@
 <!-- Endpoint tag group description -->
 
+<!-- Data Holder Operations endpoints -->
+
+<h2 id="cdr-common-api_get-configuration">Get Configuration</h2>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/.well-known/cdr-configuration</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-max-v</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-max-v'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/.well-known/cdr-configuration'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /.well-known/cdr-configuration</code></p>
+
+<p>Obtain configuration details for the implementation. The well-known location for this endpoint is determined by the <em>issuer</em> value for the implementation (provided as <em>infosecBaseUri</em>), in accordance with <strong><a href="#nref-RFC8414">[RFC8414]</a></strong>. Data Holder Brand details are obtained from <a href="#register-apis">Register APIs</a>.</p>
+
+<h3 id="cdr-common-api_get-configuration_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-common-api_get-configuration_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-max-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Maximum endpoint version supported by the client, e.g., <code>1</code>. The Data Holder <strong>SHALL</strong> respond with their highest supported version, up to and including the <em>x-max-v</em> requested. If the requested <em>x-max-v</em> is lower than the versions supported by the Data Holder, the endpoint <strong>SHALL</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tls.dh.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loaRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"common:customer.basic:read"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"name"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-common-api_get-configuration_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-common-apiresponsegetconfigurationv1">ResponseGetConfigurationV1</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<h2 id="cdr-common-api_get-status">Get Status</h2>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/discovery/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/discovery/status'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /discovery/status</code></p>
+
+<p>Obtain a health check status for the implementation.</p>
+
+<h3 id="cdr-common-api_get-status_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-common-api_get-status_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"detectionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expectedResolutionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-common-api_get-status_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-common-apiresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-common-api_get-status_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<h2 id="cdr-common-api_get-outages">Get Outages</h2>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/discovery/outages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/discovery/outages'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p><code>GET /discovery/outages</code></p>
+
+<p>Obtain a list of scheduled outages for the implementation.</p>
+
+<h3 id="cdr-common-api_get-outages_endpoint-version">Endpoint Version</h3>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-common-api_get-outages_parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-v</td>
+<td>header</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
+</tr>
+<tr>
+<td>x-min-v</td>
+<td>header</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-common-api_get-outages_responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Successful response</td>
+<td><a href="#schemacdr-common-apiresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
+<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
+<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
+</tr>
+</tbody></table>
+
+<h3 id="cdr-common-api_get-outages_response-headers">Response Headers</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-v</td>
+<td>string</td>
+<td>mandatory</td>
+<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
+</tr>
+</tbody></table>
+
+<p><aside class="success">
+This operation does not require authentication.
+</aside></p>
+
+<!-- Endpoint tag group description -->
+
 <!-- Data Holder Customer endpoints -->
 
 <h2 id="cdr-common-api_get-customer">Get Customer</h2>
-
-<p id="get-customer" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -15,8 +433,7 @@
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -24,8 +441,7 @@
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -54,6 +470,8 @@
 
 <p>For example, if a person&#39;s given names are &quot;John Paul Winston&quot; and the Data Holder is unable to determine which is the first name, they can return <code>&quot;firstName&quot;: &quot;John Paul Winston&quot;</code>.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-customer-v1.html">v1</a></p>
+
 <h3 id="cdr-common-api_get-customer_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -64,7 +482,7 @@
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -105,20 +523,12 @@
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -252,8 +662,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-common-api_get-customer-detail">Get Customer Detail</h2>
 
-<p id="get-customer-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -263,8 +671,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -272,8 +679,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -290,7 +696,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on the authorised customer within the current session.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-customer-detail-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-customer-detail-v1.html">v1</a>, <a href="includes/obsolete/get-customer-detail-v2.html">v2</a>.</p>
 
 <h3 id="cdr-common-api_get-customer-detail_endpoint-version">Endpoint Version</h3>
 
@@ -302,7 +708,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -343,20 +749,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -586,316 +984,9 @@ To perform this operation, you must be authenticated and authorised with the fol
 <a href="#authorisation-scopes">common:customer.detail:read.</a>
 </aside></p>
 
-<!-- Endpoint tag group description -->
-
-<!-- Data Holder Operations endpoints -->
-
-<h2 id="cdr-common-api_get-status">Get Status</h2>
-
-<p id="get-status" class="orig-anchor"></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/discovery/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/discovery/status'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p><code>GET /discovery/status</code></p>
-
-<p>Obtain a health check status for the implementation.</p>
-
-<h3 id="cdr-common-api_get-status_endpoint-version">Endpoint Version</h3>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
-<h3 id="cdr-common-api_get-status_parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>x-v</td>
-<td>header</td>
-<td>string</td>
-<td>mandatory</td>
-<td></td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
-</tr>
-<tr>
-<td>x-min-v</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"detectionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expectedResolutionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="cdr-common-api_get-status_responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Successful response</td>
-<td><a href="#schemacdr-common-apiresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</a></td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
-</tr>
-<tr>
-<td>406</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
-<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
-</tr>
-</tbody></table>
-
-<h3 id="cdr-common-api_get-status_response-headers">Response Headers</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
-</tr>
-</tbody></table>
-
-<p><aside class="success">
-This operation does not require authentication.
-</aside></p>
-
-<h2 id="cdr-common-api_get-outages">Get Outages</h2>
-
-<p id="get-outages" class="orig-anchor"></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://tls.dh.example.com/cds-au/v1/discovery/outages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">tls.dh.example.com</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://tls.dh.example.com/cds-au/v1/discovery/outages'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p><code>GET /discovery/outages</code></p>
-
-<p>Obtain a list of scheduled outages for the implementation.</p>
-
-<h3 id="cdr-common-api_get-outages_endpoint-version">Endpoint Version</h3>
-
-<table><thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Version</td>
-<td><strong>1</strong></td>
-</tr>
-</tbody></table>
-
-<h3 id="cdr-common-api_get-outages_parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>x-v</td>
-<td>header</td>
-<td>string</td>
-<td>mandatory</td>
-<td></td>
-<td>Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If the value of <a href="#request-headers"><em>x-min-v</em></a> is equal to or higher than the value of <a href="#request-headers"><em>x-v</em></a> then the <a href="#request-headers"><em>x-min-v</em></a> header should be treated as absent. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>. See <a href="#request-headers">HTTP Headers</a>.</td>
-</tr>
-<tr>
-<td>x-min-v</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between <a href="#request-headers"><em>x-min-v</em></a> and <a href="#request-headers"><em>x-v</em></a>. If all versions requested are not supported then the endpoint <strong>MUST</strong> respond with a <code>406 Not Acceptable</code>.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example responses</p>
-
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"outages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"outageTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"isPartial"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="cdr-common-api_get-outages_responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Successful response</td>
-<td><a href="#schemacdr-common-apiresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</a></td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-400-field-invalid">400 - Invalid Field</a></li><li><a href="#error-400-field-missing">400 - Missing Required Field</a></li><li><a href="#error-400-header-invalid-version">400 - Invalid Version</a></li></ul></td>
-<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
-</tr>
-<tr>
-<td>406</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">Not Acceptable</a></td>
-<td>The following error codes <strong>MUST</strong> be supported:<br/><ul class="error-code-list"><li><a href="#error-406-header-unsupported-version">406 - Unsupported Version</a></li></ul></td>
-<td><a href="#schemacdr-common-apiresponseerrorlistv2">ResponseErrorListV2</a></td>
-</tr>
-</tbody></table>
-
-<h3 id="cdr-common-api_get-outages_response-headers">Response Headers</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>x-v</td>
-<td>string</td>
-<td>mandatory</td>
-<td>The <a href="#response-headers">payload version</a> that the endpoint has responded with.</td>
-</tr>
-</tbody></table>
-
-<p><aside class="success">
-This operation does not require authentication.
-</aside></p>
-
 <h2 class="schema-heading" id="cdr-common-api-schemas">Schemas</h2>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommondiscoverystatus">ResponseCommonDiscoveryStatus</h3>
-
-<p id="tocSresponsecommondiscoverystatus" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_responsecommondiscoverystatus"></a>
@@ -1012,8 +1103,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsediscoveryoutageslist">ResponseDiscoveryOutagesList</h3>
 
-<p id="tocSresponsediscoveryoutageslist" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_responsediscoveryoutageslist"></a>
   <a class="schema-anchor" id="schemacdr-common-apiresponsediscoveryoutageslist"></a>
@@ -1078,8 +1167,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSdiscoveryoutage">DiscoveryOutage</h3>
 
-<p id="tocSdiscoveryoutage" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_discoveryoutage"></a>
   <a class="schema-anchor" id="schemacdr-common-apidiscoveryoutage"></a>
@@ -1132,9 +1219,173 @@ This operation does not require authentication.
 </tr>
 </tbody></table>
 
-<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsegetconfigurationv1">ResponseGetConfigurationV1</h3>
 
-<p id="tocSresponsecommoncustomer" class="orig-anchor"></p>
+<p>
+  <a id="cdr-common-api_schema-base_responsegetconfiguration"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponsegetconfigurationv1"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tls.dh.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loaRequirements"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"common:customer.basic:read"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"name"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-common-api_responsegetconfigurationv1_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>version</td>
+<td><a href="#schemacdr-common-apiresponseversion">ResponseVersion</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The payload version that the endpoint has responded with. The value <strong>SHALL</strong> be a string formed by concatenating the uppercase letter <code>V</code> with the response version integer. e.g., <code>V1</code>.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td><a href="#schemacdr-common-apiconfigurationissuer">ConfigurationIssuer</a></td>
+<td>mandatory</td>
+<td></td>
+<td>The <em>issuer</em> associated with this configuration. The value <strong>SHALL</strong> match the <em>issuer</em> provided in other implementation metadata, including the <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</td>
+</tr>
+<tr>
+<td>loaRequirements</td>
+<td>[<a href="#schemacdr-common-apileveldetailv1">LevelDetailV1</a>]</td>
+<td>mandatory</td>
+<td></td>
+<td>Details of the Level of Assurance required for the granting of requested scopes and claims. All CDR scopes and claims that are applicable to the Data Holder <strong>SHALL</strong> be specified for reference by Data Recipients. For more information, refer to <a href="#13-levels-of-assurance-loas">Levels of Assurance (LoAs)</a> and <a href="#14-credential-requirements">Credential Requirements</a>. Other custom levels, scopes and claims <strong>MAY</strong> be specified in additional entries.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponseversion">ResponseVersion</h3>
+
+<p>
+  <a id="cdr-common-api_schema-base_responseversion"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiresponseversion"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="s2">"V1"</span><span class="w">
+</span></code></pre>
+<p><em>The payload version that the endpoint has responded with. The value <strong>SHALL</strong> be a string formed by concatenating the uppercase letter <code>V</code> with the response version integer. e.g., <code>V1</code>.</em></p>
+
+<h3 id="cdr-common-api_responseversion_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The payload version that the endpoint has responded with. The value <strong>SHALL</strong> be a string formed by concatenating the uppercase letter <code>V</code> with the response version integer. e.g., <code>V1</code>.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSconfigurationissuer">ConfigurationIssuer</h3>
+
+<p>
+  <a id="cdr-common-api_schema-base_configurationissuer"></a>
+  <a class="schema-anchor" id="schemacdr-common-apiconfigurationissuer"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="s2">"https://tls.dh.example.com"</span><span class="w">
+</span></code></pre>
+<p><em>The <em>issuer</em> associated with this configuration. The value <strong>SHALL</strong> match the <em>issuer</em> provided in other implementation metadata, including the <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</em></p>
+
+<h3 id="cdr-common-api_configurationissuer_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>The <em>issuer</em> associated with this configuration. The value <strong>SHALL</strong> match the <em>issuer</em> provided in other implementation metadata, including the <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSleveldetailv1">LevelDetailV1</h3>
+
+<p>
+  <a id="cdr-common-api_schema-base_leveldetail"></a>
+  <a class="schema-anchor" id="schemacdr-common-apileveldetailv1"></a>
+</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:cds.au:cdr:2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"common:customer.basic:read"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="cdr-common-api_leveldetailv1_properties">Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>level</td>
+<td>string</td>
+<td>mandatory</td>
+<td></td>
+<td>Level of Assurance (LoA) required for the associated <em>scopes</em> and <em>claims</em>.</td>
+</tr>
+<tr>
+<td>scopes</td>
+<td>[string]</td>
+<td>optional</td>
+<td></td>
+<td>Scopes supported at the associated <em>level</em> (LoA).</td>
+</tr>
+<tr>
+<td>claims</td>
+<td>[string]</td>
+<td>optional</td>
+<td></td>
+<td>Claims supported at the associated <em>level</em> (LoA).</td>
+</tr>
+</tbody></table>
+
+<h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomer">ResponseCommonCustomer</h3>
 
 <p>
   <a id="cdr-common-api_schema-base_responsecommoncustomer"></a>
@@ -1253,8 +1504,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponsecommoncustomerdetailv2">ResponseCommonCustomerDetailV2</h3>
-
-<p id="tocSresponsecommoncustomerdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_responsecommoncustomerdetail"></a>
@@ -1472,8 +1721,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonperson">CommonPerson</h3>
 
-<p id="tocScommonperson" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonperson"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonperson"></a>
@@ -1587,8 +1834,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpersondetailv2">CommonPersonDetailV2</h3>
-
-<p id="tocScommonpersondetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_commonpersondetail"></a>
@@ -1729,8 +1974,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisation">CommonOrganisation</h3>
-
-<p id="tocScommonorganisation" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_commonorganisation"></a>
@@ -1916,8 +2159,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonorganisationdetailv2">CommonOrganisationDetailV2</h3>
 
-<p id="tocScommonorganisationdetailv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonorganisationdetail"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonorganisationdetailv2"></a>
@@ -2031,8 +2272,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphonenumber">CommonPhoneNumber</h3>
 
-<p id="tocScommonphonenumber" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonphonenumber"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonphonenumber"></a>
@@ -2145,8 +2384,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonemailaddress">CommonEmailAddress</h3>
 
-<p id="tocScommonemailaddress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonemailaddress"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonemailaddress"></a>
@@ -2218,8 +2455,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdresswithpurpose">CommonPhysicalAddressWithPurpose</h3>
-
-<p id="tocScommonphysicaladdresswithpurpose" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_commonphysicaladdresswithpurpose"></a>
@@ -2345,8 +2580,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
 
-<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonphysicaladdress"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonphysicaladdress"></a>
@@ -2443,8 +2676,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_commonsimpleaddress"></a>
   <a class="schema-anchor" id="schemacdr-common-apicommonsimpleaddress"></a>
@@ -2532,8 +2763,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
-
-<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_commonpafaddress"></a>
@@ -2735,8 +2964,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSlinks">Links</h3>
 
-<p id="tocSlinks" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_links"></a>
   <a class="schema-anchor" id="schemacdr-common-apilinks"></a>
@@ -2767,8 +2994,6 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-common-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-common-apimeta"></a>
@@ -2780,8 +3005,6 @@ This operation does not require authentication.
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
-
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_responseerrorlist"></a>
@@ -2821,8 +3044,6 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-common-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-common-api_schema-base_error"></a>

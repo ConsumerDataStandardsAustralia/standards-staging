@@ -4,8 +4,6 @@
 
 <h2 id="cdr-banking-api_get-products">Get Products</h2>
 
-<p id="get-products" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -374,8 +372,6 @@ This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-banking-api_get-product-detail">Get Product Detail</h2>
-
-<p id="get-product-detail" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -779,8 +775,6 @@ This operation does not require authentication.
 
 <h2 id="cdr-banking-api_get-accounts">Get Accounts</h2>
 
-<p id="get-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -790,8 +784,7 @@ This operation does not require authentication.
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -799,8 +792,7 @@ This operation does not require authentication.
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -817,7 +809,7 @@ This operation does not require authentication.
 
 <p>Obtain a list of accounts.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a>, <a href="includes/obsolete/get-accounts-v2.html">v2</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-accounts-v1.html">v1</a>, <a href="includes/obsolete/get-accounts-v2.html">v2</a>, <a href="includes/obsolete/get-accounts-v3.html">v3</a>.</p>
 
 <h3 id="cdr-banking-api_get-accounts_endpoint-version">Endpoint Version</h3>
 
@@ -829,7 +821,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -910,20 +902,12 @@ This operation does not require authentication.
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1136,8 +1120,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-account-detail">Get Account Detail</h2>
 
-<p id="get-account-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1147,8 +1129,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1156,8 +1137,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1174,7 +1154,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a single account.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-account-detail-v1.html">v1</a>, <a href="includes/obsolete/get-account-detail-v2.html">v2</a>, <a href="includes/obsolete/get-account-detail-v3.html">v3</a>, <a href="includes/obsolete/get-account-detail-v4.html">v4</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-account-detail-v1.html">v1</a>, <a href="includes/obsolete/get-account-detail-v2.html">v2</a>, <a href="includes/obsolete/get-account-detail-v3.html">v3</a>, <a href="includes/obsolete/get-account-detail-v4.html">v4</a>, <a href="includes/obsolete/get-account-detail-v5.html">v5</a>.</p>
 
 <h3 id="cdr-banking-api_get-account-detail_endpoint-version">Endpoint Version</h3>
 
@@ -1186,7 +1166,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>5</strong></td>
+<td><strong>6</strong></td>
 </tr>
 </tbody></table>
 
@@ -1235,20 +1215,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1616,8 +1588,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-bulk-balances">Get Bulk Balances</h2>
 
-<p id="get-bulk-balances" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1627,8 +1597,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1636,8 +1605,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1654,7 +1622,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain balances for multiple, filtered accounts.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-bulk-balances-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-bulk-balances-v1.html">v1</a>, <a href="includes/obsolete/get-bulk-balances-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-bulk-balances_endpoint-version">Endpoint Version</h3>
 
@@ -1666,7 +1634,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -1747,20 +1715,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1974,8 +1934,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-balances-for-specific-accounts">Get Balances For Specific Accounts</h2>
 
-<p id="get-balances-for-specific-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1986,8 +1944,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -2004,8 +1961,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2022,6 +1978,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /banking/accounts/balances</code></p>
 
 <p>Obtain balances for a specified list of accounts.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-balances-for-specific-accounts-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -2045,7 +2003,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2102,20 +2060,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2263,8 +2213,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-account-balance">Get Account Balance</h2>
 
-<p id="get-account-balance" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2274,8 +2222,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2283,8 +2230,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2301,6 +2247,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the balance for a single specified account.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-account-balance-v1.html">v1</a>.</p>
+
 <h3 id="cdr-banking-api_get-account-balance_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -2311,7 +2259,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2360,20 +2308,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2506,8 +2446,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-transactions-for-account">Get Transactions For Account</h2>
 
-<p id="get-transactions-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2517,8 +2455,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2526,8 +2463,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2546,7 +2482,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Some general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the &quot;effective&quot; date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul></p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-transactions-for-account-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-transactions-for-account-v1.html">v1</a>, <a href="includes/obsolete/get-transactions-for-account-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-transactions-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -2558,7 +2494,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -2663,20 +2599,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2837,8 +2765,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-transaction-detail">Get Transaction Detail</h2>
 
-<p id="get-transaction-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2848,8 +2774,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2857,8 +2782,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2875,7 +2799,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information on a transaction for a specific account.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-transaction-detail-v1.html">v1</a>, <a href="includes/obsolete/get-transaction-detail-v2.html">v2</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-transaction-detail-v1.html">v1</a>, <a href="includes/obsolete/get-transaction-detail-v2.html">v2</a>, <a href="includes/obsolete/get-transaction-detail-v3.html">v3</a>.</p>
 
 <h3 id="cdr-banking-api_get-transaction-detail_endpoint-version">Endpoint Version</h3>
 
@@ -2887,7 +2811,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -2944,20 +2868,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3109,8 +3025,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-direct-debits-for-account">Get Direct Debits For Account</h2>
 
-<p id="get-direct-debits-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3120,8 +3034,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3129,8 +3042,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3147,6 +3059,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain direct debit authorisations for a specific account.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-direct-debits-for-account-v1.html">v1</a>.</p>
+
 <h3 id="cdr-banking-api_get-direct-debits-for-account_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -3157,7 +3071,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3222,20 +3136,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3386,8 +3292,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-bulk-direct-debits">Get Bulk Direct Debits</h2>
 
-<p id="get-bulk-direct-debits" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3397,8 +3301,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3406,8 +3309,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3424,7 +3326,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain direct debit authorisations for multiple, filtered accounts.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-bulk-direct-debits-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-bulk-direct-debits-v1.html">v1</a>, <a href="includes/obsolete/get-bulk-direct-debits-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-bulk-direct-debits_endpoint-version">Endpoint Version</h3>
 
@@ -3436,7 +3338,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -3517,20 +3419,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3742,8 +3636,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-direct-debits-for-specific-accounts">Get Direct Debits For Specific Accounts</h2>
 
-<p id="get-direct-debits-for-specific-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3754,8 +3646,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -3772,8 +3663,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3790,6 +3680,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /banking/accounts/direct-debits</code></p>
 
 <p>Obtain direct debit authorisations for a specified list of accounts.</p>
+
+<p>Obsolete versions: <a href="includes/obsolete/get-direct-debits-for-specific-accounts-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -3813,7 +3705,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3870,20 +3762,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4033,8 +3917,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-account">Get Scheduled Payments for Account</h2>
 
-<p id="get-scheduled-payments-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4044,8 +3926,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4053,8 +3934,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4071,7 +3951,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled, outgoing payments for a specific account.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-account-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-account-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-for-account-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-scheduled-payments-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -4083,7 +3963,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -4148,20 +4028,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4400,8 +4272,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-scheduled-payments-bulk">Get Scheduled Payments Bulk</h2>
 
-<p id="get-scheduled-payments-bulk" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4411,8 +4281,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4420,8 +4289,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4438,7 +4306,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-bulk-v2.html">v2</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-bulk-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-bulk-v2.html">v2</a>, <a href="includes/obsolete/get-scheduled-payments-bulk-v3.html">v3</a>.</p>
 
 <h3 id="cdr-banking-api_get-scheduled-payments-bulk_endpoint-version">Endpoint Version</h3>
 
@@ -4450,7 +4318,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -4531,20 +4399,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4844,8 +4704,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-scheduled-payments-for-specific-accounts">Get Scheduled Payments For Specific Accounts</h2>
 
-<p id="get-scheduled-payments-for-specific-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4856,8 +4714,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -4874,8 +4731,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4893,7 +4749,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain scheduled payments for a specified list of accounts.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html">v1</a>, <a href="includes/obsolete/get-scheduled-payments-for-specific-accounts-v2.html">v2</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -4917,7 +4773,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -4974,20 +4830,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5221,8 +5069,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-instalment-plans-for-account">Get Instalment Plans for Account</h2>
 
-<p id="get-instalment-plans-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5232,8 +5078,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5241,8 +5086,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5259,6 +5103,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain instalment plans for a single specified account. The response <strong>MUST</strong> be ordered by plan <em>creationDate</em> in descending order. If <em>isInstalmentDetailAvailable</em> was specified as <code>true</code> for the provided <em>accountId</em> but no plans match the provided parameters, an empty array <strong>MUST</strong> be returned. If <em>isInstalmentDetailAvailable</em> was specified as <code>false</code> for the provided <em>accountId</em>, then the endpoint <strong>MAY</strong> respond with <a href="#error-404-resource-not-implemented">404 - Resource Not Implemented</a>.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-instalment-plans-for-account-v1.html">v1</a>.</p>
+
 <h3 id="cdr-banking-api_get-instalment-plans-for-account_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -5269,7 +5115,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5342,20 +5188,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5538,8 +5376,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-instalment-plans-bulk">Get Instalment Plans Bulk</h2>
 
-<p id="get-instalment-plans-bulk" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5549,8 +5385,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5558,8 +5393,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5576,6 +5410,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain instalment plans for multiple accounts. The response <strong>MUST</strong> be ordered by plan <em>creationDate</em> in descending order. If instalments are not supported for any account type, the endpoint <strong>MAY</strong> respond with <a href="#error-404-resource-not-implemented">404 - Resource Not Implemented</a>.</p>
 
+<p>Obsolete versions: <a href="includes/obsolete/get-instalment-plans-bulk-v1.html">v1</a>.</p>
+
 <h3 id="cdr-banking-api_get-instalment-plans-bulk_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -5586,7 +5422,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5651,20 +5487,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5838,8 +5666,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-payees">Get Payees</h2>
 
-<p id="get-payees" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5849,8 +5675,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5858,8 +5683,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5876,7 +5700,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of pre-registered payees.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-payees-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-payees-v1.html">v1</a>, <a href="includes/obsolete/get-payees-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-payees_endpoint-version">Endpoint Version</h3>
 
@@ -5888,7 +5712,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -5953,20 +5777,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -6129,8 +5945,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-banking-api_get-payee-detail">Get Payee Detail</h2>
 
-<p id="get-payee-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -6140,8 +5954,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -6149,8 +5962,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -6169,7 +5981,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Note that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.</p>
 
-<p>Obsolete versions: <a href="includes/obsolete/get-payee-detail-v1.html">v1</a>.</p>
+<p>Obsolete versions: <a href="includes/obsolete/get-payee-detail-v1.html">v1</a>, <a href="includes/obsolete/get-payee-detail-v2.html">v2</a>.</p>
 
 <h3 id="cdr-banking-api_get-payee-detail_endpoint-version">Endpoint Version</h3>
 
@@ -6181,7 +5993,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -6230,20 +6042,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -6429,8 +6233,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSrequestaccountidlistv1">RequestAccountIdListV1</h3>
 
-<p id="tocSrequestaccountidlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_requestaccountidlist"></a>
   <a class="schema-anchor" id="schemacdr-banking-apirequestaccountidlistv1"></a>
@@ -6479,8 +6281,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductlistv4">ResponseBankingProductListV4</h3>
-
-<p id="tocSresponsebankingproductlistv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductlist"></a>
@@ -6605,8 +6405,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductv6">BankingProductV6</h3>
-
-<p id="tocSbankingproductv6" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproduct"></a>
@@ -6785,8 +6583,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcardart">BankingProductCardArt</h3>
 
-<p id="tocSbankingproductcardart" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductcardart"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductcardart"></a>
@@ -6882,8 +6678,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2">BankingProductAdditionalInformationV2</h3>
-
-<p id="tocSbankingproductadditionalinformationv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductadditionalinformation"></a>
@@ -7014,8 +6808,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductadditionalinformationv2_additionalinformationuris">BankingProductAdditionalInformationV2_additionalInformationUris</h3>
 
-<p id="tocSbankingproductadditionalinformationv2_additionalinformationuris" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductadditionalinformationv2_additionalinformationuris"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductadditionalinformationv2_additionalinformationuris"></a>
@@ -7053,8 +6845,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingproductbyidv7">ResponseBankingProductByIdV7</h3>
-
-<p id="tocSresponsebankingproductbyidv7" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingproductbyid"></a>
@@ -7344,8 +7134,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdetailv7">BankingProductDetailV7</h3>
-
-<p id="tocSbankingproductdetailv7" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdetail"></a>
@@ -7694,8 +7482,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductbundle">BankingProductBundle</h3>
 
-<p id="tocSbankingproductbundle" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductbundle"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductbundle"></a>
@@ -7759,8 +7545,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeaturev4">BankingProductFeatureV4</h3>
-
-<p id="tocSbankingproductfeaturev4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductfeature"></a>
@@ -7950,8 +7734,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductconstraintv3">BankingProductConstraintV3</h3>
 
-<p id="tocSbankingproductconstraintv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductconstraint"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductconstraintv3"></a>
@@ -8047,8 +7829,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproducteligibilityv2">BankingProductEligibilityV2</h3>
-
-<p id="tocSbankingproducteligibilityv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproducteligibility"></a>
@@ -8161,8 +7941,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductfeev2">BankingProductFeeV2</h3>
-
-<p id="tocSbankingproductfeev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductfee"></a>
@@ -8421,8 +8199,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeeamount">BankingFeeAmount</h3>
 
-<p id="tocSbankingfeeamount" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeeamount"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingfeeamount"></a>
@@ -8452,8 +8228,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerate">BankingFeeRate</h3>
-
-<p id="tocSbankingfeerate" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeerate"></a>
@@ -8534,8 +8308,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeerange">BankingFeeRange</h3>
 
-<p id="tocSbankingfeerange" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeerange"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingfeerange"></a>
@@ -8575,8 +8347,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscountv2">BankingProductDiscountV2</h3>
-
-<p id="tocSbankingproductdiscountv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdiscount"></a>
@@ -8728,8 +8498,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountamount">BankingFeeDiscountAmount</h3>
 
-<p id="tocSbankingfeediscountamount" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeediscountamount"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingfeediscountamount"></a>
@@ -8759,8 +8527,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountrate">BankingFeeDiscountRate</h3>
-
-<p id="tocSbankingfeediscountrate" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeediscountrate"></a>
@@ -8837,8 +8603,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingfeediscountrange">BankingFeeDiscountRange</h3>
 
-<p id="tocSbankingfeediscountrange" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingfeediscountrange"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingfeediscountrange"></a>
@@ -8878,8 +8642,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdiscounteligibility">BankingProductDiscountEligibility</h3>
-
-<p id="tocSbankingproductdiscounteligibility" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdiscounteligibility"></a>
@@ -8996,8 +8758,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductdepositratev2">BankingProductDepositRateV2</h3>
-
-<p id="tocSbankingproductdepositratev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductdepositrate"></a>
@@ -9175,8 +8935,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductlendingratev3">BankingProductLendingRateV3</h3>
-
-<p id="tocSbankingproductlendingratev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductlendingrate"></a>
@@ -9447,8 +9205,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductratetierv4">BankingProductRateTierV4</h3>
 
-<p id="tocSbankingproductratetierv4" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductratetier"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductratetierv4"></a>
@@ -9578,8 +9334,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductrateconditionv2">BankingProductRateConditionV2</h3>
 
-<p id="tocSbankingproductrateconditionv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductratecondition"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductrateconditionv2"></a>
@@ -9694,8 +9448,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductinstalments">BankingProductInstalments</h3>
 
-<p id="tocSbankingproductinstalments" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductinstalments"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductinstalments"></a>
@@ -9767,8 +9519,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountlistv3">ResponseBankingAccountListV3</h3>
-
-<p id="tocSresponsebankingaccountlistv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountlist"></a>
@@ -9847,8 +9597,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountv3">BankingAccountV3</h3>
-
-<p id="tocSbankingaccountv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccount"></a>
@@ -9997,8 +9745,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountbyidv5">ResponseBankingAccountByIdV5</h3>
-
-<p id="tocSresponsebankingaccountbyidv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountbyid"></a>
@@ -10295,8 +10041,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountdetailv5">BankingAccountDetailV5</h3>
-
-<p id="tocSbankingaccountdetailv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccountdetail"></a>
@@ -10795,8 +10539,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplan">BankingInstalmentPlan</h3>
 
-<p id="tocSbankinginstalmentplan" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankinginstalmentplan"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplan"></a>
@@ -10937,8 +10679,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplanschedule">BankingInstalmentPlanSchedule</h3>
 
-<p id="tocSbankinginstalmentplanschedule" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankinginstalmentplanschedule"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankinginstalmentplanschedule"></a>
@@ -10984,8 +10724,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtermdepositaccount">BankingTermDepositAccount</h3>
-
-<p id="tocSbankingtermdepositaccount" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingtermdepositaccount"></a>
@@ -11071,8 +10809,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingcreditcardaccount">BankingCreditCardAccount</h3>
 
-<p id="tocSbankingcreditcardaccount" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingcreditcardaccount"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingcreditcardaccount"></a>
@@ -11126,8 +10862,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingloanaccountv3">BankingLoanAccountV3</h3>
-
-<p id="tocSbankingloanaccountv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingloanaccount"></a>
@@ -11299,8 +11033,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionlistv2">ResponseBankingTransactionListV2</h3>
 
-<p id="tocSresponsebankingtransactionlistv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingtransactionlist"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionlistv2"></a>
@@ -11387,8 +11119,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactionv2">BankingTransactionV2</h3>
-
-<p id="tocSbankingtransactionv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingtransaction"></a>
@@ -11614,8 +11344,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingtransactionbyidv3">ResponseBankingTransactionByIdV3</h3>
 
-<p id="tocSresponsebankingtransactionbyidv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingtransactionbyid"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingtransactionbyidv3"></a>
@@ -11695,8 +11423,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactiondetailv3">BankingTransactionDetailV3</h3>
-
-<p id="tocSbankingtransactiondetailv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingtransactiondetail"></a>
@@ -11864,8 +11590,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancelist">ResponseBankingAccountsBalanceList</h3>
 
-<p id="tocSresponsebankingaccountsbalancelist" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountsbalancelist"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancelist"></a>
@@ -11945,8 +11669,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingaccountsbalancebyid">ResponseBankingAccountsBalanceById</h3>
 
-<p id="tocSresponsebankingaccountsbalancebyid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingaccountsbalancebyid"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingaccountsbalancebyid"></a>
@@ -12007,8 +11729,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalance">BankingBalance</h3>
-
-<p id="tocSbankingbalance" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingbalance"></a>
@@ -12093,8 +11813,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbalancepurse">BankingBalancePurse</h3>
 
-<p id="tocSbankingbalancepurse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingbalancepurse"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingbalancepurse"></a>
@@ -12132,8 +11850,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeelistv2">ResponseBankingPayeeListV2</h3>
-
-<p id="tocSresponsebankingpayeelistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingpayeelist"></a>
@@ -12206,8 +11922,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingpayeebyidv2">ResponseBankingPayeeByIdV2</h3>
-
-<p id="tocSresponsebankingpayeebyidv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingpayeebyid"></a>
@@ -12312,8 +12026,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeev2">BankingPayeeV2</h3>
 
-<p id="tocSbankingpayeev2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingpayee"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingpayeev2"></a>
@@ -12401,8 +12113,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeedetailv2">BankingPayeeDetailV2</h3>
-
-<p id="tocSbankingpayeedetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingpayeedetail"></a>
@@ -12570,8 +12280,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayee">BankingDomesticPayee</h3>
 
-<p id="tocSbankingdomesticpayee" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingdomesticpayee"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayee"></a>
@@ -12658,8 +12366,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeeaccount">BankingDomesticPayeeAccount</h3>
 
-<p id="tocSbankingdomesticpayeeaccount" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingdomesticpayeeaccount"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeeaccount"></a>
@@ -12706,8 +12412,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeecard">BankingDomesticPayeeCard</h3>
 
-<p id="tocSbankingdomesticpayeecard" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingdomesticpayeecard"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingdomesticpayeecard"></a>
@@ -12737,8 +12441,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdomesticpayeepayid">BankingDomesticPayeePayId</h3>
-
-<p id="tocSbankingdomesticpayeepayid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingdomesticpayeepayid"></a>
@@ -12812,8 +12514,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingbillerpayee">BankingBillerPayee</h3>
 
-<p id="tocSbankingbillerpayee" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingbillerpayee"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingbillerpayee"></a>
@@ -12859,8 +12559,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginternationalpayee">BankingInternationalPayee</h3>
-
-<p id="tocSbankinginternationalpayee" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankinginternationalpayee"></a>
@@ -13015,8 +12713,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdigitalwalletpayee">BankingDigitalWalletPayee</h3>
 
-<p id="tocSbankingdigitalwalletpayee" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingdigitalwalletpayee"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingdigitalwalletpayee"></a>
@@ -13101,8 +12797,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingdirectdebitauthorisationlist">ResponseBankingDirectDebitAuthorisationList</h3>
 
-<p id="tocSresponsebankingdirectdebitauthorisationlist" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingdirectdebitauthorisationlist"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponsebankingdirectdebitauthorisationlist"></a>
@@ -13180,8 +12874,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingdirectdebit">BankingDirectDebit</h3>
 
-<p id="tocSbankingdirectdebit" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingdirectdebit"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingdirectdebit"></a>
@@ -13241,8 +12933,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingauthorisedentity">BankingAuthorisedEntity</h3>
-
-<p id="tocSbankingauthorisedentity" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingauthorisedentity"></a>
@@ -13305,8 +12995,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankingscheduledpaymentslistv2">ResponseBankingScheduledPaymentsListV2</h3>
-
-<p id="tocSresponsebankingscheduledpaymentslistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankingscheduledpaymentslist"></a>
@@ -13472,8 +13160,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentv2">BankingScheduledPaymentV2</h3>
-
-<p id="tocSbankingscheduledpaymentv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpayment"></a>
@@ -13673,8 +13359,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentsetv2">BankingScheduledPaymentSetV2</h3>
 
-<p id="tocSbankingscheduledpaymentsetv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentset"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentsetv2"></a>
@@ -13784,8 +13468,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymenttov2">BankingScheduledPaymentToV2</h3>
-
-<p id="tocSbankingscheduledpaymenttov2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentto"></a>
@@ -13961,8 +13643,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentfrom">BankingScheduledPaymentFrom</h3>
 
-<p id="tocSbankingscheduledpaymentfrom" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentfrom"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentfrom"></a>
@@ -13994,8 +13674,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrence">BankingScheduledPaymentRecurrence</h3>
-
-<p id="tocSbankingscheduledpaymentrecurrence" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrence"></a>
@@ -14115,8 +13793,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceonceoff">BankingScheduledPaymentRecurrenceOnceOff</h3>
 
-<p id="tocSbankingscheduledpaymentrecurrenceonceoff" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceonceoff"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceonceoff"></a>
@@ -14148,8 +13824,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceintervalschedule">BankingScheduledPaymentRecurrenceIntervalSchedule</h3>
-
-<p id="tocSbankingscheduledpaymentrecurrenceintervalschedule" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceintervalschedule"></a>
@@ -14238,8 +13912,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentinterval">BankingScheduledPaymentInterval</h3>
 
-<p id="tocSbankingscheduledpaymentinterval" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentinterval"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentinterval"></a>
@@ -14277,8 +13949,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrencelastweekday">BankingScheduledPaymentRecurrenceLastWeekday</h3>
-
-<p id="tocSbankingscheduledpaymentrecurrencelastweekday" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrencelastweekday"></a>
@@ -14398,8 +14068,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentrecurrenceeventbased">BankingScheduledPaymentRecurrenceEventBased</h3>
 
-<p id="tocSbankingscheduledpaymentrecurrenceeventbased" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentrecurrenceeventbased"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingscheduledpaymentrecurrenceeventbased"></a>
@@ -14431,8 +14099,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
-
-<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_commonphysicaladdress"></a>
@@ -14530,8 +14196,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_commonsimpleaddress"></a>
   <a class="schema-anchor" id="schemacdr-banking-apicommonsimpleaddress"></a>
@@ -14619,8 +14283,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
-
-<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_commonpafaddress"></a>
@@ -14822,8 +14484,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinks">Links</h3>
 
-<p id="tocSlinks" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_links"></a>
   <a class="schema-anchor" id="schemacdr-banking-apilinks"></a>
@@ -14854,8 +14514,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-banking-apimeta"></a>
@@ -14867,8 +14525,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
-
-<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_linkspaginated"></a>
@@ -14932,8 +14588,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 
-<p id="tocSmetapaginated" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_metapaginated"></a>
   <a class="schema-anchor" id="schemacdr-banking-apimetapaginated"></a>
@@ -14971,8 +14625,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSmetapaginatedtransaction">MetaPaginatedTransaction</h3>
-
-<p id="tocSmetapaginatedtransaction" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_metapaginatedtransaction"></a>
@@ -15035,8 +14687,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_responseerrorlist"></a>
   <a class="schema-anchor" id="schemacdr-banking-apiresponseerrorlistv2"></a>
@@ -15075,8 +14725,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_error"></a>
@@ -15140,8 +14788,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductcategoryv2">BankingProductCategoryV2</h3>
-
-<p id="tocSbankingproductcategoryv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductcategory"></a>
@@ -15235,8 +14881,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSnpppaymentservice">NppPaymentService</h3>
 
-<p id="tocSnpppaymentservice" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_npppaymentservice"></a>
   <a class="schema-anchor" id="schemacdr-banking-apinpppaymentservice"></a>
@@ -15292,8 +14936,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSresponsebankinginstalmentplanlist">ResponseBankingInstalmentPlanList</h3>
-
-<p id="tocSresponsebankinginstalmentplanlist" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_responsebankinginstalmentplanlist"></a>
@@ -15382,8 +15024,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingproductid">BankingProductId</h3>
 
-<p id="tocSbankingproductid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingproductid"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingproductid"></a>
@@ -15413,8 +15053,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingaccountid">BankingAccountId</h3>
-
-<p id="tocSbankingaccountid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingaccountid"></a>
@@ -15446,8 +15084,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingtransactionid">BankingTransactionId</h3>
 
-<p id="tocSbankingtransactionid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingtransactionid"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingtransactionid"></a>
@@ -15477,8 +15113,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingscheduledpaymentid">BankingScheduledPaymentId</h3>
-
-<p id="tocSbankingscheduledpaymentid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankingscheduledpaymentid"></a>
@@ -15510,8 +15144,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankingpayeeid">BankingPayeeId</h3>
 
-<p id="tocSbankingpayeeid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-banking-api_schema-base_bankingpayeeid"></a>
   <a class="schema-anchor" id="schemacdr-banking-apibankingpayeeid"></a>
@@ -15541,8 +15173,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-banking-api_schemas_tocSbankinginstalmentplanid">BankingInstalmentPlanId</h3>
-
-<p id="tocSbankinginstalmentplanid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-banking-api_schema-base_bankinginstalmentplanid"></a>

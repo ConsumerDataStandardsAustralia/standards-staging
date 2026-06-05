@@ -10,18 +10,67 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Common API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
 tags:
-- description: Data Holder Customer endpoints
-  name: Data Holder Customers
-  x-shortName: Customers
 - description: Data Holder Operations endpoints
   name: Data Holder Operations
   x-shortName: Operations
+- description: Data Holder Customer endpoints
+  name: Data Holder Customers
+  x-shortName: Customers
 paths:
+  /.well-known/cdr-configuration:
+    get:
+      description: Obtain configuration details for the implementation. The well-known
+        location for this endpoint is determined by the _issuer_ value for the implementation
+        (provided as _infosecBaseUri_), in accordance with __[[RFC8414]](#nref-RFC8414)__.
+        Data Holder Brand details are obtained from [Register APIs](#register-apis).
+      operationId: getConfiguration
+      parameters:
+      - description: Maximum endpoint version supported by the client, e.g., `1`.
+          The Data Holder **SHALL** respond with their highest supported version,
+          up to and including the *x-max-v* requested. If the requested *x-max-v*
+          is lower than the versions supported by the Data Holder, the endpoint **SHALL**
+          respond with a `406 Not Acceptable`.
+        explode: false
+        in: header
+        name: x-max-v
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGetConfigurationV1'
+          description: Successful response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseErrorListV2'
+          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+            - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      servers:
+      - description: TLS
+        url: https://tls.dh.example.com
+      summary: Get Configuration
+      tags:
+      - Data Holder Operations
+      x-version: "1"
   /common/customer:
     get:
       description: |-
@@ -39,6 +88,8 @@ paths:
         Where a data holder holds a person's given names as a single string in source systems, it may not possible in some situations to reliably split these given names into their component first and middle names. In these situations, data holders **MAY** use the _firstName_ field to return the single string of given names and an empty _middleNames_ array.
 
         For example, if a person's given names are "John Paul Winston" and the Data Holder is unable to determine which is the first name, they can return `"firstName": "John Paul Winston"`.
+
+        Obsolete versions: [v1](includes/obsolete/get-customer-v1.html)
       operationId: getCustomer
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
@@ -79,29 +130,18 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
-          Required for all resource calls (customer present and unattended). Not required
-          for unauthenticated calls.
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
         explode: false
         in: header
-        name: x-fapi-auth-date
+        name: x-fapi-end-user-present
         required: false
         schema:
+          default: "false"
           type: string
         style: simple
         x-conditional: true
-      - description: The customer's original IP address if the customer is currently
-          logged in to the Data Recipient Software Product. The presence of this header
-          indicates that the API is being called in a customer present context. Not
-          to be included for unauthenticated calls.
-        explode: false
-        in: header
-        name: x-fapi-customer-ip-address
-        required: false
-        schema:
-          type: string
-        style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
           encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
@@ -153,13 +193,13 @@ paths:
       - Data Holder Customers
       x-scopes:
       - common:customer.basic:read
-      x-version: "1"
+      x-version: "2"
   /common/customer/detail:
     get:
       description: |-
         Obtain detailed information on the authorised customer within the current session.
 
-        Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html).
+        Obsolete versions: [v1](includes/obsolete/get-customer-detail-v1.html), [v2](includes/obsolete/get-customer-detail-v2.html).
       operationId: getCustomerDetail
       parameters:
       - description: Version of the API endpoint requested by the client. Must be
@@ -200,29 +240,18 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The time when the customer last logged in to the Data Recipient
-          Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
-          Required for all resource calls (customer present and unattended). Not required
-          for unauthenticated calls.
+      - description: The presence of this header with a value of `true` indicates
+          that the API is being called in a customer present context. Defaults to
+          `false` if absent.
         explode: false
         in: header
-        name: x-fapi-auth-date
+        name: x-fapi-end-user-present
         required: false
         schema:
+          default: "false"
           type: string
         style: simple
         x-conditional: true
-      - description: The customer's original IP address if the customer is currently
-          logged in to the Data Recipient Software Product. The presence of this header
-          indicates that the API is being called in a customer present context. Not
-          to be included for unauthenticated calls.
-        explode: false
-        in: header
-        name: x-fapi-customer-ip-address
-        required: false
-        schema:
-          type: string
-        style: simple
       - description: The customer's original standard http headers [Base64](#common-field-types)
           encoded, including the original User-Agent header, if the customer is currently
           logged in to the Data Recipient Software Product. Mandatory for customer
@@ -274,7 +303,7 @@ paths:
       - Data Holder Customers
       x-scopes:
       - common:customer.detail:read
-      x-version: "2"
+      x-version: "3"
   /discovery/status:
     get:
       description: Obtain a health check status for the implementation.
@@ -453,6 +482,19 @@ components:
       schema:
         type: string
       style: simple
+    HeaderXMaxV:
+      description: Maximum endpoint version supported by the client, e.g., `1`. The
+        Data Holder **SHALL** respond with their highest supported version, up to
+        and including the *x-max-v* requested. If the requested *x-max-v* is lower
+        than the versions supported by the Data Holder, the endpoint **SHALL** respond
+        with a `406 Not Acceptable`.
+      explode: false
+      in: header
+      name: x-max-v
+      required: true
+      schema:
+        type: string
+      style: simple
     HeaderXFAPIInteractionId:
       description: An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id.
         If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_
@@ -465,31 +507,19 @@ components:
       schema:
         type: string
       style: simple
-    HeaderXFAPIAuthDate:
-      description: The time when the customer last logged in to the Data Recipient
-        Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**.
-        Required for all resource calls (customer present and unattended). Not required
-        for unauthenticated calls.
+    HeaderXFAPIEndUserPresent:
+      description: The presence of this header with a value of `true` indicates that
+        the API is being called in a customer present context. Defaults to `false`
+        if absent.
       explode: false
       in: header
-      name: x-fapi-auth-date
+      name: x-fapi-end-user-present
       required: false
       schema:
+        default: "false"
         type: string
       style: simple
       x-conditional: true
-    HeaderXFAPICustomerIPAddress:
-      description: The customer's original IP address if the customer is currently
-        logged in to the Data Recipient Software Product. The presence of this header
-        indicates that the API is being called in a customer present context. Not
-        to be included for unauthenticated calls.
-      explode: false
-      in: header
-      name: x-fapi-customer-ip-address
-      required: false
-      schema:
-        type: string
-      style: simple
     HeaderXCDSClientHeaders:
       description: The customer's original standard http headers [Base64](#common-field-types)
         encoded, including the original User-Agent header, if the customer is currently
@@ -617,6 +647,27 @@ components:
             $ref: '#/components/schemas/ResponseErrorListV2'
       description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
         - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+    GetConfiguration200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseGetConfigurationV1'
+      description: Successful response
+    GetConfiguration400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
+        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
+        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+    GetConfiguration406:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResponseErrorListV2'
+      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
+        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
   schemas:
     ResponseCommonDiscoveryStatus:
       example:
@@ -696,6 +747,95 @@ components:
       - duration
       - explanation
       - outageTime
+      type: object
+    ResponseGetConfigurationV1:
+      example:
+        loaRequirements:
+        - level: urn:cds.au:cdr:2
+          claims:
+          - name
+          - name
+          scopes:
+          - common:customer.basic:read
+          - common:customer.basic:read
+        - level: urn:cds.au:cdr:2
+          claims:
+          - name
+          - name
+          scopes:
+          - common:customer.basic:read
+          - common:customer.basic:read
+        version: V1
+        issuer: https://tls.dh.example.com
+      properties:
+        version:
+          description: The payload version that the endpoint has responded with. The
+            value __SHALL__ be a string formed by concatenating the uppercase letter
+            `V` with the response version integer. e.g., `V1`.
+          example: V1
+          type: string
+        issuer:
+          description: The _issuer_ associated with this configuration. The value
+            __SHALL__ match the _issuer_ provided in other implementation metadata,
+            including the __[[OIDD]](#nref-OIDD)__.
+          example: https://tls.dh.example.com
+          type: string
+        loaRequirements:
+          description: Details of the Level of Assurance required for the granting
+            of requested scopes and claims. All CDR scopes and claims that are applicable
+            to the Data Holder **SHALL** be specified for reference by Data Recipients.
+            For more information, refer to [Levels of Assurance (LoAs)](#13-levels-of-assurance-loas)
+            and [Credential Requirements](#14-credential-requirements). Other custom
+            levels, scopes and claims **MAY** be specified in additional entries.
+          items:
+            $ref: '#/components/schemas/LevelDetailV1'
+          type: array
+      required:
+      - issuer
+      - loaRequirements
+      - version
+      type: object
+    ResponseVersion:
+      description: The payload version that the endpoint has responded with. The value
+        __SHALL__ be a string formed by concatenating the uppercase letter `V` with
+        the response version integer. e.g., `V1`.
+      example: V1
+      type: string
+    ConfigurationIssuer:
+      description: The _issuer_ associated with this configuration. The value __SHALL__
+        match the _issuer_ provided in other implementation metadata, including the
+        __[[OIDD]](#nref-OIDD)__.
+      example: https://tls.dh.example.com
+      type: string
+    LevelDetailV1:
+      example:
+        level: urn:cds.au:cdr:2
+        claims:
+        - name
+        - name
+        scopes:
+        - common:customer.basic:read
+        - common:customer.basic:read
+      properties:
+        level:
+          description: Level of Assurance (LoA) required for the associated *scopes*
+            and *claims*.
+          example: urn:cds.au:cdr:2
+          type: string
+        scopes:
+          description: Scopes supported at the associated *level* (LoA).
+          items:
+            example: common:customer.basic:read
+            type: string
+          type: array
+        claims:
+          description: Claims supported at the associated *level* (LoA).
+          items:
+            example: name
+            type: string
+          type: array
+      required:
+      - level
       type: object
     ResponseCommonCustomer:
       example:

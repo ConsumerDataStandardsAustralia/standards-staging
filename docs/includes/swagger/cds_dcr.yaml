@@ -7,7 +7,7 @@ info:
   description: Specifications for Dynamic Client Registration endpoints applicable
     to all data holders (except secondary data holders).
   title: CDR Dynamic Client Registration API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -19,7 +19,7 @@ paths:
   /register:
     post:
       description: "Register a client using a CDR Register issued Software Statement\
-        \ Assertion. \n\nThis endpoint does not require [CORS](#cors)."
+        \ Assertion. \n\nThis endpoint does not require [CORS](#17-cors)."
       operationId: postClientRegistration
       requestBody:
         $ref: '#/components/requestBodies/RequestClientRegistration'
@@ -297,9 +297,7 @@ components:
         sector_identifier_uri: https://adr.example.com/sector_identifier.json
         authorization_encrypted_response_alg: RSA-OAEP
         authorization_encrypted_response_enc: A128CBC-HS256
-        id_token_encrypted_response_alg: RSA-OAEP
         org_id: 3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8
-        id_token_encrypted_response_enc: A256GCM
         jwks_uri: https://adr.example.com/jwks
         revocation_uri: https://adr.example.com/revocation
         tos_uri: https://adr.example.com/tos.html
@@ -437,13 +435,11 @@ components:
           type: array
         response_types:
           description: Array of the OAuth 2.0 _response_type_ strings that the client
-            can use at the authorization endpoint.<br><br>_response_type_ value `code`
-            is required for Authorization Code Flow.<br>_response_type_ value `code
-            id_token` is required for OIDC Hybrid Flow.
+            can use at the authorization endpoint.<br>The only supported response
+            type will be `code`.
           items:
             enum:
             - code
-            - code id_token
             type: string
           type: array
         application_type:
@@ -459,18 +455,6 @@ components:
           - PS256
           - ES256
           type: string
-        id_token_encrypted_response_alg:
-          description: 'JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required
-            only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.'
-          example: RSA-OAEP
-          type: string
-          x-cds-type: ExternalRef
-        id_token_encrypted_response_enc:
-          description: 'JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required
-            only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.'
-          example: A256GCM
-          type: string
-          x-cds-type: ExternalRef
         authorization_signed_response_alg:
           description: The JWS _alg_ algorithm required for signing authorization
             responses. If this is specified, the response will be signed using JWS
@@ -502,9 +486,7 @@ components:
           example: A128CBC-HS256
           type: string
         request_object_signing_alg:
-          description: Algorithm which the ADR expects to sign the request object
-            if a request object will be part of the authorization request sent to
-            the Data Holder.
+          description: Algorithm which the ADR expects to sign request objects.
           enum:
           - PS256
           - ES256
@@ -557,8 +539,6 @@ components:
       - token_endpoint_auth_signing_alg
       type: object
       x-conditional:
-      - id_token_encrypted_response_alg
-      - id_token_encrypted_response_enc
       - authorization_signed_response_alg
       - authorization_encrypted_response_alg
     ClientRegistration:
@@ -610,7 +590,7 @@ components:
         aud:
           description: Contains the Data Holder issuer value as described in the OIDC
             Discovery Document.
-          example: https://mtls.dh.example.com/issuer
+          example: https://tls.dh.example.com
           type: string
           x-cds-type: URIString
       required:

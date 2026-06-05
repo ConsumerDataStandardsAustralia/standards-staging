@@ -9,15 +9,17 @@
 <li>Limitations on the number of calls that a Data Recipient Software Product can make to a single provider. Included to protect data holders from poorly designed or overly transactional Data Recipient implementations.</li>
 </ul>
 
-<h2 id='definitions'>Definitions</h2>
-
+<h2 id='definitions'>Definitions</h2><pre class="highlight diff tab-diff"><code>Updated the definition of 'Customer Present'
+<span class="gd">- the x-fapi-customer-ip-address header is populated with a valid IP address of the end customer's device
+</span><span class="gi">+ the x-fapi-end-user-present header value is true
+</span></code></pre>
 <p>In the following definition of NFRs specific terms have the following meanings:</p>
 
 <ul>
-<li><strong>Data Recipient Software Product</strong>: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the <a href="#cdr-federation">CDR Federation</a>, as a configured application presented in the register meta data. This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
+<li><strong>Data Recipient Software Product</strong>: For the purposes of these NFRs a Data Recipient Software Product is defined, inline with the definition given in the <a href="#2-cdr-federation">CDR Federation</a>, as a configured application presented in the register meta data. This acknowledges that a single accredited entity may be able to register multiple independent services (or apps) that can obtain authorisations from consumers independently of each other.</li>
 <li><strong>Shared Responsibility Data Request</strong>: A request made to a secondary data holder by a Data Holder for designated data to fulfil a Consumer Data Request made by a Data Recipient Software Product.</li>
 <li><strong>Session</strong>: A session is defined as the life span of a unique Access Token. Multiple API requests made with a single, valid, Access Token would be considered part of a single Session.</li>
-<li><strong>Customer Present</strong>: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the Data Recipient Software Product will be considered &quot;Customer Present&quot;. Technically a data holder will define an API request as &quot;Customer Present&quot; if, and only if, the <em>x-fapi-customer-ip-address</em> header is populated with a valid IP address of the end customer&#39;s device.</li>
+<li><strong>Customer Present</strong>: Authenticated API requests made in direct response to interactions by the end customer using the digital services of the Data Recipient Software Product will be considered &quot;Customer Present&quot;. Technically a data holder will define an API request as &quot;Customer Present&quot; if, and only if, the <em>x-fapi-end-user-present</em> header value is <code>true</code>.</li>
 <li><strong>Customer Not Present</strong>: Authenticated API requests that are not deemed to be &quot;Customer Present&quot;.</li>
 <li><strong>Unattended</strong>: A synonym of &quot;Customer Not Present&quot;.</li>
 <li><strong>Authenticated</strong>: API requests to API endpoints that the standards require to be protected by security mechanisms that enforce explicit customer authorisation.</li>

@@ -4,8 +4,6 @@
 
 <h2 id="cdr-dynamic-client-registration-api_register-data-recipient-oauth-client">Register Data Recipient oAuth Client</h2>
 
-<p id="register-data-recipient-oauth-client" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -34,7 +32,7 @@
 
 <p>Register a client using a CDR Register issued Software Statement Assertion. </p>
 
-<p>This endpoint does not require <a href="#cors">CORS</a>.</p>
+<p>This endpoint does not require <a href="#17-cors">CORS</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -115,8 +113,6 @@
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
@@ -156,8 +152,6 @@ This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-dynamic-client-registration-api_get-oauth-client-registration">Get oAuth Client Registration</h2>
-
-<p id="get-oauth-client-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -267,8 +261,6 @@ This operation does not require authentication.
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
@@ -335,8 +327,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </aside></p>
 
 <h2 id="cdr-dynamic-client-registration-api_update-data-recipient-registration">Update Data Recipient Registration</h2>
-
-<p id="update-data-recipient-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -463,8 +453,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
@@ -537,8 +525,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </aside></p>
 
 <h2 id="cdr-dynamic-client-registration-api_delete-data-recipient-oauth-client-registration">Delete Data Recipient oAuth Client Registration</h2>
-
-<p id="delete-data-recipient-oauth-client-registration" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -673,8 +659,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistrationrequestv1">ClientRegistrationRequestV1</h3>
 
-<p id="tocSclientregistrationrequestv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_clientregistrationrequest"></a>
   <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistrationrequestv1"></a>
@@ -704,8 +688,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationproperties">RegistrationProperties</h3>
-
-<p id="tocSregistrationproperties" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_registrationproperties"></a>
@@ -744,8 +726,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
@@ -912,7 +892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>[<a href="#common-field-types">Enum</a>]</td>
 <td>mandatory</td>
 <td></td>
-<td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint.<br><br><em>response_type</em> value <code>code</code> is required for Authorization Code Flow.<br><em>response_type</em> value <code>code id_token</code> is required for OIDC Hybrid Flow.</td>
+<td>Array of the OAuth 2.0 <em>response_type</em> strings that the client can use at the authorization endpoint.<br>The only supported response type will be <code>code</code>.</td>
 </tr>
 <tr>
 <td>application_type</td>
@@ -927,20 +907,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>mandatory</td>
 <td></td>
 <td>Algorithm with which an id_token is to be signed.</td>
-</tr>
-<tr>
-<td>id_token_encrypted_response_alg</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>conditional</td>
-<td></td>
-<td>JWE <em>alg</em> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
-</tr>
-<tr>
-<td>id_token_encrypted_response_enc</td>
-<td><a href="#common-field-types">ExternalRef</a></td>
-<td>conditional</td>
-<td></td>
-<td>JWE <code>enc</code> algorithm with which an id_token is to be encrypted.<br/><br/>Required only if OIDC Hybrid Flow (<em>response_type</em>: <code>code id_token</code>) is registered.</td>
 </tr>
 <tr>
 <td>authorization_signed_response_alg</td>
@@ -968,7 +934,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td><a href="#common-field-types">Enum</a></td>
 <td>mandatory</td>
 <td></td>
-<td>Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.</td>
+<td>Algorithm which the ADR expects to sign request objects.</td>
 </tr>
 <tr>
 <td>software_statement</td>
@@ -1037,10 +1003,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>code</td>
 </tr>
 <tr>
-<td>response_types</td>
-<td>code id_token</td>
-</tr>
-<tr>
 <td>application_type</td>
 <td>web</td>
 </tr>
@@ -1092,8 +1054,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSclientregistration">ClientRegistration</h3>
 
-<p id="tocSclientregistration" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_clientregistration"></a>
   <a class="schema-anchor" id="schemacdr-dynamic-client-registration-apiclientregistration"></a>
@@ -1103,7 +1063,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1571808167</span><span class="p">,</span><span class="w">
   </span><span class="s2">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483646</span><span class="p">,</span><span class="w">
   </span><span class="s2">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37747cd1c10545699f754adf28b73e31"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mtls.dh.example.com/issuer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tls.dh.example.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cfefa98-7d4a-4bcb-95da-47063b84d410"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"client_id_issued_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1574398833</span><span class="p">,</span><span class="w">
   </span><span class="s2">"client_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mock Software"</span><span class="p">,</span><span class="w">
@@ -1136,8 +1096,6 @@ To perform this operation, you must be authenticated and authorised with the fol
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"application_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id_token_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id_token_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A256GCM"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_signed_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PS256"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA-OAEP"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authorization_encrypted_response_enc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A128CBC-HS256"</span><span class="p">,</span><span class="w">
@@ -1226,8 +1184,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-dynamic-client-registration-api_schemas_tocSregistrationerror">RegistrationError</h3>
-
-<p id="tocSregistrationerror" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-dynamic-client-registration-api_schema-base_registrationerror"></a>

@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -92,16 +92,9 @@ paths:
 
         This endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).
 
-        NOTE: This version **MUST** be implemented by **May 13th 2024**
-
-        Obsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).
-
-        Deprecated versions:
-
-        - [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version
-        - [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.
-
         If the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.
+
+        Other versions: [v1](includes/obsolete/get-metrics-v1.html), [v2](includes/obsolete/get-metrics-v2.html), [v3](includes/obsolete/get-metrics-v3.html), [v4](includes/obsolete/get-metrics-v4.html), [v5](includes/obsolete/get-metrics-v5.html).
       operationId: getMetrics
       parameters:
       - description: The period of metrics to be requested. Values can be `CURRENT`
@@ -152,7 +145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseMetricsListV5'
+                $ref: '#/components/schemas/ResponseMetricsListV6'
           description: Successful response
           headers:
             x-v:
@@ -178,7 +171,7 @@ paths:
       x-scopes:
       - admin:metrics.basic:read
       x-restricted-access: REGISTER
-      x-version: "5"
+      x-version: "6"
 components:
   headers:
     XV:
@@ -270,7 +263,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ResponseMetricsListV5'
+            $ref: '#/components/schemas/ResponseMetricsListV6'
       description: Successful response
       headers:
         x-v:
@@ -304,7 +297,7 @@ components:
       required:
       - data
       type: object
-    ResponseMetricsListV5:
+    ResponseMetricsListV6:
       example:
         data:
           rejections:
@@ -646,12 +639,61 @@ components:
               - 7
               currentDay: 8
           customerCount: 4
+          authentication:
+            channels:
+            - previousDays:
+              - 3
+              - 3
+              initiatingChannel: APP
+              completionChannels:
+              - previousDays:
+                - 2
+                - 2
+                completionChannel: APP
+              - previousDays:
+                - 2
+                - 2
+                completionChannel: APP
+            - previousDays:
+              - 3
+              - 3
+              initiatingChannel: APP
+              completionChannels:
+              - previousDays:
+                - 2
+                - 2
+                completionChannel: APP
+              - previousDays:
+                - 2
+                - 2
+                completionChannel: APP
+            levels:
+            - startedPreviousDays:
+              - 3
+              - 3
+              completedPreviousDays:
+              - 8
+              - 8
+              methods:
+              - LOOK_UP_SECRET
+              - LOOK_UP_SECRET
+              levelOfAssurance: urn:cds.au:cdr:2
+            - startedPreviousDays:
+              - 3
+              - 3
+              completedPreviousDays:
+              - 8
+              - 8
+              methods:
+              - LOOK_UP_SECRET
+              - LOOK_UP_SECRET
+              levelOfAssurance: urn:cds.au:cdr:2
         meta: '{}'
         links:
           self: self
       properties:
         data:
-          $ref: '#/components/schemas/ResponseMetricsListV5_data'
+          $ref: '#/components/schemas/ResponseMetricsListV6_data'
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -1218,6 +1260,179 @@ components:
       - newAuthorisationCount
       - revokedAuthorisationCount
       type: object
+    AuthenticationMetricsV1:
+      description: Authentication detail.
+      example:
+        channels:
+        - previousDays:
+          - 3
+          - 3
+          initiatingChannel: APP
+          completionChannels:
+          - previousDays:
+            - 2
+            - 2
+            completionChannel: APP
+          - previousDays:
+            - 2
+            - 2
+            completionChannel: APP
+        - previousDays:
+          - 3
+          - 3
+          initiatingChannel: APP
+          completionChannels:
+          - previousDays:
+            - 2
+            - 2
+            completionChannel: APP
+          - previousDays:
+            - 2
+            - 2
+            completionChannel: APP
+        levels:
+        - startedPreviousDays:
+          - 3
+          - 3
+          completedPreviousDays:
+          - 8
+          - 8
+          methods:
+          - LOOK_UP_SECRET
+          - LOOK_UP_SECRET
+          levelOfAssurance: urn:cds.au:cdr:2
+        - startedPreviousDays:
+          - 3
+          - 3
+          completedPreviousDays:
+          - 8
+          - 8
+          methods:
+          - LOOK_UP_SECRET
+          - LOOK_UP_SECRET
+          levelOfAssurance: urn:cds.au:cdr:2
+      properties:
+        channels:
+          description: Detail about the channels associated with authorisation attempts.
+          items:
+            $ref: '#/components/schemas/AuthenticationChannelsV1'
+          type: array
+        levels:
+          description: Detail about the level of assurance (LoA) associated with authentication
+            attempts.
+          items:
+            $ref: '#/components/schemas/AuthenticationLevelsV1'
+          type: array
+      required:
+      - channels
+      - levels
+      type: object
+    AuthenticationChannelsV1:
+      example:
+        previousDays:
+        - 3
+        - 3
+        initiatingChannel: APP
+        completionChannels:
+        - previousDays:
+          - 2
+          - 2
+          completionChannel: APP
+        - previousDays:
+          - 2
+          - 2
+          completionChannel: APP
+      properties:
+        initiatingChannel:
+          description: The channel specified by the data recipient in the *x-cds-originating-channel*
+            header in the PAR request initiating the authorisation flow.
+          enum:
+          - APP
+          - WEB
+          type: string
+        previousDays:
+          description: Number of authentications initiated in previous days for this
+            *initiatingChannel*. The first element indicates yesterday and so on.
+            A maximum of seven entries is required if available.
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+        completionChannels:
+          description: Array of completion channel detail associated with the *initiatingChannel*.
+          items:
+            $ref: '#/components/schemas/AuthenticationChannelsV1_completionChannels'
+          type: array
+      required:
+      - completionChannels
+      - initiatingChannel
+      type: object
+      x-conditional:
+      - previousDays
+    AuthenticationLevelsV1:
+      example:
+        startedPreviousDays:
+        - 3
+        - 3
+        completedPreviousDays:
+        - 8
+        - 8
+        methods:
+        - LOOK_UP_SECRET
+        - LOOK_UP_SECRET
+        levelOfAssurance: urn:cds.au:cdr:2
+      properties:
+        levelOfAssurance:
+          description: The level of assurance initiated for authentication.
+          enum:
+          - urn:cds.au:cdr:2
+          - urn:cds.au:cdr:3
+          - urn:cds.au:cdr:4
+          type: string
+        methods:
+          description: Methods involved in authentications initiated for the associated
+            *levelOfAssurance*. Values provided **SHALL** align as closely as possible
+            to Division 3 of **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)**.
+            Where multiple factors are used to achieve the authentication challenge,
+            each **SHALL** be provided in the array.
+          items:
+            enum:
+            - LOOK_UP_SECRET
+            - MEMORISED_SECRET
+            - MF_CRYPTO_DEVICE
+            - MF_CRYPTO_SW
+            - MF_OTP
+            - OTHER
+            - OUT_OF_BAND_DEVICE
+            - PASSKEY
+            - SF_CRYPTO_DEVICE
+            - SF_CRYPTO_SW
+            - SF_OTP
+            type: string
+          type: array
+        startedPreviousDays:
+          description: Number of authentications initiated in previous days for the
+            *levelOfAssurance* and *methods* combination. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available.
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+        completedPreviousDays:
+          description: Number of authentications completed in previous days for the
+            *levelOfAssurance* and *methods* combination. The first element indicates
+            yesterday and so on. A maximum of seven entries is required if available.
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+      required:
+      - levelOfAssurance
+      - methods
+      type: object
+      x-conditional:
+      - startedPreviousDays
+      - completedPreviousDays
     Links:
       example:
         self: self
@@ -1283,7 +1498,7 @@ components:
       required:
       - action
       type: object
-    ResponseMetricsListV5_data:
+    ResponseMetricsListV6_data:
       example:
         rejections:
           authenticated:
@@ -1624,6 +1839,55 @@ components:
             - 7
             currentDay: 8
         customerCount: 4
+        authentication:
+          channels:
+          - previousDays:
+            - 3
+            - 3
+            initiatingChannel: APP
+            completionChannels:
+            - previousDays:
+              - 2
+              - 2
+              completionChannel: APP
+            - previousDays:
+              - 2
+              - 2
+              completionChannel: APP
+          - previousDays:
+            - 3
+            - 3
+            initiatingChannel: APP
+            completionChannels:
+            - previousDays:
+              - 2
+              - 2
+              completionChannel: APP
+            - previousDays:
+              - 2
+              - 2
+              completionChannel: APP
+          levels:
+          - startedPreviousDays:
+            - 3
+            - 3
+            completedPreviousDays:
+            - 8
+            - 8
+            methods:
+            - LOOK_UP_SECRET
+            - LOOK_UP_SECRET
+            levelOfAssurance: urn:cds.au:cdr:2
+          - startedPreviousDays:
+            - 3
+            - 3
+            completedPreviousDays:
+            - 8
+            - 8
+            methods:
+            - LOOK_UP_SECRET
+            - LOOK_UP_SECRET
+            levelOfAssurance: urn:cds.au:cdr:2
       properties:
         requestTime:
           description: The date and time that the metrics in this payload were requested.
@@ -1661,7 +1925,10 @@ components:
           $ref: '#/components/schemas/SecondaryHolderMetricsV2'
         authorisations:
           $ref: '#/components/schemas/AuthorisationMetricsV2'
+        authentication:
+          $ref: '#/components/schemas/AuthenticationMetricsV1'
       required:
+      - authentication
       - authorisations
       - availability
       - averageResponse
@@ -3381,6 +3648,33 @@ components:
       - preIdentification
       - rejected
       type: object
+    AuthenticationChannelsV1_completionChannels:
+      example:
+        previousDays:
+        - 2
+        - 2
+        completionChannel: APP
+      properties:
+        completionChannel:
+          description: The channel where the consumer completed the authentication
+            initiated by the associated *initiatingChannel*.
+          enum:
+          - APP
+          - WEB
+          type: string
+        previousDays:
+          description: Number of authentications completed in previous days in the
+            associated *completionChannel*. The first element indicates yesterday
+            and so on. A maximum of seven entries is required if available
+          items:
+            type: integer
+            x-cds-type: NaturalNumber
+          type: array
+      required:
+      - completionChannel
+      type: object
+      x-conditional:
+      - previousDays
     ErrorV2_meta:
       description: Additional data for customised error codes.
       properties:

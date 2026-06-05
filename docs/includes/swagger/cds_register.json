@@ -8,7 +8,7 @@
     },
     "description" : "Specifications for Register endpoints made available to participants.",
     "title" : "CDR Register API",
-    "version" : "1.36.0"
+    "version" : "1.37.0"
   },
   "servers" : [ {
     "description" : "Production TLS",
@@ -30,7 +30,7 @@
   "paths" : {
     "/idp/.well-known/openid-configuration" : {
       "get" : {
-        "description" : "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require [CORS](#cors).",
+        "description" : "Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.\n\nThis endpoint does not require [CORS](#17-cors).",
         "operationId" : "getRegisterOpenIdProviderConfig",
         "responses" : {
           "200" : {
@@ -50,7 +50,7 @@
     },
     "/cdr-register/v1/jwks" : {
       "get" : {
-        "description" : "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require [CORS](#cors).",
+        "description" : "JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.\n\nThis endpoint does not require [CORS](#17-cors).",
         "operationId" : "getRegisterJwks",
         "responses" : {
           "200" : {

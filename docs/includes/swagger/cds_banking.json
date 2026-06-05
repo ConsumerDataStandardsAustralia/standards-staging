@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Banking API",
-    "version" : "1.36.0"
+    "version" : "1.37.0"
   },
   "servers" : [ {
     "description" : "MTLS",
@@ -50,7 +50,7 @@
   "paths" : {
     "/banking/accounts" : {
       "get" : {
-        "description" : "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html), [v2](includes/obsolete/get-accounts-v2.html).",
+        "description" : "Obtain a list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-accounts-v1.html), [v2](includes/obsolete/get-accounts-v2.html), [v3](includes/obsolete/get-accounts-v3.html).",
         "operationId" : "listBankingAccounts",
         "parameters" : [ {
           "description" : "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
@@ -139,26 +139,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -240,12 +231,12 @@
         "summary" : "Get Accounts",
         "tags" : [ "Banking Accounts" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/banking/accounts/balances" : {
       "get" : {
-        "description" : "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-balances-v1.html).",
+        "description" : "Obtain balances for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-balances-v1.html), [v2](includes/obsolete/get-bulk-balances-v2.html).",
         "operationId" : "listBankingBalancesBulk",
         "parameters" : [ {
           "description" : "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
@@ -334,26 +325,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -435,10 +417,10 @@
         "summary" : "Get Bulk Balances",
         "tags" : [ "Banking Account Balances" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       },
       "post" : {
-        "description" : "Obtain balances for a specified list of accounts.",
+        "description" : "Obtain balances for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-balances-for-specific-accounts-v1.html).",
         "operationId" : "listBankingBalancesSpecificAccounts",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -495,26 +477,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -599,12 +572,12 @@
         "summary" : "Get Balances For Specific Accounts",
         "tags" : [ "Banking Account Balances" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/{accountId}/balance" : {
       "get" : {
-        "description" : "Obtain the balance for a single specified account.",
+        "description" : "Obtain the balance for a single specified account.\n\nObsolete versions: [v1](includes/obsolete/get-account-balance-v1.html).",
         "operationId" : "getBankingBalance",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -647,26 +620,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -748,12 +712,12 @@
         "summary" : "Get Account Balance",
         "tags" : [ "Banking Account Balances" ],
         "x-scopes" : [ "bank:accounts.basic:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/{accountId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html), [v4](includes/obsolete/get-account-detail-v4.html).",
+        "description" : "Obtain detailed information on a single account.\n\nObsolete versions: [v1](includes/obsolete/get-account-detail-v1.html), [v2](includes/obsolete/get-account-detail-v2.html), [v3](includes/obsolete/get-account-detail-v3.html), [v4](includes/obsolete/get-account-detail-v4.html), [v5](includes/obsolete/get-account-detail-v5.html).",
         "operationId" : "getBankingAccountDetail",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -796,26 +760,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -897,12 +852,12 @@
         "summary" : "Get Account Detail",
         "tags" : [ "Banking Accounts" ],
         "x-scopes" : [ "bank:accounts.detail:read" ],
-        "x-version" : "5"
+        "x-version" : "6"
       }
     },
     "/banking/accounts/{accountId}/transactions" : {
       "get" : {
-        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>\n\nObsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html).",
+        "description" : "Obtain transactions for a specific account.\n\nSome general notes that apply to all endpoints that retrieve transactions:<ul><li>Where multiple transactions are returned, transactions should be ordered according to effective date in descending order<li>As the date and time for a transaction can alter depending on status and transaction type two separate date/times are included in the payload. There are still some scenarios where neither of these time stamps is available. For the purpose of filtering and ordering it is expected that the data holder will use the \"effective\" date/time which will be defined as:<ul><li>Posted date/time if available, then<li>Execution date/time if available, then<li>A reasonable date/time nominated by the data holder using internal data structures</ul><li>For transaction amounts it should be assumed that a negative value indicates a reduction of the available balance on the account while a positive value indicates an increase in the available balance on the account<li>For aggregated transactions (i.e. groups of sub transactions reported as a single entry for the account) only the aggregated information, with as much consistent information across the subsidiary transactions as possible, is required to be shared.</ul>\n\nObsolete versions: [v1](includes/obsolete/get-transactions-for-account-v1.html), [v2](includes/obsolete/get-transactions-for-account-v2.html).",
         "operationId" : "listBankingTransactions",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -1023,26 +978,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1139,12 +1085,12 @@
         "summary" : "Get Transactions For Account",
         "tags" : [ "Banking Account Transactions" ],
         "x-scopes" : [ "bank:transactions:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/accounts/{accountId}/transactions/{transactionId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html), [v2](includes/obsolete/get-transaction-detail-v2.html).",
+        "description" : "Obtain detailed information on a transaction for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-transaction-detail-v1.html), [v2](includes/obsolete/get-transaction-detail-v2.html), [v3](includes/obsolete/get-transaction-detail-v3.html).",
         "operationId" : "getBankingTransactionDetail",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -1197,26 +1143,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1298,12 +1235,12 @@
         "summary" : "Get Transaction Detail",
         "tags" : [ "Banking Account Transactions" ],
         "x-scopes" : [ "bank:transactions:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       }
     },
     "/banking/accounts/{accountId}/direct-debits" : {
       "get" : {
-        "description" : "Obtain direct debit authorisations for a specific account.",
+        "description" : "Obtain direct debit authorisations for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-direct-debits-for-account-v1.html).",
         "operationId" : "listDirectDebits",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -1370,26 +1307,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1486,12 +1414,12 @@
         "summary" : "Get Direct Debits For Account",
         "tags" : [ "Banking Account Direct Debits" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/direct-debits" : {
       "get" : {
-        "description" : "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html).",
+        "description" : "Obtain direct debit authorisations for multiple, filtered accounts.\n\nObsolete versions: [v1](includes/obsolete/get-bulk-direct-debits-v1.html), [v2](includes/obsolete/get-bulk-direct-debits-v2.html).",
         "operationId" : "listDirectDebitsBulk",
         "parameters" : [ {
           "description" : "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
@@ -1580,26 +1508,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1681,10 +1600,10 @@
         "summary" : "Get Bulk Direct Debits",
         "tags" : [ "Banking Account Direct Debits" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       },
       "post" : {
-        "description" : "Obtain direct debit authorisations for a specified list of accounts.",
+        "description" : "Obtain direct debit authorisations for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-direct-debits-for-specific-accounts-v1.html).",
         "operationId" : "listDirectDebitsSpecificAccounts",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -1741,26 +1660,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1845,12 +1755,12 @@
         "summary" : "Get Direct Debits For Specific Accounts",
         "tags" : [ "Banking Account Direct Debits" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/{accountId}/payments/scheduled" : {
       "get" : {
-        "description" : "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html).",
+        "description" : "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html), [v2](includes/obsolete/get-scheduled-payments-for-account-v2.html).",
         "operationId" : "listScheduledPayments",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -1917,26 +1827,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2033,12 +1934,12 @@
         "summary" : "Get Scheduled Payments for Account",
         "tags" : [ "Banking Account Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/payments/scheduled" : {
       "get" : {
-        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html).",
+        "description" : "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html), [v3](includes/obsolete/get-scheduled-payments-bulk-v3.html).",
         "operationId" : "listScheduledPaymentsBulk",
         "parameters" : [ {
           "description" : "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.",
@@ -2127,26 +2028,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2228,10 +2120,10 @@
         "summary" : "Get Scheduled Payments Bulk",
         "tags" : [ "Banking Account Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "3"
+        "x-version" : "4"
       },
       "post" : {
-        "description" : "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).",
+        "description" : "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html), [v2](includes/obsolete/get-scheduled-payments-for-specific-accounts-v2.html).",
         "operationId" : "listScheduledPaymentsSpecificAccounts",
         "parameters" : [ {
           "description" : "Page of results to request (standard pagination).",
@@ -2288,26 +2180,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2392,12 +2275,12 @@
         "summary" : "Get Scheduled Payments For Specific Accounts",
         "tags" : [ "Banking Account Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/accounts/{accountId}/payments/plans" : {
       "get" : {
-        "description" : "Obtain instalment plans for a single specified account. The response **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_ was specified as `true` for the provided _accountId_ but no plans match the provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_ was specified as `false` for the provided _accountId_, then the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+        "description" : "Obtain instalment plans for a single specified account. The response **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_ was specified as `true` for the provided _accountId_ but no plans match the provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_ was specified as `false` for the provided _accountId_, then the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).\n\nObsolete versions: [v1](includes/obsolete/get-instalment-plans-for-account-v1.html).",
         "operationId" : "listInstalmentPlans",
         "parameters" : [ {
           "description" : "The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints.",
@@ -2476,26 +2359,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2592,12 +2466,12 @@
         "summary" : "Get Instalment Plans for Account",
         "tags" : [ "Banking Account Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/accounts/payments/plans" : {
       "get" : {
-        "description" : "Obtain instalment plans for multiple accounts. The response **MUST** be ordered by plan _creationDate_ in descending order. If instalments are not supported for any account type, the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+        "description" : "Obtain instalment plans for multiple accounts. The response **MUST** be ordered by plan _creationDate_ in descending order. If instalments are not supported for any account type, the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).\n\nObsolete versions: [v1](includes/obsolete/get-instalment-plans-bulk-v1.html).",
         "operationId" : "listInstalmentPlansBulk",
         "parameters" : [ {
           "description" : "Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE` requests plans where one or more scheduled instalments have _isPaid_ equal to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE` plans.</li></ul>",
@@ -2666,26 +2540,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2767,12 +2632,12 @@
         "summary" : "Get Instalment Plans Bulk",
         "tags" : [ "Banking Account Scheduled Payments" ],
         "x-scopes" : [ "bank:regular_payments:read" ],
-        "x-version" : "1"
+        "x-version" : "2"
       }
     },
     "/banking/payees" : {
       "get" : {
-        "description" : "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html).",
+        "description" : "Obtain a list of pre-registered payees.\n\nObsolete versions: [v1](includes/obsolete/get-payees-v1.html), [v2](includes/obsolete/get-payees-v2.html).",
         "operationId" : "listBankingPayees",
         "parameters" : [ {
           "description" : "Filter on the payee _type_ field. In addition to normal _type_ field values, `ALL` can be specified to retrieve all payees. If absent the assumed value is `ALL`.",
@@ -2841,26 +2706,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2942,12 +2798,12 @@
         "summary" : "Get Payees",
         "tags" : [ "Banking Payees" ],
         "x-scopes" : [ "bank:payees:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/payees/{payeeId}" : {
       "get" : {
-        "description" : "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html).",
+        "description" : "Obtain detailed information on a single payee.\n\nNote that the payee sub-structure should be selected to represent the payment destination only rather than any known characteristics of the payment recipient.\n\nObsolete versions: [v1](includes/obsolete/get-payee-detail-v1.html), [v2](includes/obsolete/get-payee-detail-v2.html).",
         "operationId" : "getBankingPayeeDetail",
         "parameters" : [ {
           "description" : "The _payeeId_ to obtain data for. _payeeId_ values are returned by payee list endpoints.",
@@ -2990,26 +2846,17 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-auth-date",
+          "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
+            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
-        }, {
-          "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-fapi-customer-ip-address",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3106,7 +2953,7 @@
         "summary" : "Get Payee Detail",
         "tags" : [ "Banking Payees" ],
         "x-scopes" : [ "bank:payees:read" ],
-        "x-version" : "2"
+        "x-version" : "3"
       }
     },
     "/banking/products" : {
@@ -3405,28 +3252,18 @@
         },
         "style" : "simple"
       },
-      "HeaderXFAPIAuthDate" : {
-        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+      "HeaderXFAPIEndUserPresent" : {
+        "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
         "explode" : false,
         "in" : "header",
-        "name" : "x-fapi-auth-date",
+        "name" : "x-fapi-end-user-present",
         "required" : false,
         "schema" : {
+          "default" : "false",
           "type" : "string"
         },
         "style" : "simple",
         "x-conditional" : true
-      },
-      "HeaderXFAPICustomerIPAddress" : {
-        "description" : "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
-        "explode" : false,
-        "in" : "header",
-        "name" : "x-fapi-customer-ip-address",
-        "required" : false,
-        "schema" : {
-          "type" : "string"
-        },
-        "style" : "simple"
       },
       "HeaderXCDSClientHeaders" : {
         "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
