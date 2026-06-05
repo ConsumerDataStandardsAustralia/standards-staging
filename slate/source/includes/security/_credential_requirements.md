@@ -38,7 +38,6 @@ Where a data holder supports an OTP flow:
 1. The provided OTP **SHALL** be numeric digits and be between 6 and 10 digits in length. 
 1. The data holder **SHALL** ensure that OTPs are generated using cryptographically secure mechanisms that provide unpredictability, such as CSPRNG or TOTP.
 1. The data holder **SHALL** deliver OTPs to a channel that has been pre-registered by the end user and is currently elected by them to receive authentication secrets. 
-1. The data holder **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
 ```diff
 Updated Restricted Credentials
