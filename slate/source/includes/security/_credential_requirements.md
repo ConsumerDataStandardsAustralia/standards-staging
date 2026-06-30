@@ -35,9 +35,9 @@ Where a data holder supports an OTP flow:
 - The data holder **SHOULD** implement additional controls to minimise the risk of interception of the OTP through the selected delivery mechanism.
 - The provided OTP **MUST** only be used for authentication for CDR based sharing and **MUST NOT** be usable for the authorisation of other transactions or actions.
 - The provided OTP **MUST** be invalidated after a period of time at the discretion of the data holder. This expiry period **SHOULD** facilitate enough time for the customer to reasonably complete the authorisation process.
-- The provided OTP **SHALL** be numeric digits and be between 6 and 10 digits in length. 
-- The data holder **SHALL** ensure that OTPs are generated using cryptographically secure mechanisms that provide unpredictability, such as CSPRNG or TOTP.
-- The data holder **SHALL** deliver OTPs to a channel that has been pre-registered by the end user and is currently elected by them to receive authentication secrets. 
+- The provided OTP **MUST** be numeric digits and be between 6 and 10 digits in length. 
+- The data holder **MUST** ensure that OTPs are generated using cryptographically secure mechanisms that provide unpredictability, such as CSPRNG or TOTP.
+- The data holder **MUST** deliver OTPs to a channel that has been pre-registered by the end user and is currently elected by them to receive authentication secrets. 
 - The data holder **SHOULD** implement additional controls to minimise the risk of enumeration attacks via the redirect page.
 
 ```diff
