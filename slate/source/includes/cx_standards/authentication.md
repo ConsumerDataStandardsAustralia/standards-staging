@@ -13,6 +13,7 @@ Added rows
 + Authentication: Accessible authentication
 + Authentication: Error messaging and redirection
 + Authentication: Unique identifier
++ Authentication: Restricted Credentials
 ```
 
 |Area|CX Standard|
@@ -23,7 +24,7 @@ Added rows
 |**Authentication:**<br>Accessible authentication|<p>When implementing CDR authentication, data holders **SHOULD** ensure compliance with relevant accessibility standards, in particular WCAG 2.2 Success Criteria [3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html) and [3.3.9](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html), to support accessible and inclusive authentication experiences.</p>|
 |**Authentication:**<br>Error messaging and redirection|<p>In the event of an authentication failure (e.g., OTP expiry/non-delivery, or redirection issues) the data holder **SHOULD** provide clear and consistent error messaging to the consumer. The error message **MUST** provide actionable guidance for resolution.</p><p>Where an authentication flow cannot be completed successfully, the data holder **SHOULD** implement a standardised redirection flow that returns the consumer to the ADR. The redirection **MUST** include contextual error information sufficient for the ADR to present appropriate next steps.</p>|
 |**Authentication:**<br>Unique identifier|<p>Where feasible, data holders **SHOULD** support alternative identifiers familiar to the consumer, such as mobile phone numbers or email addresses, for CDR authentication. The identifier **MUST** uniquely identify a customer and **MUST NOT** be a shared or group identifier.</p>|
-
+|**Authentication:**<br>Restricted Credentials|<p>Where a data holder permits the use of [Restricted Credentials](#restricted-credentials) and offers more secure authentication methods, the data holder **MAY** advise consumers that such methods are available and encourage their use.</p>|
 
 
 

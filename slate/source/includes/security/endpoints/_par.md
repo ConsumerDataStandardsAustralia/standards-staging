@@ -106,9 +106,9 @@ The Data Holder response provides the Data Recipient Software Product with a Req
 
 **Data Holders**
 
-- **SHALL** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
+- **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
 
 **Data Recipient Software Products**
 
-- **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
+- **MUST** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
 - **SHALL** include the *x-cds-originating-channel* header in the PAR request indicating the channel from which the user is initiating an authorisation flow. For details see [HTTP Headers](#http-headers).
