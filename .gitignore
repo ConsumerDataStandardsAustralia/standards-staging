@@ -3,3 +3,5 @@
 .vagrant/
 /docs-dev/
 /temp_cds_swagger_gen/
+slate/run.log
+package-lock.json

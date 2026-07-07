@@ -71,7 +71,7 @@
           "Data Holder Admin"
         ],
         "summary": "Get Metrics",
-        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.\n\nOther versions: [v1](includes/obsolete/get-metrics-v1.html), [v2](includes/obsolete/get-metrics-v2.html), [v3](includes/obsolete/get-metrics-v3.html), [v4](includes/obsolete/get-metrics-v4.html), [v5](includes/obsolete/get-metrics-v5.html).",
+        "description": "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.\n\nOther versions: [v1](includes/obsolete/get-metrics-v1.html), [v2](includes/obsolete/get-metrics-v2.html), [v3](includes/obsolete/get-metrics-v3.html), [v4](includes/obsolete/get-metrics-v4.html).",
         "operationId": "getMetrics",
         "parameters": [
           {
@@ -99,7 +99,7 @@
           "admin:metrics.basic:read"
         ],
         "x-restricted-access": "REGISTER",
-        "x-version": "6"
+        "x-version": "5"
       }
     }
   },

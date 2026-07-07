@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Admin API",
-    "version" : "1.36.0"
+    "version" : "1.37.0"
   },
   "servers" : [ {
     "description" : "MTLS",
@@ -92,87 +92,6 @@
         "x-scopes" : [ "admin:metadata:update" ],
         "x-restricted-access" : "REGISTER",
         "x-version" : "1"
-      }
-    },
-    "/admin/metrics" : {
-      "get" : {
-        "description" : "This endpoint allows the ACCC to obtain operational statistics from the Data Holder (at the Data Holder Brand level) on the operation of their CDR compliant implementation. The statistics obtainable from this endpoint are determined by the non-functional requirements for the CDR regime.\n\nThis endpoint is not required to be implemented by the Australian Energy Market Operator, the Australian Energy Regulator or the Department of State administered by the Minister of Victoria administering the National Electricity (Victoria) Act 2005 (Vic).\n\nNOTE: This version **MUST** be implemented by **May 13th 2024**\n\nObsolete versions: [v1](includes/obsolete/get-metrics-v1.html) [v2](includes/obsolete/get-metrics-v2.html).\n\nDeprecated versions:\n\n- [v3](includes/obsolete/get-metrics-v3.html) - Implementation not required for Data Holders going live on, or after, 1st November 2023. Other Data Holders **MAY** retire this version from the earlier of **13th May 2024** or from the time the ACCC announce that they no longer call this version\n- [v4](includes/obsolete/get-metrics-v4.html) - This version, or v5, **MUST** be implemented by **November 1st 2023**.\n\nIf the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.",
-        "operationId" : "getMetrics",
-        "parameters" : [ {
-          "description" : "The period of metrics to be requested. Values can be `CURRENT` (meaning metrics for current period, dependent on the metric type), `HISTORIC` (meaning metrics for previous period, depending on the metric type) or `ALL`. If absent the default is `ALL`.",
-          "explode" : true,
-          "in" : "query",
-          "name" : "period",
-          "required" : false,
-          "schema" : {
-            "default" : "ALL",
-            "enum" : [ "CURRENT", "HISTORIC", "ALL" ],
-            "type" : "string"
-          },
-          "style" : "form"
-        }, {
-          "description" : "Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-v",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        }, {
-          "description" : "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint should respond with a `406 Not Acceptable`.",
-          "explode" : false,
-          "in" : "header",
-          "name" : "x-min-v",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          },
-          "style" : "simple"
-        } ],
-        "responses" : {
-          "200" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ResponseMetricsListV5"
-                }
-              }
-            },
-            "description" : "Successful response",
-            "headers" : {
-              "x-v" : {
-                "$ref" : "#/components/headers/XV"
-              }
-            }
-          },
-          "400" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            },
-            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>"
-          },
-          "406" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ResponseErrorListV2"
-                }
-              }
-            },
-            "description" : "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
-          }
-        },
-        "summary" : "Get Metrics",
-        "tags" : [ "Data Holder Admin" ],
-        "x-scopes" : [ "admin:metrics.basic:read" ],
-        "x-restricted-access" : "REGISTER",
-        "x-version" : "5"
       }
     }
   },
@@ -275,7 +194,7 @@
         "content" : {
           "application/json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/ResponseMetricsListV5"
+              "$ref" : "#/components/schemas/ResponseMetricsListV6"
             }
           }
         },
@@ -320,10 +239,10 @@
         "required" : [ "data" ],
         "type" : "object"
       },
-      "ResponseMetricsListV5" : {
+      "ResponseMetricsListV6" : {
         "properties" : {
           "data" : {
-            "$ref" : "#/components/schemas/ResponseMetricsListV5_data"
+            "$ref" : "#/components/schemas/ResponseMetricsListV6_data"
           },
           "links" : {
             "$ref" : "#/components/schemas/Links"
@@ -575,6 +494,90 @@
         "required" : [ "abandonedConsentFlowCount", "abandonmentsByStage", "activeAuthorisationCount", "amendedAuthorisationCount", "expiredAuthorisationCount", "newAuthorisationCount", "revokedAuthorisationCount" ],
         "type" : "object"
       },
+      "AuthenticationMetricsV1" : {
+        "description" : "Authentication detail.",
+        "properties" : {
+          "channels" : {
+            "description" : "Detail about the channels associated with authorisation attempts.",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthenticationChannelsV1"
+            },
+            "type" : "array"
+          },
+          "levels" : {
+            "description" : "Detail about the level of assurance (LoA) associated with authentication attempts.",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthenticationLevelsV1"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "channels", "levels" ],
+        "type" : "object"
+      },
+      "AuthenticationChannelsV1" : {
+        "properties" : {
+          "initiatingChannel" : {
+            "description" : "The channel specified by the data recipient in the *x-cds-originating-channel* header in the PAR request initiating the authorisation flow.",
+            "enum" : [ "APP", "WEB" ],
+            "type" : "string"
+          },
+          "previousDays" : {
+            "description" : "Number of authentications initiated in previous days for this *initiatingChannel*. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          },
+          "completionChannels" : {
+            "description" : "Array of completion channel detail associated with the *initiatingChannel*.",
+            "items" : {
+              "$ref" : "#/components/schemas/AuthenticationChannelsV1_completionChannels_inner"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "completionChannels", "initiatingChannel" ],
+        "type" : "object",
+        "x-conditional" : [ "previousDays" ]
+      },
+      "AuthenticationLevelsV1" : {
+        "properties" : {
+          "levelOfAssurance" : {
+            "description" : "The level of assurance initiated for authentication.",
+            "enum" : [ "urn:cds.au:cdr:2", "urn:cds.au:cdr:3", "urn:cds.au:cdr:4" ],
+            "type" : "string"
+          },
+          "methods" : {
+            "description" : "Methods involved in authentications initiated for the associated *levelOfAssurance*. Values provided **SHALL** align as closely as possible to Division 3 of **[[DigitalID-Accreditation]](#nref-DigitalID-Accreditation)**. Where multiple factors are used to achieve the authentication challenge, each **SHALL** be provided in the array.",
+            "items" : {
+              "enum" : [ "LOOK_UP_SECRET", "MEMORISED_SECRET", "MF_CRYPTO_DEVICE", "MF_CRYPTO_SW", "MF_OTP", "OTHER", "OUT_OF_BAND_DEVICE", "PASSKEY", "SF_CRYPTO_DEVICE", "SF_CRYPTO_SW", "SF_OTP" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "startedPreviousDays" : {
+            "description" : "Number of Alfred authentications initiated in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          },
+          "completedPreviousDays" : {
+            "description" : "Number of authentications completed in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "levelOfAssurance", "methods" ],
+        "type" : "object",
+        "x-conditional" : [ "startedPreviousDays", "completedPreviousDays" ]
+      },
       "Links" : {
         "properties" : {
           "self" : {
@@ -636,7 +639,7 @@
         "required" : [ "action" ],
         "type" : "object"
       },
-      "ResponseMetricsListV5_data" : {
+      "ResponseMetricsListV6_data" : {
         "properties" : {
           "requestTime" : {
             "description" : "The date and time that the metrics in this payload were requested.",
@@ -685,9 +688,12 @@
           },
           "authorisations" : {
             "$ref" : "#/components/schemas/AuthorisationMetricsV2"
+          },
+          "authentication" : {
+            "$ref" : "#/components/schemas/AuthenticationMetricsV1"
           }
         },
-        "required" : [ "authorisations", "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
+        "required" : [ "authentication", "authorisations", "availability", "averageResponse", "averageTps", "customerCount", "errors", "invocations", "peakTps", "performance", "recipientCount", "rejections", "requestTime", "sessionCount" ],
         "type" : "object",
         "x-conditional" : [ "secondaryHolder" ]
       },
@@ -1385,41 +1391,47 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
+      "ErrorMetricsV2_unauthenticated_currentDay" : {
+        "additionalProperties" : {
+          "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
+          "type" : "integer",
+          "x-cds-type" : "NaturalNumber"
+        },
+        "description" : "Error counts, by HTTP error code, for current day.",
+        "properties" : {
+          "500" : {
+            "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "type" : "object"
+      },
+      "ErrorMetricsV2_unauthenticated_previousDays_inner" : {
+        "additionalProperties" : {
+          "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
+          "type" : "integer",
+          "x-cds-type" : "NaturalNumber"
+        },
+        "properties" : {
+          "500" : {
+            "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "type" : "object"
+      },
       "ErrorMetricsV2_unauthenticated" : {
         "description" : "Number of calls resulting in error for unauthenticated endpoints.",
         "properties" : {
           "currentDay" : {
-            "additionalProperties" : {
-              "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
-              "type" : "integer",
-              "x-cds-type" : "NaturalNumber"
-            },
-            "description" : "Error counts, by HTTP error code, for current day.",
-            "properties" : {
-              "500" : {
-                "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber"
-              }
-            },
-            "type" : "object"
+            "$ref" : "#/components/schemas/ErrorMetricsV2_unauthenticated_currentDay"
           },
           "previousDays" : {
             "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "additionalProperties" : {
-                "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber"
-              },
-              "properties" : {
-                "500" : {
-                  "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
-                }
-              },
-              "type" : "object"
+              "$ref" : "#/components/schemas/ErrorMetricsV2_unauthenticated_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1427,41 +1439,47 @@
         "type" : "object",
         "x-conditional" : [ "currentDay", "previousDays" ]
       },
+      "ErrorMetricsV2_authenticated_currentDay" : {
+        "additionalProperties" : {
+          "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
+          "type" : "integer",
+          "x-cds-type" : "NaturalNumber"
+        },
+        "description" : "Error counts, by HTTP error code, for current day.",
+        "properties" : {
+          "500" : {
+            "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "type" : "object"
+      },
+      "ErrorMetricsV2_authenticated_previousDays_inner" : {
+        "additionalProperties" : {
+          "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
+          "type" : "integer",
+          "x-cds-type" : "NaturalNumber"
+        },
+        "properties" : {
+          "500" : {
+            "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
+            "type" : "integer",
+            "x-cds-type" : "NaturalNumber"
+          }
+        },
+        "type" : "object"
+      },
       "ErrorMetricsV2_authenticated" : {
         "description" : "Number of calls resulting in error for authenticated endpoints.",
         "properties" : {
           "currentDay" : {
-            "additionalProperties" : {
-              "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
-              "type" : "integer",
-              "x-cds-type" : "NaturalNumber"
-            },
-            "description" : "Error counts, by HTTP error code, for current day.",
-            "properties" : {
-              "500" : {
-                "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber"
-              }
-            },
-            "type" : "object"
+            "$ref" : "#/components/schemas/ErrorMetricsV2_authenticated_currentDay"
           },
           "previousDays" : {
             "description" : "Error counts, by HTTP error code, for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "additionalProperties" : {
-                "description" : "This is a placeholder field to be substituted with each respective HTTP error code in the 4xx and 5xx range recorded by the Data Holder. It is represented by _property1_ and _property2_ in the _Non-normative Examples_ section. Note that the property name **MUST** be the three-digit HTTP error code as per the adjacent _500_ example. All possible property names have not been defined as the range is expected to vary across participants. Examples would include, but are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.",
-                "type" : "integer",
-                "x-cds-type" : "NaturalNumber"
-              },
-              "properties" : {
-                "500" : {
-                  "description" : "Reflecting the description provided in the adjacent _additionalProperties_ field, this is an example demonstrating the structure for reporting the number of calls resulting in HTTP error code `500`. Each error code recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided in this format against the respective property name.",
-                  "type" : "integer",
-                  "x-cds-type" : "NaturalNumber"
-                }
-              },
-              "type" : "object"
+              "$ref" : "#/components/schemas/ErrorMetricsV2_authenticated_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1613,7 +1631,7 @@
         "required" : [ "onceOff", "ongoing" ],
         "type" : "object"
       },
-      "AuthorisationMetricsV2_newAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_newAuthorisationCount_previousDays_inner" : {
         "properties" : {
           "onceOff" : {
             "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff"
@@ -1634,7 +1652,7 @@
           "previousDays" : {
             "description" : "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1659,7 +1677,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetricsV2_revokedAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_revokedAuthorisationCount_previousDays_inner" : {
         "properties" : {
           "individual" : {
             "description" : "Revoked authorisation count for individual customers.",
@@ -1684,7 +1702,7 @@
           "previousDays" : {
             "description" : "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1709,7 +1727,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetricsV2_amendedAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_amendedAuthorisationCount_previousDays_inner" : {
         "properties" : {
           "individual" : {
             "description" : "Amended authorisation count for individual customers.",
@@ -1734,7 +1752,7 @@
           "previousDays" : {
             "description" : "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1759,7 +1777,7 @@
         "required" : [ "individual", "nonIndividual" ],
         "type" : "object"
       },
-      "AuthorisationMetricsV2_expiredAuthorisationCount_previousDays" : {
+      "AuthorisationMetricsV2_expiredAuthorisationCount_previousDays_inner" : {
         "properties" : {
           "individual" : {
             "description" : "Expired authorisation count for individual customers.",
@@ -1784,7 +1802,7 @@
           "previousDays" : {
             "description" : "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
-              "$ref" : "#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays"
+              "$ref" : "#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays_inner"
             },
             "type" : "array"
           }
@@ -1957,17 +1975,23 @@
         "required" : [ "failedTokenExchange", "preAccountSelection", "preAuthentication", "preAuthorisation", "preIdentification", "rejected" ],
         "type" : "object"
       },
-      "ErrorV2_meta" : {
-        "description" : "Additional data for customised error codes.",
+      "AuthenticationChannelsV1_completionChannels_inner" : {
         "properties" : {
-          "urn" : {
-            "description" : "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.",
+          "completionChannel" : {
+            "description" : "The channel where the consumer completed the authentication initiated by the associated *initiatingChannel*.",
+            "enum" : [ "APP", "WEB" ],
             "type" : "string"
+          },
+          "previousDays" : {
+            "description" : "Number of authentications completed in previous days in the associated *completionChannel*. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+            "items" : {
+              "type" : "integer",
+              "x-cds-type" : "NaturalNumber"
+            },
+            "type" : "array"
           }
         },
+        "required" : [ "completionChannel" ],
         "type" : "object",
-        "x-conditional" : [ "urn" ]
-      }
-    }
-  }
-}
+        "x-conditional" : [ "previousDays" ]
+" : "object"
