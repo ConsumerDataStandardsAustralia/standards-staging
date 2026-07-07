@@ -558,7 +558,7 @@
             "type" : "array"
           },
           "startedPreviousDays" : {
-            "description" : "Number of Alfred authentications initiated in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+            "description" : "Number of authentications initiated in previous days for the *levelOfAssurance* and *methods* combination. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
             "items" : {
               "type" : "integer",
               "x-cds-type" : "NaturalNumber"
