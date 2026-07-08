@@ -202,7 +202,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseMetricsListV6"
+              "$ref": "#/components/schemas/ResponseMetricsListV5"
             }
           }
         }
@@ -256,7 +256,7 @@
           }
         }
       },
-      "ResponseMetricsListV6": {
+      "ResponseMetricsListV5": {
         "required": [
           "data",
           "links"
@@ -277,8 +277,7 @@
               "rejections",
               "requestTime",
               "sessionCount",
-              "authorisations",
-              "authentication"
+              "authorisations"
             ],
             "type": "object",
             "properties": {
@@ -329,9 +328,6 @@
               },
               "authorisations": {
                 "$ref": "#/components/schemas/AuthorisationMetricsV2"
-              },
-              "authentication": {
-                "$ref": "#/components/schemas/AuthenticationMetricsV1"
               }
             },
             "x-conditional": [
@@ -2004,30 +2000,6 @@
               }
             },
             "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned consent should assigned to one, and only one, stage)."
-          }
-        }
-      },
-      "AuthenticationMetricsV1": {
-        "description": "Authentication detail.",
-        "required": [
-          "channels",
-          "levels"
-        ],
-        "type": "object",
-        "properties": {
-          "channels": {
-            "type": "array",
-            "description": "Detail about the channels associated with authorisation attempts.",
-            "items": {
-              "$ref": "#/components/schemas/AuthenticationChannelsV1"
-            }
-          },
-          "levels": {
-            "type": "array",
-            "description": "Detail about the level of assurance (LoA) associated with authentication attempts.",
-            "items": {
-              "$ref": "#/components/schemas/AuthenticationLevelsV1"
-            }
           }
         }
       },
