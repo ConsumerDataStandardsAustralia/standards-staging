@@ -15,7 +15,6 @@
 | Common APIs     | Get Customer Detail               | ``/common/customer/detail``                  | <span class="method get">GET</span>    | V2      | 2022-11-31       | N/A             | 2021-12-23, V1.15.0 | N/A                 |
 | Common APIs     | Get Status                        | ``/discovery/status``                        | <span class="method get">GET</span>    | V1      | 2020-07-01       | N/A             | 2019-09-30, V1.0.0  | N/A                 |
 | Common APIs     | Get Outages                       | ``/discovery/outages``                       | <span class="method get">GET</span>    | V1      | 2020-07-01       | N/A             | 2019-09-30, V1.0.0  | N/A                 |
-| Common APIs     | Get Configuration                 | ``/discovery/configuration``                 | <span class="method get">GET</span>    | V1      | 2027-05-10       | N/A             | TBC, V1.37.0        | N/A                 |
 
 ## Admin APIs
 
