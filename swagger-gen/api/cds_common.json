@@ -33,39 +33,6 @@
     }
   ],
   "paths": {
-    "/.well-known/cdr-configuration": {
-      "get": {
-        "servers": [
-          {
-            "description": "TLS",
-            "url": "https://tls.dh.example.com"
-          }
-        ],
-        "tags": [
-          "Data Holder Operations"
-        ],
-        "summary": "Get Configuration",
-        "description": "Obtain configuration details for the implementation. The well-known location for this endpoint is determined by the _issuer_ value for the implementation (provided as _infosecBaseUri_), in accordance with __[[RFC8414]](#nref-RFC8414)__. Data Holder Brand details are obtained from [Register APIs](#register-apis).",
-        "operationId": "getConfiguration",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/HeaderXMaxV"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/GetConfiguration200"
-          },
-          "400": {
-            "$ref": "#/components/responses/GetConfiguration400"
-          },
-          "406": {
-            "$ref": "#/components/responses/GetConfiguration406"
-          }
-        },
-        "x-version": "1"
-      }
-    },
     "/common/customer": {
       "get": {
         "tags": [
@@ -454,36 +421,6 @@
         }
       },
       "GetOutages406": {
-        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
-            }
-          }
-        }
-      },
-      "GetConfiguration200": {
-        "description": "Successful response",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseGetConfigurationV1"
-            }
-          }
-        }
-      },
-      "GetConfiguration400": {
-        "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ResponseErrorListV2"
-            }
-          }
-        }
-      },
-      "GetConfiguration406": {
         "description": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
         "content": {
           "application/json": {
