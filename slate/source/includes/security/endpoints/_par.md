@@ -133,20 +133,14 @@ Location: https://adr.example.com/redirects/redirect1?response=eyJraWQiOiIwZWQ3Y
 ```diff
 Updated PAR requirement
 - Data Recipient Software Products MUST send authorisation requests using [PAR] if supported by the Data Holder.
-+ Data Recipient Software Products SHALL send authorisation requests using [PAR].
++ Data Recipient Software Products MUST send authorisation requests using [PAR].
 ```
-
-Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
-
-Data Recipient Software Products **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)**.
-
 The Data Holder response provides the Data Recipient Software Product with a Request URI in the response. The Request URI is then passed to the Data Holder's Authorisation endpoint to initiate an authorisation flow.
 
 **Data Holders**
 
-- **SHALL** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
+- **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.</p>
 
 **Data Recipient Software Products**
 
-- **SHALL** send authorisation requests using **[[PAR]](#nref-PAR)** if supported by the Data Holder.
-- **SHALL** include the *x-cds-originating-channel* header in the PAR request indicating the channel from which the user is initiating an authorisation flow. For details see [HTTP Headers](#http-headers).
+- **MUST** send authorisation requests using **[[PAR]](#nref-PAR)**.
