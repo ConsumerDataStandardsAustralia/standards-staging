@@ -45,8 +45,8 @@ RUN apt-get update && apt-get install -y \
 # ----------------------------------------------------
 # Install rbenv
 # ----------------------------------------------------
-RUN git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT \
- && git clone https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
+RUN git clone --branch v1.3.2 --depth 1 https://github.com/rbenv/rbenv.git $RBENV_ROOT \
+ && git clone --branch v20260716 --depth 1 https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
 
 # ----------------------------------------------------
 # Install Ruby 2.6.3
@@ -66,7 +66,8 @@ RUN bash -lc "ruby -v && bundler -v"
 # ----------------------------------------------------
 RUN mkdir -p ${OPENAPI_DIR} \
  && wget -O ${OPENAPI_JAR} \
- https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_VERSION}/openapi-generator-cli-${OPENAPI_VERSION}.jar
+ https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_VERSION}/openapi-generator-cli-${OPENAPI_VERSION}.jar \
+ && echo "9718ff7844e89462c75dcd9b20a35136f6db257bfe1b874db1e3002e99de4609  ${OPENAPI_JAR}" | sha256sum -c -
 
 # ----------------------------------------------------
 # Ruby compatibility gems
