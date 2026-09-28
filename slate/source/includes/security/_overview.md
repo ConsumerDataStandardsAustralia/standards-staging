@@ -10,12 +10,6 @@ This profile describes requirements and constraints as a profiling of the FAPI 2
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
 
-```diff
-Added terms:
-+ CSPRNG
-+ TOTP
-```
-
 ### Symbols and Abbreviated terms
 
 ```diff
@@ -28,7 +22,6 @@ Added Abbreviated term
 - **CDR:** Consumer Data Right
 - **CDR-SP:** Consumer Data Right Security Profile
 - **CL:** Credential Level
-- **CSPRNG:** Cryptographically Secure Pseudo-Random Number Generator
 - **DH:** Data Holder
 - **DR:** Data Recipient
 - **DRSP:** Data Recipient Software Product
@@ -58,4 +51,3 @@ Added Abbreviated term
 - **REST:** Representational State Transfer
 - **SP:** Data Recipient Software Product
 - **TLS:** Transport Layer Security
-- **TOTP:** Time-Based One-Time Password
