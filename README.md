@@ -4,6 +4,26 @@ This repository contains the binding API Standards and Information Security prof
 
 These standards are maintained by the Data Standards Body (DSB), with the Data Standards Chair as the decision maker. The [Data Standards Body](https://www.directory.gov.au/portfolios/treasury/department-treasury/central-office/markets-group/market-conduct-and-digital-division/data-standards-body) is part of the Treasury. The work of standards development is conducted in consultation with the [Australian Competition and Consumer Commission (ACCC)](https://www.accc.gov.au/focus-areas/consumer-data-right-cdr-0 "ACCC's CDR webpage") as co-regulator of the Consumer Data Right, along with the [Office of the Australian Information Commissioner (OAIC)](https://www.oaic.gov.au/consumer-data-right "OAIC CDR webpage").
 
+
+## Test Build and Run
+
+> **⚠️ Test environment only — do not use in production.**
+>
+> This Docker build uses legacy software versions, including **Ubuntu 20.04 and Ruby 2.6.3**, and dependencies required to build the documentation. It is provided for **testing and development purposes only** and is **not suitable for production use**.
+
+```bash
+# Build the Docker image
+docker build -t slate-docs .
+
+# Run the Docker container
+docker run --rm -p 80:80 slate-docs
+```
+
+Open a browser and navigate to:
+
+`http://localhost`
+
+
 ## Additional information
 
 * [Data Standards Body website](https://dsb.gov.au/) - Contains additional information on the CDR and the DSB as well as notifications of the latest developments.
