@@ -23,14 +23,6 @@ Open a browser and navigate to:
 
 `http://localhost`
 
-### Extract Generated Documentation
-
-The documentation is generated inside the Docker image. To copy the generated files back to the local machine, create a temporary container from the image and copy the files out:
-
-```bash
-docker create --name slate-docs-extract slate-docs
-docker cp slate-docs-extract:/opt/standards/docs-dev/. <destination-dir>
-```
 
 ## Additional information
 
