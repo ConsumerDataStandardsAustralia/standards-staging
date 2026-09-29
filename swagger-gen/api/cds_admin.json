@@ -494,27 +494,6 @@
         "required" : [ "abandonedConsentFlowCount", "abandonmentsByStage", "activeAuthorisationCount", "amendedAuthorisationCount", "expiredAuthorisationCount", "newAuthorisationCount", "revokedAuthorisationCount" ],
         "type" : "object"
       },
-      "AuthenticationMetricsV1" : {
-        "description" : "Authentication detail.",
-        "properties" : {
-          "channels" : {
-            "description" : "Detail about the channels associated with authorisation attempts.",
-            "items" : {
-              "$ref" : "#/components/schemas/AuthenticationChannelsV1"
-            },
-            "type" : "array"
-          },
-          "levels" : {
-            "description" : "Detail about the level of assurance (LoA) associated with authentication attempts.",
-            "items" : {
-              "$ref" : "#/components/schemas/AuthenticationLevelsV1"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "channels", "levels" ],
-        "type" : "object"
-      },
       "Links" : {
         "properties" : {
           "self" : {
