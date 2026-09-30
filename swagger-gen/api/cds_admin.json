@@ -95,12 +95,8 @@
           }
         },
         "summary": "Metadata Update",
-        "tags": [
-          "Data Holder Admin"
-        ],
-        "x-scopes": [
-          "admin:metadata:update"
-        ],
+        "tags": ["Data Holder Admin"],
+        "x-scopes": ["admin:metadata:update"],
         "x-restricted-access": "REGISTER",
         "x-version": "1"
       }
@@ -127,11 +123,7 @@
         "required": false,
         "schema": {
           "default": "ALL",
-          "enum": [
-            "CURRENT",
-            "HISTORIC",
-            "ALL"
-          ],
+          "enum": ["CURRENT", "HISTORIC", "ALL"],
           "type": "string"
         },
         "style": "form"
@@ -251,9 +243,7 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [
-          "data"
-        ],
+        "required": ["data"],
         "type": "object"
       },
       "AvailabilityMetricsV2": {
@@ -269,11 +259,7 @@
             "$ref": "#/components/schemas/AvailabilityMetricsV2_authenticated"
           }
         },
-        "required": [
-          "aggregate",
-          "authenticated",
-          "unauthenticated"
-        ],
+        "required": ["aggregate", "authenticated", "unauthenticated"],
         "type": "object"
       },
       "PerformanceMetricsV3": {
@@ -312,10 +298,7 @@
           "unauthenticated"
         ],
         "type": "object",
-        "x-conditional": [
-          "secondary",
-          "largeSecondary"
-        ]
+        "x-conditional": ["secondary", "largeSecondary"]
       },
       "PerformancePreviousDays": {
         "description": "Array of contiguous hourly metrics for the specified day. Each element represents a 1 hour period starting from 12am-1am. Timezone for determining 12am must be consistent but is at the discretion of the Data Holder.",
@@ -362,10 +345,7 @@
           "unauthenticated"
         ],
         "type": "object",
-        "x-conditional": [
-          "secondary",
-          "largeSecondary"
-        ]
+        "x-conditional": ["secondary", "largeSecondary"]
       },
       "AverageResponseMetricsV2": {
         "description": "Average response time in seconds, at millisecond resolution, within each performance tier.",
@@ -400,10 +380,7 @@
           "unauthenticated"
         ],
         "type": "object",
-        "x-conditional": [
-          "secondary",
-          "largeSecondary"
-        ]
+        "x-conditional": ["secondary", "largeSecondary"]
       },
       "SessionCountMetricsV2": {
         "description": "Session counts, over time. Note that a session is defined as the provisioning of an Access Token.",
@@ -423,10 +400,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageTPSMetricsV2": {
         "description": "Average transactions per second, over time.",
@@ -441,11 +415,7 @@
             "$ref": "#/components/schemas/AverageTPSMetricsV2_authenticated"
           }
         },
-        "required": [
-          "aggregate",
-          "authenticated",
-          "unauthenticated"
-        ],
+        "required": ["aggregate", "authenticated", "unauthenticated"],
         "type": "object"
       },
       "PeakTPSMetricsV2": {
@@ -461,11 +431,7 @@
             "$ref": "#/components/schemas/PeakTPSMetricsV2_authenticated"
           }
         },
-        "required": [
-          "aggregate",
-          "authenticated",
-          "unauthenticated"
-        ],
+        "required": ["aggregate", "authenticated", "unauthenticated"],
         "type": "object"
       },
       "ErrorMetricsV2": {
@@ -481,11 +447,7 @@
             "$ref": "#/components/schemas/ErrorMetricsV2_authenticated"
           }
         },
-        "required": [
-          "aggregate",
-          "authenticated",
-          "unauthenticated"
-        ],
+        "required": ["aggregate", "authenticated", "unauthenticated"],
         "type": "object"
       },
       "RejectionMetricsV3": {
@@ -498,10 +460,7 @@
             "$ref": "#/components/schemas/RejectionMetricsV3_unauthenticated"
           }
         },
-        "required": [
-          "authenticated",
-          "unauthenticated"
-        ],
+        "required": ["authenticated", "unauthenticated"],
         "type": "object"
       },
       "SecondaryHolderMetricsV2": {
@@ -514,10 +473,7 @@
             "$ref": "#/components/schemas/SecondaryHolderMetricsV2_rejections"
           }
         },
-        "required": [
-          "errors",
-          "rejections"
-        ],
+        "required": ["errors", "rejections"],
         "type": "object"
       },
       "AuthorisationMetricsV2": {
@@ -564,9 +520,7 @@
             "x-cds-type": "URIString"
           }
         },
-        "required": [
-          "self"
-        ],
+        "required": ["self"],
         "type": "object"
       },
       "Meta": {
@@ -582,9 +536,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "errors"
-        ],
+        "required": ["errors"],
         "type": "object"
       },
       "ErrorV2": {
@@ -602,33 +554,31 @@
             "type": "string"
           },
           "meta": {
-            "$ref": "#/components/schemas/ErrorV2_meta"
+            "type": "object",
+            "x-conditional": ["urn"],
+            "description": "Additional data for customised error codes.",
+            "properties": {
+              "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code."
+              }
+            }
           }
         },
-        "required": [
-          "code",
-          "detail",
-          "title"
-        ],
+        "required": ["code", "detail", "title"],
         "type": "object",
-        "x-conditional": [
-          "meta"
-        ]
+        "x-conditional": ["meta"]
       },
       "RequestMetaDataUpdateV1_data": {
         "properties": {
           "action": {
             "default": "REFRESH",
             "description": "The action to take for the meta data. At the moment the only option is `REFRESH` which requires the data holder to call the ACCC to refresh meta data as soon as practicable.",
-            "enum": [
-              "REFRESH"
-            ],
+            "enum": ["REFRESH"],
             "type": "string"
           }
         },
-        "required": [
-          "action"
-        ],
+        "required": ["action"],
         "type": "object"
       },
       "AvailabilityMetricsV2_aggregate": {
@@ -649,10 +599,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentMonth",
-          "previousMonths"
-        ]
+        "x-conditional": ["currentMonth", "previousMonths"]
       },
       "AvailabilityMetricsV2_unauthenticated": {
         "description": "Availability metrics for the unauthenticated aspects of the CDR regime.",
@@ -672,10 +619,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentMonth",
-          "previousMonths"
-        ]
+        "x-conditional": ["currentMonth", "previousMonths"]
       },
       "AvailabilityMetricsV2_authenticated": {
         "description": "Availability metrics for the authenticated aspects of the CDR regime.",
@@ -695,10 +639,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentMonth",
-          "previousMonths"
-        ]
+        "x-conditional": ["currentMonth", "previousMonths"]
       },
       "PerformanceMetricsV3_aggregate": {
         "description": "Percentage of calls within Primary Data Holder performance thresholds. Note that Secondary Data Holder performance **MUST** be excluded from this metric.",
@@ -718,10 +659,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_highPriority": {
         "description": "Percentage of high priority calls within the performance thresholds.",
@@ -742,10 +680,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_largePayload": {
         "description": "Percentage of large payload calls within the performance thresholds.",
@@ -766,10 +701,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_lowPriority": {
         "description": "Percentage of low priority calls within the performance thresholds.",
@@ -790,10 +722,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_unattended": {
         "description": "Percentage of unattended calls within the performance thresholds.",
@@ -814,10 +743,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_unauthenticated": {
         "description": "Percentage of unauthenticated calls within the performance thresholds.",
@@ -838,10 +764,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_secondary_primary": {
         "description": "Percentage of Shared Responsibility calls within the performance thresholds for the primary data holder.",
@@ -862,10 +785,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_secondary_secondary": {
         "description": "Percentage of Shared Responsibility calls within the performance thresholds for the secondary data holder.",
@@ -886,10 +806,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_secondary": {
         "description": "Percentage of Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
@@ -901,10 +818,7 @@
             "$ref": "#/components/schemas/PerformanceMetricsV3_secondary_secondary"
           }
         },
-        "required": [
-          "primary",
-          "secondary"
-        ],
+        "required": ["primary", "secondary"],
         "type": "object"
       },
       "PerformanceMetricsV3_largeSecondary_primary": {
@@ -926,10 +840,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PerformanceMetricsV3_largeSecondary": {
         "description": "Percentage of large Shared Responsibility calls within the performance thresholds. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
@@ -941,10 +852,7 @@
             "$ref": "#/components/schemas/PerformanceMetricsV3_largeSecondary_primary"
           }
         },
-        "required": [
-          "primary",
-          "secondary"
-        ],
+        "required": ["primary", "secondary"],
         "type": "object"
       },
       "InvocationMetricsV3_unauthenticated": {
@@ -965,10 +873,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_highPriority": {
         "description": "API call counts for the high priority tier.",
@@ -988,10 +893,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_lowPriority": {
         "description": "API call counts for the low priority tier.",
@@ -1011,10 +913,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_unattended": {
         "description": "API call counts for the unattended tier.",
@@ -1034,10 +933,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_largePayload": {
         "description": "API call counts for the large payload tier.",
@@ -1057,10 +953,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_secondary": {
         "description": "API call counts for the Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
@@ -1080,10 +973,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "InvocationMetricsV3_largeSecondary": {
         "description": "API call counts for the large Shared Responsibility Data Requests tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
@@ -1103,10 +993,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_unauthenticated": {
         "description": "Average response time for the unauthenticated tier.",
@@ -1124,10 +1011,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_highPriority": {
         "description": "Average response time for the high priority tier.",
@@ -1145,10 +1029,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_lowPriority": {
         "description": "Average response time for the low priority tier.",
@@ -1166,10 +1047,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_unattended": {
         "description": "Average response time for the unattended tier.",
@@ -1187,10 +1065,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_largePayload": {
         "description": "Average response time for the large payload tier.",
@@ -1208,10 +1083,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_secondary_primary": {
         "description": "Average response time as measured for the primary data holder.",
@@ -1229,10 +1101,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_secondary_secondary": {
         "description": "Average response time as measured for the secondary data holder.",
@@ -1250,10 +1119,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageResponseMetricsV2_secondary": {
         "description": "Average response time for the secondary tier. Mandatory for data holders designated for a Shared Responsibility Data Request data cluster.",
@@ -1265,10 +1131,7 @@
             "$ref": "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
           }
         },
-        "required": [
-          "primary",
-          "secondary"
-        ],
+        "required": ["primary", "secondary"],
         "type": "object"
       },
       "AverageResponseMetricsV2_largeSecondary": {
@@ -1281,10 +1144,7 @@
             "$ref": "#/components/schemas/AverageResponseMetricsV2_secondary_secondary"
           }
         },
-        "required": [
-          "primary",
-          "secondary"
-        ],
+        "required": ["primary", "secondary"],
         "type": "object"
       },
       "AverageTPSMetricsV2_aggregate": {
@@ -1303,10 +1163,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageTPSMetricsV2_unauthenticated": {
         "description": "Average transactions per second, over time, for unauthenticated endpoints.",
@@ -1324,10 +1181,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AverageTPSMetricsV2_authenticated": {
         "description": "Average transactions per second, over time, for authenticated endpoints.",
@@ -1345,10 +1199,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PeakTPSMetricsV2_aggregate": {
         "description": "Aggregate peak transactions per second, over time, for all endpoints.",
@@ -1366,10 +1217,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PeakTPSMetricsV2_unauthenticated": {
         "description": "Peak transactions per second, over time, for unauthenticated endpoints.",
@@ -1387,10 +1235,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "PeakTPSMetricsV2_authenticated": {
         "description": "Peak transactions per second, over time, for authenticated endpoints.",
@@ -1408,10 +1253,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "ErrorMetricsV2_aggregate": {
         "description": "Aggregate number of calls resulting in error due to server execution, over time, for all endpoints.",
@@ -1431,10 +1273,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "ErrorMetricsV2_unauthenticated_currentDay": {
         "additionalProperties": {
@@ -1482,10 +1321,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "ErrorMetricsV2_authenticated_currentDay": {
         "additionalProperties": {
@@ -1533,10 +1369,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "RejectionMetricsV3_authenticated": {
         "description": "Rejection counts for all authenticated endpoints.",
@@ -1556,10 +1389,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "RejectionMetricsV3_unauthenticated": {
         "description": "Rejection counts for all unauthenticated endpoints.",
@@ -1579,10 +1409,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "SecondaryHolderMetricsV2_errors": {
         "description": "Number of calls resulting in error due to server execution, over time.",
@@ -1602,10 +1429,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "SecondaryHolderMetricsV2_rejections": {
         "description": "Number of calls rejected due to traffic thresholds, over time.",
@@ -1625,10 +1449,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_activeAuthorisationCount": {
         "description": "The number of active ongoing authorisations.",
@@ -1644,10 +1465,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_newAuthorisationCount_currentDay_onceOff": {
@@ -1664,10 +1482,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing": {
@@ -1684,10 +1499,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_newAuthorisationCount_currentDay": {
@@ -1700,10 +1512,7 @@
             "$ref": "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing"
           }
         },
-        "required": [
-          "onceOff",
-          "ongoing"
-        ],
+        "required": ["onceOff", "ongoing"],
         "type": "object"
       },
       "AuthorisationMetricsV2_newAuthorisationCount_previousDays_inner": {
@@ -1715,10 +1524,7 @@
             "$ref": "#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_currentDay_ongoing"
           }
         },
-        "required": [
-          "onceOff",
-          "ongoing"
-        ],
+        "required": ["onceOff", "ongoing"],
         "type": "object"
       },
       "AuthorisationMetricsV2_newAuthorisationCount": {
@@ -1736,10 +1542,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_revokedAuthorisationCount_currentDay": {
         "description": "Number of revoked authorisations for the current day.",
@@ -1755,10 +1558,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_revokedAuthorisationCount_previousDays_inner": {
@@ -1774,10 +1574,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_revokedAuthorisationCount": {
@@ -1795,10 +1592,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_amendedAuthorisationCount_currentDay": {
         "description": "Number of amended authorisations for the current day.",
@@ -1814,10 +1608,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_amendedAuthorisationCount_previousDays_inner": {
@@ -1833,10 +1624,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_amendedAuthorisationCount": {
@@ -1854,10 +1642,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_expiredAuthorisationCount_currentDay": {
         "description": "Number of expired authorisations for the current day.",
@@ -1873,10 +1658,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_expiredAuthorisationCount_previousDays_inner": {
@@ -1892,10 +1674,7 @@
             "x-cds-type": "NaturalNumber"
           }
         },
-        "required": [
-          "individual",
-          "nonIndividual"
-        ],
+        "required": ["individual", "nonIndividual"],
         "type": "object"
       },
       "AuthorisationMetricsV2_expiredAuthorisationCount": {
@@ -1913,10 +1692,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonedConsentFlowCount": {
         "description": "The number of consents flows that were not successfully authorised.",
@@ -1936,10 +1712,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_preIdentification": {
         "description": "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID.",
@@ -1959,10 +1732,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_preAuthentication": {
         "description": "The number of authorisations where the customer identified themselves (i.e. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent.",
@@ -1982,10 +1752,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_preAccountSelection": {
         "description": "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts.",
@@ -2005,10 +1772,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_preAuthorisation": {
         "description": "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested.",
@@ -2028,10 +1792,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_rejected": {
         "description": "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process.",
@@ -2051,10 +1812,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange": {
         "description": "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code.",
@@ -2074,10 +1832,7 @@
           }
         },
         "type": "object",
-        "x-conditional": [
-          "currentDay",
-          "previousDays"
-        ]
+        "x-conditional": ["currentDay", "previousDays"]
       },
       "AuthorisationMetricsV2_abandonmentsByStage": {
         "description": "Customer abandonment count per stage of the consent flow. Note that the aggregated abandonment count for all stages for a period should equal the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned consent should assigned to one, and only one, stage).",
@@ -2123,10 +1878,7 @@
             "$ref": "#/components/schemas/Meta"
           }
         },
-        "required": [
-          "data",
-          "links"
-        ],
+        "required": ["data", "links"],
         "type": "object"
       },
       "ResponseMetricsListV5_data": {
@@ -2196,9 +1948,7 @@
           "sessionCount"
         ],
         "type": "object",
-        "x-conditional": [
-          "secondaryHolder"
-        ]
+        "x-conditional": ["secondaryHolder"]
       }
     }
   }
