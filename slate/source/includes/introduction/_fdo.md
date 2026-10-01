@@ -2,16 +2,14 @@
 
 ```diff
 Added FDOs for May 2027
-+ Adoption of FAPI 2.0
-+ Communications Protocol
-+ Client Authentication
-+ HTTP Headers
-+ Resource endpoint version increment
-+ Shared Responsibility > Energy > Endpoint Variations
-+ Fallback Authentication Flows
 + Redirect to Web
 + One Time Password Credential Requirements
-+ Common Authentication Standards
++ Restricted Credentials
++ Pushed Authorisation endpoint
++ Get Configuration v1
+
+Added FDO for November 2027
++ Get Metrics v6
 ```
 
 The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. 
@@ -60,14 +58,3 @@ The table below highlights these areas of the standards.
 |[Restricted Credentials](#restricted-credentials)| Data holders **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
 |[Pushed Authorisation endpoint](#pushed-authorisation-endpoint)| Data holders and data recipients **SHALL** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
 |[Get Configuration v1](#cdr-common-api_get-configuration)| Data Holders **SHALL** implement v1 of this endpoint by **May 10th 2027**. | May 10th 2027 |
-|[Authentication Flows](#4-authentication-flows)| Data holders and data recipients **MUST** implement these standards on and from **May 10th 2027**. | May 10th 2027 |
-|[Adoption of FAPI 2.0](#security-profile) | Comply with FAPI 2.0 requirements that have changed from FAPI 1.0, including, but not limited to:<ul><li>Redirect status codes.</li><li>Tokens must have at least 128 bits of entropy.</li><li>Adhere to RFC8725 when creating or processing JWTs.</li><li>Adhere to BCP195 for supported cipher suites.</li></ul> | May 10th 2027 |
-|[Communications Protocol](#3-communications-protocol) | <ul><li>Data Recipients **SHALL** call MTLS endpoints as defined in *mtls_endpoint_aliases* in a Data Holder OIDD.</li><li>Data Holders **SHALL** support *mtls_endpoint_aliases* in their OIDD according to the Communications Protocol.</li><li>Data Recipients and Data Holders **SHALL** adhere to requirements for [Correlation Identifiers](#3-2-correlation-identifiers) and header logging.</li></ul> | May 10th 2027 |
-|[Client Authentication](#5-client-authentication) | <ul><li>Clients **SHALL** specify the *aud* claim as the Data Holder *issuer* value in accordance with Private Key JWT Client Authentication.</li><li>Data Holders **SHALL** verify the *aud* claim is their *issuer* value in accordance with Private Key JWT Client Authentication. If a Data Holder does not already verify clients in accordance with these requirements, they **SHALL NOT** apply the restriction prior to **May 10th 2027**.</li></ul> | May 10th 2027 |
-|[HTTP Headers](#http-headers) | <ul><li>Data Recipients **SHOULD** continue to send the *x-fapi-customer-ip-address* header in accordance with its specification in any corresponding version requests, including where a range is requested, to ensure customer presence is interpreted correctly.</li><li>Data Holders and Data Recipients **SHALL** support *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id* headers as [Correlation Identifiers](#3-2-correlation-identifiers) from **May 10th 2027**.</li></ul> | May 10th 2027 |
-|[Resource endpoint version increment](#endpoint-version-schedule) | <ul><li>Data Holders **SHALL** support applicable resource endpoint versions which have been incremented to specify the *x-fapi-end-user-present* request header from **May 10th 2027**.</li><li>Data Holders **MAY** retire deprecated versions from **June 14th 2027**.</li><li>Data Holders **SHALL** refer to the *x-fapi-end-user-present* header to determine customer presence for NFR purposes from **May 10th 2027**.</li></ul> | May 10th 2027 |
-|[Shared Responsibility > Energy > Endpoint&nbsp;Variations](#endpoint-variations) | Energy Data Holders **SHALL** align to updated Secondary DH API header requirements from **May 10th 2027**. | May 10th 2027 |
-|[Fallback Authentication](#fallback-authentication-flows)| Data holders implementing Redirect to App **MUST** support the 'Redirect to Web' flow on and from **30 April 2028**. | 30 April 2028 |
-|[Redirect to Web](#redirect-to-web)| Data holders and data recipients **MUST** implement these standards on and from **30 April 2028**. | 30 April 2028 |
-|[One Time Password Credential Requirements](#14-3-one-time-password-credential-requirements)| Data holders **SHALL** implement these standards on and from **30 April 2028**. | 30 April 2028 |
-|[Common Authentication Standards](#consumer-experience_common-authentication-standards)| Data holders **MUST** implement the following standards on and from **30 April 2028**: Digital onboarding; Accessible authentication; Error messaging and redirection and Unique identifier. | 30 April 2028 |
