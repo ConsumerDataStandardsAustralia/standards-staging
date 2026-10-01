@@ -67,11 +67,9 @@ In addition, Data Recipient Software Products:
 1. **SHOULD** certify their Relying Party implementation as FAPI Certified as defined in **[[OpenID-Certification]](#iref-OpenID-Certification)**.
 
 
-### 3.2. Correlation Identifiers
+### 3.2. Request and Response Correlation
 
-#### 3.2.1. Request Interaction Correlation
-
-Request and response correlation provides a mechanism to correlate individual client requests and server responses for debugging, security and interoperability purposes. FAPI defines the *x-fapi-interaction-id* header that provides this property and is mandatory for server error responses.
+Request and response correlation provides a mechanism to correlate individual client requests and server responses for debugging, security and interoperability purposes. The Standards define the *x-fapi-interaction-id* header that provides this property and it is mandatory for certain server responses. 
 
 **3.2.1.1. Data Holders**
 
