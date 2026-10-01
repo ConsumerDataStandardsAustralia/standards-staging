@@ -33,3 +33,7 @@ Where a data holder supports an OTP flow:
 1. The provided OTP **MUST** be numeric digits and be between 6 and 10 digits in length. 
 1. The data holder **MUST** ensure that OTPs are generated using a cryptographically secure mechanism such that an attacker cannot feasibly predict valid OTP values. 
 1. The data holder **MUST** only deliver OTPs to a channel that has been securely pre-registered to the end user and verified to be under their control. 
+
+### 14.4 Restricted Credentials
+The following credential constraints apply such that Authenticators:
+- **MUST NOT** permit Memorised Secrets defined by **[[DigitalID-Accreditation](#nref-DigitalID-Accreditation)** to achieve 'LoA 2' (as a single factor of authentication only).
