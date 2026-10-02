@@ -10,11 +10,9 @@
 
 | Section         | Sub-section                       | Endpoint                                     | Method                                 | Version | Binding Date     | Retirement Date | Date Introduced     | Date Deprecated     |
 |-----------------|-----------------------------------|----------------------------------------------|----------------------------------------|---------|------------------|-----------------|---------------------|---------------------|
-| Common APIs     | Get Customer                      | ``/common/customer``                         | <span class="method get">GET</span>    | V1      | 2020-07-01       | 2027-06-14      | 2019-09-30, V1.0.0  | TBC, V1.37.0        |
-| Common APIs     | Get Customer                      | ``/common/customer``                         | <span class="method get">GET</span>    | V2      | 2027-05-10       | N/A             | TBC, V1.37.0        | N/A                 |
+| Common APIs     | Get Customer                      | ``/common/customer``                         | <span class="method get">GET</span>    | V1      | 2020-07-01       | N/A             | 2019-09-30, V1.0.0  | N/A                 |
 | Common APIs     | Get Customer Detail               | ``/common/customer/detail``                  | <span class="method get">GET</span>    | V1      | 2020-11-01       | 2023-02-28      | 2019-09-30, V1.0.0  | 2021-12-23, V1.15.0 |
-| Common APIs     | Get Customer Detail               | ``/common/customer/detail``                  | <span class="method get">GET</span>    | V2      | 2022-11-31       | 2027-06-14      | 2021-12-23, V1.15.0 | TBC, V1.37.0        |
-| Common APIs     | Get Customer Detail               | ``/common/customer/detail``                  | <span class="method get">GET</span>    | V3      | 2027-05-10       | N/A             | TBC, V1.37.0        | N/A                 |
+| Common APIs     | Get Customer Detail               | ``/common/customer/detail``                  | <span class="method get">GET</span>    | V2      | 2022-11-31       | N/A             | 2021-12-23, V1.15.0 | N/A                 |
 | Common APIs     | Get Status                        | ``/discovery/status``                        | <span class="method get">GET</span>    | V1      | 2020-07-01       | N/A             | 2019-09-30, V1.0.0  | N/A                 |
 | Common APIs     | Get Outages                       | ``/discovery/outages``                       | <span class="method get">GET</span>    | V1      | 2020-07-01       | N/A             | 2019-09-30, V1.0.0  | N/A                 |
 
@@ -28,4 +26,3 @@
 | Admin APIs      | Get Metrics                       | ``/admin/metrics``                           | <span class="method get">GET</span>    | V3      | 2022-10-01       | 2024-05-13                | 2021-10-06, V1.12.0 | 2023-07-08, V1.25.0 |
 | Admin APIs      | Get Metrics                       | ``/admin/metrics``                           | <span class="method get">GET</span>    | V4      | 2023-11-01       | When v5 Implemented       | 2023-07-08, V1.25.0 | 2023-07-08, V1.25.0 |
 | Admin APIs      | Get Metrics                       | ``/admin/metrics``                           | <span class="method get">GET</span>    | v5      | 2024-05-13       | 2027-12-10                | 2023-07-08, V1.25.0 | TBC, V1.37.0        |
-| Admin APIs      | Get Metrics                       | ``/admin/metrics``                           | <span class="method get">GET</span>    | v6      | 2027-11-08       | N/A                       | TBC, V1.37.0        | N/A                 |
