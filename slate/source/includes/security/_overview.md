@@ -12,11 +12,6 @@ For information on the specific normative references that underpin this profile 
 
 ### Symbols and Abbreviated terms
 
-```diff
-Added Abbreviated term
-+ RAR: Rich Authorization Requests
-```
-
 - **API:** Application Programming Interface
 - **CA:** Certificate Authority
 - **CDR:** Consumer Data Right
@@ -47,7 +42,6 @@ Added Abbreviated term
 - **PKCE:** Proof Key for Code Exchange
 - **PKI:** Public Key Infrastructure
 - **PPID:** Pairwise Pseudonymous Identifier
-- **RAR:** Rich Authorization Requests
 - **REST:** Representational State Transfer
 - **SP:** Data Recipient Software Product
 - **TLS:** Transport Layer Security
