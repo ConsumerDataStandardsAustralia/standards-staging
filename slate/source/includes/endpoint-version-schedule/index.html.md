@@ -19,36 +19,6 @@ toc_footers:
 search: false
 ---
 
-# Obligation Date Schedule
-The following schedule represents future obligation dates. This includes a set of bi-monthly obligation milestone windows and historically assigned obligation dates.
-
-The calendar of obligation milestones are published to provide predictability. This calendar does not mean that any obligations exist at these dates however when addressing the future dating of obligations for any breaking changes, this calendar will be used to pin those obligations to pre-determined obligation milestones.
-
-These dates may be subject to change depending upon new or changed legislative and policy dates as well as optimisation and streamlining based on community feedback.
-
-| Obligation Milestone | Milestone Date | # Obligations Assigned |
-| :------------------- | :------------: | :--------------------: |
-| **Y24 #1**           | 2024-03-11     | 5                      |
-| **Y24 #2**           | 2024-05-13     | 2                      |
-| **Y24 #3**           | 2024-07-01     | 1                      |
-| **Y24 #4**           | 2024-09-09     | 3                      |
-| **Y24 #5**           | 2024-11-11     | 2                      |
-| **Y25 #1**           | 2025-03-17     | 1                      |
-| **Y25 #2**           | 2025-05-12     | 3                      |
-| **Y25 #3**           | 2025-07-14     | 5                      |
-| **Y25 #4**           | 2025-09-08     | 0                      |
-| **Y25 #5**           | 2025-11-10     | 6                      |
-| **Y26 #1**           | 2026-03-16     | 3                      |
-| **Y26 #2**           | 2026-05-11     | 0                      |
-| **Y26 #3**           | 2026-07-13     | 2                      |
-| **Y26 #4**           | 2026-09-14     | 0                      |
-| **Y26 #5**           | 2026-11-09     | 9                      |
-| **Y27 #1**           | 2027-03-15     | 0                      |
-| **Y27 #2**           | 2027-05-10     | 13                     |
-| **Y27 #3**           | 2027-07-12     | 0                      |
-| **Y27 #4**           | 2027-09-13     | 0                      |
-| **Y27 #5**           | 2027-11-08     | 1                      |
-
 <div id="date-picker">
   <div class="input-group">
     <div class="input-group-prepend">
