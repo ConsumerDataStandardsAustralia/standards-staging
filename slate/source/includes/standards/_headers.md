@@ -42,8 +42,6 @@ Removed Request Headers:
 
 Added Request Headers:
 + x-fapi-end-user-present
-+ x-cds-authorisation-attempt-id
-+ x-cds-authorisation-intent-id
 ```
 
 Header Field | Description | Mandatory?
@@ -54,10 +52,8 @@ Header Field | Description | Mandatory?
 **x-min-v** | Minimum version of the API endpoint requested by the client. **SHALL** be set to a positive integer if provided. The holder should respond with the highest supported version between _x-min-v_ and _x-v_. If the value of _x-min-v_ is equal to or higher than the value of _x-v_ then the _x-min-v_ header should be treated as absent. <br/>If all versions requested are not supported then the holder **SHALL** respond with a `406 Not Acceptable`. | Optional
 **x-&lt;HID&gt;-v** | A holder specific version of extension fields. Should not be used in conjunction with _x-min-v_. | Optional
 <span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An optional **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **SHALL** "play back" this value in the _x-fapi-interaction-id_ response header. Not required for unauthenticated calls.| Optional
-**x-fapi-end-user-present** | The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent. | Conditional
+**x-fapi-end-user-present** | The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent. <br/>This is a Boolean type| Conditional
 **x-cds-client-headers** | The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.<br/>This header is not required to include:<br/><ul><li>Headers containing security information</li><li>Custom or proprietary headers used to facilitate the client application</li></ul>| Conditional
-<span style="white-space: nowrap;">**x-cds-authorisation-attempt-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id for a unique authorisation attempt in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
-**x-cds-authorisation-intent-id** | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id for tracking multiple authorisation attempts correlated to the same authorisation intent in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
 
 
 ```diff
@@ -65,11 +61,6 @@ Updated title
 - Response headers
 + Response Headers
 
-Changed 'must' statements to 'SHALL' (the obligation remains unchanged)
-
-Added Response Headers:
-+ x-cds-authorisation-attempt-id
-+ x-cds-authorisation-intent-id
 ```
 
 ### Response Headers
@@ -78,9 +69,8 @@ Header Field | Description | Mandatory?
 **Content-Type** | Standard HTTP Header. Represents the format of the payload returned in the response.<br/>**SHALL** be `application/json` unless otherwise specified in the resource endpoint standard. | Mandatory
 **Retry-After** | Header indicating the time (in seconds) that the client should wait before retrying an operation. The holder should include this header along with responses with the HTTP status code of `429 Too many requests`. | Optional
 **x-v** | The payload version that the endpoint has responded with. | Mandatory
-<span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. The data holder **SHALL** set the response header _x-fapi-interaction-id_ to the value received from the corresponding request header or to a new **[[RFC4122]](#nref-RFC4122)** UUID value if the request header was not provided. This header **SHALL** be responded for success and error responses for authenticated APIs. | Mandatory
-<span style="white-space: nowrap;">**x-cds-authorisation-attempt-id**</span> | The Data Holder **SHALL** set the response header *x-cds-authorisation-attempt-id* to the value received from the corresponding request header in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
-**x-cds-authorisation-intent-id** | The Data Holder **SHALL** set the response header *x-cds-authorisation-intent-id* to the value received from the corresponding request header in accordance with [Correlation Identifiers](#3-2-correlation-identifiers). Applicable to PAR and Token endpoints. | Mandatory
+<span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. The data holder **SHALL** set the response header _x-fapi-interaction-id_ to the value received from the corresponding request header or to a new **[[RFC4122]](#nref-RFC4122)** UUID value if the request header was not provided. The Data Holder **MUST** include this header in every response from authenticated resource endpoints and from the PAR and Token endpoints, for both success and error responses to the Data Receipient. | Mandatory
+
 
 ### Additional Headers
 
