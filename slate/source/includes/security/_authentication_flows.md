@@ -64,7 +64,7 @@ Data holders **MUST** support Redirect to App in accordance with the [Authentica
 
 #### 4.3.2. Data Recipients
 
-Data recipients **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
-1. **SHALL** register separate Redirect URIs where they provide both app-based and web-based redirection.
-1. If data recipients initiate consent from an app, they **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.
+1. **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.
+1. If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.
