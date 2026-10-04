@@ -7,9 +7,6 @@ Data Recipients register with Data Holders according to **[[DCR]](#nref-DCR)** t
 
 ```diff
 Updated Software Statement Assertion (SSA) section (6.2) for clarity
-
-Added optional Client Metadata for RAR in SSA Definition
-+ authorization_details_types
 ```
 
 As per **[[DCR]](#nref-DCR)**, a Software Statement is defined as: "A digitally signed JSON Web Token (JWT) created in accordance with **[[JWT]](#nref-JWT)** that asserts metadata values about the client software".
@@ -18,20 +15,20 @@ As per **[[DCR]](#nref-DCR)**, a Software Statement is defined as: "A digitally 
 
 #### 6.2.1. The CDR Register
 
-1. **SHALL** issue Software Statements to **active** Data Recipients for **active** Software Products.
-1. **SHALL** issue distinct Software Statements for each "Software Product ID".
-1. **SHALL** issue Software Statements with a **10 minute** expiry time.
-1. **SHALL** sign Software Statements using **PS256**.
-1. **SHALL** expose public keys on a dedicated JWKS URI endpoint.
-1. **SHALL** provide the [JWKS endpoint](#cdr-register-api_get-jwks) as an unauthenticated endpoint, using TLS.
+1. **MUST** issue Software Statements to **active** Data Recipients for **active** Software Products.
+1. **MUST** issue distinct Software Statements for each "Software Product ID".
+1. **MUST** issue Software Statements with a **10 minute** expiry time.
+1. **MUST** sign Software Statements using **PS256**.
+1. **MUST** expose public keys on a dedicated JWKS URI endpoint.
+1. **MUST** provide the [JWKS endpoint](#cdr-register-api_get-jwks) as an unauthenticated endpoint, using TLS.
 
 #### 6.2.2. Data Recipients
 
-1. **SHALL** present a valid SSA when undertaking dynamic client registration.
+1. **MUST** present a valid SSA when undertaking dynamic client registration.
 
 #### 6.2.3. Data Holders
 
-1. **SHALL NOT** register Data Recipient software products unless they present a verified [Registration Request](#6-4-registration-request-using-jwt) with a verified [SSA](#6-3-ssa-definition).
+1. **MUST NOT** register Data Recipient software products unless they present a verified [Registration Request](#6-4-registration-request-using-jwt) with a verified [SSA](#6-3-ssa-definition).
 
 Refer to the [Register APIs](#register-apis) section for the endpoint definitions that will be used to retrieve and validate SSAs.
 
@@ -125,7 +122,6 @@ The SSA will conform to the requirements of **[[DCR]](#nref-DCR)** with the foll
 |**software_id**| Required | | String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. <br><br>The _software_id_ will remain the same across multiple updates or versions of the same piece of software.<br>The _software_id_ **SHOULD** be used as the primary external identifier for the client to prevent duplicate client registrations.
 |**software_roles**| Required | | String containing a role of the software in the CDR Regime. Initially the only value used will be `data-recipient-software-product`.
 |**scope**| Required | <i class="icon-check"></i> | String containing a space-separated list of scope values that the client can use when requesting access tokens. <br>These CDS scope values are defined at: [Authorisation Scopes](#authorisation-scopes).<br>The DCR scope value is defined at: [Client Registration Management](#6-8-registration-management).<br><br>As per the [CDS Scopes and Claims](#10-scopes-and-claims), `openid` and `profile` are included in the SSA.
-|**authorization_details_types**| Optional | <i class="icon-check"></i> | Array of authorization types the client can use if **[[RAR]](#nref-RAR)** is supported by a Data Holder. The only valid value is: `cdr-data-sharing`.
 
 Get Software Statement Assertion API [v1](includes/obsolete/get-software-statement-assertion-v1.html) & [v2](includes/obsolete/get-software-statement-assertion-v2.html) has the `scope` claim explicitly defined.
 
@@ -188,25 +184,24 @@ Accept: application/json
 ```diff
 Updated JWT reference to align to FAPI 2.0
 - The request MUST be presented in the format of a [RFC7519] compliant JWT.
-+ The request SHALL be presented in the format of a [RFC8725] compliant JWT.
++ The request MUST be presented in the format of a compliant JWT.
 
 Updated algorithm detail to reference FAPI 2.0
 - The JWT MUST be signed using algorithms specified in section 8.6 of [FAPI-1.0-Advanced]
-+ The JWT SHALL be signed using algorithms specified in section 5.4.1 of [FAPI-2.0-Security-Profile].
++ The JWT MUST be signed in accordance with section 3.1.1 (Cryptography and Secrets). 
 ```
 
 To register with a Data Holder, the Data Recipient sends an HTTP POST to the Data Holder registration endpoint.
 
-1. The request **SHALL** be presented in the format of a **[[RFC8725]](#nref-RFC8725)** compliant JWT.
+1. The request **MUST** be presented in the format of a compliant **[[JWT]](#nref-JWT)**.
 1. The request **MUST** use the HTTP POST method, using the `application/jwt` content type.
-1. The JWT **SHALL** be signed using algorithms specified in [section 5.4.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.4.1) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+1. The JWT **MUST** be signed using algorithms specified in section 3.1.1 [Cryptography and Secrets](#3-1-1-cryptography-and-secrets).
 
 The client registration request **MUST** contain the following claims in the JWT payload unless designated as Optional:
 
 ```diff
 Updated id_token_signed_response_alg row to reference FAPI 2.0
 - Supported values as constrained by [FAPI-1.0-Advanced]. Required for both Authorization Code Flow (response_type: code) and OIDC Hybrid Flow (response_type: code id_token).
-+ Supported values as constrained by section 5.4.1 of [FAPI-2.0-Security-Profile].
 
 Removed rows related to hybrid flow
 - id_token_encrypted_response_alg
@@ -214,10 +209,10 @@ Removed rows related to hybrid flow
 
 Updated request_object_signing_alg row to reference FAPI 2.0
 - Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder.
-+ Algorithm which the ADR expects to sign request objects.
++ Algorithm which the ADR expects to sign request objects. If field not present in the request, data holders are expected to respond with an appropriate default value within its request_object_signing_alg_values_supported array. Supported values are constrained by section 3.1.1 Cryptography and Secrets. 
 
 - Supported values as constrained by [FAPI-1.0-Advanced].
-+ Supported values as constrained by section 5.4.1 of [FAPI-2.0-Security-Profile].
++ Supported values as constrained by section 3.1.1 Cryptography and Secrets
 ```
 
 | Claim | Required | Description
@@ -231,13 +226,13 @@ Updated request_object_signing_alg row to reference FAPI 2.0
 |**token_endpoint_auth_method**| Required | The requested authentication method for the token endpoint. The only supported method will be `private_key_jwt`.
 |**token_endpoint_auth_signing_alg**| Required | The algorithm used for signing the JWT.
 |**grant_types**| Required | Array of OAuth 2.0 grant type strings that the client can use at the token endpoint. Supported values: <ul><li>`client_credentials`<li>`authorization_code`<li>`refresh_token`.</ul>
-|**response_types**| Required | Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint. The only supported response type will be `code`.
+|**response_types**| Required | Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint. The only supported response type **SHALL** be `code`.
 |**application_type**| Optional | Kind of the application. The only supported application type will be `web`.
-|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed.<br><br>Supported values as constrained by [section 5.4.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.4.1) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+|**id_token_signed_response_alg**| Required | Algorithm with which an id_token is to be signed.
 |**authorization_signed_response_alg**| Conditional | The JWS _alg_ algorithm required for signing authorization responses. If this is specified, the response will be signed using JWS and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required if _response_type_ of `code` is registered by the client.
 |**authorization_encrypted_response_alg**| Conditional | The JWE _alg_ algorithm required for encrypting authorization responses. If unspecified, the default is that no encryption is performed.<br><br>Required if `authorization_encrypted_response_enc` is included.
 |**authorization_encrypted_response_enc**| Optional | The JWE _enc_ algorithm required for encrypting authorization responses. If _authorization_encrypted_response_alg_ is specified, the default for this value is `A128CBC-HS256`.
-|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign request objects.<br>If field not present in the request, data holders are expected to respond with an appropriate default value.<br>Supported values as constrained by [section 5.4.1](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.4.1) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+|**request_object_signing_alg**| Optional | Algorithm which the ADR expects to sign request objects.<br>If field not present in the request, data holders are expected to respond with an appropriate default value within its _request_object_signing_alg_values_supported_ array.<br>Supported values are constrained by section 3.1.1 [Cryptography and Secrets](#3-1-1-cryptography-and-secrets).
 |**software_statement**| Required | Software statement assertion issued by the CDR Register.
 
 ```diff
@@ -270,9 +265,9 @@ Removed past FDO and formatted Data Holder Registration Validation requirements 
 
 **6.5.1 Data Holders**
 
-1. **SHALL NOT** allow multiple active registrations for the same `software_id`.
-1. **SHALL** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations.
-1. **SHALL** adhere to the [NFR performance requirements](#performance-requirements) when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) **SHALL NOT** prevent specified response times being met.
+1. **MUST NOT** allow multiple active registrations for the same `software_id`.
+1. **MUST** ignore unsupported authorisation scopes presented in the SSA for the creation and update of client registrations.
+1. **MUST** adhere to the [NFR performance requirements](#performance-requirements) when validating and responding to registration requests. Additional validation processes (such as outbound white-listing of data recipient endpoints) **MUST NOT** prevent specified response times being met.
 
 ### 6.6. Registration Response
 

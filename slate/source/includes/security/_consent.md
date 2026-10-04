@@ -3,11 +3,6 @@ Consent requirements will be communicated between the Data Recipient Software Pr
 
 Other patterns for the establishment of consent **MAY** be considered in the future, including the incorporation of fine-grained consent for specific use cases.
 
-```diff
-Added detail to the Consent section to describe RAR support
-```
-Data Holders **MAY** support **[[RAR]](#nref-RAR)** to simplify authorisation server configuration for CDR. Data Recipient Software Products can determine support for RAR by referring to the *authorization_details_types_supported* field in Data Holder discovery metadata **[[OIDD]](#nref-OIDD)**. For more details on RAR refer to [Request Object](#18-request-object).
-
 ## 10. Scopes and Claims
 
 ### 10.1. OIDC Scopes
