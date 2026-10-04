@@ -55,12 +55,12 @@ Applied numbering and reformatted Redirect to App section
 
 #### 4.3.1. Data Holders
 
-Data holders **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+Data holders **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
-1. **SHALL** use a single issuer identifier per app.
-1. **SHALL** only support Authorization Code Flow for Redirect to App authentication.
-1. **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
-1. After authentication, **SHALL** continue the authorisation flow within the data holder app.
+1. **MUST** use a single issuer identifier per app.
+1. **MUST** only support Authorization Code Flow for Redirect to App authentication.
+1. **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
+1. After authentication, **MUST** continue the authorisation flow within the data holder app.
 
 #### 4.3.2. Data Recipients
 
