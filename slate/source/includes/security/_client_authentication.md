@@ -61,13 +61,13 @@ Client public keys are obtained from the **[[JWKS]](#nref-JWKS)** endpoints.
 
 Authorisation Servers:
 
-1. **SHALL** verify client authentication assertions in accordance with section [5.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+1. **MUST** verify client authentication assertions in accordance with section [5.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 #### 5.1.2. Client
 
 Clients:
 
-1. **SHALL** issue client authentication assertions in accordance with section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+1. **MUST** issue client authentication assertions in accordance with section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 ### 5.2. Self-signed JWT Client Authentication
 
