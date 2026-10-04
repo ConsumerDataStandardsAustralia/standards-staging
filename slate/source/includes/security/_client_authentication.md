@@ -61,13 +61,13 @@ Client public keys are obtained from the **[[JWKS]](#nref-JWKS)** endpoints.
 
 Authorisation Servers:
 
-1. **SHALL** verify client authentication assertions in accordance with section [5.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+1. **MUST** verify client authentication assertions in accordance with section [5.3.2](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 #### 5.1.2. Client
 
 Clients:
 
-1. **SHALL** issue client authentication assertions in accordance with section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
+1. **MUST** issue client authentication assertions in accordance with section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 ### 5.2. Self-signed JWT Client Authentication
 
@@ -100,22 +100,22 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 Updated Self-signed JWT Client Authentication section
 ```
 
-Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT **SHALL** do so according to the following requirements:
+Data Recipient Software Products and Data Holders supporting the self-signed JWT authentication of clients using a signed JWT **MUST** do so according to the following requirements:
 
-1. The JWT **SHALL** contain the following REQUIRED Claim Values and **MAY** contain the following OPTIONAL Claim Values:
+1. The JWT **MUST** contain the following REQUIRED Claim Values and **MAY** contain the following OPTIONAL Claim Values:
   * _iss_ - REQUIRED. The identifier for the issuer of the JWT. The client ID of the bearer.
   * _sub_ - REQUIRED. Subject Identifier. The client ID of the bearer.
-  * _aud_ - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product **SHALL** verify that it is an intended audience for the token.
+  * _aud_ - REQUIRED. Audience(s) that the JWT is intended for. The Data Holder or Data Recipient Software Product **MUST** verify that it is an intended audience for the token.
      * Data Recipient hosted endpoints:
-         * The [Resource Path](#uri-resource-path) for the endpoint being accessed **SHALL** be used.
+         * The [Resource Path](#uri-resource-path) for the endpoint being accessed **MUST** be used.
      * Data Holder Metrics endpoints:
-         * The `<AdminBaseUri>` for the endpoint being accessed **SHALL** be used.
-  * _jti_ - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens **SHALL** only be used once.
-  * _exp_ - REQUIRED. Expiration time on or after which the ID Token **SHALL NOT** be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
+         * The `<AdminBaseUri>` for the endpoint being accessed **MUST** be used.
+  * _jti_ - REQUIRED. JWT ID. A unique identifier for the token, which can be used to prevent reuse of the token. These tokens **MUST** only be used once.
+  * _exp_ - REQUIRED. Expiration time on or after which the JWT **MUST NOT** be accepted for processing. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC expiry time.
   * _iat_ - OPTIONAL. Time at which the JWT was issued. Value is a JSON number representing the number of seconds from 1970-01-01T00:00:00Z to the UTC 'issued at' time.
-1. Validation and use of the JWT and the claims described above **SHALL** be performed in accordance with **[[JWT]](#nref-JWT)**. 
-1. The JWT **SHALL** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://datatracker.ietf.org/doc/html/rfc6750#section-2.1) of **[[RFC6750]](#nref-RFC6750)**.
-1. In accordance with _jti_ requirements, self-signed JWTs are one-time use only. The authenticating server **SHALL** reject JWTs reuse.
+1. Validation and use of the JWT and the claims described above **MUST** be performed in accordance with **[[JWT]](#nref-JWT)**. 
+1. The JWT **MUST** be accepted from the client at the requested endpoint using the "Authorization Request Header Field" mechanism as described in [section 2.1](https://datatracker.ietf.org/doc/html/rfc6750#section-2.1) of **[[RFC6750]](#nref-RFC6750)**.
+1. In accordance with _jti_ requirements, self-signed JWTs are one-time use only. The authenticating server **MUST** reject JWTs reuse.
 
 ### 5.3. CDR Register calling Data Holders
 

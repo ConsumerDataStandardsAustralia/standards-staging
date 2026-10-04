@@ -16,14 +16,14 @@ No other flows are currently supported.
 
 #### 4.1.1. Data Holders
 
-1.	**SHALL** support the *request_uri* parameter in accordance with **[[RFC9126]](#nref-RFC9126)**.
-1.	**SHALL** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page.
-1.	**SHALL NOT** request that the customer enter an existing password in the redirected page.
-1.	**SHALL** implement additional controls to minimise the risk of enumeration attacks on the authentication process, such as rate limiting.
+1.	**MUST** support the *request_uri* parameter in accordance with **[[RFC9126]](#nref-RFC9126)**.
+1.  **MUST** reject pushed authorisation requests whose *redirect_uri* does not exactly match one of the Data Recipient's registered *redirect_uris*.
+1.	**MUST** request a user identifier that can uniquely identify the customer and that is already known by the customer in the redirected page.
+1.	**MUST** implement controls, as appropriate to the authentication mechanism(s), to minimise the risks of attacks against the authentication process, such as rate limiting. 
 
 #### 4.1.2. Data Recipient Software Products
 
-1. **SHOULD** record the following information each time an authorisation flow is executed: username (consumer's ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration, and correlation identifiers (including *x-fapi-interaction-id*, *x-cds-authorisation-attempt-id* and *x-cds-authorisation-intent-id*).
+1. **SHOULD** record the following information each time an authorisation flow is executed: username (consumer's ID at the Data Recipient Software Product), timestamp, IP, consent scopes and duration.
 
 ```diff
 Removed 'OIDC Hybrid Flow' section
@@ -37,11 +37,11 @@ Updated Authorization Code Flow section
 
 #### 4.2.1. Data Holders
 1. **MAY** advertise they do not support authorisation response encryption: either by omitting these values from their OpenID Provider Metadata, or by presenting an empty array for the unsupported parameters.
-1. **SHALL NOT** perform authorisation response encryption if *authorization_encrypted_response_alg* is omitted from a client registration request.
-1. **SHALL** use `PS256` as the default signing algorithm if *authorization_signed_response_alg* is omitted from a client registration request.
+1. **MUST NOT** perform authorisation response encryption if *authorization_encrypted_response_alg* is omitted from a client registration request.
+
 
 #### 4.2.2. Data Recipient Software Products
-1. **SHALL** request authorisation response signing using one of the *authorization_signing_alg_values_supported* values offered by the Data Holder.
+1. **MUST** request authorisation response signing using one of the *authorization_signing_alg_values_supported* values offered by the Data Holder.
 1. **MAY** request response encryption using one of the advertised encryption sets.
 1. **MAY** request no response encryption by omitting *authorization_encrypted_response_alg* in their client registration.
 
@@ -55,16 +55,16 @@ Applied numbering and reformatted Redirect to App section
 
 #### 4.3.1. Data Holders
 
-Data holders **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+Data holders **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
-1. **SHALL** use a single issuer identifier per app.
-1. **SHALL** only support Authorization Code Flow for Redirect to App authentication.
-1. **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
-1. After authentication, **SHALL** continue the authorisation flow within the data holder app.
+1. **MUST** use a single issuer identifier per app.
+1. **MUST** only support Authorization Code Flow for Redirect to App authentication.
+1. **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252).
+1. After authentication, **MUST** continue the authorisation flow within the data holder app.
 
 #### 4.3.2. Data Recipients
 
-Data recipients **SHALL** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
+Data recipients **MUST** support Redirect to App in accordance with the [Authentication Schedule](#authentication-schedule), and:
 
-1. **SHALL** register separate Redirect URIs where they provide both app-based and web-based redirection.
-1. If data recipients initiate consent from an app, they **SHALL** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.
+1. **MUST** register separate Redirect URIs where they provide both app-based and web-based redirection.
+1. If data recipients initiate consent from an app, they **MUST** support Claimed "https" Scheme URI redirection in accordance with [section 7.2](https://datatracker.ietf.org/doc/html/rfc8252#section-7.2) and [section 8](https://datatracker.ietf.org/doc/html/rfc8252#section-8) of [**[RFC8252]**](#nref-RFC8252) for their app Redirect URI.
