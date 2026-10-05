@@ -83,18 +83,18 @@ If a Data Recipient Software Product provides the _cdr_arrangement_id_ claim in 
 ```diff
 Updated redundant statement
 - Request Object references SHALL NOT be supported in any mode of use other than [PAR]. If a Data Holder does not support [PAR], it SHALL NOT support Request Object references.
-+ Request Object references SHALL NOT be supported in any mode of use other than [PAR].
++ Request Object references MUST NOT be supported in any mode of use other than [PAR].
 ```
 
 In addition:
 
-1. Request Object references **SHALL NOT** be supported in any mode of use other than **[[PAR]](#nref-PAR)**.
+1. Request Object references **MUST NOT** be supported in any mode of use other than **[[PAR]](#nref-PAR)**.
 1. The Request URI is intended to be a single-use reference to the respective request object.
-1. The Request URI **SHALL** expire between 10 seconds and 90 seconds.
+1. The Request URI **MUST** expire between 10 seconds and 90 seconds.
 1. Data Recipient Software Products **MAY** provide an existing _cdr_arrangement_id_ claim in an authorisation request object to establish a new consent under an existing arrangement.
-1. Data Holders **SHALL** revoke existing refresh tokens and access tokens when a _cdr_arrangement_id_ is provided in the Request Object but only after successful authorisation.
-1. If the _cdr_arrangement_id_ is not related to the consumer being authenticated it **SHALL** be rejected.
-1. If the _cdr_arrangement_id_ is not recognised by the Data Holder it **SHALL** be rejected.
+1. Data Holders **MUST** revoke existing refresh tokens and access tokens when a _cdr_arrangement_id_ is provided in the Request Object but only after successful authorisation.
+1. If the _cdr_arrangement_id_ is not related to the consumer being authenticated it **MUST** be rejected.
+1. If the _cdr_arrangement_id_ is not recognised by the Data Holder it **MUST** be rejected.
 
 <h4 id="security-profile_request-object_data-holders">18.4. Data Holders</h4>
 
