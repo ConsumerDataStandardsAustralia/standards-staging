@@ -49,7 +49,7 @@ Content-Type: application/json
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
-  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke",
+  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke"
 }
 ```
 
