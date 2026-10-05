@@ -72,13 +72,11 @@ Updated reference to Amending Consent CX standard
 
 To facilitate the amending of an existing arrangement, the following statements apply:
 
-1. Method of delivery:
-   1. If the Data Holder and Data Recipient Software Product support Rich Authorization Requests (RAR), the *cdr_arrangement_id* **SHALL** be presented as a property of the *authorization_details* object associated with the `"cdr-data-sharing"` *type* and `"amend"` action.
-   1. If RAR is not supported, the *cdr_arrangement_id* **SHALL** be presented as an essential claim in the authorisation request.
-1. The Data Recipient Software Product **SHALL** provide the _cdr_arrangement_id_ claim in the Request Object if requesting to amend a current authorisation in accordance with [Amending Consent: Amendment of Collection Consents and Authorisations](#consumer-experience_amending-consent-standards).
-1. Data Holders **SHALL** treat the request under the [Amending Authorisation Standards](#amending-authorisation-standards) if the _cdr_arrangement_id_ claim is provided.
 
-If a Data Recipient Software Product provides the _cdr_arrangement_id_ claim in the request object to the Data Holder's [PAR endpoint](#19-9-pushed-authorisation-endpoint), the Data Holder **SHALL** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
+1. The Data Recipient Software Product **MUST** provide the _cdr_arrangement_id_ claim in the Request Object if requesting to amend a current authorisation in accordance with [Amending Consent: Amendment of Collection Consents and Authorisations](#consumer-experience_amending-consent-standards).
+1. Data Holders **MUST** treat the request under the [Amending Authorisation Standards](#amending-authorisation-standards) if the _cdr_arrangement_id_ claim is provided.
+
+If a Data Recipient Software Product provides the _cdr_arrangement_id_ claim in the request object to the Data Holder's [PAR endpoint](#19-9-pushed-authorisation-endpoint), the Data Holder **MUST** revoke any existing tokens related to the arrangement once the new consent is successfully established and a new set of tokens has been provided to the Data Recipient Software Product.
 
 ### 18.3. Request Object Submission
 
