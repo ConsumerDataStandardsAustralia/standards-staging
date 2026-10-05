@@ -128,10 +128,10 @@ Updated Data Recipient requirement to reference FAPI 2.0
 + and use [PKCE] ([RFC7636]) in accordance with [FAPI-2.0-Security-Profile] section 5.3.3.2.
 ```
 
-1. Data Recipient Software Products **SHALL** send request objects containing an _nbf_ claim and an _exp_ claim that has a lifetime of no longer than 60 minutes after the _nbf_ claim.
-1. Data Recipient Software Products **SHALL** only use a *request_uri* value once.
-1. Data Recipients **SHALL** only send authorisation request data using **[[RFC9126]](#nref-RFC9126)** (PAR) and use **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) in accordance with **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** [section 5.3.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.3.2).
-1. Data Recipients Software Products **SHALL** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and **SHALL** use `S256` as the code challenge method.
+1. Data Recipient Software Products **MUST** send request objects containing an _nbf_ claim and an _exp_ claim that has a lifetime of no longer than 60 minutes after the _nbf_ claim.
+1. Data Recipient Software Products **MUST** only use a *request_uri* value once.
+1. Data Recipients **MUST** only send authorisation request data using **[[RFC9126]](#nref-RFC9126)** (PAR) and use **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) in accordance with **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** [section 5.3.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.3.2).
+1. Data Recipients Software Products **MUST** support **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) and **SHALL** use `S256` as the code challenge method.
 
 <h4 id="security-profile_request-object_rar">18.6. Rich Authorization Requests (RAR)</h4>
 
