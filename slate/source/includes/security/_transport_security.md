@@ -1,7 +1,7 @@
 ## 15. Transaction Security
 
 ### 15.1. Use of TLS
-All HTTP calls **MUST** be made using HTTPS incorporating TLS >= 1.2.
+All HTTP calls **MUST** be made using HTTPS incorporating TLS version 1.2 or later and **MUST** satisfy the mandatory requirements in section [5.2.1](https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-all-endpoi) of the **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
 <a id="mutual-tls"></a>
 
@@ -29,5 +29,8 @@ OAUTB **SHALL NOT** be supported due to a lack industry support.
 ```diff
 Updated Ciphers section to remove past FDOs
 ```
+Cipher suite requirements **MUST** follow **[[BCP195]](#nref-BCP195)** subject to sections [5.2.2](https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-endpoints-) and [5.2.3](https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-endpoints-u) of the **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 
-In accordance with [section 5.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.2) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** only cipher suites recommended in **[[BCP195]](#nref-BCP195)** **SHALL** be permitted.
+### 15.5. Browser-facing endpoints
+
+CDR endpoints that are accessed by web browsers **MUST** use methods to protect against TLS stripping attacks, in accordance with section [5.2.3(1)](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.2.3) of the **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
