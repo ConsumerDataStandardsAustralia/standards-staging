@@ -99,6 +99,8 @@ In addition:
 <h4 id="security-profile_request-object_data-holders">18.4. Data Holders</h4>
 
 ```diff
+Removal of:
+- Data Holders MUST require PAR for authorisation request data in accordance with [RFC9126] where require_pushed_authorization_requests parameter is set to true.
 Updated Data Holder requirement to reference FAPI 2.0
 - S256 as the code challenge method in accordance with [FAPI-1.0-Advanced] section 5.2.2.
 + S256 as the code challenge method in accordance with [FAPI-2.0-Security-Profile] section 5.3.2.
@@ -108,14 +110,15 @@ Updated Data Holder requirement to reference FAPI 2.0
 + lifetime of no longer than 60 minutes after the nbf claim in accordance with [FAPI-2.0-Message-Signing] section 5.3.1.
 ```
 
-Data Holders **SHALL** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
+Data Holders **MUST** support Pushed Authorisation Requests (PAR) via the pushed authorisation endpoint according to **[[PAR]](#nref-PAR)**.
 
-1. Data Holders **SHALL** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with `S256` as the code challenge method in accordance with **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** [section 5.3.2](https://openid.net/specs/fapi-security-profile-2_0-final.html#section-5.3.2).
-1. Data Holders **SHALL** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where *require_pushed_authorization_requests* parameter is set to `true`.
-1. Data Holders **SHALL** require the request object to contain an _exp_ claim that has a lifetime of no longer than 60 minutes after the _nbf_ claim in accordance with **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)** [section 5.3.1](https://openid.net/specs/fapi-message-signing-2_0.html#section-5.3.1).
-1. Authorisation request data **SHALL** only be accepted using PAR.
-1. Data Holders **SHALL** reject authorisation requests containing the _request_ parameter.
-1. Data Holders **SHALL** reject the reuse of *request_uri* values.
+1. Data Holders **MUST** support **[[RFC9126]](#nref-RFC9126)** (PAR) using **[[PKCE]](#nref-PKCE)** (**[[RFC7636]](#nref-RFC7636)**) with `S256` as the code challenge method in accordance with **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)** section [5.3.2](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.2).
+1. Data Holders **MUST** require PAR for authorisation request data in accordance with **[[RFC9126]](#nref-RFC9126)** where *require_pushed_authorization_requests* parameter is set to `true`.
+1. Data Holders **MUST** require the request object to contain an _exp_ claim that has a lifetime of no longer than 60 minutes after the _nbf_ claim in accordance with **[[FAPI-2.0-Message-Signing]](#nref-FAPI-2-0-Message-Signing)** section [5.3.1](https://openid.net/specs/fapi-message-signing-2_0.html#section-5.3.1).
+1. Authorisation request data **MUST** only be accepted using PAR.
+1. Data Holders **MUST** reject authorisation requests containing the _request_ parameter.
+1. Data Holders **MUST** reject the reuse of *request_uri* values.
+   - **NOTE:** See **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**, section [5.3.2.2](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.2.2), **NOTE 3** for guidance on enforcement of one-time use of *request_uri* values.
 
 <h4 id="security-profile_request-object_data-recipient-software-products">18.5. Data Recipient Software Products</h4>
 
