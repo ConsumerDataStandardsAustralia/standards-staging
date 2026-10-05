@@ -50,8 +50,6 @@ Content-Type: application/json
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
   "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke",
-
-  "authorization_details_types_supported": ["cdr-data-sharing"]
 }
 ```
 
