@@ -50,17 +50,14 @@ Request Objects **MUST** be signed by Data Recipient Software Products in accord
 ### 18.1. Requesting Sharing Duration
 To facilitate the specification of the duration for consent to share CDR data that is approved by the consumer, a mechanism for the Data Recipient Software Product to specify a sharing duration to the Data Holder is required.
 
-To accomplish this, the Data Holder **SHALL** support an additional claim in the authorisation request object named *sharing_duration*. The *sharing_duration* claim **SHALL** be handled as follows:
+To accomplish this, the Data Holder **MUST** support an additional claim in the authorisation request object named *sharing_duration*. The *sharing_duration* claim **MUST** be handled as follows:
 
-1. Method of delivery:
-   1. If the Data Holder and Data Recipient Software Product support Rich Authorization Requests (RAR), the *sharing_duration* **SHALL** be presented as a property of the *authorization_details* object associated with the `"cdr-data-sharing"` *type*.
-   1. If RAR is not supported, the *sharing_duration* **SHALL** be presented as an essential claim in the authorisation request.
 1. The *sharing_duration* parameter is a number.
 1. The value of the *sharing_duration* parameter will contain the requested duration for sharing, in seconds.
 1. If the *sharing_duration* value exceeds one year then a duration of one year will be assumed.
 1. If the *sharing_duration* value is less than or equal to 24 hours, then one-time collection will be assumed, and a Refresh Token **SHOULD** be provided by the Data Holder.
 1. If the *sharing_duration* value is zero or absent then once off access will be assumed and only an Access Token (without a Refresh Token) will be provided on successful authorisation.
-1. If a Refresh Token is issued for one-time collection the Data Recipient Software Product **SHALL** call the Data Holder’s revocation endpoint after successful collection of the CDR data.
+1. If a Refresh Token is issued for one-time collection the Data Recipient Software Product **MUST** call the Data Holder’s revocation endpoint after successful collection of the CDR data.
 1. If the *sharing_duration* value is negative then the authorisation **SHOULD** fail.
 
 Note that the period of "one year" in the above statements **SHOULD** be interpreted as 365, 24 hour days (or 31,536,000 seconds).
