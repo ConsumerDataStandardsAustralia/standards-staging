@@ -32,11 +32,8 @@ Replaced references to deprecated headers
 + Except for *x-fapi-interaction-id* and *x-fapi-end-user-present* headers with the prefix "*x-fapi-*" **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require these headers
 
 Added new header to support secondary data holder NFRs
-+ The x-fapi-end-user-present header SHALL be passed to AEMO to reflect the value received from the Data Recipient
++ The x-fapi-end-user-present header MUST be passed to AEMO to reflect the value received from the Data Recipient
 
-Updated existing 'must' requirement
-- x-cds-arrangement must be passed to AEMO
-+ x-cds-arrangement SHALL be passed to AEMO
 ```
 
 The following variations to the endpoints published by AEMO from the energy sector endpoints apply:
