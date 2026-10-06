@@ -2,20 +2,31 @@
 ### 19.9. Pushed Authorisation endpoint
 
 ```diff
-Updated the Pushed Authorisation endpoint section to include detail for the x-cds-originating-channel request header
+Updated the Pushed Authorisation endpoint section to include detail for the x-fapi-interaction-id
 ```
 
 > Non-Normative Example  
 > Utilising PAR/RFC9126, PKCE, JARM and Authorization Code Flow
 
+```diff
+Updated PAR request Non-Normative example
++ x-fapi-interaction-id: 7f3c2a91-6e54-4b8d-9f21-3c7e5a8b4d12
+```
+
+
 > Request
 
 ```
 POST /par HTTP/1.1
-     Host: mtls.dh.example.com
-     Content-Type: application/x-www-form-urlencoded
+Host: mtls.dh.example.com
+Content-Type: application/x-www-form-urlencoded
+x-fapi-interaction-id: 7f3c2a91-6e54-4b8d-9f21-3c7e5a8b4d12
 
-  request=eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyMyJ9.ey...
+client_id={client_id}
+&request=eyJhbGciOiJQUzI1NiIsInR5cCI6Im9hdXRoLWF1dGh6LXJlcStqd3QiLCJraWQiOiIxMjMifQ.ey...
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJ...
+
 ```
 
 ```diff
@@ -62,8 +73,10 @@ Updated Non-normative example
 
 ```diff
 Updated PAR response Non-Normative example
++ x-fapi-interaction-id: 7f3c2a91-6e54-4b8d-9f21-3c7e5a8b4d12
 - "expires_in": 3600
 + "expires_in": 90
+
 ```
 
 > Response 
@@ -72,6 +85,8 @@ Updated PAR response Non-Normative example
 HTTP/1.1 201 Created
 Content-Type: application/json
 Cache-Control: no-cache, no-store
+x-fapi-interaction-id: 7f3c2a91-6e54-4b8d-9f21-3c7e5a8b4d12
+
 {
   "request_uri": "urn:mtls.dh.example.com:bwc4JK-ESC0w8acc191e-Y1LTC2",
   "expires_in": 90

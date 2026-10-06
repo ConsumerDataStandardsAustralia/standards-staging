@@ -94,15 +94,15 @@ Authorization: Bearer eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNDU2In0.ey
 Updated obligations relate to past FDOs
 - From March 31st 2022, Data Recipients MUST support the "CDR Arrangement JWT" method.
 - From July 31st 2022, Data Holders MUST send the cdr_arrangement_id using the "CDR Arrangement JWT" method.
-+ Data Recipients SHALL support the "CDR Arrangement JWT" method.
-+ Data Holders SHALL send the cdr_arrangement_id using the "CDR Arrangement JWT" method.
++ Data Recipients MUST support the "CDR Arrangement JWT" method.
++ Data Holders MUST send the cdr_arrangement_id using the "CDR Arrangement JWT" method.
 
 - If the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products SHOULD validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
 - From November 15th 2022, if the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products MUST validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
-+ If the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products SHALL validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
++ If the cdr_arrangement_id is presented as a form parameter, Data Recipient Software Products MUST validate it is identical to the cdr_arrangement_id presented in the "CDR Arrangement JWT".
 
 - From November 15th 2022, if the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products MUST validate in accordance with Data Holders calling Data Recipients using Self-Signed JWT Client Authentication.
-+ If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products SHALL validate in accordance with Data Holders calling Data Recipients using Self-Signed JWT Client Authentication.
++ If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products MUST validate in accordance with Data Holders calling Data Recipients using Self-Signed JWT Client Authentication.
 ```
 
 The location of the Data Recipient Software Product CDR Arrangement Revocation endpoint is determined by the _RecipientBaseURI_ provided by the Data Recipient Software Product in the client Software Statement Assertion (SSA).
@@ -112,12 +112,12 @@ This endpoint will be implemented according to the following:
 * Data Recipient Software Products **MUST** expose their CDR Arrangement Revocation endpoint under their _recipient_base_uri_ published in their Software Statement Assertion.
 * Data Holders must be authenticated when they call this endpoint according to the guidance in the Client Authentication section.
 * If the _cdr_arrangement_id_ is not related to the client making the call it **MUST** be rejected.
-* Data Recipients **SHALL** support the "CDR Arrangement JWT" method.
-* Data Holders **SHALL** send the _cdr_arrangement_id_ using the "CDR Arrangement JWT" method.
+* Data Recipients **MUST** support the "CDR Arrangement JWT" method.
+* Data Holders **MUST** send the _cdr_arrangement_id_ using the "CDR Arrangement JWT" method.
 * Data Holders **MAY** additionally send a duplicate of the _cdr_arrangement_id_ as a form parameter.
 * Data Recipient Software Products **MUST NOT** reject requests including the _cdr_arrangement_id_ as a form parameter. 
-* If the _cdr_arrangement_id_ is presented as a form parameter, Data Recipient Software Products **SHALL** validate it is identical to the _cdr_arrangement_id_ presented in the "CDR Arrangement JWT".
-* If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **SHALL** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#5-2-self-signed-jwt-client-authentication).
+* If the _cdr_arrangement_id_ is presented as a form parameter, Data Recipient Software Products **MUST** validate it is identical to the _cdr_arrangement_id_ presented in the "CDR Arrangement JWT".
+* If the Self-Signed JWT claims are presented in the "CDR Arrangement JWT", Data Recipient Software Products **MUST** validate in accordance with Data Holders calling Data Recipients using [Self-Signed JWT Client Authentication](#5-2-self-signed-jwt-client-authentication).
 
 **19.8.5. Response Codes**
 

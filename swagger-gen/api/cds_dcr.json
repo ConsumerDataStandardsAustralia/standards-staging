@@ -411,7 +411,7 @@
           },
           "response_types": {
             "type": "array",
-            "description": "Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br>The only supported response type will be `code`.",
+            "description": "Array of the OAuth 2.0 _response_type_ strings that the client can use at the authorization endpoint.<br>The only supported response type **SHALL** be `code`.",
             "items": {
               "type": "string",
               "enum": [

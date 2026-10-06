@@ -44,8 +44,7 @@ Added Normative References:
 | <a id="nref-RFC7516"></a><a id="nref-JWE"></a>**[JWE]** | JSON Web Encryption (JWE): <https://datatracker.ietf.org/doc/html/rfc7516> | May 2015 |
 | <a id="nref-JWKS"></a><a id="nref-RFC7517"></a><a id="nref-JWK"></a>**[JWK] / [JWKS]** | JSON Web Key (JWK): <https://datatracker.ietf.org/doc/html/rfc7517> | May 2015 |
 | <a id="nref-RFC7797"></a><a id="nref-JWS"></a>**[JWS]** | JSON Web Signature (JWS): <https://datatracker.ietf.org/doc/html/rfc7797> | February 2016 |
-| <a id="nref-RFC7519"></a><a id="nref-JWT"></a>**[JWT]** / **[RFC7519]** | JSON Web Token (JWT): <https://datatracker.ietf.org/doc/html/rfc7519> <p> As updated by [[RFC8725]](#nref-RFC8725) | May 2015 |
-| <a id="nref-RFC8725"></a>**[RFC8725]** | JSON Web Token Best Current Practicies: <https://datatracker.ietf.org/doc/html/rfc8725> | February 2020|
+| <a id="nref-RFC7519"></a><a id="nref-JWT"></a>**[JWT]** / **[RFC7519]** | JSON Web Token (JWT): <https://datatracker.ietf.org/doc/html/rfc7519> <br> **As updated by** [[RFC8725]](#nref-RFC8725) | May 2015 |
 | <a id="nref-RFC8705"></a><a id="nref-MTLS"></a>**[MTLS]** | OAuth 2.0 Mutual TLS Client Authentication and Certificate Bound Access Tokens: <br><https://datatracker.ietf.org/doc/html/rfc8705> | February 2020 |
 | <a id="nref-RFC6749"></a><a id="nref-OAUTH2"></a>**[OAUTH2]** / **[RFC6749]** | The OAuth 2.0 Authorization Framework: <https://datatracker.ietf.org/doc/html/rfc6749> | October 2012 |
 | <a id="nref-OIDC"></a>**[OIDC]** | OpenID Connect Core 1.0 incorporating errata set 2: <br><https://openid.net/specs/openid-connect-core-1_0.html> | December 2023 |
@@ -63,7 +62,7 @@ Added Normative References:
 | <a id="nref-RFC7662"></a>**[RFC7662]** | OAuth 2.0 Token Introspection: <https://datatracker.ietf.org/doc/html/rfc7662> | October 2015 |
 | <a id="nref-RFC8252"></a>**[RFC8252]** | OAuth 2.0 for Native Apps: <https://datatracker.ietf.org/doc/html/rfc8252> | October 2017 |
 | <a id="nref-RFC8414"></a>**[RFC8414]** | OAuth 2.0 Authorization Server Metadata: <https://datatracker.ietf.org/doc/html/rfc8414> | June 2018 |
-
+| <a id="nref-RFC8725"></a>**[RFC8725]** | JSON Web Token Best Current Practicies: <https://datatracker.ietf.org/doc/html/rfc8725> | February 2020|
 ## Informative References
 
 ```diff
