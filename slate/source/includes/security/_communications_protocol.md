@@ -43,7 +43,7 @@ In addition, Data Holders:
 1. **MUST** log the value of *x-fapi-end-user-present* in the correlated resource request and response log entry.
 
 #### 3.1.3. Data Recipients
-Data Recipient Software Products **SHALL** support the client provisions defined in section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**. 
+Data Recipient Software Products **MUST** support the client provisions defined in section [5.3.3](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.3) of **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**. 
 
 In addition, Data Recipient Software Products:
 
