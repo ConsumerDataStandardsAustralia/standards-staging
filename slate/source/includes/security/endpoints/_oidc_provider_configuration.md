@@ -49,9 +49,7 @@ Content-Type: application/json
   "authorization_encryption_enc_values_supported": ["A256GCM", "A128CBC-HS256"],
   "authorization_signing_alg_values_supported": ["ES256", "PS256"],
 
-  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke",
-
-  "authorization_details_types_supported": ["cdr-data-sharing"]
+  "cdr_arrangement_revocation_endpoint": "https://mtls.dh.example.com/arrangements/revoke"
 }
 ```
 
@@ -120,13 +118,3 @@ In addition, the Data Holder metadata **MUST** also include:
 
 - _cdr_arrangement_revocation_endpoint_: The URL of the CDR Arrangement Revocation endpoint for consent revocation.
 
-**[[RAR]](#nref-RAR)**
-
-```diff
-Added optional metadata field to indicate support for RAR (authorization_details_types_supported)
-+ [RAR]
-```
-
-Where Data Holders support Rich Authorization Requests according to **[[RAR]](#nref-RAR)**, the following parameter provisions **SHALL** be supported:
-
-- *authorization_details_types_supported*: A JSON array containing a list of authorization details types supported. If the Data Holder supports **[[RAR]](#nref-RAR)**, they **SHALL** support the `cdr-data-sharing` type.
