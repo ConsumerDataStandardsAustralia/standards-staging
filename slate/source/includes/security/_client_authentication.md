@@ -231,7 +231,7 @@ grant_type=client_credentials&
   "iss": "<brand id> OR <software product id>",
   "sub": "<brand id> OR <software product id>",
   "exp": 1516239322,
-  "aud": "https://secure.api.cdr.gov.au/idp/connect/token",
+  "aud": "https://api.cdr.gov.au/idp",
   "jti": "37747cd1-c105-4569-9f75-4adf28b73e31"
 }
 
