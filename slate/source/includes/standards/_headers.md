@@ -69,7 +69,7 @@ Header Field | Description | Mandatory?
 **Content-Type** | Standard HTTP Header. Represents the format of the payload returned in the response.<br/>**SHALL** be `application/json` unless otherwise specified in the resource endpoint standard. | Mandatory
 **Retry-After** | Header indicating the time (in seconds) that the client should wait before retrying an operation. The holder should include this header along with responses with the HTTP status code of `429 Too many requests`. | Optional
 **x-v** | The payload version that the endpoint has responded with. | Mandatory
-<span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. The data holder **SHALL** set the response header _x-fapi-interaction-id_ to the value received from the corresponding request header or to a new **[[RFC4122]](#nref-RFC4122)** UUID value if the request header was not provided. The Data Holder **MUST** include this header in every response from authenticated resource endpoints and from the PAR and Token endpoints, for both success and error responses to the Data Recipient. | Mandatory
+<span style="white-space: nowrap;">**x-fapi-interaction-id**</span> | An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. The data holder **MUST** set the response header _x-fapi-interaction-id_ to the value received from the corresponding request header or to a new **[[RFC4122]](#nref-RFC4122)** UUID value if the request header was not provided. The Data Holder **MUST** include this header in every response from authenticated resource endpoints and from the PAR and Token endpoints, for both success and error responses to the Data Recipient. | Mandatory
 
 
 ### Additional Headers
