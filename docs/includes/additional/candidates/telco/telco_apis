@@ -1,6 +1,10 @@
 <h1 id='telco-apis'>Telco APIs</h1>
 <p>This specification defines the APIs for Data Holders exposing Telecommunications endpoints.</p>
-
+<pre class="highlight diff tab-diff"><code>Updated endpoint headers
+<span class="gd">- x-fapi-auth-date
+- x-fapi-customer-ip-address
+</span><span class="gi">+ x-fapi-end-user-present
+</span></code></pre>
 <table>
 <tr><td><a href='../../../../includes/swagger/cds_telco.json'>Telco OpenAPI Specification (JSON)</a></td></tr>
 <tr><td><a href='../../../../includes/swagger/cds_telco.yaml'>Telco OpenAPI Specification (YAML)</a></td></tr>

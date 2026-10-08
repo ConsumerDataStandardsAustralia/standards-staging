@@ -4,8 +4,6 @@
 
 <h2 id="cdr-admin-api_metadata-update">Metadata Update</h2>
 
-<p id="metadata-update" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -175,8 +173,6 @@ This operation may only be called by the CDR Register.
 </aside>
 
 <h2 id="cdr-admin-api_get-metrics">Get Metrics</h2>
-
-<p id="get-metrics" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -822,8 +818,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrequestmetadataupdatev1">RequestMetaDataUpdateV1</h3>
 
-<p id="tocSrequestmetadataupdatev1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_requestmetadataupdate"></a>
   <a class="schema-anchor" id="schemacdr-admin-apirequestmetadataupdatev1"></a>
@@ -884,8 +878,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponsemetricslistv5">ResponseMetricsListV5</h3>
-
-<p id="tocSresponsemetricslistv5" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_responsemetricslist"></a>
@@ -1483,8 +1475,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSavailabilitymetricsv2">AvailabilityMetricsV2</h3>
 
-<p id="tocSavailabilitymetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_availabilitymetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apiavailabilitymetricsv2"></a>
@@ -1589,8 +1579,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancemetricsv3">PerformanceMetricsV3</h3>
-
-<p id="tocSperformancemetricsv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_performancemetrics"></a>
@@ -1940,8 +1928,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancepreviousdays">PerformancePreviousDays</h3>
 
-<p id="tocSperformancepreviousdays" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_performancepreviousdays"></a>
   <a class="schema-anchor" id="schemacdr-admin-apiperformancepreviousdays"></a>
@@ -1974,8 +1960,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSperformancehours">PerformanceHours</h3>
 
-<p id="tocSperformancehours" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_performancehours"></a>
   <a class="schema-anchor" id="schemacdr-admin-apiperformancehours"></a>
@@ -2005,8 +1989,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSinvocationmetricsv3">InvocationMetricsV3</h3>
-
-<p id="tocSinvocationmetricsv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_invocationmetrics"></a>
@@ -2220,8 +2202,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaverageresponsemetricsv2">AverageResponseMetricsV2</h3>
-
-<p id="tocSaverageresponsemetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_averageresponsemetrics"></a>
@@ -2508,8 +2488,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsessioncountmetricsv2">SessionCountMetricsV2</h3>
 
-<p id="tocSsessioncountmetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_sessioncountmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apisessioncountmetricsv2"></a>
@@ -2551,8 +2529,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSaveragetpsmetricsv2">AverageTPSMetricsV2</h3>
-
-<p id="tocSaveragetpsmetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_averagetpsmetrics"></a>
@@ -2659,8 +2635,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSpeaktpsmetricsv2">PeakTPSMetricsV2</h3>
 
-<p id="tocSpeaktpsmetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_peaktpsmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apipeaktpsmetricsv2"></a>
@@ -2765,8 +2739,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrormetricsv2">ErrorMetricsV2</h3>
-
-<p id="tocSerrormetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_errormetrics"></a>
@@ -2945,8 +2917,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSrejectionmetricsv3">RejectionMetricsV3</h3>
 
-<p id="tocSrejectionmetricsv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_rejectionmetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apirejectionmetricsv3"></a>
@@ -3025,8 +2995,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSsecondaryholdermetricsv2">SecondaryHolderMetricsV2</h3>
 
-<p id="tocSsecondaryholdermetricsv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_secondaryholdermetrics"></a>
   <a class="schema-anchor" id="schemacdr-admin-apisecondaryholdermetricsv2"></a>
@@ -3104,8 +3072,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSauthorisationmetricsv2">AuthorisationMetricsV2</h3>
-
-<p id="tocSauthorisationmetricsv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_authorisationmetrics"></a>
@@ -3666,8 +3632,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSlinks">Links</h3>
 
-<p id="tocSlinks" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_links"></a>
   <a class="schema-anchor" id="schemacdr-admin-apilinks"></a>
@@ -3698,8 +3662,6 @@ This operation may only be called by the CDR Register.
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-admin-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-admin-apimeta"></a>
@@ -3711,8 +3673,6 @@ This operation may only be called by the CDR Register.
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
-
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_responseerrorlist"></a>
@@ -3752,8 +3712,6 @@ This operation may only be called by the CDR Register.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-admin-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-admin-api_schema-base_error"></a>

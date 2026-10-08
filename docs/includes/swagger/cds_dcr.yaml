@@ -7,7 +7,7 @@ info:
   description: Specifications for Dynamic Client Registration endpoints applicable
     to all data holders (except secondary data holders).
   title: CDR Dynamic Client Registration API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -19,7 +19,7 @@ paths:
   /register:
     post:
       description: "Register a client using a CDR Register issued Software Statement\
-        \ Assertion. \n\nThis endpoint does not require [CORS](#cors)."
+        \ Assertion. \n\nThis endpoint does not require [CORS](#17-cors)."
       operationId: postClientRegistration
       requestBody:
         $ref: '#/components/requestBodies/RequestClientRegistration'
@@ -52,7 +52,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      - description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
         explode: false
         in: header
         name: Authorization
@@ -69,15 +69,15 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+              description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
               explode: false
               schema:
                 type: string
               style: simple
               x-cds-type: ExternalRef
         "403":
-          description: The client does not have permission to read, update or delete
-            the Client
+          description: "The client does not have permission to read, update or delete\
+            \ the Client"
         "405":
           description: Method Not Allowed. The requested method is unsupported
       summary: Delete Data Recipient oAuth Client Registration
@@ -97,7 +97,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      - description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
         explode: false
         in: header
         name: Authorization
@@ -118,15 +118,15 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+              description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
               explode: false
               schema:
                 type: string
               style: simple
               x-cds-type: ExternalRef
         "403":
-          description: The client does not have permission to read, update or delete
-            the Client
+          description: "The client does not have permission to read, update or delete\
+            \ the Client"
       summary: Get oAuth Client Registration
       tags:
       - Data Holder Client Registration
@@ -144,7 +144,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      - description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
         explode: false
         in: header
         name: Authorization
@@ -173,15 +173,15 @@ paths:
             access token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+              description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
               explode: false
               schema:
                 type: string
               style: simple
               x-cds-type: ExternalRef
         "403":
-          description: The client does not have permission to read, update or delete
-            the Client
+          description: "The client does not have permission to read, update or delete\
+            \ the Client"
       summary: Update Data Recipient Registration
       tags:
       - Data Holder Client Registration
@@ -190,7 +190,7 @@ paths:
 components:
   parameters:
     HeaderAuthorization:
-      description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
       explode: false
       in: header
       name: Authorization
@@ -247,22 +247,22 @@ components:
         token
       headers:
         WWW-Authenticate:
-          description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+          description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
           explode: false
           schema:
             type: string
           style: simple
           x-cds-type: ExternalRef
     DCRGeneric403:
-      description: The client does not have permission to read, update or delete the
-        Client
+      description: "The client does not have permission to read, update or delete\
+        \ the Client"
     DCRGeneric405:
       description: Method Not Allowed. The requested method is unsupported
   schemas:
     ClientRegistrationRequestV1:
-      description: The registration request JWT to be used to register with a Data
-        Holder. The schema of the payload section of the decoded string(JWT) is defined
-        in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration).
+      description: "The registration request JWT to be used to register with a Data\
+        \ Holder. The schema of the payload section of the decoded string(JWT) is\
+        \ defined in [ClientRegistration](#cdr-dynamic-client-registration-api_schemas_tocSclientregistration)."
       example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
       format: JWT
       type: string
@@ -297,9 +297,7 @@ components:
         sector_identifier_uri: https://adr.example.com/sector_identifier.json
         authorization_encrypted_response_alg: RSA-OAEP
         authorization_encrypted_response_enc: A128CBC-HS256
-        id_token_encrypted_response_alg: RSA-OAEP
         org_id: 3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8
-        id_token_encrypted_response_enc: A256GCM
         jwks_uri: https://adr.example.com/jwks
         revocation_uri: https://adr.example.com/revocation
         tos_uri: https://adr.example.com/tos.html
@@ -357,9 +355,9 @@ components:
           example: Mock Company Brand
           type: string
         redirect_uris:
-          description: Array of redirection URI strings for use in redirect-based
-            flows. If used, _redirect_uris_ **MUST** match or be a subset of the _redirect_uris_
-            as defined in the SSA.
+          description: "Array of redirection URI strings for use in redirect-based\
+            \ flows. If used, _redirect_uris_ **MUST** match or be a subset of the\
+            \ _redirect_uris_ as defined in the SSA."
           example:
           - https://adr.example.com/redirects/redirect1
           - https://adr.example.com/redirects/redirect2
@@ -368,14 +366,14 @@ components:
             x-cds-type: URIString
           type: array
         sector_identifier_uri:
-          description: URL string referencing the client sector identifier URI, used
-            as an optional input to the Pairwise Identifier.
+          description: "URL string referencing the client sector identifier URI, used\
+            \ as an optional input to the Pairwise Identifier."
           example: https://adr.example.com/sector_identifier.json
           type: string
           x-cds-type: URIString
         logo_uri:
-          description: URL string that references a logo for the client. If present,
-            the server **SHOULD** display this image to the end-user during approval.
+          description: "URL string that references a logo for the client. If present,\
+            \ the server **SHOULD** display this image to the end-user during approval."
           example: https://adr.example.com/logos/logo1.png
           type: string
           x-cds-type: URIString
@@ -392,8 +390,8 @@ components:
           type: string
           x-cds-type: URIString
         jwks_uri:
-          description: URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)**
-            document, which contains the client public keys.
+          description: "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)**\
+            \ document, which contains the client public keys."
           example: https://adr.example.com/jwks
           type: string
           x-cds-type: URIString
@@ -437,13 +435,11 @@ components:
           type: array
         response_types:
           description: Array of the OAuth 2.0 _response_type_ strings that the client
-            can use at the authorization endpoint.<br><br>_response_type_ value `code`
-            is required for Authorization Code Flow.<br>_response_type_ value `code
-            id_token` is required for OIDC Hybrid Flow.
+            can use at the authorization endpoint.<br>The only supported response
+            type **SHALL** be `code`.
           items:
             enum:
             - code
-            - code id_token
             type: string
           type: array
         application_type:
@@ -459,23 +455,11 @@ components:
           - PS256
           - ES256
           type: string
-        id_token_encrypted_response_alg:
-          description: 'JWE _alg_ algorithm with which an id_token is to be encrypted.<br/><br/>Required
-            only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.'
-          example: RSA-OAEP
-          type: string
-          x-cds-type: ExternalRef
-        id_token_encrypted_response_enc:
-          description: 'JWE `enc` algorithm with which an id_token is to be encrypted.<br/><br/>Required
-            only if OIDC Hybrid Flow (_response_type_: `code id_token`) is registered.'
-          example: A256GCM
-          type: string
-          x-cds-type: ExternalRef
         authorization_signed_response_alg:
-          description: The JWS _alg_ algorithm required for signing authorization
-            responses. If this is specified, the response will be signed using JWS
-            and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required
-            if _response_type_ of `code` is registered by the client.
+          description: "The JWS _alg_ algorithm required for signing authorization\
+            \ responses. If this is specified, the response will be signed using JWS\
+            \ and the configured algorithm. The algorithm `none` is not allowed.<br><br>Required\
+            \ if _response_type_ of `code` is registered by the client."
           enum:
           - PS256
           - ES256
@@ -483,9 +467,9 @@ components:
           type: string
           x-conditional: true
         authorization_encrypted_response_alg:
-          description: The JWE _alg_ algorithm required for encrypting authorization
-            responses. If unspecified, the default is that no encryption is performed.<br><br>Required
-            if _authorization_encrypted_response_enc_ is included.
+          description: "The JWE _alg_ algorithm required for encrypting authorization\
+            \ responses. If unspecified, the default is that no encryption is performed.<br><br>Required\
+            \ if _authorization_encrypted_response_enc_ is included."
           enum:
           - RSA-OAEP
           - RSA-OAEP-256
@@ -493,32 +477,31 @@ components:
           type: string
           x-conditional: true
         authorization_encrypted_response_enc:
-          description: The JWE _enc_ algorithm required for encrypting authorization
-            responses. If _authorization_encrypted_response_alg_ is specified, the
-            default for this value is `A128CBC-HS256`.
+          description: "The JWE _enc_ algorithm required for encrypting authorization\
+            \ responses. If _authorization_encrypted_response_alg_ is specified, the\
+            \ default for this value is `A128CBC-HS256`."
           enum:
           - A256GCM
           - A128CBC-HS256
           example: A128CBC-HS256
           type: string
         request_object_signing_alg:
-          description: Algorithm which the ADR expects to sign the request object
-            if a request object will be part of the authorization request sent to
-            the Data Holder.
+          description: Algorithm which the ADR expects to sign request objects.
           enum:
           - PS256
           - ES256
           type: string
         software_statement:
-          description: The Software Statement Assertion, as defined in the CDR Data
-            Standards.
+          description: "The Software Statement Assertion, as defined in the CDR Data\
+            \ Standards."
           format: JWT
           type: string
         software_id:
-          description: String representing a unique identifier assigned by the Register
-            and used by registration endpoints to identify the software product to
-            be dynamically registered. <br><br>The _software_id_ will remain the same
-            for the lifetime of the product, across multiple updates and versions.
+          description: "String representing a unique identifier assigned by the Register\
+            \ and used by registration endpoints to identify the software product\
+            \ to be dynamically registered. <br><br>The _software_id_ will remain\
+            \ the same for the lifetime of the product, across multiple updates and\
+            \ versions."
           example: 740C368F-ECF9-4D29-A2EA-0514A66B0CDE
           type: string
         software_roles:
@@ -557,8 +540,6 @@ components:
       - token_endpoint_auth_signing_alg
       type: object
       x-conditional:
-      - id_token_encrypted_response_alg
-      - id_token_encrypted_response_enc
       - authorization_signed_response_alg
       - authorization_encrypted_response_alg
     ClientRegistration:
@@ -568,8 +549,8 @@ components:
     RegistrationError:
       properties:
         error:
-          description: Predefined error code as described in [section 3.3 OIDC Dynamic
-            Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html).
+          description: "Predefined error code as described in [section 3.3 OIDC Dynamic\
+            \ Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)."
           enum:
           - invalid_redirect_uri
           - invalid_client_metadata
@@ -603,14 +584,14 @@ components:
           type: integer
           x-cds-type: ExternalRef
         jti:
-          description: Unique identifier for the JWT, used to prevent replay of the
-            token.
+          description: "Unique identifier for the JWT, used to prevent replay of the\
+            \ token."
           example: 37747cd1c10545699f754adf28b73e31
           type: string
         aud:
           description: Contains the Data Holder issuer value as described in the OIDC
             Discovery Document.
-          example: https://mtls.dh.example.com/issuer
+          example: https://tls.dh.example.com
           type: string
           x-cds-type: URIString
       required:
@@ -620,3 +601,4 @@ components:
       - iss
       - jti
       type: object
+      example: null

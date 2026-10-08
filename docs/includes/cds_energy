@@ -4,8 +4,6 @@
 
 <h2 id="cdr-energy-api_get-generic-plans">Get Generic Plans</h2>
 
-<p id="get-generic-plans" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -306,8 +304,6 @@ This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-energy-api_get-generic-plan-detail">Get Generic Plan Detail</h2>
-
-<p id="get-generic-plan-detail" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1016,8 +1012,6 @@ This operation does not require authentication.
 
 <h2 id="cdr-energy-api_get-service-points">Get Service Points</h2>
 
-<p id="get-service-points" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1027,8 +1021,7 @@ This operation does not require authentication.
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1036,8 +1029,7 @@ This operation does not require authentication.
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1054,7 +1046,7 @@ This operation does not require authentication.
 
 <p>Obtain a list of service points owned by the customer that has authorised the current session.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-service-points-v1.html">v1</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-service-points-v1.html">v1</a>, <a href="includes/obsolete/get-service-points-v2.html">v2</a>.</p>
 
 <h3 id="cdr-energy-api_get-service-points_endpoint-version">Endpoint Version</h3>
 
@@ -1066,7 +1058,7 @@ This operation does not require authentication.
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -1123,20 +1115,12 @@ This operation does not require authentication.
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1277,8 +1261,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-service-point-detail">Get Service Point Detail</h2>
 
-<p id="get-service-point-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1288,8 +1270,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1297,8 +1278,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1315,7 +1295,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed standing information for a specific service point that is owned by the customer that has authorised the current session.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-v1.html">v1</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-service-point-detail-v1.html">v1</a>, <a href="includes/obsolete/get-service-point-detail-v2.html">v2</a>.</p>
 
 <h3 id="cdr-energy-api_get-service-point-detail_endpoint-version">Endpoint Version</h3>
 
@@ -1327,7 +1307,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -1376,20 +1356,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1598,8 +1570,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-usage-for-service-point">Get Usage For Service Point</h2>
 
-<p id="get-usage-for-service-point" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1609,8 +1579,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1618,8 +1587,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1636,6 +1604,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of electricity usage data from a particular service point.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-usage-for-service-point-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-usage-for-service-point_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1646,7 +1616,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -1735,20 +1705,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -1938,8 +1900,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-bulk-usage">Get Bulk Usage</h2>
 
-<p id="get-bulk-usage" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1949,8 +1909,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -1958,8 +1917,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -1976,6 +1934,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain usage data for all service points associated with the customer.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-bulk-usage-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-bulk-usage_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -1986,7 +1946,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2067,20 +2027,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2257,8 +2209,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-usage-for-specific-service-points">Get Usage For Specific Service Points</h2>
 
-<p id="get-usage-for-specific-service-points" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2269,8 +2219,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -2287,8 +2236,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2305,6 +2253,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /energy/electricity/servicepoints/usage</code></p>
 
 <p>Obtain the electricity usage data for a specific set of service points.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-usage-for-specific-service-points-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -2328,7 +2278,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2409,20 +2359,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2611,8 +2553,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-der-for-service-point">Get DER For Service Point</h2>
 
-<p id="get-der-for-service-point" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2622,8 +2562,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2631,8 +2570,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2649,6 +2587,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain a list of DER data from a particular service point.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-der-for-service-point-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-der-for-service-point_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -2659,7 +2599,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2708,20 +2648,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -2887,8 +2819,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-bulk-der">Get Bulk DER</h2>
 
-<p id="get-bulk-der" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -2898,8 +2828,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -2907,8 +2836,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -2925,6 +2853,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain DER data for all service points associated with the customer.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-bulk-der-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-bulk-der_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -2935,7 +2865,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -2992,20 +2922,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3182,8 +3104,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-der-for-specific-service-points">Get DER For Specific Service Points</h2>
 
-<p id="get-der-for-specific-service-points" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3194,8 +3114,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -3212,8 +3131,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3230,6 +3148,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /energy/electricity/servicepoints/der</code></p>
 
 <p>Obtain DER data for a specific set of service points.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-der-for-specific-service-points-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -3253,7 +3173,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -3310,20 +3230,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3512,8 +3424,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-energy-accounts">Get Energy Accounts</h2>
 
-<p id="get-energy-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3523,8 +3433,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3532,8 +3441,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3550,7 +3458,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the list of energy accounts available under the authorised consent.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-energy-accounts-v1.html">v1</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-energy-accounts-v1.html">v1</a>, <a href="includes/obsolete/get-energy-accounts-v2.html">v2</a>.</p>
 
 <h3 id="cdr-energy-api_get-energy-accounts_endpoint-version">Endpoint Version</h3>
 
@@ -3562,7 +3470,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>2</strong></td>
+<td><strong>3</strong></td>
 </tr>
 </tbody></table>
 
@@ -3627,20 +3535,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -3808,8 +3708,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-energy-account-detail">Get Energy Account Detail</h2>
 
-<p id="get-energy-account-detail" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -3819,8 +3717,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3828,8 +3725,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -3846,7 +3742,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain detailed information for a specific energy account.</p>
 
-<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a>, <a href="includes/obsolete/get-energy-account-detail-v2.html">v2</a>, <a href="includes/obsolete/get-energy-account-detail-v3.html">v3</a>.</p>
+<p>Other Versions: <a href="includes/obsolete/get-energy-account-detail-v1.html">v1</a>, <a href="includes/obsolete/get-energy-account-detail-v2.html">v2</a>, <a href="includes/obsolete/get-energy-account-detail-v3.html">v3</a>, <a href="includes/obsolete/get-energy-account-detail-v4.html">v4</a>.</p>
 
 <h3 id="cdr-energy-api_get-energy-account-detail_endpoint-version">Endpoint Version</h3>
 
@@ -3858,11 +3754,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>4</strong></td>
-</tr>
-<tr>
-<td>Version&nbsp;Notes</td>
-<td>The <i>dailySupplyChargeType</i> field was added in endpoint v3 as part of Standards v1.30.0. In Standards v1.32.0, the description of that field was changed to remove the default value, but it did not result in a new endpoint version. Refer to the <a href="includes/releasenotes/releasenotes.1.32.0.html">v1.32.0 release notes</a> for more details.</td>
+<td><strong>5</strong></td>
 </tr>
 </tbody></table>
 
@@ -3911,20 +3803,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4449,8 +4333,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-agreed-payment-schedule">Get Agreed Payment Schedule</h2>
 
-<p id="get-agreed-payment-schedule" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4460,8 +4342,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4469,8 +4350,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4491,6 +4371,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p><ul><li>This API describes how the consumer has elected to pay for their account</li><li>Payments initiated by the consumer are classified as manual payments. The billing frequency is captured for manual payments. The consumer may choose to pay on a different schedule/frequency. The payment method and frequency is not captured for manual payments</li><li>Payments that can be initiated by the retailer, based on a consumer&#39;s preferences and permission, include payments based on a direct debit, card debit or digital wallet setup. Each of these requires a payment frequency to be provided along with other relevant fields</li><li>Information about payment plans related to debt repayments or arrangements due to hardship is not captured within this API.</li></ul></p>
 
+<p>Other Versions: <a href="includes/obsolete/get-agreed-payment-schedule-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-agreed-payment-schedule_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -4501,7 +4383,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -4550,20 +4432,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4709,8 +4583,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-concessions">Get Concessions</h2>
 
-<p id="get-concessions" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4720,8 +4592,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4729,8 +4600,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4747,6 +4617,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the details of any concessions or arrangements applied to a specific energy account.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-concessions-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-concessions_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -4757,7 +4629,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -4806,20 +4678,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -4956,8 +4820,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-balance-for-energy-account">Get Balance For Energy Account</h2>
 
-<p id="get-balance-for-energy-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -4967,8 +4829,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -4976,8 +4837,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -4994,6 +4854,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the current balance for a specific account.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-balance-for-energy-account-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-balance-for-energy-account_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -5004,7 +4866,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5053,20 +4915,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5184,8 +5038,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-bulk-balances-for-energy">Get Bulk Balances for Energy</h2>
 
-<p id="get-bulk-balances-for-energy" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5195,8 +5047,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5204,8 +5055,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5222,6 +5072,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the current balance for all accounts.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-bulk-balances-for-energy-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-bulk-balances-for-energy_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -5232,7 +5084,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5289,20 +5141,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5432,8 +5276,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-balances-for-specific-energy-accounts">Get Balances For Specific Energy Accounts</h2>
 
-<p id="get-balances-for-specific-energy-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5444,8 +5286,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -5462,8 +5303,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5480,6 +5320,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /energy/accounts/balances</code></p>
 
 <p>Obtain the current balance for a specified set of accounts.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-balances-for-specific-energy-accounts-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -5503,7 +5345,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5560,20 +5402,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -5715,8 +5549,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-invoices-for-account">Get Invoices For Account</h2>
 
-<p id="get-invoices-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -5726,8 +5558,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -5735,8 +5566,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -5753,6 +5583,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the invoices for a specific account.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-invoices-for-account-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-invoices-for-account_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -5763,7 +5595,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -5844,20 +5676,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -6051,8 +5875,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-bulk-invoices">Get Bulk Invoices</h2>
 
-<p id="get-bulk-invoices" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -6062,8 +5884,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -6071,8 +5892,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -6089,6 +5909,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the invoices for all accounts.</p>
 
+<p>Other Versions: <a href="includes/obsolete/get-bulk-invoices-v1.html">v1</a>.</p>
+
 <h3 id="cdr-energy-api_get-bulk-invoices_endpoint-version">Endpoint Version</h3>
 
 <table><thead>
@@ -6099,7 +5921,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -6172,20 +5994,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -6366,8 +6180,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-invoices-for-specific-accounts">Get Invoices For Specific Accounts</h2>
 
-<p id="get-invoices-for-specific-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -6378,8 +6190,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -6396,8 +6207,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -6414,6 +6224,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><code>POST /energy/accounts/invoices</code></p>
 
 <p>Obtain invoices for a specified set of accounts.</p>
+
+<p>Other Versions: <a href="includes/obsolete/get-invoices-for-specific-accounts-v1.html">v1</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -6437,7 +6249,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>1</strong></td>
+<td><strong>2</strong></td>
 </tr>
 </tbody></table>
 
@@ -6510,20 +6322,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -6712,8 +6516,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-billing-for-account">Get Billing For Account</h2>
 
-<p id="get-billing-for-account" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -6723,8 +6525,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -6732,8 +6533,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -6750,12 +6550,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain the billing transactions for a specific account.</p>
 
-<p>Deprecated Versions: </p>
-
-<ul>
-<li><a href="includes/obsolete/get-billing-for-account-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
-<li><a href="includes/obsolete/get-billing-for-account-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
-</ul>
+<p>Other Versions: <a href="includes/obsolete/get-billing-for-account-v1.html">v1</a>, <a href="includes/obsolete/get-billing-for-account-v2.html">v2</a>, <a href="includes/obsolete/get-billing-for-account-v3.html">v3</a>.</p>
 
 <h3 id="cdr-energy-api_get-billing-for-account_endpoint-version">Endpoint Version</h3>
 
@@ -6767,7 +6562,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -6848,20 +6643,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -7085,8 +6872,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-bulk-billing">Get Bulk Billing</h2>
 
-<p id="get-bulk-billing" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -7096,8 +6881,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -7105,8 +6889,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -7123,12 +6906,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain billing transactions for all accounts.</p>
 
-<p>Deprecated Versions: </p>
-
-<ul>
-<li><a href="includes/obsolete/get-bulk-billing-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
-<li><a href="includes/obsolete/get-bulk-billing-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
-</ul>
+<p>Other Versions: <a href="includes/obsolete/get-bulk-billing-v1.html">v1</a>, <a href="includes/obsolete/get-bulk-billing-v2.html">v2</a>, <a href="includes/obsolete/get-bulk-billing-v3.html">v3</a>.</p>
 
 <h3 id="cdr-energy-api_get-bulk-billing_endpoint-version">Endpoint Version</h3>
 
@@ -7140,7 +6918,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -7213,20 +6991,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -7437,8 +7207,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-energy-api_get-billing-for-specific-accounts">Get Billing For Specific Accounts</h2>
 
-<p id="get-billing-for-specific-accounts" class="orig-anchor"></p>
-
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -7449,8 +7217,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 <span class="na">x-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-min-v</span><span class="p">:</span> <span class="s">string</span>
 <span class="na">x-fapi-interaction-id</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-auth-date</span><span class="p">:</span> <span class="s">string</span>
-<span class="na">x-fapi-customer-ip-address</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">x-fapi-end-user-present</span><span class="p">:</span> <span class="s">false</span>
 <span class="na">x-cds-client-headers</span><span class="p">:</span> <span class="s">string</span>
 </code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
@@ -7467,8 +7234,7 @@ To perform this operation, you must be authenticated and authorised with the fol
   <span class="s1">'x-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-min-v'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'x-fapi-interaction-id'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-auth-date'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
-  <span class="s1">'x-fapi-customer-ip-address'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'x-fapi-end-user-present'</span><span class="p">:</span><span class="s1">'false'</span><span class="p">,</span>
   <span class="s1">'x-cds-client-headers'</span><span class="p">:</span><span class="s1">'string'</span>
 <span class="p">};</span>
 
@@ -7486,12 +7252,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <p>Obtain billing for a specified set of accounts.</p>
 
-<p>Deprecated Versions: </p>
-
-<ul>
-<li><a href="includes/obsolete/get-billing-for-specific-accounts-v1.html">v1</a> - This version is to be ceased to be called by data recipients by September 9th 2024 and <strong>MAY</strong> be decommissioned by data holders as of that date </li>
-<li><a href="includes/obsolete/get-billing-for-specific-accounts-v2.html">v2</a> - This version <strong>MAY</strong> be retired by September 9th 2024 if v3 is implemented.</li>
-</ul>
+<p>Other Versions: <a href="includes/obsolete/get-billing-for-specific-accounts-v1.html">v1</a>, <a href="includes/obsolete/get-billing-for-specific-accounts-v2.html">v2</a>, <a href="includes/obsolete/get-billing-for-specific-accounts-v3.html">v3</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -7515,7 +7276,7 @@ To perform this operation, you must be authenticated and authorised with the fol
 </thead><tbody>
 <tr>
 <td>Version</td>
-<td><strong>3</strong></td>
+<td><strong>4</strong></td>
 </tr>
 </tbody></table>
 
@@ -7588,20 +7349,12 @@ To perform this operation, you must be authenticated and authorised with the fol
 <td>An <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID used as a correlation id. If provided, the data holder <strong>MUST</strong> play back this value in the <em>x-fapi-interaction-id</em> response header. If not provided a <strong><a href="#nref-RFC4122">[RFC4122]</a></strong> UUID value is required to be provided in the response header to track the interaction.</td>
 </tr>
 <tr>
-<td>x-fapi-auth-date</td>
+<td>x-fapi-end-user-present</td>
 <td>header</td>
 <td>string</td>
 <td>conditional</td>
-<td></td>
-<td>The time when the customer last logged in to the Data Recipient Software Product as described in <strong><a href="#nref-FAPI-1-0-Baseline">[FAPI-1.0-Baseline]</a></strong>. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.</td>
-</tr>
-<tr>
-<td>x-fapi-customer-ip-address</td>
-<td>header</td>
-<td>string</td>
-<td>optional</td>
-<td></td>
-<td>The customer&#39;s original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.</td>
+<td><code>false</code></td>
+<td>The presence of this header with a value of <code>true</code> indicates that the API is being called in a customer present context. Defaults to <code>false</code> if absent.</td>
 </tr>
 <tr>
 <td>x-cds-client-headers</td>
@@ -7822,8 +7575,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanlistresponse">EnergyPlanListResponse</h3>
 
-<p id="tocSenergyplanlistresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplanlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplanlistresponse"></a>
@@ -7920,8 +7671,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanresponsev3">EnergyPlanResponseV3</h3>
-
-<p id="tocSenergyplanresponsev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplanresponse"></a>
@@ -8513,8 +8262,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointlistresponsev2">EnergyServicePointListResponseV2</h3>
 
-<p id="tocSenergyservicepointlistresponsev2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyservicepointlistresponsev2"></a>
@@ -8594,8 +8341,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailresponsev2">EnergyServicePointDetailResponseV2</h3>
-
-<p id="tocSenergyservicepointdetailresponsev2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointdetailresponse"></a>
@@ -8734,8 +8479,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusagelistresponse">EnergyUsageListResponse</h3>
 
-<p id="tocSenergyusagelistresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyusagelistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyusagelistresponse"></a>
@@ -8829,8 +8572,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderlistresponse">EnergyDerListResponse</h3>
-
-<p id="tocSenergyderlistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyderlistresponse"></a>
@@ -8948,8 +8689,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderdetailresponse">EnergyDerDetailResponse</h3>
 
-<p id="tocSenergyderdetailresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyderdetailresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyderdetailresponse"></a>
@@ -9048,8 +8787,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountlistresponsev2">EnergyAccountListResponseV2</h3>
 
-<p id="tocSenergyaccountlistresponsev2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyaccountlistresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyaccountlistresponsev2"></a>
@@ -9134,8 +8871,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailresponsev4">EnergyAccountDetailResponseV4</h3>
-
-<p id="tocSenergyaccountdetailresponsev4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyaccountdetailresponse"></a>
@@ -9594,8 +9329,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentscheduleresponse">EnergyPaymentScheduleResponse</h3>
 
-<p id="tocSenergypaymentscheduleresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energypaymentscheduleresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergypaymentscheduleresponse"></a>
@@ -9681,8 +9414,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcessionsresponse">EnergyConcessionsResponse</h3>
 
-<p id="tocSenergyconcessionsresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyconcessionsresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyconcessionsresponse"></a>
@@ -9754,8 +9485,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalancelistresponse">EnergyBalanceListResponse</h3>
-
-<p id="tocSenergybalancelistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybalancelistresponse"></a>
@@ -9840,8 +9569,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybalanceresponse">EnergyBalanceResponse</h3>
 
-<p id="tocSenergybalanceresponse" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energybalanceresponse"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergybalanceresponse"></a>
@@ -9898,8 +9625,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicelistresponse">EnergyInvoiceListResponse</h3>
-
-<p id="tocSenergyinvoicelistresponse" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyinvoicelistresponse"></a>
@@ -10020,8 +9745,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillinglistresponsev3">EnergyBillingListResponseV3</h3>
-
-<p id="tocSenergybillinglistresponsev3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybillinglistresponse"></a>
@@ -10173,8 +9896,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSprimaryresponseerrorlistv1">PrimaryResponseErrorListV1</h3>
 
-<p id="tocSprimaryresponseerrorlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_primaryresponseerrorlist"></a>
   <a class="schema-anchor" id="schemacdr-energy-apiprimaryresponseerrorlistv1"></a>
@@ -10214,8 +9935,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSprimaryerrorv1">PrimaryErrorV1</h3>
-
-<p id="tocSprimaryerrorv1" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_primaryerror"></a>
@@ -10282,8 +10001,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
 
-<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_responseerrorlist"></a>
   <a class="schema-anchor" id="schemacdr-energy-apiresponseerrorlistv2"></a>
@@ -10322,8 +10039,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSerrorv2">ErrorV2</h3>
-
-<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_error"></a>
@@ -10387,8 +10102,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplan">EnergyPlan</h3>
-
-<p id="tocSenergyplan" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplan"></a>
@@ -10637,8 +10350,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandetailv3">EnergyPlanDetailV3</h3>
-
-<p id="tocSenergyplandetailv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplandetail"></a>
@@ -11288,8 +10999,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractv3">EnergyPlanContractV3</h3>
 
-<p id="tocSenergyplancontractv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplancontract"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractv3"></a>
@@ -11736,8 +11445,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontractfullv3">EnergyPlanContractFullV3</h3>
 
-<p id="tocSenergyplancontractfullv3" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplancontractfull"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplancontractfullv3"></a>
@@ -12118,8 +11825,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplancontrolledloadv2">EnergyPlanControlledLoadV2</h3>
 
-<p id="tocSenergyplancontrolledloadv2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplancontrolledload"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplancontrolledloadv2"></a>
@@ -12423,8 +12128,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanincentives">EnergyPlanIncentives</h3>
 
-<p id="tocSenergyplanincentives" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplanincentives"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplanincentives"></a>
@@ -12500,8 +12203,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplandiscounts">EnergyPlanDiscounts</h3>
-
-<p id="tocSenergyplandiscounts" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplandiscounts"></a>
@@ -12703,8 +12404,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplangreenpowercharges">EnergyPlanGreenPowerCharges</h3>
 
-<p id="tocSenergyplangreenpowercharges" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplangreenpowercharges"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplangreenpowercharges"></a>
@@ -12835,8 +12534,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplaneligibility">EnergyPlanEligibility</h3>
-
-<p id="tocSenergyplaneligibility" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplaneligibility"></a>
@@ -12977,8 +12674,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanfees">EnergyPlanFees</h3>
-
-<p id="tocSenergyplanfees" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplanfees"></a>
@@ -13167,8 +12862,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplansolarfeedintariffv3">EnergyPlanSolarFeedInTariffV3</h3>
-
-<p id="tocSenergyplansolarfeedintariffv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplansolarfeedintariff"></a>
@@ -13460,8 +13153,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplantariffperiodv2">EnergyPlanTariffPeriodV2</h3>
-
-<p id="tocSenergyplantariffperiodv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyplantariffperiod"></a>
@@ -13986,8 +13677,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergydaysenum">EnergyDaysEnum</h3>
 
-<p id="tocSenergydaysenum" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energydaysenum"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergydaysenum"></a>
@@ -14057,8 +13746,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointv2">EnergyServicePointV2</h3>
-
-<p id="tocSenergyservicepointv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepoint"></a>
@@ -14292,8 +13979,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointdetailv2">EnergyServicePointDetailV2</h3>
-
-<p id="tocSenergyservicepointdetailv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointdetail"></a>
@@ -14788,8 +14473,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyusageread">EnergyUsageRead</h3>
 
-<p id="tocSenergyusageread" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyusageread"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyusageread"></a>
@@ -15016,8 +14699,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyderrecord">EnergyDerRecord</h3>
-
-<p id="tocSenergyderrecord" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyderrecord"></a>
@@ -15458,8 +15139,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountbasev2">EnergyAccountBaseV2</h3>
 
-<p id="tocSenergyaccountbasev2" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyaccountbase"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyaccountbasev2"></a>
@@ -15539,8 +15218,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountv2">EnergyAccountV2</h3>
-
-<p id="tocSenergyaccountv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyaccount"></a>
@@ -15659,8 +15336,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountdetailv4">EnergyAccountDetailV4</h3>
-
-<p id="tocSenergyaccountdetailv4" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyaccountdetail"></a>
@@ -16363,8 +16038,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergypaymentschedule">EnergyPaymentSchedule</h3>
 
-<p id="tocSenergypaymentschedule" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energypaymentschedule"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergypaymentschedule"></a>
@@ -16665,8 +16338,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyconcession">EnergyConcession</h3>
 
-<p id="tocSenergyconcession" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyconcession"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyconcession"></a>
@@ -16808,8 +16479,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoice">EnergyInvoice</h3>
-
-<p id="tocSenergyinvoice" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyinvoice"></a>
@@ -17041,8 +16710,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoicegasusagecharges">EnergyInvoiceGasUsageCharges</h3>
 
-<p id="tocSenergyinvoicegasusagecharges" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyinvoicegasusagecharges"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyinvoicegasusagecharges"></a>
@@ -17177,8 +16844,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceelectricityusagecharges">EnergyInvoiceElectricityUsageCharges</h3>
-
-<p id="tocSenergyinvoiceelectricityusagecharges" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyinvoiceelectricityusagecharges"></a>
@@ -17315,8 +16980,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyinvoiceaccountcharges">EnergyInvoiceAccountCharges</h3>
 
-<p id="tocSenergyinvoiceaccountcharges" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyinvoiceaccountcharges"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyinvoiceaccountcharges"></a>
@@ -17364,8 +17027,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingtransactionv3">EnergyBillingTransactionV3</h3>
-
-<p id="tocSenergybillingtransactionv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybillingtransaction"></a>
@@ -17564,8 +17225,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingusagetransactionv2">EnergyBillingUsageTransactionV2</h3>
-
-<p id="tocSenergybillingusagetransactionv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybillingusagetransaction"></a>
@@ -17780,8 +17439,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingdemandtransactionv3">EnergyBillingDemandTransactionV3</h3>
-
-<p id="tocSenergybillingdemandtransactionv3" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybillingdemandtransaction"></a>
@@ -18001,8 +17658,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeasureunitenum">MeasureUnitEnum</h3>
 
-<p id="tocSmeasureunitenum" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_measureunitenum"></a>
   <a class="schema-anchor" id="schemacdr-energy-apimeasureunitenum"></a>
@@ -18073,8 +17728,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingonceofftransaction">EnergyBillingOnceOffTransaction</h3>
 
-<p id="tocSenergybillingonceofftransaction" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energybillingonceofftransaction"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergybillingonceofftransaction"></a>
@@ -18128,8 +17781,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingothertransaction">EnergyBillingOtherTransaction</h3>
-
-<p id="tocSenergybillingothertransaction" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energybillingothertransaction"></a>
@@ -18309,8 +17960,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergybillingpaymenttransaction">EnergyBillingPaymentTransaction</h3>
 
-<p id="tocSenergybillingpaymenttransaction" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energybillingpaymenttransaction"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergybillingpaymenttransaction"></a>
@@ -18386,8 +18035,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonphysicaladdress">CommonPhysicalAddress</h3>
-
-<p id="tocScommonphysicaladdress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_commonphysicaladdress"></a>
@@ -18485,8 +18132,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonsimpleaddress">CommonSimpleAddress</h3>
 
-<p id="tocScommonsimpleaddress" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_commonsimpleaddress"></a>
   <a class="schema-anchor" id="schemacdr-energy-apicommonsimpleaddress"></a>
@@ -18574,8 +18219,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocScommonpafaddress">CommonPAFAddress</h3>
-
-<p id="tocScommonpafaddress" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_commonpafaddress"></a>
@@ -18777,8 +18420,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestservicepointidlistv1">RequestServicePointIdListV1</h3>
 
-<p id="tocSrequestservicepointidlistv1" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_requestservicepointidlist"></a>
   <a class="schema-anchor" id="schemacdr-energy-apirequestservicepointidlistv1"></a>
@@ -18827,8 +18468,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSrequestaccountidlistv1">RequestAccountIdListV1</h3>
-
-<p id="tocSrequestaccountidlistv1" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_requestaccountidlist"></a>
@@ -18879,8 +18518,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyplanid">EnergyPlanId</h3>
 
-<p id="tocSenergyplanid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyplanid"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyplanid"></a>
@@ -18910,8 +18547,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyservicepointid">EnergyServicePointId</h3>
-
-<p id="tocSenergyservicepointid" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_energyservicepointid"></a>
@@ -18943,8 +18578,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSenergyaccountid">EnergyAccountId</h3>
 
-<p id="tocSenergyaccountid" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_energyaccountid"></a>
   <a class="schema-anchor" id="schemacdr-energy-apienergyaccountid"></a>
@@ -18974,8 +18607,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinks">Links</h3>
-
-<p id="tocSlinks" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_links"></a>
@@ -19007,8 +18638,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmeta">Meta</h3>
 
-<p id="tocSmeta" class="orig-anchor"></p>
-
 <p>
   <a id="cdr-energy-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-energy-apimeta"></a>
@@ -19020,8 +18649,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
-
-<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_linkspaginated"></a>
@@ -19084,8 +18711,6 @@ To perform this operation, you must be authenticated and authorised with the fol
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-energy-api_schemas_tocSmetapaginated">MetaPaginated</h3>
-
-<p id="tocSmetapaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-energy-api_schema-base_metapaginated"></a>

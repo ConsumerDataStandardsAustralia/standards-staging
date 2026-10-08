@@ -6,7 +6,7 @@ info:
     url: https://dsb.gov.au/
   description: Specifications for Register endpoints made available to participants.
   title: CDR Register API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: Production TLS
   url: https://api.cdr.gov.au
@@ -26,7 +26,7 @@ paths:
       description: |-
         Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.
 
-        This endpoint does not require [CORS](#cors).
+        This endpoint does not require [CORS](#17-cors).
       operationId: getRegisterOpenIdProviderConfig
       responses:
         "200":
@@ -43,7 +43,7 @@ paths:
       description: |-
         JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.
 
-        This endpoint does not require [CORS](#cors).
+        This endpoint does not require [CORS](#17-cors).
       operationId: getRegisterJwks
       responses:
         "200":
@@ -63,8 +63,8 @@ paths:
         Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-v1.html), [v2](includes/obsolete/get-data-holder-brands-v2.html).
       operationId: getDataHolderBrands
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: "The industry the participant is retrieving data for (Banking,\
+          \ etc.)"
         explode: false
         in: path
         name: industry
@@ -72,7 +72,7 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
-      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      - description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
         explode: false
         in: header
         name: Authorization
@@ -81,14 +81,14 @@ paths:
           type: string
         style: simple
         x-cds-type: ExternalRef
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -96,11 +96,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -157,7 +157,7 @@ paths:
           description: Invalid Bearer Token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+              description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
               explode: false
               schema:
                 type: string
@@ -186,8 +186,8 @@ paths:
         Obsolete versions: [v1](includes/obsolete/get-data-holder-brands-summary-v1.html).
       operationId: getDataHolderBrandsSummary
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: "The industry the participant is retrieving data for (Banking,\
+          \ etc.)"
         explode: false
         in: path
         name: industry
@@ -195,14 +195,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -210,11 +210,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -289,14 +289,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -304,11 +304,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -334,7 +334,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      - description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
         explode: false
         in: header
         name: Authorization
@@ -352,8 +352,8 @@ paths:
           description: Successful response
           headers:
             x-v:
-              description: The [payload version](#response-headers) that the endpoint
-                has responded with.
+              description: "The [payload version](#response-headers) that the endpoint\
+                \ has responded with."
               explode: false
               schema:
                 default: "1"
@@ -369,7 +369,7 @@ paths:
           description: Invalid Bearer Token
           headers:
             WWW-Authenticate:
-              description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+              description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
               explode: false
               schema:
                 type: string
@@ -416,8 +416,8 @@ paths:
         Obsolete versions: [v1](includes/obsolete/get-data-holder-statuses-v1.html).
       operationId: getDataHolderStatuses
       parameters:
-      - description: The industry the participant is retrieving data for (Banking,
-          etc.)
+      - description: "The industry the participant is retrieving data for (Banking,\
+          \ etc.)"
         explode: false
         in: path
         name: industry
@@ -425,14 +425,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumV2'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -440,11 +440,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -513,14 +513,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -528,11 +528,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -601,14 +601,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -616,11 +616,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -689,14 +689,14 @@ paths:
         schema:
           $ref: '#/components/schemas/IndustryEnumRecipients'
         style: simple
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint **MUST** respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -704,11 +704,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint **MUST** respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint **MUST** respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -764,8 +764,8 @@ paths:
 components:
   headers:
     XV:
-      description: The [payload version](#response-headers) that the endpoint has
-        responded with.
+      description: "The [payload version](#response-headers) that the endpoint has\
+        \ responded with."
       explode: false
       required: true
       schema:
@@ -780,7 +780,7 @@ components:
       x-cds-type: ASCIIString
   parameters:
     HeaderAuthorization:
-      description: An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**.
+      description: "An Authorisation Token as per **[[RFC6750]](#nref-RFC6750)**."
       explode: false
       in: header
       name: Authorization
@@ -790,14 +790,14 @@ components:
       style: simple
       x-cds-type: ExternalRef
     HeaderXV:
-      description: Version of the API endpoint requested by the client. Must be set
-        to a positive integer. The endpoint should respond with the highest supported
-        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
-        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-        header should be treated as absent. If all versions requested are not supported
-        then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP
-        Headers](#request-headers).
+      description: "Version of the API endpoint requested by the client. Must be set\
+        \ to a positive integer. The endpoint should respond with the highest supported\
+        \ version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+        \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+        \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+        \ header should be treated as absent. If all versions requested are not supported\
+        \ then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP\
+        \ Headers](#request-headers)."
       explode: false
       in: header
       name: x-v
@@ -806,11 +806,11 @@ components:
         type: string
       style: simple
     HeaderXMinV:
-      description: Minimum version of the API endpoint requested by the client. Must
-        be set to a positive integer if provided. The endpoint should respond with
-        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-        If all versions requested are not supported then the endpoint **MUST** respond
-        with a `406 Not Acceptable`.
+      description: "Minimum version of the API endpoint requested by the client. Must\
+        \ be set to a positive integer if provided. The endpoint should respond with\
+        \ the highest supported version between [_x-min-v_](#request-headers) and\
+        \ [_x-v_](#request-headers). If all versions requested are not supported then\
+        \ the endpoint **MUST** respond with a `406 Not Acceptable`."
       explode: false
       in: header
       name: x-min-v
@@ -819,7 +819,8 @@ components:
         type: string
       style: simple
     PathIndustry:
-      description: The industry the participant is retrieving data for (Banking, etc.)
+      description: "The industry the participant is retrieving data for (Banking,\
+        \ etc.)"
       explode: false
       in: path
       name: industry
@@ -927,8 +928,8 @@ components:
       description: Successful response
       headers:
         x-v:
-          description: The [payload version](#response-headers) that the endpoint
-            has responded with.
+          description: "The [payload version](#response-headers) that the endpoint\
+            \ has responded with."
           explode: false
           schema:
             default: "1"
@@ -994,7 +995,7 @@ components:
       description: Invalid Bearer Token
       headers:
         WWW-Authenticate:
-          description: The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**.
+          description: "The Response Header Field as per **[[RFC6750]](#nref-RFC6750)**."
           explode: false
           schema:
             type: string
@@ -1048,10 +1049,10 @@ components:
           type: string
           x-cds-type: URIString
         jwks_uri:
-          description: URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)**
-            document. This contains the signing key(s) used to validate access tokens
-            issued from the CDR Register. Note that this differs from the JWKS endpoint
-            used to validate SSAs and CDR Register client authentication.
+          description: "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)**\
+            \ document. This contains the signing key(s) used to validate access tokens\
+            \ issued from the CDR Register. Note that this differs from the JWKS endpoint\
+            \ used to validate SSAs and CDR Register client authentication."
           type: string
           x-cds-type: URIString
         token_endpoint:
@@ -1065,31 +1066,31 @@ components:
             type: string
           type: array
         id_token_signing_alg_values_supported:
-          description: JSON array containing a list of the JWS signing algorithms
-            (alg values) supported by the CDR Register for the ID Token to encode
-            the Claims in a JWT. Given the CDR Register does not issue ID tokens,
-            this field can be safely ignored.
+          description: "JSON array containing a list of the JWS signing algorithms\
+            \ (alg values) supported by the CDR Register for the ID Token to encode\
+            \ the Claims in a JWT. Given the CDR Register does not issue ID tokens,\
+            \ this field can be safely ignored."
           items:
             type: string
           type: array
         subject_types_supported:
-          description: JSON array containing a list of the Subject Identifier types
-            that the CDR Register supports. Given the CDR Register does not issue
-            ID tokens, this field can be safely ignored.
+          description: "JSON array containing a list of the Subject Identifier types\
+            \ that the CDR Register supports. Given the CDR Register does not issue\
+            \ ID tokens, this field can be safely ignored."
           items:
             type: string
           type: array
         code_challenge_methods_supported:
-          description: JSON array containing a list of Proof Key for Code Exchange
-            (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported
-            by this authorization server. Given the CDR Register does not support
-            PKCE, this field can be safely ignored.
+          description: "JSON array containing a list of Proof Key for Code Exchange\
+            \ (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported\
+            \ by this authorization server. Given the CDR Register does not support\
+            \ PKCE, this field can be safely ignored."
           items:
             type: string
           type: array
         scopes_supported:
-          description: JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)**
-            scope values that the CDR Register supports.
+          description: "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)**\
+            \ scope values that the CDR Register supports."
           items:
             type: string
           type: array
@@ -1116,10 +1117,10 @@ components:
             certificate bound access tokens.
           type: boolean
         token_endpoint_auth_signing_alg_values_supported:
-          description: JSON array containing a list of the JWS signing algorithms
-            (_alg_ values) supported by the token endpoint for the signature on the
-            JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token
-            endpoint for the `private_key_jwt` authentication method.
+          description: "JSON array containing a list of the JWS signing algorithms\
+            \ (_alg_ values) supported by the token endpoint for the signature on\
+            \ the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the\
+            \ token endpoint for the `private_key_jwt` authentication method."
           items:
             type: string
           type: array
@@ -1149,7 +1150,7 @@ components:
           - key_ops
           - key_ops
           alg: alg
-          n: "n"
+          "n": "n"
         - kty: kty
           e: e
           kid: kid
@@ -1157,7 +1158,7 @@ components:
           - key_ops
           - key_ops
           alg: alg
-          n: "n"
+          "n": "n"
       properties:
         keys:
           description: The value of the _keys_ parameter is an array of JWK values.
@@ -1177,7 +1178,7 @@ components:
         - key_ops
         - key_ops
         alg: alg
-        n: "n"
+        "n": "n"
       properties:
         alg:
           description: The _alg_ (algorithm) parameter identifies the algorithm intended
@@ -1206,7 +1207,7 @@ components:
             algorithm family used with the key.
           type: string
           x-cds-type: ExternalRef
-        n:
+        "n":
           description: The _n_ RSA public modulus parameter.
           type: string
           x-cds-type: ExternalRef
@@ -1442,7 +1443,7 @@ components:
           interimId: interimId
           acn: acn
           productBaseUri: productBaseUri
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -1507,9 +1508,9 @@ components:
           type: string
           x-cds-type: URIString
         productBaseUri:
-          description: Base URI for the Data Holder's Consumer Data Standard Product
-            Reference Data (PRD) endpoints. If `null` or not present, indicates that
-            PRD endpoints are not available.
+          description: "Base URI for the Data Holder's Consumer Data Standard Product\
+            \ Reference Data (PRD) endpoints. If `null` or not present, indicates\
+            \ that PRD endpoints are not available."
           maxLength: 1000
           type: string
           x-cds-type: URIString
@@ -1575,7 +1576,7 @@ components:
           status: ACTIVE
         - legalEntityId: legalEntityId
           status: ACTIVE
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -1621,7 +1622,7 @@ components:
           status: ACTIVE
         - softwareProductId: softwareProductId
           status: ACTIVE
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -1667,7 +1668,7 @@ components:
           status: ACTIVE
         - legalEntityId: legalEntityId
           status: ACTIVE
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -1788,7 +1789,7 @@ components:
           logoUri: logoUri
           accreditationNumber: accreditationNumber
           status: ACTIVE
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -1992,8 +1993,8 @@ components:
       - status
       type: object
     LegalEntityDetail:
-      description: The data that is common to all organisations, regardless of the
-        type (e.g., company, trust, partnership, government).
+      description: "The data that is common to all organisations, regardless of the\
+        \ type (e.g., company, trust, partnership, government)."
       example:
         arbn: arbn
         anzsicDivision: anzsicDivision
@@ -2049,7 +2050,7 @@ components:
           maxLength: 9
           type: string
         anzsicDivision:
-          description: ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**.
+          description: "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**."
           maxLength: 100
           type: string
           x-cds-type: ExternalRef
@@ -2086,11 +2087,11 @@ components:
         productBaseUri: productBaseUri
       properties:
         version:
-          description: The major version of the high level standards. This is not
-            the version of the endpoint or the payload being requested but the version
-            of the overall standards being applied. This version number will be "`v`"
-            followed by the major version of the standards as a positive integer (e.g.,
-            `v1`, `v12` or `v76`).
+          description: "The major version of the high level standards. This is not\
+            \ the version of the endpoint or the payload being requested but the version\
+            \ of the overall standards being applied. This version number will be\
+            \ \"`v`\" followed by the major version of the standards as a positive\
+            \ integer (e.g., `v1`, `v12` or `v76`)."
           type: string
         publicBaseUri:
           description: Base URI for the Data Holder's Consumer Data Standard public
@@ -2099,9 +2100,9 @@ components:
           type: string
           x-cds-type: URIString
         productBaseUri:
-          description: Base URI for the Data Holder's Consumer Data Standard Product
-            Reference Data (PRD) endpoints. If `null` or not present, indicates that
-            PRD endpoints are not available.
+          description: "Base URI for the Data Holder's Consumer Data Standard Product\
+            \ Reference Data (PRD) endpoints. If `null` or not present, indicates\
+            \ that PRD endpoints are not available."
           maxLength: 1000
           type: string
           x-cds-type: URIString
@@ -2235,16 +2236,16 @@ components:
     ErrorV2:
       properties:
         code:
-          description: The code of the error encountered. Where the error is specific
-            to the respondent, an application-specific error code, expressed as a
-            string value. If the error is application-specific, the URN code that
-            the specific error extends must be provided in the _meta_ object. Otherwise,
-            the value is the error code URN.
+          description: "The code of the error encountered. Where the error is specific\
+            \ to the respondent, an application-specific error code, expressed as\
+            \ a string value. If the error is application-specific, the URN code that\
+            \ the specific error extends must be provided in the _meta_ object. Otherwise,\
+            \ the value is the error code URN."
           type: string
         title:
-          description: A short, human-readable summary of the problem that **MUST
-            NOT** change from occurrence to occurrence of the problem represented
-            by the error code.
+          description: "A short, human-readable summary of the problem that **MUST\
+            \ NOT** change from occurrence to occurrence of the problem represented\
+            \ by the error code."
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
