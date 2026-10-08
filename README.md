@@ -12,8 +12,8 @@ These standards are maintained by the Data Standards Body (DSB), with the Data S
 > This Docker build uses legacy software versions, including **Ubuntu 20.04 and Ruby 2.6.3**, and dependencies required to build the documentation. It is provided for **testing and development purposes only** and is **not suitable for production use**.
 
 ```bash
-# Build the Docker image
-docker build -t slate-docs .
+# Build the Docker image (BUILD_MODE is 'dev' (default) or 'prod')
+docker build --build-arg BUILD_MODE=dev -t slate-docs .
 
 # Run the Docker container
 docker run --rm -p 80:80 slate-docs
@@ -25,13 +25,23 @@ Open a browser and navigate to:
 
 ### Extract Generated Documentation
 
-The documentation is generated inside the Docker image. To copy the generated files back to the local machine, create a temporary container from the image and copy the files out:
+The documentation is generated inside the Docker build. To write the generated files into this repository, export them with BuildKit:
 
 ```bash
-docker create --name slate-docs-extract slate-docs
-docker cp slate-docs-extract:/opt/standards/docs-dev/. <destination-dir>
+docker build --target export --build-arg BUILD_MODE=dev --output type=local,dest=. .
 ```
 
+* `BUILD_MODE=dev` writes `docs-dev/`; `BUILD_MODE=prod` writes `docs/`.
+* Existing files are overwritten; files removed from the documentation are not deleted.
+
+`--output` is not supported by Podman in remote mode (for example Windows or macOS with `podman machine`). Build the export image and copy the files out instead; use `docker` in place of `podman` if preferred:
+
+```bash
+podman build --target export --build-arg BUILD_MODE=dev -t slate-docs-export .
+podman create --name slate-docs-export slate-docs-export true
+podman cp slate-docs-export:/. .
+podman rm slate-docs-export
+```
 ## Additional information
 
 * [Data Standards Body website](https://dsb.gov.au/) - Contains additional information on the CDR and the DSB as well as notifications of the latest developments.

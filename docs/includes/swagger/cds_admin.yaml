@@ -10,7 +10,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: CDR Admin API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - description: MTLS
   url: https://mtls.dh.example.com/cds-au/v1
@@ -25,14 +25,14 @@ paths:
         Data Recipients has been made and should be obtained.
       operationId: metadataUpdate
       parameters:
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint should respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint should respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -40,11 +40,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint should respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint should respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -68,16 +68,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+          description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+            error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400\
+            \ - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid\
+            \ Version](#error-400-header-invalid-version)</li></ul>"
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
-            - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+            error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
       summary: Metadata Update
       tags:
       - Data Holder Admin
@@ -104,10 +105,10 @@ paths:
         If the Data Holder supports `private_key_jwt` client authentication they **MUST** validate the scope.
       operationId: getMetrics
       parameters:
-      - description: The period of metrics to be requested. Values can be `CURRENT`
-          (meaning metrics for current period, dependent on the metric type), `HISTORIC`
-          (meaning metrics for previous period, depending on the metric type) or `ALL`.
-          If absent the default is `ALL`.
+      - description: "The period of metrics to be requested. Values can be `CURRENT`\
+          \ (meaning metrics for current period, dependent on the metric type), `HISTORIC`\
+          \ (meaning metrics for previous period, depending on the metric type) or\
+          \ `ALL`. If absent the default is `ALL`."
         explode: true
         in: query
         name: period
@@ -120,14 +121,14 @@ paths:
           - ALL
           type: string
         style: form
-      - description: Version of the API endpoint requested by the client. Must be
-          set to a positive integer. The endpoint should respond with the highest
-          supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-          If the value of [_x-min-v_](#request-headers) is equal to or higher than
-          the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-          header should be treated as absent. If all versions requested are not supported
-          then the endpoint should respond with a `406 Not Acceptable`. See [HTTP
-          Headers](#request-headers).
+      - description: "Version of the API endpoint requested by the client. Must be\
+          \ set to a positive integer. The endpoint should respond with the highest\
+          \ supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+          \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+          \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+          \ header should be treated as absent. If all versions requested are not\
+          \ supported then the endpoint should respond with a `406 Not Acceptable`.\
+          \ See [HTTP Headers](#request-headers)."
         explode: false
         in: header
         name: x-v
@@ -135,11 +136,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Minimum version of the API endpoint requested by the client.
-          Must be set to a positive integer if provided. The endpoint should respond
-          with the highest supported version between [_x-min-v_](#request-headers)
-          and [_x-v_](#request-headers). If all versions requested are not supported
-          then the endpoint should respond with a `406 Not Acceptable`.
+      - description: "Minimum version of the API endpoint requested by the client.\
+          \ Must be set to a positive integer if provided. The endpoint should respond\
+          \ with the highest supported version between [_x-min-v_](#request-headers)\
+          \ and [_x-v_](#request-headers). If all versions requested are not supported\
+          \ then the endpoint should respond with a `406 Not Acceptable`."
         explode: false
         in: header
         name: x-min-v
@@ -162,16 +163,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
-            - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-            Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+          description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+            error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400\
+            \ - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid\
+            \ Version](#error-400-header-invalid-version)</li></ul>"
         "406":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseErrorListV2'
-          description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
-            - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+          description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+            error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
       summary: Get Metrics
       tags:
       - Data Holder Admin
@@ -182,8 +184,8 @@ paths:
 components:
   headers:
     XV:
-      description: The [payload version](#response-headers) that the endpoint has
-        responded with.
+      description: "The [payload version](#response-headers) that the endpoint has\
+        \ responded with."
       explode: false
       required: true
       schema:
@@ -191,10 +193,10 @@ components:
       style: simple
   parameters:
     QueryPeriod:
-      description: The period of metrics to be requested. Values can be `CURRENT`
-        (meaning metrics for current period, dependent on the metric type), `HISTORIC`
-        (meaning metrics for previous period, depending on the metric type) or `ALL`.
-        If absent the default is `ALL`.
+      description: "The period of metrics to be requested. Values can be `CURRENT`\
+        \ (meaning metrics for current period, dependent on the metric type), `HISTORIC`\
+        \ (meaning metrics for previous period, depending on the metric type) or `ALL`.\
+        \ If absent the default is `ALL`."
       explode: true
       in: query
       name: period
@@ -208,13 +210,14 @@ components:
         type: string
       style: form
     HeaderXV:
-      description: Version of the API endpoint requested by the client. Must be set
-        to a positive integer. The endpoint should respond with the highest supported
-        version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-        If the value of [_x-min-v_](#request-headers) is equal to or higher than the
-        value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)
-        header should be treated as absent. If all versions requested are not supported
-        then the endpoint should respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).
+      description: "Version of the API endpoint requested by the client. Must be set\
+        \ to a positive integer. The endpoint should respond with the highest supported\
+        \ version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).\
+        \ If the value of [_x-min-v_](#request-headers) is equal to or higher than\
+        \ the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers)\
+        \ header should be treated as absent. If all versions requested are not supported\
+        \ then the endpoint should respond with a `406 Not Acceptable`. See [HTTP\
+        \ Headers](#request-headers)."
       explode: false
       in: header
       name: x-v
@@ -223,11 +226,11 @@ components:
         type: string
       style: simple
     HeaderXMinV:
-      description: Minimum version of the API endpoint requested by the client. Must
-        be set to a positive integer if provided. The endpoint should respond with
-        the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers).
-        If all versions requested are not supported then the endpoint should respond
-        with a `406 Not Acceptable`.
+      description: "Minimum version of the API endpoint requested by the client. Must\
+        \ be set to a positive integer if provided. The endpoint should respond with\
+        \ the highest supported version between [_x-min-v_](#request-headers) and\
+        \ [_x-v_](#request-headers). If all versions requested are not supported then\
+        \ the endpoint should respond with a `406 Not Acceptable`."
       explode: false
       in: header
       name: x-min-v
@@ -256,16 +259,17 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
-      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
-        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+        error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400\
+        \ - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid\
+        \ Version](#error-400-header-invalid-version)</li></ul>"
     MetadataUpdate406:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
-      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
-        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+        error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
     GetMetrics200:
       content:
         application/json:
@@ -280,22 +284,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
-      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[400
-        - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required
-        Field](#error-400-field-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li></ul>
+      description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+        error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400\
+        \ - Missing Required Field](#error-400-field-missing)</li><li>[400 - Invalid\
+        \ Version](#error-400-header-invalid-version)</li></ul>"
     GetMetrics406:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ResponseErrorListV2'
-      description: The following error codes **MUST** be supported:<br/><ul class="error-code-list"><li>[406
-        - Unsupported Version](#error-406-header-unsupported-version)</li></ul>
+      description: "The following error codes **MUST** be supported:<br/><ul class=\"\
+        error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>"
   schemas:
     RequestMetaDataUpdateV1:
       example:
         data:
           action: REFRESH
-        meta: '{}'
+        meta: "{}"
       properties:
         data:
           $ref: '#/components/schemas/RequestMetaDataUpdateV1_data'
@@ -630,23 +635,23 @@ components:
           errors:
             authenticated:
               previousDays:
-              - key: 5
-              - key: 5
+              - "500": 5
+              - "500": 5
               currentDay:
-                key: 7
+                "500": 7
             unauthenticated:
               previousDays:
-              - key: 3
-              - key: 3
+              - "500": 3
+              - "500": 3
               currentDay:
-                key: 3
+                "500": 3
             aggregate:
               previousDays:
               - 7
               - 7
               currentDay: 8
           customerCount: 4
-        meta: '{}'
+        meta: "{}"
         links:
           self: self
       properties:
@@ -691,8 +696,8 @@ components:
       - unauthenticated
       type: object
     PerformanceMetricsV3:
-      description: Percentage of calls within the performance thresholds in each performance
-        tier, over time.
+      description: "Percentage of calls within the performance thresholds in each\
+        \ performance tier, over time."
       example:
         unattended:
           previousDays:
@@ -804,7 +809,7 @@ components:
       type: string
       x-cds-type: RateString
     InvocationMetricsV3:
-      description: Number of API calls in each performance tier, over time.
+      description: "Number of API calls in each performance tier, over time."
       example:
         unattended:
           previousDays:
@@ -867,8 +872,8 @@ components:
       - secondary
       - largeSecondary
     AverageResponseMetricsV2:
-      description: Average response time in seconds, at millisecond resolution, within
-        each performance tier.
+      description: "Average response time in seconds, at millisecond resolution, within\
+        \ each performance tier."
       example:
         unattended:
           previousDays:
@@ -943,8 +948,8 @@ components:
       - secondary
       - largeSecondary
     SessionCountMetricsV2:
-      description: Session counts, over time. Note that a session is defined as the
-        provisioning of an Access Token.
+      description: "Session counts, over time. Note that a session is defined as the\
+        \ provisioning of an Access Token."
       example:
         previousDays:
         - 2
@@ -967,7 +972,7 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2:
-      description: Average transactions per second, over time.
+      description: "Average transactions per second, over time."
       example:
         authenticated:
           previousDays:
@@ -997,7 +1002,7 @@ components:
       - unauthenticated
       type: object
     PeakTPSMetricsV2:
-      description: Peak transactions per second, over time.
+      description: "Peak transactions per second, over time."
       example:
         authenticated:
           previousDays:
@@ -1027,20 +1032,20 @@ components:
       - unauthenticated
       type: object
     ErrorMetricsV2:
-      description: Number of calls resulting in error, over time.
+      description: "Number of calls resulting in error, over time."
       example:
         authenticated:
           previousDays:
-          - key: 5
-          - key: 5
+          - "500": 5
+          - "500": 5
           currentDay:
-            key: 7
+            "500": 7
         unauthenticated:
           previousDays:
-          - key: 3
-          - key: 3
+          - "500": 3
+          - "500": 3
           currentDay:
-            key: 3
+            "500": 3
         aggregate:
           previousDays:
           - 7
@@ -1059,7 +1064,7 @@ components:
       - unauthenticated
       type: object
     RejectionMetricsV3:
-      description: Number of calls rejected due to traffic thresholds, over time.
+      description: "Number of calls rejected due to traffic thresholds, over time."
       example:
         authenticated:
           previousDays:
@@ -1244,16 +1249,16 @@ components:
     ErrorV2:
       properties:
         code:
-          description: The code of the error encountered. Where the error is specific
-            to the respondent, an application-specific error code, expressed as a
-            string value. If the error is application-specific, the URN code that
-            the specific error extends must be provided in the _meta_ object. Otherwise,
-            the value is the error code URN.
+          description: "The code of the error encountered. Where the error is specific\
+            \ to the respondent, an application-specific error code, expressed as\
+            \ a string value. If the error is application-specific, the URN code that\
+            \ the specific error extends must be provided in the _meta_ object. Otherwise,\
+            \ the value is the error code URN."
           type: string
         title:
-          description: A short, human-readable summary of the problem that **MUST
-            NOT** change from occurrence to occurrence of the problem represented
-            by the error code.
+          description: "A short, human-readable summary of the problem that **MUST\
+            \ NOT** change from occurrence to occurrence of the problem represented\
+            \ by the error code."
           type: string
         detail:
           description: A human-readable explanation specific to this occurrence of
@@ -1608,16 +1613,16 @@ components:
         errors:
           authenticated:
             previousDays:
-            - key: 5
-            - key: 5
+            - "500": 5
+            - "500": 5
             currentDay:
-              key: 7
+              "500": 7
           unauthenticated:
             previousDays:
-            - key: 3
-            - key: 3
+            - "500": 3
+            - "500": 3
             currentDay:
-              key: 3
+              "500": 3
           aggregate:
             previousDays:
             - 7
@@ -2454,7 +2459,8 @@ components:
       - secondary
       type: object
     AverageTPSMetricsV2_aggregate:
-      description: Aggregate average transactions per second, over time, for all endpoints.
+      description: "Aggregate average transactions per second, over time, for all\
+        \ endpoints."
       example:
         previousDays:
         - 6.878052220127876
@@ -2476,8 +2482,8 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2_unauthenticated:
-      description: Average transactions per second, over time, for unauthenticated
-        endpoints.
+      description: "Average transactions per second, over time, for unauthenticated\
+        \ endpoints."
       example:
         previousDays:
         - 6.704019297950036
@@ -2499,7 +2505,8 @@ components:
       - currentDay
       - previousDays
     AverageTPSMetricsV2_authenticated:
-      description: Average transactions per second, over time, for authenticated endpoints.
+      description: "Average transactions per second, over time, for authenticated\
+        \ endpoints."
       example:
         previousDays:
         - 3.0937452626664474
@@ -2521,7 +2528,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_aggregate:
-      description: Aggregate peak transactions per second, over time, for all endpoints.
+      description: "Aggregate peak transactions per second, over time, for all endpoints."
       example:
         previousDays:
         - 0.8851374739011653
@@ -2543,7 +2550,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_unauthenticated:
-      description: Peak transactions per second, over time, for unauthenticated endpoints.
+      description: "Peak transactions per second, over time, for unauthenticated endpoints."
       example:
         previousDays:
         - 6.519180951018382
@@ -2565,7 +2572,7 @@ components:
       - currentDay
       - previousDays
     PeakTPSMetricsV2_authenticated:
-      description: Peak transactions per second, over time, for authenticated endpoints.
+      description: "Peak transactions per second, over time, for authenticated endpoints."
       example:
         previousDays:
         - 4.652396432933246
@@ -2587,8 +2594,8 @@ components:
       - currentDay
       - previousDays
     ErrorMetricsV2_aggregate:
-      description: Aggregate number of calls resulting in error due to server execution,
-        over time, for all endpoints.
+      description: "Aggregate number of calls resulting in error due to server execution,\
+        \ over time, for all endpoints."
       example:
         previousDays:
         - 7
@@ -2610,129 +2617,143 @@ components:
       x-conditional:
       - currentDay
       - previousDays
+    ErrorMetricsV2_unauthenticated_currentDay:
+      additionalProperties:
+        description: "This is a placeholder field to be substituted with each respective\
+          \ HTTP error code in the 4xx and 5xx range recorded by the Data Holder.\
+          \ It is represented by _property1_ and _property2_ in the _Non-normative\
+          \ Examples_ section. Note that the property name **MUST** be the three-digit\
+          \ HTTP error code as per the adjacent _500_ example. All possible property\
+          \ names have not been defined as the range is expected to vary across participants.\
+          \ Examples would include, but are not limited to: _400, 404, 405, 406, 415,\
+          \ 422, 429, 500, 503, 504_."
+        type: integer
+        x-cds-type: NaturalNumber
+      description: "Error counts, by HTTP error code, for current day."
+      example:
+        "500": 3
+      properties:
+        "500":
+          description: "Reflecting the description provided in the adjacent _additionalProperties_\
+            \ field, this is an example demonstrating the structure for reporting\
+            \ the number of calls resulting in HTTP error code `500`. Each error code\
+            \ recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided\
+            \ in this format against the respective property name."
+          type: integer
+          x-cds-type: NaturalNumber
+      type: object
+    ErrorMetricsV2_unauthenticated_previousDays_inner:
+      additionalProperties:
+        description: "This is a placeholder field to be substituted with each respective\
+          \ HTTP error code in the 4xx and 5xx range recorded by the Data Holder.\
+          \ It is represented by _property1_ and _property2_ in the _Non-normative\
+          \ Examples_ section. Note that the property name **MUST** be the three-digit\
+          \ HTTP error code as per the adjacent _500_ example. All possible property\
+          \ names have not been defined as the range is expected to vary across participants.\
+          \ Examples would include, but are not limited to: _400, 404, 405, 406, 415,\
+          \ 422, 429, 500, 503, 504_."
+        type: integer
+        x-cds-type: NaturalNumber
+      example:
+        "500": 3
+      properties:
+        "500":
+          description: "Reflecting the description provided in the adjacent _additionalProperties_\
+            \ field, this is an example demonstrating the structure for reporting\
+            \ the number of calls resulting in HTTP error code `500`. Each error code\
+            \ recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided\
+            \ in this format against the respective property name."
+          type: integer
+          x-cds-type: NaturalNumber
+      type: object
     ErrorMetricsV2_unauthenticated:
       description: Number of calls resulting in error for unauthenticated endpoints.
       example:
         previousDays:
-        - key: 3
-        - key: 3
+        - "500": 3
+        - "500": 3
         currentDay:
-          key: 3
+          "500": 3
       properties:
         currentDay:
-          additionalProperties:
-            description: 'This is a placeholder field to be substituted with each
-              respective HTTP error code in the 4xx and 5xx range recorded by the
-              Data Holder. It is represented by _property1_ and _property2_ in the
-              _Non-normative Examples_ section. Note that the property name **MUST**
-              be the three-digit HTTP error code as per the adjacent _500_ example.
-              All possible property names have not been defined as the range is expected
-              to vary across participants. Examples would include, but are not limited
-              to: _400, 404, 405, 406, 415, 422, 429, 500, 503, 504_.'
-            type: integer
-            x-cds-type: NaturalNumber
-          description: Error counts, by HTTP error code, for current day.
-          properties:
-            "500":
-              description: Reflecting the description provided in the adjacent _additionalProperties_
-                field, this is an example demonstrating the structure for reporting
-                the number of calls resulting in HTTP error code `500`. Each error
-                code recorded by the Data Holder in the 4xx and 5xx range **MUST**
-                be provided in this format against the respective property name.
-              type: integer
-              x-cds-type: NaturalNumber
-          type: object
+          $ref: '#/components/schemas/ErrorMetricsV2_unauthenticated_currentDay'
         previousDays:
-          description: Error counts, by HTTP error code, for previous days. The first
-            element indicates yesterday and so on. A maximum of seven entries is required
-            if available.
+          description: "Error counts, by HTTP error code, for previous days. The first\
+            \ element indicates yesterday and so on. A maximum of seven entries is\
+            \ required if available."
           items:
-            additionalProperties:
-              description: 'This is a placeholder field to be substituted with each
-                respective HTTP error code in the 4xx and 5xx range recorded by the
-                Data Holder. It is represented by _property1_ and _property2_ in the
-                _Non-normative Examples_ section. Note that the property name **MUST**
-                be the three-digit HTTP error code as per the adjacent _500_ example.
-                All possible property names have not been defined as the range is
-                expected to vary across participants. Examples would include, but
-                are not limited to: _400, 404, 405, 406, 415, 422, 429, 500, 503,
-                504_.'
-              type: integer
-              x-cds-type: NaturalNumber
-            properties:
-              "500":
-                description: Reflecting the description provided in the adjacent _additionalProperties_
-                  field, this is an example demonstrating the structure for reporting
-                  the number of calls resulting in HTTP error code `500`. Each error
-                  code recorded by the Data Holder in the 4xx and 5xx range **MUST**
-                  be provided in this format against the respective property name.
-                type: integer
-                x-cds-type: NaturalNumber
-            type: object
+            $ref: '#/components/schemas/ErrorMetricsV2_unauthenticated_previousDays_inner'
           type: array
       type: object
       x-conditional:
       - currentDay
       - previousDays
+    ErrorMetricsV2_authenticated_currentDay:
+      additionalProperties:
+        description: "This is a placeholder field to be substituted with each respective\
+          \ HTTP error code in the 4xx and 5xx range recorded by the Data Holder.\
+          \ It is represented by _property1_ and _property2_ in the _Non-normative\
+          \ Examples_ section. Note that the property name **MUST** be the three-digit\
+          \ HTTP error code as per the adjacent _500_ example. All possible property\
+          \ names have not been defined as the range is expected to vary across participants.\
+          \ Examples would include, but are not limited to: _400, 401, 403, 404, 405,\
+          \ 406, 415, 422, 429, 500, 503, 504_."
+        type: integer
+        x-cds-type: NaturalNumber
+      description: "Error counts, by HTTP error code, for current day."
+      example:
+        "500": 7
+      properties:
+        "500":
+          description: "Reflecting the description provided in the adjacent _additionalProperties_\
+            \ field, this is an example demonstrating the structure for reporting\
+            \ the number of calls resulting in HTTP error code `500`. Each error code\
+            \ recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided\
+            \ in this format against the respective property name."
+          type: integer
+          x-cds-type: NaturalNumber
+      type: object
+    ErrorMetricsV2_authenticated_previousDays_inner:
+      additionalProperties:
+        description: "This is a placeholder field to be substituted with each respective\
+          \ HTTP error code in the 4xx and 5xx range recorded by the Data Holder.\
+          \ It is represented by _property1_ and _property2_ in the _Non-normative\
+          \ Examples_ section. Note that the property name **MUST** be the three-digit\
+          \ HTTP error code as per the adjacent _500_ example. All possible property\
+          \ names have not been defined as the range is expected to vary across participants.\
+          \ Examples would include, but are not limited to: _400, 401, 403, 404, 405,\
+          \ 406, 415, 422, 429, 500, 503, 504_."
+        type: integer
+        x-cds-type: NaturalNumber
+      example:
+        "500": 5
+      properties:
+        "500":
+          description: "Reflecting the description provided in the adjacent _additionalProperties_\
+            \ field, this is an example demonstrating the structure for reporting\
+            \ the number of calls resulting in HTTP error code `500`. Each error code\
+            \ recorded by the Data Holder in the 4xx and 5xx range **MUST** be provided\
+            \ in this format against the respective property name."
+          type: integer
+          x-cds-type: NaturalNumber
+      type: object
     ErrorMetricsV2_authenticated:
       description: Number of calls resulting in error for authenticated endpoints.
       example:
         previousDays:
-        - key: 5
-        - key: 5
+        - "500": 5
+        - "500": 5
         currentDay:
-          key: 7
+          "500": 7
       properties:
         currentDay:
-          additionalProperties:
-            description: 'This is a placeholder field to be substituted with each
-              respective HTTP error code in the 4xx and 5xx range recorded by the
-              Data Holder. It is represented by _property1_ and _property2_ in the
-              _Non-normative Examples_ section. Note that the property name **MUST**
-              be the three-digit HTTP error code as per the adjacent _500_ example.
-              All possible property names have not been defined as the range is expected
-              to vary across participants. Examples would include, but are not limited
-              to: _400, 401, 403, 404, 405, 406, 415, 422, 429, 500, 503, 504_.'
-            type: integer
-            x-cds-type: NaturalNumber
-          description: Error counts, by HTTP error code, for current day.
-          properties:
-            "500":
-              description: Reflecting the description provided in the adjacent _additionalProperties_
-                field, this is an example demonstrating the structure for reporting
-                the number of calls resulting in HTTP error code `500`. Each error
-                code recorded by the Data Holder in the 4xx and 5xx range **MUST**
-                be provided in this format against the respective property name.
-              type: integer
-              x-cds-type: NaturalNumber
-          type: object
+          $ref: '#/components/schemas/ErrorMetricsV2_authenticated_currentDay'
         previousDays:
-          description: Error counts, by HTTP error code, for previous days. The first
-            element indicates yesterday and so on. A maximum of seven entries is required
-            if available.
+          description: "Error counts, by HTTP error code, for previous days. The first\
+            \ element indicates yesterday and so on. A maximum of seven entries is\
+            \ required if available."
           items:
-            additionalProperties:
-              description: 'This is a placeholder field to be substituted with each
-                respective HTTP error code in the 4xx and 5xx range recorded by the
-                Data Holder. It is represented by _property1_ and _property2_ in the
-                _Non-normative Examples_ section. Note that the property name **MUST**
-                be the three-digit HTTP error code as per the adjacent _500_ example.
-                All possible property names have not been defined as the range is
-                expected to vary across participants. Examples would include, but
-                are not limited to: _400, 401, 403, 404, 405, 406, 415, 422, 429,
-                500, 503, 504_.'
-              type: integer
-              x-cds-type: NaturalNumber
-            properties:
-              "500":
-                description: Reflecting the description provided in the adjacent _additionalProperties_
-                  field, this is an example demonstrating the structure for reporting
-                  the number of calls resulting in HTTP error code `500`. Each error
-                  code recorded by the Data Holder in the 4xx and 5xx range **MUST**
-                  be provided in this format against the respective property name.
-                type: integer
-                x-cds-type: NaturalNumber
-            type: object
+            $ref: '#/components/schemas/ErrorMetricsV2_authenticated_previousDays_inner'
           type: array
       type: object
       x-conditional:
@@ -2787,8 +2808,8 @@ components:
       - currentDay
       - previousDays
     SecondaryHolderMetricsV2_errors:
-      description: Number of calls resulting in error due to server execution, over
-        time.
+      description: "Number of calls resulting in error due to server execution, over\
+        \ time."
       example:
         previousDays:
         - 7
@@ -2811,7 +2832,7 @@ components:
       - currentDay
       - previousDays
     SecondaryHolderMetricsV2_rejections:
-      description: Number of calls rejected due to traffic thresholds, over time.
+      description: "Number of calls rejected due to traffic thresholds, over time."
       example:
         previousDays:
         - 0
@@ -2905,7 +2926,7 @@ components:
       - onceOff
       - ongoing
       type: object
-    AuthorisationMetricsV2_newAuthorisationCount_previousDays:
+    AuthorisationMetricsV2_newAuthorisationCount_previousDays_inner:
       example:
         ongoing:
           nonIndividual: 6
@@ -2953,7 +2974,7 @@ components:
             indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            $ref: '#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays'
+            $ref: '#/components/schemas/AuthorisationMetricsV2_newAuthorisationCount_previousDays_inner'
           type: array
       type: object
       x-conditional:
@@ -2977,7 +2998,7 @@ components:
       - individual
       - nonIndividual
       type: object
-    AuthorisationMetricsV2_revokedAuthorisationCount_previousDays:
+    AuthorisationMetricsV2_revokedAuthorisationCount_previousDays_inner:
       example:
         nonIndividual: 0
         individual: 3
@@ -3013,7 +3034,7 @@ components:
             element indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            $ref: '#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays'
+            $ref: '#/components/schemas/AuthorisationMetricsV2_revokedAuthorisationCount_previousDays_inner'
           type: array
       type: object
       x-conditional:
@@ -3037,7 +3058,7 @@ components:
       - individual
       - nonIndividual
       type: object
-    AuthorisationMetricsV2_amendedAuthorisationCount_previousDays:
+    AuthorisationMetricsV2_amendedAuthorisationCount_previousDays_inner:
       example:
         nonIndividual: 6
         individual: 8
@@ -3073,7 +3094,7 @@ components:
             element indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            $ref: '#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays'
+            $ref: '#/components/schemas/AuthorisationMetricsV2_amendedAuthorisationCount_previousDays_inner'
           type: array
       type: object
       x-conditional:
@@ -3097,7 +3118,7 @@ components:
       - individual
       - nonIndividual
       type: object
-    AuthorisationMetricsV2_expiredAuthorisationCount_previousDays:
+    AuthorisationMetricsV2_expiredAuthorisationCount_previousDays_inner:
       example:
         nonIndividual: 1
         individual: 9
@@ -3133,7 +3154,7 @@ components:
             element indicates yesterday and so on. A maximum of seven entries is required
             if available.
           items:
-            $ref: '#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays'
+            $ref: '#/components/schemas/AuthorisationMetricsV2_expiredAuthorisationCount_previousDays_inner'
           type: array
       type: object
       x-conditional:
@@ -3298,9 +3319,9 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_abandonmentsByStage_failedTokenExchange:
-      description: The number of authorisations that completed the interactive flow
-        with the consumer authorising the consent, but the ADR failed to - or was
-        unable to - obtain a refresh or access token using the authorisation code.
+      description: "The number of authorisations that completed the interactive flow\
+        \ with the consumer authorising the consent, but the ADR failed to - or was\
+        \ unable to - obtain a refresh or access token using the authorisation code."
       example:
         previousDays:
         - 0
@@ -3325,10 +3346,10 @@ components:
       - currentDay
       - previousDays
     AuthorisationMetricsV2_abandonmentsByStage:
-      description: Customer abandonment count per stage of the consent flow. Note
-        that the aggregated abandonment count for all stages for a period should equal
-        the count in _abandonedConsentFlowCount_ for the same period (i.e. each abandoned
-        consent should assigned to one, and only one, stage).
+      description: "Customer abandonment count per stage of the consent flow. Note\
+        \ that the aggregated abandonment count for all stages for a period should\
+        \ equal the count in _abandonedConsentFlowCount_ for the same period (i.e.\
+        \ each abandoned consent should assigned to one, and only one, stage)."
       example:
         preAuthorisation:
           previousDays:

@@ -1,4 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 AS build
+
+# dev -> docs-dev, prod -> docs (mapping lives in build.sh)
+ARG BUILD_MODE=dev
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV RBENV_ROOT=/root/.rbenv
@@ -40,13 +43,13 @@ RUN apt-get update && apt-get install -y \
     nginx \
     xz-utils \
     ca-certificates \
- && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # ----------------------------------------------------
 # Install rbenv
 # ----------------------------------------------------
 RUN git clone --branch v1.3.2 --depth 1 https://github.com/rbenv/rbenv.git $RBENV_ROOT \
- && git clone --branch v20260716 --depth 1 https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
+    && git clone --branch v20260716 --depth 1 https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
 
 # ----------------------------------------------------
 # Install Ruby 2.6.3
@@ -65,9 +68,9 @@ RUN bash -lc "ruby -v && bundler -v"
 # OpenAPI Generator
 # ----------------------------------------------------
 RUN mkdir -p ${OPENAPI_DIR} \
- && wget -O ${OPENAPI_JAR} \
- https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_VERSION}/openapi-generator-cli-${OPENAPI_VERSION}.jar \
- && echo "9718ff7844e89462c75dcd9b20a35136f6db257bfe1b874db1e3002e99de4609  ${OPENAPI_JAR}" | sha256sum -c -
+    && wget -O ${OPENAPI_JAR} \
+    https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_VERSION}/openapi-generator-cli-${OPENAPI_VERSION}.jar \
+    && echo "9718ff7844e89462c75dcd9b20a35136f6db257bfe1b874db1e3002e99de4609  ${OPENAPI_JAR}" | sha256sum -c -
 
 # ----------------------------------------------------
 # Ruby compatibility gems
@@ -75,7 +78,7 @@ RUN mkdir -p ${OPENAPI_DIR} \
 RUN gem install ffi -v 1.15.5 --no-document
 
 RUN gem uninstall bundler -a -x || true \
- && gem install bundler -v 1.17.3 --no-document
+    && gem install bundler -v 1.17.3 --no-document
 
 # ----------------------------------------------------
 # Copy Gemfiles first for Docker layer caching
@@ -100,13 +103,27 @@ RUN npm install --prefix ./swagger-gen/widdershins-cdr
 # ----------------------------------------------------
 # Build documentation
 # ----------------------------------------------------
-RUN bash -euxo pipefail ./build.sh dev
+RUN case "${BUILD_MODE}" in \
+    dev)  OUT=docs-dev ;; \
+    prod) OUT=docs ;; \
+    *) echo "BUILD_MODE must be 'dev' or 'prod' (got '${BUILD_MODE}')" >&2; exit 1 ;; \
+    esac \
+    && bash -euxo pipefail ./build.sh "${BUILD_MODE}" \
+    && mkdir -p /opt/output \
+    && cp -R "/opt/standards/${OUT}" "/opt/output/${OUT}"
 
 # ----------------------------------------------------
-# Copy generated site to nginx
+# Export stage: docker build --target export --output type=local,dest=. .
 # ----------------------------------------------------
+FROM scratch AS export
+COPY --from=build /opt/output/ /
+
+# ----------------------------------------------------
+# Serve stage (default): copy generated site to nginx
+# ----------------------------------------------------
+FROM build AS serve
 RUN rm -rf /var/www/html/* \
- && cp -R /opt/standards/docs-dev/. /var/www/html/
+    && cp -R /opt/output/*/. /var/www/html/
 
 EXPOSE 80
 

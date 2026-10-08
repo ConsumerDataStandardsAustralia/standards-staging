@@ -1,0 +1,608 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CDR Data Standards - v1.37.0 Release Notes</title>
+    <link href="../../images/favicon.ico" rel="icon" type="image/ico" />
+
+    <script src="https://cdn.usefathom.com/script.js" data-spa="hash" data-site="GWAEHCUX" defer></script>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="no-code-layout includes includes_releasenotes includes_releasenotes_releasenotes" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <span class="site-title">
+        <a href="https://consumerdatastandardsaustralia.github.io/standards">CDR Data Standards</a>
+      </span>
+      <ul id="toc" class="toc-list-h1">
+          <li class="toc-child">
+            <a href="#v1-37-0-release-notes" class="toc-h1 toc-link" data-title="V1.37.0 Release Notes">V1.37.0 Release Notes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#changes-made" class="toc-h2 toc-link" data-title="Changes Made">Changes Made</a>
+                  </li>
+                  <li>
+                    <a href="#general-changes" class="toc-h2 toc-link" data-title="General Changes">General Changes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#high-level-standards" class="toc-h2 toc-link" data-title="High Level Standards">High Level Standards</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-schedule" class="toc-h2 toc-link" data-title="Authentication Schedule">Authentication Schedule</a>
+                  </li>
+                  <li>
+                    <a href="#consumer-experience" class="toc-h2 toc-link" data-title="Consumer Experience">Consumer Experience</a>
+                  </li>
+                  <li>
+                    <a href="#security-profile" class="toc-h2 toc-link" data-title="Security Profile">Security Profile</a>
+                  </li>
+                  <li>
+                    <a href="#dcr-apis" class="toc-h2 toc-link" data-title="DCR APIs">DCR APIs</a>
+                  </li>
+                  <li>
+                    <a href="#register-apis" class="toc-h2 toc-link" data-title="Register APIs">Register APIs</a>
+                  </li>
+                  <li>
+                    <a href="#authorisation-scopes" class="toc-h2 toc-link" data-title="Authorisation Scopes">Authorisation Scopes</a>
+                  </li>
+                  <li>
+                    <a href="#non-functional-requirements" class="toc-h2 toc-link" data-title="Non-functional Requirements">Non-functional Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#banking-apis" class="toc-h2 toc-link" data-title="Banking APIs">Banking APIs</a>
+                  </li>
+                  <li>
+                    <a href="#energy-apis" class="toc-h2 toc-link" data-title="Energy APIs">Energy APIs</a>
+                  </li>
+                  <li>
+                    <a href="#common-apis" class="toc-h2 toc-link" data-title="Common APIs">Common APIs</a>
+                  </li>
+                  <li>
+                    <a href="#admin-apis" class="toc-h2 toc-link" data-title="Admin APIs">Admin APIs</a>
+                  </li>
+                  <li>
+                    <a href="#shared-responsibility" class="toc-h2 toc-link" data-title="Shared Responsibility">Shared Responsibility</a>
+                  </li>
+                  <li>
+                    <a href="#energy-secondary-dh-apis" class="toc-h2 toc-link" data-title="Energy Secondary DH APIs">Energy Secondary DH APIs</a>
+                  </li>
+                  <li>
+                    <a href="#additional-standards" class="toc-h2 toc-link" data-title="Additional Standards">Additional Standards</a>
+                  </li>
+                  <li>
+                    <a href="#known-issues" class="toc-h2 toc-link" data-title="Known Issues">Known Issues</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='../../'>CDR Data Standards</a></li>
+          <li>
+            <a href='https://dsb.gov.au/' style="display:block;margin-top:15px">
+              <img src="../../images/DSB_Logomark_Cerulean.svg" width="65px" alt="Data Standards Body Home">
+            </a>
+          </li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        <h1 id='v1-37-0-release-notes'>V1.37.0 Release Notes</h1>
+<p>Release notes for version <strong>1.37.0</strong> of the <a href="../../">CDR Data Standards</a>.</p>
+<h2 id='changes-made'>Changes Made</h2><h3 id='change-requests'>Change Requests</h3>
+<p>This release addresses the following minor defects raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues">Standards Staging</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/493">Standards Staging #493 - Standards staging fixes</a></li>
+</ul>
+
+<p>This release addresses the following change requests raised on <a href="https://github.com/ConsumerDataStandardsAustralia/standards-maintenance/issues">Standards Maintenance</a>:</p>
+
+<ul>
+<li>None</li>
+</ul>
+<h3 id='decisions'>Decisions</h3>
+<p>This release addresses the following Decisions published on <a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues">Standards</a>:</p>
+
+<ul>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210">Consultation Draft #210 - Transition to FAPI 2.0 Profile</a></li>
+<li><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374">Consultation Draft #374 - Minimum Baseline Authentication</a></li>
+</ul>
+<h2 id='general-changes'>General Changes</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Standards staging fixes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards-staging/issues/493"><strong>Standards Staging #493</strong></a>: Minor updates to the standards development codebase.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='introduction'>Introduction</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Chair detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Added Dr Scott Farrell as the new Data Standards Chair.</td>
+<td><a href="../../?diff#data-standards-chair">Data Standards Chair</a></td>
+</tr>
+<tr>
+<td>Updated FDOs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Removed past FDOs and added new FDOs for:<ul><li>Adoption of FAPI 2.0<li>Communications Protocol<li>Client Authentication<li>HTTP Headers<li>Resource endpoint version increment<li>Shared Responsibility &gt; Energy &gt; Endpoint Variations.</ul></td>
+<td><a href="../../?diff#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+<tr>
+<td>Normative References</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated Normative References, including titles, descriptions and links to reflect current locations and details. Replaced FAPI 1.0 references with FAPI 2.0.</td>
+<td><a href="../../?diff#normative-references">Normative References</a></td>
+</tr>
+<tr>
+<td>Informative References</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated Informative References, including descriptions and links to reflect current locations and details. Added <strong>[OpenID-Certification]</strong>.</td>
+<td><a href="../../?diff#informative-references">Informative References</a></td>
+</tr>
+<tr>
+<td>Updated FDOs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Added new FDOs for new Redirect to Web, One Time Password Credential Requirements, and Restricted Credentials sections, the updated Pushed Authorisation Request endpoint, the new Get Configuration endpoint, and updated Get Metrics endpoint.</td>
+<td><a href="../../?diff#future-dated-obligations">Future Dated Obligations</a></td>
+</tr>
+</tbody></table>
+<h2 id='high-level-standards'>High Level Standards</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FAPI and Correlation headers</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: <ul><li>Updated Request Headers:<ul><li>removed <em>x-fapi-auth-date</em> and <em>x-fapi-customer-ip-address</em>,</li><li>added <em>x-fapi-end-user-present</em>, <em>x-cds-authorisation-attempt-id</em>, <em>x-cds-authorisation-intent-id</em>.</li></ul></li><li>Updated Response Headers:<ul><li>added <em>x-cds-authorisation-attempt-id</em>, <em>x-cds-authorisation-intent-id</em>.</li></ul></li></ul></td>
+<td><a href="../../?diff#http-headers">HTTP Headers</a></td>
+</tr>
+<tr>
+<td>Updated HTTP Headers</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Added <em>x-cds-originating-channel</em> header for PAR requests.</td>
+<td><a href="../../?diff#http-headers">HTTP Headers</a></td>
+</tr>
+</tbody></table>
+<h2 id='authentication-schedule'>Authentication Schedule</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Added Redirect to Web section</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Added Redirect to Web section.</td>
+<td><a href="../../?diff#redirect-to-web">Redirect to Web</a></td>
+</tr>
+<tr>
+<td>Updated wording</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Minor update to wording in the Fallback Authentication Flows section to align to Redirect to Web.</td>
+<td><a href="../../?diff#fallback-authentication-flows">Fallback Authentication Flows</a></td>
+</tr>
+</tbody></table>
+<h2 id='consumer-experience'>Consumer Experience</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Clarification of Consent Standards</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Removed row: &quot;Consent: Amendment of Collection Consents and Authorisations&quot;.</td>
+<td><a href="../../?diff#consumer-experience_consent-standards">Consent Standards</a></td>
+</tr>
+<tr>
+<td>Clarification of Amending Consent Standards</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Added row: &quot;Amending Consent: Amendment of Collection Consents and Authorisations&quot;.</td>
+<td><a href="../../?diff#consumer-experience_amending-consent-standards">Amending Consent Standards</a></td>
+</tr>
+<tr>
+<td>Clarification of Amending Authorisation Standards</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Minor updates to add introductory text and clarify area titles for consistency.</td>
+<td><a href="../../?diff#amending-authorisation-standards">Amending Authorisation Standards</a></td>
+</tr>
+<tr>
+<td>Authentication Standards additions</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: In the Common Authentication Standards table; renamed the &#39;App install&#39; row to &#39;Digital onboarding&#39; with additional detail, added new rows for accessibility, error messaging, and unique identifier.</td>
+<td><a href="../../?diff#consumer-experience_common-authentication-standards">Common Authentication Standards</a></td>
+</tr>
+</tbody></table>
+<h2 id='security-profile'>Security Profile</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>General changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: <ul><li>Applied section numbering for reference throughout the Security Profile section<li>Replaced FAPI 1.0 references with FAPI 2.0<li>Removed past FDOs<li>Removed deprecated hybrid flow details<li>Updated Authorization Code Flow section<li>Updated Private Key JWT Client Authentication section<li>Updated Self-signed JWT Client Authentication section<li>Updated Software Statement Assertion (SSA) section for clarity<li>Updated Normative reference link in Scopes and Claims section<li>Updated Tokens section to remove past FDOs and references to hybrid flow and FAPI 1.0<li>Updated Request Object section to reflect removal of hybrid flow, addition of FAPI 2.0, updated Non-Normative examples, references to updated CX documentation<li>Updated Security Endpoints section.</ul></td>
+<td><a href="../../?diff#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>Added section</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Added Communications Protocol section.</td>
+<td><a href="../../?diff#3-communications-protocol">Communications Protocol</a></td>
+</tr>
+<tr>
+<td>Non-normative Examples</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated Non-normative Examples for fields: <em>iss</em>, <em>issuer</em>, <em>aud</em>, <em>sub</em>, <em>client_id</em>.</td>
+<td><a href="../../?examples#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>RAR support</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Added detail for the optional support of Rich Authorization Requests (RAR) in applicable sections.</td>
+<td><a href="../../?examples#security-profile">Security Profile</a></td>
+</tr>
+<tr>
+<td>Update to Baseline Credential Requirements</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Updated data holder requirements to expect a risk assessment to determine appropriate authentication levels.</td>
+<td><a href="../../?diff#credential-requirements">Credential Requirements</a></td>
+</tr>
+<tr>
+<td>Updates to OTPs</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Updated One Time Password Credential Requirements section to increase OTP length requirement to 6-10 digits. Changed OTP algorithm requirement from SHOULD to SHALL. Added detail to state that OTPs SHALL be delivered to a channel that has been pre-registered and currently elected to receive authentication secrets.</td>
+<td><a href="../../?diff#credential-requirements">Credential Requirements</a></td>
+</tr>
+<tr>
+<td>Updates to Restricted Credentials</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Updated Restricted Credentials section to discourage SMS and email as OTP delivery mechanisms.</td>
+<td><a href="../../?diff#credential-requirements">Credential Requirements</a></td>
+</tr>
+<tr>
+<td>Updated PAR request headers</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Updated Pushed Authorisation endpoint to include mandatory <em>x-cds-originating-channel</em> header for PAR requests.</td>
+<td><a href="../../?diff#pushed-authorisation-endpoint">Pushed Authorisation endpoint</a></td>
+</tr>
+</tbody></table>
+<h2 id='dcr-apis'>DCR APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>General changes</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated Non-Normative example, removed details related to deprecated hybrid flow options and prior optionality of PAR.</td>
+<td><a href="../../?diff#dcr-apis">DCR APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='register-apis'>Register APIs</h2>
+<p>None</p>
+<h2 id='authorisation-scopes'>Authorisation Scopes</h2>
+<p>None</p>
+<h2 id='non-functional-requirements'>Non-functional Requirements</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Definitions</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated &#39;Customer Present&#39; definition by replacing <em>x-fapi-customer-ip-address</em> header with <em>x-fapi-end-user-present</em>.</td>
+<td><a href="../../?diff#definitions">Definitions</a></td>
+</tr>
+</tbody></table>
+<h2 id='banking-apis'>Banking APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Parameters</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated endpoint Parameters tables to remove <em>x-fapi-auth-date</em> and replace <em>x-fapi-customer-ip-address</em> with <em>x-fapi-end-user-present</em>. Incremented all affected endpoints.</td>
+<td><a href="../../?diff#banking-apis">Banking APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='energy-apis'>Energy APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Parameters</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated endpoint Parameters tables to remove <em>x-fapi-auth-date</em> and replace <em>x-fapi-customer-ip-address</em> with <em>x-fapi-end-user-present</em>. Incremented all affected endpoints.</td>
+<td><a href="../../?diff#energy-apis">Energy APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='common-apis'>Common APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Parameters</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Updated endpoint Parameters tables to remove <em>x-fapi-auth-date</em> and replace <em>x-fapi-customer-ip-address</em> with <em>x-fapi-end-user-present</em>. Incremented all affected endpoints.</td>
+<td><a href="../../?diff#common-apis">Common APIs</a></td>
+</tr>
+<tr>
+<td>Added Get Configuration endpoint</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Added Get Configuration endpoint to support discovery of authentication level requirements.</td>
+<td><a href="../../?diff#common-apis">Common APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='admin-apis'>Admin APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated Get Metrics</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/374"><strong>Decision #374</strong></a>: Updated the Get Metrics endpoint to v6 to support authentication metrics.</td>
+<td><a href="../../?diff#admin-apis">Admin APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='shared-responsibility'>Shared Responsibility</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated header detail</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Removed references to deprecated headers <em>x-fapi-auth-date</em> and <em>x-fapi-customer-ip-address</em> in the Endpoint Variations section.<br>Added requirement for <em>x-fapi-end-user-present</em> to be forwarded to AEMO to support NFRs.</td>
+<td><a href="../../?diff#endpoint-variations">Endpoint Variations</a></td>
+</tr>
+</tbody></table>
+<h2 id='energy-secondary-dh-apis'>Energy Secondary DH APIs</h2>
+<table><thead>
+<tr>
+<th>Change</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Updated endpoint parameters</td>
+<td><a href="https://github.com/ConsumerDataStandardsAustralia/standards/issues/210"><strong>Decision #210</strong></a>: Added <em>x-fapi-end-user-present</em> header to Energy Secondary DH APIs to support NFRs. Incremented all affected endpoints.</td>
+<td><a href="../../?diff#energy-secondary-dh-apis">Energy Secondary DH APIs</a></td>
+</tr>
+</tbody></table>
+<h2 id='additional-standards'>Additional Standards</h2>
+<p>None</p>
+<h2 id='known-issues'>Known Issues</h2>
+<p>None</p>
+<p style="margin-bottom:300px"></p>
+
+      </div>
+    </div>
+  </body>
+</html>
