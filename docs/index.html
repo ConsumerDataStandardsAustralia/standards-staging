@@ -1807,7 +1807,7 @@ Added FDOs for May 2027
 </tr>
 <tr>
 <td><a href="#5-client-authentication">Client Authentication</a></td>
-<td><p> When using private key JWT authentication, the Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 <a href="#5-1-private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the Data Holder <em>issuer</em> value as a string in accordance with Private Key JWT Client Authentication.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
+<td><p> When using private key JWT authentication, the Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 <a href="#5-1-private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the Data Holder&#39;s or CDR Register&#39;s <em>issuer</em> value as a string in accordance with Private Key JWT Client Authentication.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
 <td>30 April 2028</td>
 </tr>
 <tr>
@@ -4378,7 +4378,7 @@ Added rows
 <td><p>In the event of an authentication failure, the data holder <strong>MAY</strong> provide the consumer with an error message that gives guidance to assist with resolution. The error message <strong>MUST NOT</strong> disclose information that could compromise security.</p><p>Where an authentication flow cannot be completed successfully, the data holder <strong>MUST</strong> include error information in the redirect to the data recipient. The error information <strong>MUST</strong> be in accordance with error response specifications in section <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1">4.1.2.1</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong> or section <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthError">3.1.2.6</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p></td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br>Unique identifier</td>
+<td><strong>Authentication:</strong><br>User identifier</td>
 <td><p>Data holders <strong>MAY</strong> support alternative identifiers familiar to the consumer, such as mobile phone numbers or email addresses, for CDR authentication. The identifier <strong>MUST</strong> uniquely identify a customer and <strong>MUST NOT</strong> be a shared or group identifier.</p></td>
 </tr>
 </tbody></table>
