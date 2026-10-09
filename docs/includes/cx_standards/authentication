@@ -39,7 +39,7 @@ Added rows
 <td><p>In the event of an authentication failure, the data holder <strong>MAY</strong> provide the consumer with an error message that gives guidance to assist with resolution. The error message <strong>MUST NOT</strong> disclose information that could compromise security.</p><p>Where an authentication flow cannot be completed successfully, the data holder <strong>MUST</strong> include error information in the redirect to the data recipient. The error information <strong>MUST</strong> be in accordance with error response specifications in section <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1">4.1.2.1</a> of <strong><a href="#nref-OAUTH2">[OAUTH2]</a></strong> or section <a href="https://openid.net/specs/openid-connect-core-1_0.html#AuthError">3.1.2.6</a> of <strong><a href="#nref-OIDC">[OIDC]</a></strong>.</p></td>
 </tr>
 <tr>
-<td><strong>Authentication:</strong><br>Unique identifier</td>
+<td><strong>Authentication:</strong><br>User identifier</td>
 <td><p>Data holders <strong>MAY</strong> support alternative identifiers familiar to the consumer, such as mobile phone numbers or email addresses, for CDR authentication. The identifier <strong>MUST</strong> uniquely identify a customer and <strong>MUST NOT</strong> be a shared or group identifier.</p></td>
 </tr>
 </tbody></table>
