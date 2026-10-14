@@ -1807,7 +1807,7 @@ Added FDOs for May 2027
 </tr>
 <tr>
 <td><a href="#5-client-authentication">Client Authentication</a></td>
-<td><p> When using private key JWT authentication, the Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 <a href="#5-1-private-key-jwt-client-authentication">Private Key JWT Client Authentication</a> on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the Data Holder&#39;s or CDR Register&#39;s <em>issuer</em> value as a string in accordance with Private Key JWT Client Authentication.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
+<td><p> When using private key JWT authentication, the CDR Register, Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 (<a href="#5-1-private-key-jwt-client-authentication">Private Key JWT Client Authentication</a>) on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the CDR Register or Data Holder <em>issuer</em> value as a string in accordance with section 5.1.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
 <td>30 April 2028</td>
 </tr>
 <tr>
@@ -1817,7 +1817,7 @@ Added FDOs for May 2027
 </tr>
 <tr>
 <td><a href="#endpoint-version-schedule">Resource endpoint version increment</a></td>
-<td><ul><li>Data Holders <strong>MUST</strong> support applicable resource endpoint versions which have been incremented to specify the <em>x-fapi-end-user-present</em> request header on and from <strong>30 April 2028</strong>.</li><li>Data Holders <strong>MAY</strong> retire deprecated versions on and from <strong>31 May 2028</strong>.</li><li>Data Holders <strong>MUST</strong> refer to the <em>x-fapi-end-user-present</em> header to determine customer presence for NFR purposes from <strong>30 April 2028</strong>.</li></ul></td>
+<td><ul><li>Data Holders <strong>MUST</strong> support applicable resource endpoint versions which have been incremented to specify the <em>x-fapi-end-user-present</em> request header on and from <strong>30 April 2028</strong>.</li><li>Data Holders <strong>MAY</strong> retire deprecated versions on and from <strong>31 May 2028</strong>.</li><li>Data Holders <strong>MUST</strong> refer to the <em>x-fapi-end-user-present</em> header to determine customer presence for NFR purposes on and from <strong>30 April 2028</strong>.</li></ul></td>
 <td>30 April 2028</td>
 </tr>
 <tr>
