@@ -12,7 +12,7 @@ Updated row
 Added rows
 + Authentication: Accessible authentication
 + Authentication: Error messaging and redirection
-+ Authentication: Unique identifier
++ Authentication: User identifier
 ```
 
 |Area|CX Standard|
