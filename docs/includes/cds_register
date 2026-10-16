@@ -4,6 +4,8 @@
 
 <h2 id="cdr-register-api_get-openid-provider-config">Get OpenId Provider Config</h2>
 
+<p id="get-openid-provider-config" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -28,7 +30,7 @@
 
 <p>Endpoint used by participants to discover the CDR Register OpenID configuration and obtain information needed to interact with it, including its OAuth 2.0 endpoint locations.</p>
 
-<p>This endpoint does not require <a href="#17-cors">CORS</a>.</p>
+<p>This endpoint does not require <a href="#cors">CORS</a>.</p>
 
 <h3 id="cdr-register-api_get-openid-provider-config_endpoint-version">Endpoint Version</h3>
 
@@ -107,6 +109,8 @@ This operation does not require authentication.
 
 <h2 id="cdr-register-api_get-jwks">Get JWKS</h2>
 
+<p id="get-jwks" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -131,7 +135,7 @@ This operation does not require authentication.
 
 <p>JWKS endpoint containing the public keys used by the CDR Register to validate the signature of issued SSAs and authenticate outbound calls to participants in the CDR.</p>
 
-<p>This endpoint does not require <a href="#17-cors">CORS</a>.</p>
+<p>This endpoint does not require <a href="#cors">CORS</a>.</p>
 
 <h3 id="cdr-register-api_get-jwks_endpoint-version">Endpoint Version</h3>
 
@@ -190,6 +194,8 @@ This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-register-api_get-software-statement-assertion-ssa">Get Software Statement Assertion (SSA)</h2>
+
+<p id="get-software-statement-assertion-ssa" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -411,6 +417,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 <!-- Register Data Holder discovery endpoints -->
 
 <h2 id="cdr-register-api_get-data-holder-brands">Get Data Holder Brands</h2>
+
+<p id="get-data-holder-brands" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -689,6 +697,8 @@ To perform this operation, you must be authenticated and authorised with the fol
 
 <h2 id="cdr-register-api_get-data-holder-brands-summary">Get Data Holder Brands Summary</h2>
 
+<p id="get-data-holder-brands-summary" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -923,6 +933,8 @@ This operation does not require authentication.
 
 <h2 id="cdr-register-api_get-data-holder-statuses">Get Data Holder Statuses</h2>
 
+<p id="get-data-holder-statuses" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1143,6 +1155,8 @@ This operation does not require authentication.
 
 <h2 id="cdr-register-api_get-software-products-statuses">Get Software Products Statuses</h2>
 
+<p id="get-software-products-statuses" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1343,6 +1357,8 @@ This operation does not require authentication.
 
 <h2 id="cdr-register-api_get-data-recipients-statuses">Get Data Recipients Statuses</h2>
 
+<p id="get-data-recipients-statuses" class="orig-anchor"></p>
+
 <blockquote>
 <p>Code samples</p>
 </blockquote>
@@ -1542,6 +1558,8 @@ This operation does not require authentication.
 </aside></p>
 
 <h2 id="cdr-register-api_get-data-recipients">Get Data Recipients</h2>
+
+<p id="get-data-recipients" class="orig-anchor"></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -1767,6 +1785,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseopenidproviderconfigmetadata">ResponseOpenIDProviderConfigMetadata</h3>
 
+<p id="tocSresponseopenidproviderconfigmetadata" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_responseopenidproviderconfigmetadata"></a>
   <a class="schema-anchor" id="schemacdr-register-apiresponseopenidproviderconfigmetadata"></a>
@@ -1913,6 +1933,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsejwks">ResponseJWKS</h3>
 
+<p id="tocSresponsejwks" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_responsejwks"></a>
   <a class="schema-anchor" id="schemacdr-register-apiresponsejwks"></a>
@@ -1955,6 +1977,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSjwk">JWK</h3>
+
+<p id="tocSjwk" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_jwk"></a>
@@ -2029,6 +2053,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdataholderbrandlistv2">ResponseRegisterDataHolderBrandListV2</h3>
+
+<p id="tocSresponseregisterdataholderbrandlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responseregisterdataholderbrandlist"></a>
@@ -2127,6 +2153,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandv2">RegisterDataHolderBrandV2</h3>
+
+<p id="tocSregisterdataholderbrandv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderbrand"></a>
@@ -2280,6 +2308,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponsedataholdersbrandsummarylistv2">ResponseDataHoldersBrandSummaryListV2</h3>
 
+<p id="tocSresponsedataholdersbrandsummarylistv2" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_responsedataholdersbrandsummarylist"></a>
   <a class="schema-anchor" id="schemacdr-register-apiresponsedataholdersbrandsummarylistv2"></a>
@@ -2344,6 +2374,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderbrandsummaryv2">DataHolderBrandSummaryV2</h3>
+
+<p id="tocSdataholderbrandsummaryv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_dataholderbrandsummary"></a>
@@ -2465,6 +2497,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenumv2">IndustryEnumV2</h3>
 
+<p id="tocSindustryenumv2" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_industryenum"></a>
   <a class="schema-anchor" id="schemacdr-register-apiindustryenumv2"></a>
@@ -2523,6 +2557,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustriesenumv2">IndustriesEnumV2</h3>
 
+<p id="tocSindustriesenumv2" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_industriesenum"></a>
   <a class="schema-anchor" id="schemacdr-register-apiindustriesenumv2"></a>
@@ -2577,6 +2613,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSindustryenumrecipients">IndustryEnumRecipients</h3>
 
+<p id="tocSindustryenumrecipients" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_industryenumrecipients"></a>
   <a class="schema-anchor" id="schemacdr-register-apiindustryenumrecipients"></a>
@@ -2618,6 +2656,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholdersstatuslist">DataHoldersStatusList</h3>
+
+<p id="tocSdataholdersstatuslist" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_dataholdersstatuslist"></a>
@@ -2671,6 +2711,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdataholderstatus">DataHolderStatus</h3>
+
+<p id="tocSdataholderstatus" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_dataholderstatus"></a>
@@ -2728,6 +2770,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductsstatuslist">SoftwareProductsStatusList</h3>
 
+<p id="tocSsoftwareproductsstatuslist" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_softwareproductsstatuslist"></a>
   <a class="schema-anchor" id="schemacdr-register-apisoftwareproductsstatuslist"></a>
@@ -2780,6 +2824,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductstatus">SoftwareProductStatus</h3>
+
+<p id="tocSsoftwareproductstatus" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_softwareproductstatus"></a>
@@ -2841,6 +2887,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientsstatuslist">DataRecipientsStatusList</h3>
 
+<p id="tocSdatarecipientsstatuslist" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_datarecipientsstatuslist"></a>
   <a class="schema-anchor" id="schemacdr-register-apidatarecipientsstatuslist"></a>
@@ -2893,6 +2941,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientstatus">DataRecipientStatus</h3>
+
+<p id="tocSdatarecipientstatus" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_datarecipientstatus"></a>
@@ -2957,6 +3007,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseregisterdatarecipientlist">ResponseRegisterDataRecipientList</h3>
+
+<p id="tocSresponseregisterdatarecipientlist" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responseregisterdatarecipientlist"></a>
@@ -3034,6 +3086,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdatarecipient">RegisterDataRecipient</h3>
+
+<p id="tocSregisterdatarecipient" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_registerdatarecipient"></a>
@@ -3171,6 +3225,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSdatarecipientbrandmetadata">DataRecipientBrandMetaData</h3>
 
+<p id="tocSdatarecipientbrandmetadata" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_datarecipientbrandmetadata"></a>
   <a class="schema-anchor" id="schemacdr-register-apidatarecipientbrandmetadata"></a>
@@ -3265,6 +3321,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSsoftwareproductmetadata">SoftwareProductMetaData</h3>
 
+<p id="tocSsoftwareproductmetadata" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_softwareproductmetadata"></a>
   <a class="schema-anchor" id="schemacdr-register-apisoftwareproductmetadata"></a>
@@ -3350,6 +3408,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSlegalentitydetail">LegalEntityDetail</h3>
+
+<p id="tocSlegalentitydetail" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_legalentitydetail"></a>
@@ -3513,6 +3573,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderbrandserviceendpointv2">RegisterDataHolderBrandServiceEndpointV2</h3>
 
+<p id="tocSregisterdataholderbrandserviceendpointv2" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderbrandserviceendpoint"></a>
   <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderbrandserviceendpointv2"></a>
@@ -3593,6 +3655,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSregisterdataholderauth">RegisterDataHolderAuth</h3>
 
+<p id="tocSregisterdataholderauth" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_registerdataholderauth"></a>
   <a class="schema-anchor" id="schemacdr-register-apiregisterdataholderauth"></a>
@@ -3646,6 +3710,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSlinkspaginated">LinksPaginated</h3>
+
+<p id="tocSlinkspaginated" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_linkspaginated"></a>
@@ -3709,6 +3775,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSmetapaginated">MetaPaginated</h3>
 
+<p id="tocSmetapaginated" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_metapaginated"></a>
   <a class="schema-anchor" id="schemacdr-register-apimetapaginated"></a>
@@ -3747,6 +3815,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSlinks">Links</h3>
 
+<p id="tocSlinks" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_links"></a>
   <a class="schema-anchor" id="schemacdr-register-apilinks"></a>
@@ -3777,6 +3847,8 @@ This operation does not require authentication.
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSmeta">Meta</h3>
 
+<p id="tocSmeta" class="orig-anchor"></p>
+
 <p>
   <a id="cdr-register-api_schema-base_meta"></a>
   <a class="schema-anchor" id="schemacdr-register-apimeta"></a>
@@ -3788,6 +3860,8 @@ This operation does not require authentication.
 <p><em>None</em></p>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSresponseerrorlistv2">ResponseErrorListV2</h3>
+
+<p id="tocSresponseerrorlistv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_responseerrorlist"></a>
@@ -3827,6 +3901,8 @@ This operation does not require authentication.
 </tbody></table>
 
 <h3 class="schema-toc" id="cdr-register-api_schemas_tocSerrorv2">ErrorV2</h3>
+
+<p id="tocSerrorv2" class="orig-anchor"></p>
 
 <p>
   <a id="cdr-register-api_schema-base_error"></a>

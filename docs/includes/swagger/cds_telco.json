@@ -12,7 +12,7 @@
       "url" : "https://opensource.org/licenses/MIT"
     },
     "title" : "CDR Telco API",
-    "version" : "1.37.0"
+    "version" : "1.36.0"
   },
   "servers" : [ {
     "description" : "MTLS",
@@ -360,17 +360,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -551,17 +560,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -703,17 +721,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -883,17 +910,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1023,17 +1059,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1163,17 +1208,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1303,17 +1357,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1443,17 +1506,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1597,17 +1669,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1749,17 +1830,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -1892,17 +1982,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2083,17 +2182,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2257,17 +2365,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2446,17 +2563,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2637,17 +2763,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -2811,17 +2946,26 @@
           },
           "style" : "simple"
         }, {
-          "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+          "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
           "explode" : false,
           "in" : "header",
-          "name" : "x-fapi-end-user-present",
+          "name" : "x-fapi-auth-date",
           "required" : false,
           "schema" : {
-            "default" : "false",
             "type" : "string"
           },
           "style" : "simple",
           "x-conditional" : true
+        }, {
+          "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+          "explode" : false,
+          "in" : "header",
+          "name" : "x-fapi-customer-ip-address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
         }, {
           "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
           "explode" : false,
@@ -3074,18 +3218,28 @@
         },
         "style" : "simple"
       },
-      "HeaderXFAPIEndUserPresent" : {
-        "description" : "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
+      "HeaderXFAPIAuthDate" : {
+        "description" : "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
         "explode" : false,
         "in" : "header",
-        "name" : "x-fapi-end-user-present",
+        "name" : "x-fapi-auth-date",
         "required" : false,
         "schema" : {
-          "default" : "false",
           "type" : "string"
         },
         "style" : "simple",
         "x-conditional" : true
+      },
+      "HeaderXFAPICustomerIPAddress" : {
+        "description" : "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+        "explode" : false,
+        "in" : "header",
+        "name" : "x-fapi-customer-ip-address",
+        "required" : false,
+        "schema" : {
+          "type" : "string"
+        },
+        "style" : "simple"
       },
       "HeaderXCDSClientHeaders" : {
         "description" : "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
@@ -4639,7 +4793,7 @@
           "services" : {
             "description" : "List of services that are part of the account.",
             "items" : {
-              "$ref" : "#/components/schemas/TelcoAccountUsage_services_inner"
+              "$ref" : "#/components/schemas/TelcoAccountUsage_services"
             },
             "type" : "array"
           }
@@ -5571,7 +5725,10 @@
             "type" : "array"
           },
           "planOverview" : {
-            "$ref" : "#/components/schemas/TelcoAccountPlanBase_planOverview"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoAccountPlanOverview"
+            } ],
+            "description" : "Mandatory if _openStatus_ is `OPEN`."
           }
         },
         "required" : [ "billingType", "serviceIds", "type" ],
@@ -5765,7 +5922,10 @@
             "x-cds-type" : "AmountString"
           },
           "roaming" : {
-            "$ref" : "#/components/schemas/TelcoUsageData_roaming"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/TelcoUsageDataRoaming"
+            } ],
+            "description" : "Required if roaming is supported."
           }
         },
         "required" : [ "amount", "download", "upload" ],
@@ -6351,7 +6511,7 @@
         "type" : "object",
         "x-conditional" : [ "urn" ]
       },
-      "TelcoAccountUsage_services_inner" : {
+      "TelcoAccountUsage_services" : {
         "properties" : {
           "service" : {
             "$ref" : "#/components/schemas/TelcoServiceUsage"
@@ -6371,8 +6531,7 @@
           }
         },
         "required" : [ "plans" ],
-        "type" : "object",
-        "example" : null
+        "type" : "object"
       },
       "TelcoAccountDetailResponseData_allOf" : {
         "properties" : {
@@ -6385,8 +6544,7 @@
           }
         },
         "required" : [ "plans" ],
-        "type" : "object",
-        "example" : null
+        "type" : "object"
       },
       "TelcoUsageListResponse_data" : {
         "properties" : {
@@ -6465,14 +6623,7 @@
             "type" : "array"
           }
         },
-        "type" : "object",
-        "example" : null
-      },
-      "TelcoAccountPlanBase_planOverview" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/TelcoAccountPlanOverview"
-        } ],
-        "description" : "Mandatory if _openStatus_ is `OPEN`."
+        "type" : "object"
       },
       "TelcoAccountPlanDetail_allOf_planDetail" : {
         "description" : "Detail on the plan applicable to this account. Mandatory if _openStatus_ is `OPEN`.",
@@ -6486,8 +6637,7 @@
           }
         },
         "required" : [ "charges" ],
-        "type" : "object",
-        "example" : null
+        "type" : "object"
       },
       "TelcoAccountPlanDetail_allOf" : {
         "properties" : {
@@ -6496,14 +6646,7 @@
           }
         },
         "type" : "object",
-        "x-conditional" : [ "planDetail" ],
-        "example" : null
-      },
-      "TelcoUsageData_roaming" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/TelcoUsageDataRoaming"
-        } ],
-        "description" : "Required if roaming is supported."
+        "x-conditional" : [ "planDetail" ]
       }
     }
   }
