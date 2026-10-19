@@ -21,7 +21,7 @@ In addition, Data Holders:
 1. **MUST** support client authentication using *private_key_jwt*.
 1. **MUST NOT** support refresh token rotation subject to section [5.3.2.1(9)](https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.2.1) of the **[[FAPI-2.0-Security-Profile]](#nref-FAPI-2-0-Security-Profile)**.
 1. **MUST** distribute discovery metadata using **[[OIDD]](#nref-OIDD)**.
-1. **MAY** optionally, and in addition, distribute authorisation server metadata using **[[RFC8414]](#nref-RFC8414)**.
+1. **MAY** optionally, and in addition to **[[OIDD]](#nref-OIDD)**, distribute authorisation server metadata using **[[RFC8414]](#nref-RFC8414)**.
 1. **MUST** set *require_pushed_authorization_requests parameter* to `true`, distributed using **[[OIDD]](#nref-OIDD)**.
 1. **MUST** only support Authorization Code Flow.
 1. **MUST** require the value of *response_type* described in **[[RFC6749]](#nref-RFC6749)** to be `code`.
