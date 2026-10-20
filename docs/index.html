@@ -1807,7 +1807,7 @@ Added FDOs for May 2027
 </tr>
 <tr>
 <td><a href="#5-client-authentication">Client Authentication</a></td>
-<td><p> When using private key JWT authentication, the CDR Register, Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 (<a href="#5-1-private-key-jwt-client-authentication">Private Key JWT Client Authentication</a>) on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the CDR Register or Data Holder <em>issuer</em> value as a string in accordance with section 5.1.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
+<td><p> When using private key JWT authentication, the CDR Register, Data Holder and any Data Recipient <strong>MUST</strong> comply with section 5.1 (Private Key JWT Client Authentication) on and from <strong>30 April 2028.</strong></p>For this purpose: <ul><li>Clients <strong>MUST</strong> specify the <em>aud</em> claim as the CDR Register or Data Holder <em>issuer</em> value as a string in accordance with section 5.1.</li><li>Data Holders <strong>MUST</strong> verify the <em>aud</em> claim is their <em>issuer</em> value in accordance with section 5.1. If a Data Holder does not already verify clients in accordance with these requirements, they <strong>MUST NOT</strong> apply the restriction prior to <strong>30 April 2028</strong>.</li></ul></td>
 <td>30 April 2028</td>
 </tr>
 <tr>
@@ -1842,7 +1842,7 @@ Added FDOs for May 2027
 </tr>
 <tr>
 <td><a href="#consumer-experience_common-authentication-standards">Common Authentication Standards</a></td>
-<td>Data holders <strong>MUST</strong> implement the following standards on and from <strong>30 April 2028</strong>: Digital onboarding; Accessible authentication; Error messaging and redirection and Unique identifier.</td>
+<td>Data holders <strong>MUST</strong> implement the following standards on and from <strong>30 April 2028</strong>: Digital onboarding; Accessible authentication; Error messaging and redirection and User identifier.</td>
 <td>30 April 2028</td>
 </tr>
 </tbody></table>
@@ -4348,7 +4348,7 @@ Example of data language standards presented in a consumer-facing interaction, w
 Added rows
 <span class="gi">+ Authentication: Accessible authentication
 + Authentication: Error messaging and redirection
-+ Authentication: Unique identifier
++ Authentication: User identifier
 </span></code></pre>
 
 <table><thead>
@@ -4819,7 +4819,7 @@ Recipients. Data Holders and Data Recipients <strong>MUST</strong> be created as
 <li><strong>MUST</strong> support client authentication using <em>private_key_jwt</em>.</li>
 <li><strong>MUST NOT</strong> support refresh token rotation subject to section <a href="https://openid.net/specs/fapi-security-profile-2_0.html#section-5.3.2.1">5.3.2.1(9)</a> of the <strong><a href="#nref-FAPI-2-0-Security-Profile">[FAPI-2.0-Security-Profile]</a></strong>.</li>
 <li><strong>MUST</strong> distribute discovery metadata using <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</li>
-<li><strong>MAY</strong> optionally, and in addition, distribute authorisation server metadata using <strong><a href="#nref-RFC8414">[RFC8414]</a></strong>.</li>
+<li><strong>MAY</strong> optionally, and in addition to <strong><a href="#nref-OIDD">[OIDD]</a></strong>, distribute authorisation server metadata using <strong><a href="#nref-RFC8414">[RFC8414]</a></strong>.</li>
 <li><strong>MUST</strong> set <em>require_pushed_authorization_requests parameter</em> to <code>true</code>, distributed using <strong><a href="#nref-OIDD">[OIDD]</a></strong>.</li>
 <li><strong>MUST</strong> only support Authorization Code Flow.</li>
 <li><strong>MUST</strong> require the value of <em>response_type</em> described in <strong><a href="#nref-RFC6749">[RFC6749]</a></strong> to be <code>code</code>.</li>
@@ -6572,6 +6572,7 @@ Updated Non-Normative example
 <p>To facilitate the amending of an existing arrangement, the following statements apply:</p>
 
 <ol>
+<li>Data Holders <strong>MUST</strong> support the <em>cdr_arrangement_id</em> claim provided in the Request Object.</li>
 <li>The Data Recipient Software Product <strong>MUST</strong> provide the <em>cdr_arrangement_id</em> claim in the Request Object if requesting to amend a current authorisation in accordance with <a href="#consumer-experience_amending-consent-standards">Amending Consent: Amendment of Collection Consents and Authorisations</a>.</li>
 <li>Data Holders <strong>MUST</strong> treat the request under the <a href="#amending-authorisation-standards">Amending Authorisation Standards</a> if the <em>cdr_arrangement_id</em> claim is provided.</li>
 </ol>

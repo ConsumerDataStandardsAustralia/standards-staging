@@ -10,7 +10,7 @@
 Added rows
 <span class="gi">+ Authentication: Accessible authentication
 + Authentication: Error messaging and redirection
-+ Authentication: Unique identifier
++ Authentication: User identifier
 </span></code></pre>
 <table><thead>
 <tr>
