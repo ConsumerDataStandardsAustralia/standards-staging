@@ -73,6 +73,7 @@ Updated reference to Amending Consent CX standard
 To facilitate the amending of an existing arrangement, the following statements apply:
 
 
+1. Data Holders **MUST** support the _cdr_arrangement_id_ claim provided in the Request Object.
 1. The Data Recipient Software Product **MUST** provide the _cdr_arrangement_id_ claim in the Request Object if requesting to amend a current authorisation in accordance with [Amending Consent: Amendment of Collection Consents and Authorisations](#consumer-experience_amending-consent-standards).
 1. Data Holders **MUST** treat the request under the [Amending Authorisation Standards](#amending-authorisation-standards) if the _cdr_arrangement_id_ claim is provided.
 
