@@ -90,8 +90,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: "The customer's original standard http headers [Base64](#common-field-types)\
@@ -203,8 +203,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: "The customer's original standard http headers [Base64](#common-field-types)\
@@ -475,8 +475,8 @@ components:
       name: x-fapi-end-user-present
       required: false
       schema:
-        default: "false"
-        type: string
+        default: false
+        type: boolean
       style: simple
       x-conditional: true
     HeaderXCDSClientHeaders:

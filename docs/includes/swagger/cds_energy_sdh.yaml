@@ -94,8 +94,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -237,8 +237,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -432,8 +432,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -620,8 +620,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -757,8 +757,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -898,8 +898,8 @@ paths:
         name: x-fapi-end-user-present
         required: false
         schema:
-          default: "false"
-          type: string
+          default: false
+          type: boolean
         style: simple
         x-conditional: true
       - description: A unique string representing a consent arrangement between a
@@ -1112,8 +1112,8 @@ components:
       name: x-fapi-end-user-present
       required: false
       schema:
-        default: "false"
-        type: string
+        default: false
+        type: boolean
       style: simple
       x-conditional: true
     HeaderXCDSArrangement:

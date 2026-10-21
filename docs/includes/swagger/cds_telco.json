@@ -366,8 +366,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -557,8 +557,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -709,8 +709,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -889,8 +889,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1029,8 +1029,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1169,8 +1169,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1309,8 +1309,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1449,8 +1449,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1603,8 +1603,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1755,8 +1755,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -1898,8 +1898,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -2089,8 +2089,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -2263,8 +2263,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -2452,8 +2452,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -2643,8 +2643,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -2817,8 +2817,8 @@
           "name" : "x-fapi-end-user-present",
           "required" : false,
           "schema" : {
-            "default" : "false",
-            "type" : "string"
+            "default" : false,
+            "type" : "boolean"
           },
           "style" : "simple",
           "x-conditional" : true
@@ -3081,8 +3081,8 @@
         "name" : "x-fapi-end-user-present",
         "required" : false,
         "schema" : {
-          "default" : "false",
-          "type" : "string"
+          "default" : false,
+          "type" : "boolean"
         },
         "style" : "simple",
         "x-conditional" : true
