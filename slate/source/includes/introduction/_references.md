@@ -69,9 +69,6 @@ Added Normative References:
 Updated links referencing tools.ietf.org, replaced http:// with https://, and updated Informative References detail for: [ACCC], [E.164].  
 Removed, as it was not referenced:
 - [X.1254]
-
-Added Informative Reference:
-+ [OpenID-Certification]
 ```
 
 | Reference | Description |
@@ -83,7 +80,6 @@ Added Informative Reference:
 | <a id="iref-E-164"></a>**[E.164]** | The international public telecommunication numbering plan: <https://www.itu.int/rec/T-REC-E.164/en> |
 | <a id="iref-FAPI"></a>**[FAPI]** | Financial-Grade API: <br><https://openid.net/wg/fapi/> |
 | <a id="iref-OAIC"></a>**[OAIC]** | The Office of the Australian Information Commissioner is responsible for regulating privacy and confidentiality under the CDR. The OAIC also handles complaints and notifications of eligible data breaches relating to CDR data.<br><https://www.oaic.gov.au/consumer-data-right> |
-| <a id="iref-OpenID-Certification"></a><span style="white-space: nowrap;">**[OpenID-Certification]**</span> | The OpenID Foundation enables deployments of OpenID Connect and FAPI to be certified to specific conformance profiles to promote interoperability among implementations.<br><https://openid.net/certification/> |
 | <a id="iref-RFC3966"></a>**[RFC3966]** | The tel URI for Telephone Numbers: <https://datatracker.ietf.org/doc/html/rfc3966> |
 | <a id="iref-RFC7231"></a>**[RFC7231]** | Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content: <https://datatracker.ietf.org/doc/html/rfc7231> |
 | <a id="iref-RFC7521"></a>**[RFC7521]** | Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants: <https://datatracker.ietf.org/doc/html/rfc7521> |
