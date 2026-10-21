@@ -1204,7 +1204,7 @@
         "x-conditional": true,
         "description": "The presence of this header with a value of `true` indicates that the API is being called in a customer present context. Defaults to `false` if absent.",
         "schema": {
-          "type": "string",
+          "type": "boolean",
           "default": false
         }
       },
