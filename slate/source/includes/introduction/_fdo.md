@@ -14,7 +14,7 @@ Removed past FDOs
 - Get Product Detail v5
 - Get Transaction Detail v2
 
-Added FDOs for May 2027
+Added FDOs for April 2028
 + Communications Protocol
 + Client Authentication
 + HTTP Headers

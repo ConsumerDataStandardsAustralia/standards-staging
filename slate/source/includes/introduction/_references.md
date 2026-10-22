@@ -26,6 +26,7 @@ Removed Normative References:
 - [FAPI-1.0-Advanced]
 
 Added Normative References:
++ [RFC8725]
 + [FAPI-2.0-Security-Profile]
 + [FAPI-2.0-Message-Signing]
 + [JAR]
@@ -69,6 +70,8 @@ Added Normative References:
 Updated links referencing tools.ietf.org, replaced http:// with https://, and updated Informative References detail for: [ACCC], [E.164].  
 Removed, as it was not referenced:
 - [X.1254]
++ [RFC7521]
++ [RFC7523]
 ```
 
 | Reference | Description |

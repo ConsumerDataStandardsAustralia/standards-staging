@@ -34,8 +34,6 @@ Accept: AppliCAtion/JSon;Charset=uTf-8
 ```
 
 ```diff
-Changed 'must' statements to 'SHALL' (the obligation remains unchanged)
-
 Removed Request Headers:
 - x-fapi-auth-date
 - x-fapi-customer-ip-address
@@ -64,6 +62,11 @@ Updated title
 ```
 
 ### Response Headers
+
+```diff
+Updated the description of x-fapi-interaction-id
+```
+
 Header Field | Description | Mandatory?
 -------------|-------------|-----------
 **Content-Type** | Standard HTTP Header. Represents the format of the payload returned in the response.<br/>**SHALL** be `application/json` unless otherwise specified in the resource endpoint standard. | Mandatory
