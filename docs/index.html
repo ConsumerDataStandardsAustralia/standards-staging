@@ -1647,12 +1647,10 @@ This text is an example of a new addition to the standards:
 
 <p>Some of these standards will be binding data standards under the Competition and Consumer (Consumer Data Right) Data Standards (No. 1) 2023. See that instrument <a href="https://consumerdatastandards.gov.au/sites/consumerdatastandards.gov.au/files/2023-02/Competition%20and%20Consumer%20%28Consumer%20Data%20Right%29%20Data%20Standards%20%28No.%201%29%202023%20executed.pdf">here</a>. In summary, provisions of these standards (as they exist from time to time) that impose obligations or prohibitions on CDR entities are binding data standards. Provisions included in these standards merely by way of guidance are not binding data standards.</p>
 
-<h2 id='version'>Version</h2>
-
+<pre class="highlight diff tab-diff"><code>Removed the Data Standards Chair section
+</code></pre><h2 id='version'>Version</h2>
 <p>These standards represent version <strong>1.37.0</strong> of the high level standards. See the <a href="#versioning">versioning section</a> for more information on how versions are managed in the standard.</p>
-
 <h2 id='interpretation'>Interpretation</h2>
-
 <p>Note that, in these standards, the key words <strong>MUST</strong>, <strong>MUST NOT</strong>, <strong>REQUIRED</strong>, <strong>SHALL</strong>, <strong>SHALL NOT</strong>, <strong>SHOULD</strong>, <strong>SHOULD NOT</strong>, <strong>RECOMMENDED</strong>, <strong>MAY</strong>, and <strong>OPTIONAL</strong> are to be interpreted as described in <strong><a href="#nref-RFC2119">[RFC2119]</a></strong>.</p>
 
 <h2 id='future-dated-obligations'>Future Dated Obligations</h2><pre class="highlight diff tab-diff"><code>Removed past FDOs
@@ -1668,7 +1666,7 @@ This text is an example of a new addition to the standards:
 - Get Product Detail v5
 - Get Transaction Detail v2
 </span>
-Added FDOs for May 2027
+Added FDOs for April 2028
 <span class="gi">+ Communications Protocol
 + Client Authentication
 + HTTP Headers
@@ -1679,6 +1677,7 @@ Added FDOs for May 2027
 + One Time Password Credential Requirements
 + Common Authentication Standards
 </span></code></pre>
+
 <p>The standards, as published from time to time, may include specific statements indicating that a specific section of the standards will not take effect until a future date or may cease to have effect on some future date. </p>
 
 <p>The table below highlights these areas of the standards.</p>
@@ -1882,7 +1881,8 @@ Removed Normative References:
 - [FAPI-1.0-Advanced]
 </span>
 Added Normative References:
-<span class="gi">+ [FAPI-2.0-Security-Profile]
+<span class="gi">+ [RFC8725]
++ [FAPI-2.0-Security-Profile]
 + [FAPI-2.0-Message-Signing]
 + [JAR]
 </span></code></pre>
@@ -2048,8 +2048,9 @@ Added Normative References:
 Removed, as it was not referenced:
 <span class="gd">- [X.1254]
 </span>
-Added Informative Reference:
-<span class="gi">+ [OpenID-Certification]
+Added Informative References:
+<span class="gi">+ [RFC7521]
++ [RFC7523]
 </span></code></pre>
 <table><thead>
 <tr>
@@ -2084,10 +2085,6 @@ Added Informative Reference:
 <tr>
 <td><a id="iref-OAIC"></a><strong>[OAIC]</strong></td>
 <td>The Office of the Australian Information Commissioner is responsible for regulating privacy and confidentiality under the CDR. The OAIC also handles complaints and notifications of eligible data breaches relating to CDR data.<br><a href="https://www.oaic.gov.au/consumer-data-right">https://www.oaic.gov.au/consumer-data-right</a></td>
-</tr>
-<tr>
-<td><a id="iref-OpenID-Certification"></a><span style="white-space: nowrap;"><strong>[OpenID-Certification]</strong></span></td>
-<td>The OpenID Foundation enables deployments of OpenID Connect and FAPI to be certified to specific conformance profiles to promote interoperability among implementations.<br><a href="https://openid.net/certification/">https://openid.net/certification/</a></td>
 </tr>
 <tr>
 <td><a id="iref-RFC3966"></a><strong>[RFC3966]</strong></td>
@@ -2419,9 +2416,7 @@ Content-Type: AppliCAtion/JSon;Charset=uTf-8
 Accept: application/json;charset=UTF-8
 Accept: application/json
 Accept: AppliCAtion/JSon;Charset=uTf-8
-</code></pre><pre class="highlight diff tab-diff"><code>Changed 'must' statements to 'SHALL' (the obligation remains unchanged)
-
-Removed Request Headers:
+</code></pre><pre class="highlight diff tab-diff"><code>Removed Request Headers:
 <span class="gd">- x-fapi-auth-date
 - x-fapi-customer-ip-address
 </span>
@@ -2480,7 +2475,8 @@ Added Request Headers:
 <span class="gd">- Response headers
 </span><span class="gi">+ Response Headers
 </span>
-</code></pre><h3 id='response-headers'>Response Headers</h3>
+</code></pre><h3 id='response-headers'>Response Headers</h3><pre class="highlight diff tab-diff"><code>Updated the description of x-fapi-interaction-id
+</code></pre>
 <table><thead>
 <tr>
 <th>Header Field</th>
@@ -3842,9 +3838,7 @@ Content-Type: application/json
 <p>If implemented, data holders and data recipients <strong>MUST</strong> support decoupled authentication in accordance with any relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>
 
 <p><h2 id='fallback-authentication-flows'>Fallback Authentication Flows</h2><pre class="highlight diff tab-diff"><code>Updated Fallback Authentication Flows section
-<span class="gd">- &#39;Redirect to Web with OTP&#39; flow
-</span><span class="gi">+ &#39;Redirect to Web&#39; flow
-</span></code></pre>
+</code></pre>
 <p>On and before <strong>29 April 2028</strong>: Where Redirect to App is unable to be used for the purposes of CDR authentication, and Decoupled Authentication is not supported, data holders <strong>MUST</strong> continue to support the &#39;Redirect to Web with OTP&#39; flow in accordance with the relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p></p>
 
 <p>On and from <strong>30 April 2028</strong>: Where Redirect to App is unable to be used for the purposes of CDR authentication, and Decoupled Authentication is not supported, data holder <strong>MUST</strong> support <a href="#redirect-to-web">Redirect to Web</a> flow in accordance with the relevant <a href="#consumer-experience_authentication-standards">consumer experience authentication</a> and <a href="#security-profile">security profile</a> standards.</p>
@@ -4923,12 +4917,12 @@ Updated 'Baseline Security Provisions' to 'Baseline Authentication Flow Provisio
 
 <h2 id='5-client-authentication'>5. Client Authentication</h2><pre class="highlight diff tab-diff"><code>Updated statement
 <span class="gd">- the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported
-</span><span class="gi">+ the Mutual TLS Client Authentication Methods SHALL NOT be supported
+</span><span class="gi">+ the Mutual TLS Client Authentication Methods MUST NOT be supported
 </span></code></pre>
 
 <p>This section outlines how participants in the CDR regime will authenticate clients seeking access to endpoints.</p>
 
-<p>Note that, while <strong><a href="#nref-MTLS">[MTLS]</a></strong> is utilised for transaction security and as a Holder of Key mechanism, the Mutual TLS Client Authentication Methods <strong>SHALL NOT</strong> be supported as the mechanism for client authentication.</p>
+<p>Note that, while <strong><a href="#nref-MTLS">[MTLS]</a></strong> is utilised for transaction security and as a Holder of Key mechanism, the Mutual TLS Client Authentication Methods <strong>MUST NOT</strong> be supported as the mechanism for client authentication.</p>
 
 <p>The following authentication methods are supported:</p>
 
@@ -6311,8 +6305,11 @@ client_id={ClientId}
 <li><strong>SHOULD</strong> implement <a href="#authentication-schedule">Multi-Factor Authentication</a> for user access to CDR data containing personal information.</li>
 </ol>
 <pre class="highlight diff tab-diff"><code>Updated One Time Password Credential Requirements
-<span class="gd">- The algorithm for the creation of the OTP is at the discretion of the data holder but SHOULD incorporate a level of pseudo-randomness appropriate for the use case.
+<span class="gd">- The provided OTP MUST be numeric digits and be between 4 and 6 digits in length.
+</span><span class="gi">+ The provided OTP MUST be numeric digits and be between 6 and 10 digits in length.
+</span><span class="gd">- The algorithm for the creation of the OTP is at the discretion of the data holder but SHOULD incorporate a level of pseudo-randomness appropriate for the use case.
 </span><span class="gi">+ The data holder **MUST** ensure that OTPs are generated using a cryptographically secure mechanism such that an attacker cannot feasibly predict valid OTP values. 
++ The data holder MUST only deliver OTPs to a channel that has been securely pre-registered to the end user and verified to be under their control.
 </span></code></pre><h3 id='14-3-one-time-password-credential-requirements'>14.3. One Time Password Credential Requirements</h3>
 <p>Where a data holder supports an OTP flow:</p>
 
@@ -6331,7 +6328,8 @@ client_id={ClientId}
 <p>The following credential constraints apply such that Authenticators:
 - <strong>MUST NOT</strong> permit Memorised Secrets defined by <strong>[<a href="#nref-DigitalID-Accreditation">DigitalID-Accreditation</a></strong> to achieve &#39;LoA 2&#39; (as a single factor of authentication only).</p>
 
-<h2 id='15-transaction-security'>15. Transaction Security</h2><h3 id='15-1-use-of-tls'>15.1. Use of TLS</h3>
+<h2 id='15-transaction-security'>15. Transaction Security</h2><h3 id='15-1-use-of-tls'>15.1. Use of TLS</h3><pre class="highlight diff tab-diff"><code>Updated Use of TLS section
+</code></pre>
 <p>All HTTP calls <strong>MUST</strong> be made using HTTPS incorporating TLS version 1.2 or later and <strong>MUST</strong> satisfy the mandatory requirements in section <a href="https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-all-endpoi">5.2.1</a> of the <strong><a href="#nref-FAPI-2-0-Security-Profile">[FAPI-2.0-Security-Profile]</a></strong>.</p>
 
 <p><a id="mutual-tls"></a></p>
@@ -6352,10 +6350,11 @@ client_id={ClientId}
 <p>OAUTB <strong>SHALL NOT</strong> be supported due to a lack industry support.</p>
 
 <p><strong><a href="#nref-MTLS">[MTLS]</a></strong> HoK allows issued tokens to be bound to a client certificate as specified in <a href="https://www.rfc-editor.org/rfc/rfc8705.html#name-mutual-tls-client-certifica">section 3</a> of <strong><a href="#nref-MTLS">[MTLS]</a></strong>.</p>
-<h3 id='15-4-ciphers'>15.4. Ciphers</h3><pre class="highlight diff tab-diff"><code>Updated Ciphers section to remove past FDOs
+<h3 id='15-4-ciphers'>15.4. Ciphers</h3><pre class="highlight diff tab-diff"><code>Updated Ciphers section
 </code></pre>
 <p>Cipher suite requirements <strong>MUST</strong> follow <strong><a href="#nref-BCP195">[BCP195]</a></strong> subject to sections <a href="https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-endpoints-">5.2.2</a> and <a href="https://openid.net/specs/fapi-security-profile-2_0.html#name-requirements-for-endpoints-u">5.2.3</a> of the <strong><a href="#nref-FAPI-2-0-Security-Profile">[FAPI-2.0-Security-Profile]</a></strong>.</p>
-<h3 id='15-5-browser-facing-endpoints'>15.5. Browser-facing endpoints</h3>
+<h3 id='15-5-browser-facing-endpoints'>15.5. Browser-facing endpoints</h3><pre class="highlight diff tab-diff"><code>Added Browser-facing endpoints section
+</code></pre>
 <p>CDR endpoints that are accessed by web browsers <strong>MUST</strong> use methods to protect against TLS stripping attacks, in accordance with section <a href="https://openid.net/specs/fapi-security-profile-2_0.html#section-5.2.3">5.2.3(1)</a> of the <strong><a href="#nref-FAPI-2-0-Security-Profile">[FAPI-2.0-Security-Profile]</a></strong>.</p>
 
 <h2 id='16-certificate-management'>16. Certificate Management</h2><h3 id='16-1-issued-by-the-register-for-data-holders'>16.1. Issued by the Register for Data Holders</h3>
@@ -6506,7 +6505,7 @@ client_id={ClientId}
 
 <p>Cross-origin resource sharing (CORS) protections must be disabled (i.e. <em>Access-Control-Allow-Origin</em> set to <code>*</code>) for all unauthenticated endpoints unless specifically stated otherwise in these standards or in a normative reference.</p>
 
-<h2 id='18-request-object'>18. Request Object</h2><pre class="highlight diff tab-diff"><code>Updated Request Object section to reference FAPI 2.0 and added details for passing sharing_duration and cdr_arrangement_id via Rich Authorization Requests (RAR)
+<h2 id='18-request-object'>18. Request Object</h2><pre class="highlight diff tab-diff"><code>Updated Request Object section to reference FAPI 2.0
 
 Updated Non-Normative example
 <span class="gd">- "aud": "https://adr.example.com",
@@ -6825,8 +6824,11 @@ Host: tls.dh.example.com
 
 <p>This endpoint does not require <a href="#17-cors">CORS</a>.</p>
 
-<h3 id='19-3-json-web-key-set-endpoint'>19.3. JSON Web Key Set endpoint</h3>
-
+<h3 id='19-3-json-web-key-set-endpoint'>19.3. JSON Web Key Set endpoint</h3><pre class="highlight diff tab-diff"><code>Removed detail associated with a past JWKS URIs FDO which is now incorporated into FAPI 2.0 requirements
+<span class="gd">- JWKS URIs
+- In addition to [FAPI-1.0-Advanced] section 8.9 from July 4th 2022, the following requirements apply:
+- Data Holders and Data Recipients JWK sets MUST NOT contain multiple keys with the same kid.
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Description</th>
@@ -6858,12 +6860,6 @@ Host: tls.dh.example.com
 <p>Data Holders <strong>MUST</strong> support a JWKS endpoint.</p>
 
 <p>This endpoint does not require <a href="#17-cors">CORS</a>.</p>
-
-<pre class="highlight diff tab-diff"><code>Removed detail associated with a past JWKS URIs FDO which is now incorporated into FAPI 2.0 requirements
-<span class="gd">- JWKS URIs
-- In addition to [FAPI-1.0-Advanced] section 8.9 from July 4th 2022, the following requirements apply:
-- Data Holders and Data Recipients JWK sets MUST NOT contain multiple keys with the same kid.
-</span></code></pre>
 
 <h3 id='19-4-token-endpoint'>19.4. Token endpoint</h3>
 
@@ -7537,6 +7533,8 @@ Endpoints specified as TLS <strong>MUST</strong> be configured with a certificat
 <span class="gd">- "aud": "https://mtls.dh.example.com/issuer",
 </span><span class="gi">+ "aud": "https://tls.dh.example.com",
 </span>
+Updated RegistrationProperties to remove past FDOs and references to Hybrid Flow
+
 Updated response_types registration property description and enum associated with hybrid flow
 <span class="gd">- response_type value code is required for Authorization Code Flow.
 - response_type value code id_token is required for OIDC Hybrid Flow.
@@ -55466,6 +55464,7 @@ would become the secondary endpoint:<br>
 <h4 id='endpoint-variations'>Endpoint Variations</h4><pre class="highlight diff tab-diff"><code>Replaced references to deprecated headers
 <span class="gd">- The x-fapi-auth-date header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 - The x-fapi-customer-ip-address header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
+- The x-cds-client-headers header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 </span><span class="gi">+ Except for *x-fapi-interaction-id* and *x-fapi-end-user-present* headers with the prefix "*x-fapi-*" **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require these headers
 </span>
 Added new header to support secondary data holder NFRs
