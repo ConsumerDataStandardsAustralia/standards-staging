@@ -1,5 +1,12 @@
 ### 19.3. JSON Web Key Set endpoint
 
+```diff
+Removed detail associated with a past JWKS URIs FDO which is now incorporated into FAPI 2.0 requirements
+- JWKS URIs
+- In addition to [FAPI-1.0-Advanced] section 8.9 from July 4th 2022, the following requirements apply:
+- Data Holders and Data Recipients JWK sets MUST NOT contain multiple keys with the same kid.
+```
+
 | Description | Value |
 |---|---|
 | Hosted By | Data Holder & Data Recipient Software Product |
@@ -14,10 +21,3 @@ This endpoint is used by the Data Holder to provide the public keys they will us
 Data Holders **MUST** support a JWKS endpoint.
 
 This endpoint does not require [CORS](#17-cors).
-
-```diff
-Removed detail associated with a past JWKS URIs FDO which is now incorporated into FAPI 2.0 requirements
-- JWKS URIs
-- In addition to [FAPI-1.0-Advanced] section 8.9 from July 4th 2022, the following requirements apply:
-- Data Holders and Data Recipients JWK sets MUST NOT contain multiple keys with the same kid.
-```
