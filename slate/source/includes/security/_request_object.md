@@ -1,7 +1,7 @@
 ## 18. Request Object
 
 ```diff
-Updated Request Object section to reference FAPI 2.0 and added details for passing sharing_duration and cdr_arrangement_id via Rich Authorization Requests (RAR)
+Updated Request Object section to reference FAPI 2.0
 
 Updated Non-Normative example
 - "aud": "https://adr.example.com",

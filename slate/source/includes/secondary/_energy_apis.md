@@ -29,6 +29,7 @@ would become the secondary endpoint:
 Replaced references to deprecated headers
 - The x-fapi-auth-date header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 - The x-fapi-customer-ip-address header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
+- The x-cds-client-headers header MUST NOT be passed to AEMO and AEMO MUST NOT require this header
 + Except for *x-fapi-interaction-id* and *x-fapi-end-user-present* headers with the prefix "*x-fapi-*" **MUST NOT** be passed to AEMO and AEMO **MUST NOT** require these headers
 
 Added new header to support secondary data holder NFRs
