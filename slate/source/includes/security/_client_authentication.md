@@ -3,12 +3,12 @@
 ```diff
 Updated statement
 - the PKI Mutual TLS OAuth Client Authentication Method SHALL NOT be supported
-+ the Mutual TLS Client Authentication Methods SHALL NOT be supported
++ the Mutual TLS Client Authentication Methods MUST NOT be supported
 ```
 
 This section outlines how participants in the CDR regime will authenticate clients seeking access to endpoints.
 
-Note that, while **[[MTLS]](#nref-MTLS)** is utilised for transaction security and as a Holder of Key mechanism, the Mutual TLS Client Authentication Methods **SHALL NOT** be supported as the mechanism for client authentication.
+Note that, while **[[MTLS]](#nref-MTLS)** is utilised for transaction security and as a Holder of Key mechanism, the Mutual TLS Client Authentication Methods **MUST NOT** be supported as the mechanism for client authentication.
 
 The following authentication methods are supported:
 

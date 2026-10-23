@@ -16,8 +16,11 @@ Data holders:
 
 ```diff
 Updated One Time Password Credential Requirements
+- The provided OTP MUST be numeric digits and be between 4 and 6 digits in length.
++ The provided OTP MUST be numeric digits and be between 6 and 10 digits in length.
 - The algorithm for the creation of the OTP is at the discretion of the data holder but SHOULD incorporate a level of pseudo-randomness appropriate for the use case.
 + The data holder **MUST** ensure that OTPs are generated using a cryptographically secure mechanism such that an attacker cannot feasibly predict valid OTP values. 
++ The data holder MUST only deliver OTPs to a channel that has been securely pre-registered to the end user and verified to be under their control.
 ```
 
 ### 14.3. One Time Password Credential Requirements
