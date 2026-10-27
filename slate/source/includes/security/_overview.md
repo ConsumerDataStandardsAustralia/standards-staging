@@ -10,7 +10,7 @@ This profile describes requirements and constraints as a profiling of the FAPI 2
 
 For information on the specific normative references that underpin this profile refer to the [Normative References section](#normative-references).
 
-### Symbols and Abbreviated terms
+### 1.1. Symbols and Abbreviated terms
 
 - **API:** Application Programming Interface
 - **CA:** Certificate Authority
